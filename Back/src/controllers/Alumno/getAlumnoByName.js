@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { Op } = require("sequelize")
-const { Alumno } = require("../db.js");
+const { Alumno } = require("../../db.js");
 
 
 const getAlumnoByName = async (req, res) =>{

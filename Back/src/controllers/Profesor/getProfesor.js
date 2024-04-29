@@ -1,4 +1,4 @@
-const {Profesor} = require("../db.js")
+const {Profesor} = require("../../db.js")
 const getProfesor = async (req, res) => {
   try{
     const oneProfesorDB = await Profesor.findByPk(req.params.id)

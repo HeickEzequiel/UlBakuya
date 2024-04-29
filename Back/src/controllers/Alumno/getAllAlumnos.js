@@ -1,4 +1,4 @@
-const {Alumno} = require ("../db.js")
+const {Alumno} = require ("../../db.js")
 
 const getAllAlumnos = async (req, res) => {
     try{

@@ -1,6 +1,6 @@
-const { Alumno} = require("../db.js");
+const {Profesor} = require("../../db.js");
 
-const postAlumno = async(req, res) =>{
+const postProfesor = async(req, res) =>{
     try{
         const {
             nombre,
@@ -11,17 +11,9 @@ const postAlumno = async(req, res) =>{
             graduacion,
             fecha_de_examen
         } = req.body;
-console.log(           
-    nombre,
-    apellido,
-    imagen,
-    fecha_de_nacimiento,
-    escuela,
-    graduacion,
-    fecha_de_examen)
 
         if(nombre && apellido && imagen!==undefined && fecha_de_nacimiento && escuela && graduacion && fecha_de_examen){
-            const NewAlumno = await Alumno.findOrCreate({
+            const NewProfesor = await Profesor.findOrCreate({
                 where:{
                     nombre,
                     apellido,
@@ -33,11 +25,11 @@ console.log(
                 }
 
             })
-            return res.status(200).json(NewAlumno)
+            return res.status(200).json(NewProfesor)
         }
         return res.status(400).send("Datos incorrectos")
     }catch (error){
         return res.status(500).send(error.message)
     }
 }
-module.exports = postAlumno
+module.exports = postProfesor

@@ -1,4 +1,4 @@
-const { Usuario } = require("../db.js");
+const { Usuario } = require("../../db.js");
 
 const login = async (req, res) => {
     try{

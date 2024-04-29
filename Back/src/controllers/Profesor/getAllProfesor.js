@@ -1,4 +1,4 @@
-const {Profesor} = require ("../db.js")
+const {Profesor} = require ("../../db.js")
 
 const getAllProfesor = async (req, res) => {
     try{
