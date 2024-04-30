@@ -1,4 +1,5 @@
 const { DataTypes } = require('sequelize');
+const Profesor = require('./Profesor');
 
 module.exports = (sequelize) => {
   
@@ -37,6 +38,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true
     },
+    Profesor:{
+      type: DataTypes.STRING,
+      allowNull:false
+    }
 
   }, { timestamps: false});
 };
