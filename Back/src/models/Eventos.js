@@ -1,35 +1,32 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-   sequelize.define('Usuario', {
+   sequelize.define('Eventos', {
       id: {
          type: DataTypes.INTEGER,
          autoIncrement: true,
          allowNull: true,
          primaryKey: true
-      },
-      nombre: {
+     },
+      tipo_de_evento:{
+         type: DataTypes.STRING,
+         allowNull:false
+     },
+      horarios: {
          type: DataTypes.STRING,
          allowNull: false
-      },
-      apellido: {
+     },
+      club: {
          type: DataTypes.STRING,
          allowNull: false
-      },
-      tel:{
+     },
+      direccion: {
+         type: DataTypes.STRING,
+         allowNull: false
+     },
+      imagen:{
         type: DataTypes.STRING,
         allowNull: false
-      },
-      email: {
-         type: DataTypes.STRING,
-         allowNull: false,
-         validate: {
-            isEmail: true,
-         }
-      },
-      password: {
-         type: DataTypes.STRING,
-         allowNull: false
-      }
+     },
    }, { timestamps: false });
 };
