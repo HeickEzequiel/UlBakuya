@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,4 +18,7 @@
 
 .card {
     @apply rounded overflow-hidden shadow-lg;
+}
+.box{
+    @apply bg-slate-500 w-40 h-10 rounded-lg text-white font-bold border-2 border-black text-2xl text-center; 
 }

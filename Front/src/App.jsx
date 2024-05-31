@@ -1,16 +1,20 @@
 import { useState } from 'react'
-
-import './App.css'
-
+import Carousel from './components/carousel/Carousel'
+import Nav from './components/nav/Nav'
+import Navbot from './components/navbot/Navbot'
+import Body from './components/body/Body'
+import Choi from './components/choi/Choi'
 function App() {
   
   return (
-    
-      <div>
-        <h1>Hello World!</h1>
-        <h2>Tailwind css</h2>
-        <button className='btn btn-blue btn-blue:hover'>Boton</button>
-      </div>
+    <div>
+      <Nav/>
+      <Choi/>
+      <Carousel/>
+      <Body/>
+      <Navbot/>
+
+    </div>
 
   )
 }
