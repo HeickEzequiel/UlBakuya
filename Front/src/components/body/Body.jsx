@@ -2,26 +2,26 @@ import React from 'react'
 
 function Body() {
   return (
-    <div className='flex mx-8 mt-8 p-2'>
+    <div className='flex mx-8 mt-8 '>
     
-        <div className='place-content-center'>
-            <p className='ml-28 box'>Cursos</p>
-            <p className='p-2'>Cursos y seminarios de estandarizacion y perfeccionamiento del Taekwondo</p>
+        <div className='place-content-center p-4 border-2 border-gray-500 mx-1 transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-indigo-200 duration-300'>
+            <p className='ml-20 box transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300'>Cursos</p>
+            <p className='p-2 text-center'>Cursos de estandarizacion y perfeccionamiento</p>
         </div>
     
-        <div className='place-content-center'>
-            <p className='ml-32 box'>Eventos</p>
-            <p className='p-2'>Eventos especiales en fechas espaciales como el dia del niño, fin de año, entre otras</p>
+        <div className='place-content-center p-4 border-2 border-gray-500 mx-1 transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-indigo-200 duration-300'>
+            <p className='ml-24 box transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300'>Eventos</p>
+            <p className='p-2 text-center'>Eventos especiales: el dia del niño, fin de año, entre otras</p>
         </div>
      
-        <div className='place-content-center'>
-            <p className='ml-12 box'>Torneos</p>
-            <p className='p-2'>Torneos y eventos deportivos realizados por la escuela </p>
+        <div className='place-content-center p-4 border-2 border-gray-500 mx-1 transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-indigo-200 duration-300'>
+            <p className='ml-24 box transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300'>Torneos</p>
+            <p className='p-2 text-center'>Torneos y eventos deportivos realizados por la escuela </p>
         </div>
      
-        <div className='place-content-center'> 
-            <p className='ml-4 box'>Examenes</p>
-            <p className='p-2'>Examenes menusales de gups y danes</p>
+        <div className='place-content-center p-4 border-2 border-gray-500 mx-1 transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-indigo-200 duration-300'> 
+            <p className='ml-20 box transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300'>Examenes</p>
+            <p className='p-2 text-center  '>Examenes de cinturones para seguir aprendiendo</p>
         </div>
     </div>
     )

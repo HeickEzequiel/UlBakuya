@@ -6,7 +6,8 @@ export default {
   theme: {
     extend: {
       fontFamily:{
-        cursiva:["Dancing+Script",'sans-serif']
+        cursiva:["Dancing Script",'sans-serif'],
+        flower:["Indie Flower","sans-serif"]
       }
     },
   },
