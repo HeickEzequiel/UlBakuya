@@ -6,6 +6,7 @@ import Login from './components/login/Login'
 import Escuela from './components/escuela/Escuela'
 import Profesores from './components/profesores/Profesores'
 import Dojan from './components/dojan/Dojan'
+import Proximamente from './components/proximamente/Proximamente'
 function App() {
 
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/escuela" element={<Escuela/>}/>
         <Route path="/profesores" element={<Profesores/>}/>
         <Route path="/dojan" element={<Dojan/>}/>
+        <Route path='/Proximamente' element={<Proximamente/>}/>
       </Routes>
 
     </div>

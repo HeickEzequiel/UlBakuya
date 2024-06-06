@@ -20,6 +20,7 @@ const imagen3 = cld.image("ulbakuya/torneo")
 const imagen4 = cld.image("ulbakuya/clase")
 const imagen5 = cld.image("ulbakuya/curso")
 const imagen6 = cld.image("ulbakuya/grupalclase1")
+const imagen7 = cld.image("ulbakuya/clase2")
 
 export const img1 = imagen1.resize(fill().width(1920).height(700))
 export const img2 = imagen2.resize(fill().width(1920).height(700))
@@ -27,6 +28,7 @@ export const img3 = imagen3.resize(fill().width(1920).height(700))
 export const img4 = imagen4.resize(fill().width(1920).height(700))
 export const img5 = imagen5.resize(fill().width(1920).height(700))
 export const img6 = imagen6.resize(fill().width(1920).height(700))
+export const img7 = imagen7.resize(fill().width(1920).height(700))
 
 
 const xx = cld.image("redes/x")

@@ -2,7 +2,7 @@ import React from 'react';
 import { Swiper, SwiperSlide} from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { AdvancedImage } from '@cloudinary/react'
-import { img1, img2, img3, img4, img5, img6 } from '../../config/cloudinary'
+import { img1, img2, img3, img4, img5, img6, img7 } from '../../config/cloudinary'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -62,6 +62,9 @@ function Carousel() {
           </SwiperSlide>
           <SwiperSlide>
             <AdvancedImage cldImg={img6} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <AdvancedImage cldImg={img7} />
           </SwiperSlide>
 
         </Swiper>
