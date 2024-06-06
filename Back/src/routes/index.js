@@ -51,7 +51,7 @@ router.put("/updatedojan/:id",updateDojan);
 
 //Usuario
 const login = require("../controllers/Users/login.js")
-router.post("/", login)
+router.post("/login", login)
 
 const postUser = require("../controllers/Users/postUser.js")
 router.post("/newuser", postUser)

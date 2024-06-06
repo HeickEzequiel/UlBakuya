@@ -1,18 +1,25 @@
-import { useState } from 'react'
-import Carousel from './components/carousel/Carousel'
-import Nav from './components/nav/Nav'
-import Navbot from './components/navbot/Navbot'
-import Body from './components/body/Body'
-import Choi from './components/choi/Choi'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
+import Home from './components/home/Home'
+import Login from './components/login/Login'
+import Escuela from './components/escuela/Escuela'
+import Profesores from './components/profesores/Profesores'
+import Dojan from './components/dojan/Dojan'
+import Proximamente from './components/proximamente/Proximamente'
 function App() {
-  
+
   return (
     <div>
-      <Nav/>
-      <Choi/>
-      <Carousel/>
-      <Body/>
-      <Navbot/>
+        
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/escuela" element={<Escuela/>}/>
+        <Route path="/profesores" element={<Profesores/>}/>
+        <Route path="/dojan" element={<Dojan/>}/>
+        <Route path='/Proximamente' element={<Proximamente/>}/>
+      </Routes>
 
     </div>
 
