@@ -1,14 +1,19 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner"
+import userStore  from "../../store/loginStore"
+import api from "../../api/ubk"
 import validation from "../../../utils/validation";
 import Nav from "../nav/Nav";
 import Navbot from "../navbot/Navbot";
 
+
 function Login(props){
     const navigate = useNavigate();
+    const { login } = userStore()
     const [userData, setUserData] = useState({
         email:"",
-        password:","
+        password:""
     })
     const [errors, setErrors] = useState({
         email:"Ingrese su email",
@@ -25,46 +30,68 @@ function Login(props){
             [name]: value
         }))
     }
-    const handleSubmit = event => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        props.login(userData);
+        const { email, password } = userData;
+        try {
+            const response = await api.post("/login",{
+                email,
+                password
+            })
+            login(response.data)
+            localStorage.setItem("userData", JSON.stringify(response.data))
+            navigate("/")
+            toast.success("successful login")
+            
+        } catch (error) { 
+            toast.error("incorrect password")
+        }
+    }
+    const handleNewUser = () =>{
+        navigate("/newuser");
     }
 
     return(
-    
-        <div>
+        <div className="bg-orange-200">
             <Nav/>
-            <p> por favor ingresa tu usuario y contraseña para acceder o crea un nuevo usuario</p>
-            <form onSubmit={handleSubmit} >
-                <label >Email: </label>
-                    <input 
-                        type='text'
-                        key="email"
-                        name= "email"
-                        value={userData.email}
-                        placeholder="Ingresar email"
-                        onChange={handleChange}
-                    />
-                <p >{ errors.email ? errors.email : null }</p>
-            <br />
-                <label >Password: </label>
-                    <input 
-                        type='password'
-                        key="password"
-                        name= "password"
-                        value={userData.password}
-                        placeholder="Ingresar password"
-                        onChange={handleChange}
-                    />
-                <p>{ errors.password && errors.password }</p>
-            <br />
-                <button 
-                    type="submit"
-                    disabled={ errors.email || errors.password }>
+                <div className=" bg-blue-400 relative w-72 h-64 mt-12 p-4 left-custom border-2 border-black  rounded-xl">
+                <form className='p-2 bg-lime-500' onSubmit={handleSubmit} >
+                        <input 
+                            className="bg-slate-300 border-2 border-black rounded-xl ml-6"
+                            type='text'
+                            key="email"
+                            name= "email"
+                            value={userData.email}
+                            placeholder=""
+                            onChange={handleChange}
+                        />
+                    <p className="text-red-500 ml-14">{ errors.email ? errors.email : null }</p>
+                        <input
+                            className="bg-slate-300 border-2 border-black rounded-xl ml-6" 
+                            type='password'
+                            key="password"
+                            name= "password"
+                            value={userData.password}
+                            placeholder=""
+                            onChange={handleChange}
+                        />
+                    <p className="text-red-500 ml-10">{ errors.password && errors.password }</p>
+                    <button
+                        className="mt-4 ml-6 border-2 border-cyan-800 bg-slate-300 rounded-xl p-1" 
+                        type="submit"
+                        disabled={ errors.email || errors.password }
+                        onClick={handleSubmit}>
                         Ingresar
-                </button>
-
-            </form>
+                    </button>
+                    <button
+                        className="mt-4 ml-10 border-2 border-cyan-800 bg-slate-300 rounded-xl p-1" 
+                        type="button"
+                        onClick={handleNewUser}>
+                        Registrarse
+                    </button>
+                </form>
+                </div>
+                
             <Navbot/>
         </div>
     )

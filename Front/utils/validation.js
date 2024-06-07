@@ -12,7 +12,7 @@ else{
 if(!input.password.length) errors.password = "Ingrese su password";
     if(!regexPassword.test(input.password)) errors.password = "Debe tener al menos un número";
     if(input.password.length < 6) errors.password = "Al menos 6 caracteres";
-    if(input.password.length > 9) errors.password = "No mayor a 10 caracteres";
+    
 
 return errors
 }

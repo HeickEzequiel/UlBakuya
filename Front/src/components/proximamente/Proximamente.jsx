@@ -7,7 +7,7 @@ function Proximamente() {
     <div>
         <Nav/>
             <h1>PROXIMAMENTE</h1>
-        <Navbot/>
+        <Navbot />
     </div>
   )
 }
