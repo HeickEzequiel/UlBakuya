@@ -40,6 +40,7 @@ function Login(props){
             })
             login(response.data)
             localStorage.setItem("userData", JSON.stringify(response.data))
+            console.log("localStorage----->", localStorage.userData)
             navigate("/")
             toast.success("successful login")
             
@@ -47,6 +48,7 @@ function Login(props){
             toast.error("incorrect password")
         }
     }
+
     const handleNewUser = () =>{
         navigate("/newuser");
     }

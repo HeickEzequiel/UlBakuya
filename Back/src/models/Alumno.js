@@ -1,5 +1,4 @@
 const { DataTypes } = require('sequelize');
-const Profesor = require('./Profesor');
 
 module.exports = (sequelize) => {
   

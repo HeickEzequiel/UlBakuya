@@ -8,6 +8,7 @@ import Profesores from './components/profesores/Profesores'
 import Dojan from './components/dojan/Dojan'
 import Proximamente from './components/proximamente/Proximamente'
 import Newuser from './components/newuser/Newuser'
+import Perfil from './components/perfil/Perfil'
 function App() {
 
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/dojan" element={<Dojan/>}/>
         <Route path='/Proximamente' element={<Proximamente/>}/>
         <Route path='/newuser' element={<Newuser/>}/>
+        <Route path='/perfil' element={<Perfil/>}/>
       </Routes>
 
     </div>
