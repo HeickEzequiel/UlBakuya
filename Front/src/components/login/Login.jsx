@@ -54,43 +54,48 @@ function Login(props){
     }
 
     return(
-        <div className="bg-orange-200">
+        
+        <div className="absolute w-full h-full bg-slate-400">
             <Nav/>
-                <div className=" bg-blue-400 relative w-72 h-64 mt-12 p-4 left-custom border-2 border-black  rounded-xl">
-                <form className='p-2 bg-lime-500' onSubmit={handleSubmit} >
+                <div className="relative bg-transparent h-96 w-96 left-custom top-12 border-2 border-black  rounded-xl">
+                    <p className="text-center mx-10 font-bold text-2xl font-serif">Inicia Sesión</p>
+                <form className='' onSubmit={handleSubmit} >
+                        <div className="relative  ">
                         <input 
-                            className="bg-slate-300 border-2 border-black rounded-xl ml-6"
+                            className="absolute bg-slate-300 border-2 border-black rounded-md left-18 top-5 w-60"
                             type='text'
                             key="email"
                             name= "email"
                             value={userData.email}
-                            placeholder=""
+                            placeholder="Email"
                             onChange={handleChange}
                         />
-                    <p className="text-red-500 ml-14">{ errors.email ? errors.email : null }</p>
+                    {/* <p className="text-red-500 ml-16">{ errors.email ? errors.email : null }</p> */}
                         <input
-                            className="bg-slate-300 border-2 border-black rounded-xl ml-6" 
+                            className="absolute bg-slate-300 border-2 border-black rounded-md left-18 top-20 w-60" 
                             type='password'
                             key="password"
                             name= "password"
                             value={userData.password}
-                            placeholder=""
+                            placeholder="contraseña"
                             onChange={handleChange}
                         />
-                    <p className="text-red-500 ml-10">{ errors.password && errors.password }</p>
+                    {/* <p className="text-red-500 ml-10">{ errors.password && errors.password }</p> */}
                     <button
-                        className="mt-4 ml-6 border-2 border-cyan-800 bg-slate-300 rounded-xl p-1" 
+                        className="absolute top-36 left-18 w-60 border-2 border-cyan-800 bg-slate-300 rounded-xl p-1 " 
                         type="submit"
                         disabled={ errors.email || errors.password }
                         onClick={handleSubmit}>
                         Ingresar
                     </button>
+                    <p className="absolute top-48 left-48 -ml-2 text-center mx-10 font-bold text-2xl font-serif">o</p>
                     <button
-                        className="mt-4 ml-10 border-2 border-cyan-800 bg-slate-300 rounded-xl p-1" 
+                        className="absolute top-56 left-18 w-60 border-2 border-cyan-800 bg-slate-300 rounded-xl p-1" 
                         type="button"
                         onClick={handleNewUser}>
                         Registrarse
                     </button>
+                    </div>
                 </form>
                 </div>
                 

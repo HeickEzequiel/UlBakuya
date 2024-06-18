@@ -1,8 +1,6 @@
 import userStore  from '../../store/loginStore.js'
 import { Link } from 'react-router-dom'
 
-
-
 function Nav() {
   const {isLogged, logout, user}=userStore()
   console.log(user)
@@ -16,6 +14,7 @@ function Nav() {
           <button className='block mt-4 lg:inline-block lg:mt-0 text-white font-medium hover:text-lime-400 mr-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'><Link to='/escuela'>La Federacion</Link></button>
           <button className='block mt-4 lg:inline-block lg:mt-0 text-white font-medium hover:text-lime-400 mr-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'><Link to='/profesores'>Profesores</Link></button>
           <button className='block mt-4 lg:inline-block lg:mt-0 text-white font-medium hover:text-lime-400 mr-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'><Link to='/dojan'>Lugares de entrenamiento</Link></button>
+          
           {!isLogged?
             <div className='absolute right-12 top-8'>
               <button className='block mt-4 lg:inline-block lg:mt-0 text-white font-medium hover:text-lime-400 ml-96 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'><Link to= '/login'>Ingresar </Link></button>

@@ -4,7 +4,7 @@ import { x, facebook, instagram, tiktok } from '../../config/cloudinary'
 function Navbot() {
   return (
     
-    <footer className=' bg-blue-800'>
+    <footer className='bg-blue-800'>
         <div>
           <h2 className='text-white text-left mr-4 my-1 mx-2'>Seguinos en nuestras redes</h2>
             <div className="flex absolute gap-1">

@@ -25,5 +25,8 @@
     @apply bg-slate-500 w-40 h-10 rounded-lg text-white font-bold border-2 border-black text-2xl text-center; 
 }
 .left-custom{
-    left: 40%
+    left: 37%
+}
+.left-18{
+    left: 72px;
 }
