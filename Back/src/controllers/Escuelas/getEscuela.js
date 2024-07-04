@@ -1,0 +1,18 @@
+const {Escuela} = require("../../db.js")
+const getEscuela = async (req, res) => {
+  try{
+    const oneEscuelaDB = await Escuela.findByPk(req.params.id)
+    const oneEscuela = {
+      id: oneEscuelaDB.id,
+      nombre: oneEscuelaDB.nombre,
+      director: oneEscuelaDB.apellido,
+      dojan: oneEscuelaDB.imagen,
+      imagen: oneEscuelaDB.imagen
+    }
+  return res.status(200).json(oneEscuela)
+  } catch (error){
+    return res.status(400).send(error.message)
+  }
+};
+
+module.exports = getEscuela;

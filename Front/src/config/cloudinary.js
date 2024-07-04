@@ -14,7 +14,7 @@ import { face } from "@cloudinary/url-gen/qualifiers/focusOn";
     },
 });
 
-const imagen1 = cld.image("ulbakuya/abswbci8ml7lmczujjii")
+
 const imagen2 = cld.image("ulbakuya/gcsdjecrcflpzihhvar2")
 const imagen3 = cld.image("ulbakuya/torneo")
 const imagen4 = cld.image("ulbakuya/clase")
@@ -22,7 +22,8 @@ const imagen5 = cld.image("ulbakuya/curso")
 const imagen6 = cld.image("ulbakuya/grupalclase1")
 const imagen7 = cld.image("ulbakuya/clase2")
 
-export const img1 = imagen1.resize(fill().width(1920).height(700))
+
+
 export const img2 = imagen2.resize(fill().width(1920).height(700))
 export const img3 = imagen3.resize(fill().width(1920).height(700))
 export const img4 = imagen4.resize(fill().width(1920).height(700))
@@ -41,9 +42,24 @@ export const instagram = insta.resize(fill().width(200).height(200))
 export const facebook = faceb.resize(fill().width(200).height(200))
 export const tiktok = tikt.resize(fill().width(200).height(200))
 
-const gral = cld.image("ulbakuya/Choi")
-const ariel = cld.image("ulbakuya/farias")
-const escudo = cld.image("ulbakuya/abswbci8ml7lmczujjii")
-export const choi = gral.resize(fill().width(150).height(200))
+
+const ariel = cld.image("ulbakuya/ariel")
 export const farias = ariel.resize(fill().width(150).height(200))
-export const logo = escudo.resize(fill().width(300).height(300))
+
+const escariel = cld.image('ulbakuya/ubkcolor')
+const escdiego = cld.image('ulbakuya/pilsung')
+const escleo = cld.image('ulbakuya/gyeomson')
+const escromi = cld.image('ulbakuya/ubuntu2')
+
+export const ubk = escariel.resize(fill().width(300).height(300)) 
+export const pilsung = escdiego.resize(fill().width(300).height(300))
+export const gyeomson = escleo.resize(fill().width(300).height(300))
+export const ubuntu = escromi.resize(fill().width(300).height(300))
+
+const siluetaSalto = cld.image('ulbakuya/siluetasalto')
+const siluetaHombre = cld.image('ulbakuya/siluetahombre')
+const siluetamujer = cld.image('ulbakuya/siluetamujer')
+
+export const sombraSalto = siluetaSalto.resize(fill().width(300).height(300))
+export const sombraHombre = siluetaHombre.resize(fill().width(300).height(300))
+export const sombraMujer = siluetamujer.resize(fill().width(300).height(300))

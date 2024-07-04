@@ -2,13 +2,13 @@ import React from 'react'
 import { AdvancedImage } from '@cloudinary/react'
 import Nav from '../nav/Nav'
 import Navbot from '../navbot/Navbot'
-import { farias, logo,  } from '../../config/cloudinary'
+import { farias, ubk,  } from '../../config/cloudinary'
 
 function Escuela() {
   return (
     <div>
         <Nav/>
-        <AdvancedImage cldImg={logo} className= 'relative my-6 ml-52'/>
+        <AdvancedImage cldImg={ubk} className= 'relative my-6 ml-52'/>
         <p>Escuela de takwondo Ul Bakuya</p> <br/>
         <AdvancedImage cldImg={farias} className= 'relative my-6 ml-52 rounded-full '/>
         <p>Director: Ariel Farias 7mo Dan</p> <br/>

@@ -1,16 +1,15 @@
-import React from 'react'
-import { choi } from '../../config/cloudinary'
+import { ubk,pilsung,gyeomson,ubuntu } from '../../config/cloudinary'
 import { AdvancedImage } from '@cloudinary/react'
 
 function Choi() {
   return (
-    <div className=''>
-      <div className='flex border-8 border-black mx-40 my-8 outline-double outline-3 outline-offset-2  bg-slate-200'>
-        <AdvancedImage cldImg={choi} className= 'relative my-6 ml-52 rounded-full '/>
-        <p className='relative font-cursiva text-4xl text-center my-12 ml-10'> Ayudar a otros a desarrollarse y triunfar en la vida,
-          <br/> constituye una recompensa por si misma y tiene valor 
-          <br/>solo si no se espera nada a cambio
-        </p>
+    <div className='relative mt-4'>
+      <p className='text-center text-6xl font-cursiva font-bold underline underline-offset-8 text-white mt-12'>Escuelas asociadas</p>
+      <div className='flex size-48 mx-80 mt-8'>
+        <AdvancedImage cldImg={ubk} className= 'mx-4 hover:-translate-y-1 hover:scale-110 duration-300'/>
+        <AdvancedImage cldImg={pilsung} className= 'mx-4 hover:-translate-y-1 hover:scale-110 duration-300'/>
+        <AdvancedImage cldImg={gyeomson} className= 'mx-4 hover:-translate-y-1 hover:scale-110 duration-300'/>
+        <AdvancedImage cldImg={ubuntu} className= 'mx-4 hover:-translate-y-1 hover:scale-110 duration-300'/>
       </div>
     </div>
   )

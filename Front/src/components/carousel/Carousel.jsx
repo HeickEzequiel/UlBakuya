@@ -2,7 +2,7 @@ import React from 'react';
 import { Swiper, SwiperSlide} from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { AdvancedImage } from '@cloudinary/react'
-import { img1, img2, img3, img4, img5, img6, img7 } from '../../config/cloudinary'
+import { img2, img3, img4, img5, img6, img7 } from '../../config/cloudinary'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -10,7 +10,7 @@ import "swiper/css/scrollbar";
 
 function Carousel() {
   return (
-    <div className='mx-8 mt-8'
+    <div className='mt-8'
     style={{ display: "flex", justifyContent: "center" }}>
       <div
         className="swiper-container custom-swiper-container relative"
@@ -40,14 +40,14 @@ function Carousel() {
           }}
           pagination={{ clickable: true }}
         >
-          <SwiperSlide>
+         
             <div className="relative">
-              <AdvancedImage cldImg={img1} />
+              
               {/* <div className="absolute top-20 left-20 text-white text-4xl font-bold p-4 border-4 border-white">
                 Explore the world
               </div> */}
             </div>
-          </SwiperSlide>
+        
           <SwiperSlide>
             <AdvancedImage cldImg={img2} />
           </SwiperSlide>

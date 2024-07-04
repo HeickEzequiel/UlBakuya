@@ -49,6 +49,24 @@ router.post("/newdojan", postDojan)
 const updateDojan = require("../controllers/Dojan/updateDojan.js");
 router.put("/updatedojan/:id",updateDojan);
 
+//Escuelas
+
+const getAllEscuelas = require("../controllers/Escuelas/getAllEscuelas.js")
+router.get("/escuelas", getAllEscuelas)
+
+const getEscuela = require("../controllers/Escuelas/getEscuela.js")
+router.get("/escuela/:id", getDojan)
+
+const getEscuelaByName = require("../controllers/Escuelas/getEscuelaByName.js")
+router.get("/escuela", getEscuelaByName)
+
+const postEscuela = require("../controllers/Escuelas/postEscuela.js")
+router.post("/newescuela", postEscuela)
+
+const updateEscuela = require("../controllers/Escuelas/updateEscuela.js");
+router.put("/updateescuela/:id",updateEscuela);
+
+
 //Usuario
 const login = require("../controllers/Users/login.js")
 router.post("/login", login)

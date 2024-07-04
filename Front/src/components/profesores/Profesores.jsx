@@ -20,8 +20,8 @@ function Profesores() {
 
   return (
     <div>
-      <Nav />
-        <div className='flex mt-4 ml-4 mr-4 p-4'>
+      <Nav/>
+        <div className='grid mt-4 ml-4 mr-4 p-4'>
           {!data.length 
            ? <h1>no existen profesores</h1> 
            : data.map((profes, key)=>(
@@ -35,7 +35,7 @@ function Profesores() {
             ))
           }
         </div>
-      <Navbot />
+      <Navbot/>
     </div>
   )
 }

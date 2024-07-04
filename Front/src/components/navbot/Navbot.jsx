@@ -3,7 +3,8 @@ import { AdvancedImage } from '@cloudinary/react'
 import { x, facebook, instagram, tiktok } from '../../config/cloudinary'
 function Navbot() {
   return (
-    <div className=' bg-slate-500 mt-8'>
+    
+    <footer className='absolute w-full  bottom-0 bg-blue-800'>
         <div>
           <h2 className='text-white text-left mr-4 my-1 mx-2'>Seguinos en nuestras redes</h2>
             <div className="flex absolute gap-1">
@@ -17,7 +18,7 @@ function Navbot() {
           <h2 className="text-white text-lg font-normal text-center">Escribinos a</h2>
           <p className="text-lg font-normal text-white my-0.1 text-center">ulbakuya@gmail.com</p>
         </div>
-    </div>
+    </footer>
   )
 }
 export default Navbot

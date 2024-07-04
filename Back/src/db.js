@@ -5,6 +5,8 @@ const ProfesorModel = require("./models/Profesor.js");
 const DojanModel = require("./models/Dojan.js");
 const UsuarioModel = require("./models/Usuario.js");
 const EventosModel = require("./models/Eventos.js");
+const EscuelasModel = require("./models/Escuela.js");
+
 const fs = require('fs');
 const path = require('path');
 const { DB_USER, DB_PASSWORD, DB_HOST} = process.env;
@@ -35,18 +37,26 @@ ProfesorModel(sequelize);
 DojanModel(sequelize);
 UsuarioModel(sequelize);
 EventosModel(sequelize);
+EscuelasModel(sequelize);
 
-const { Alumno, Profesor, Dojan, Usuario, Eventos } = sequelize.models;
+const { Alumno, Profesor, Dojan, Usuario, Eventos, Escuela } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
-Alumno.belongsToMany(Profesor,{through:'Alumno_Profesor',foreignKey: 'AlumnoId',as: "Profesores"});
-Profesor.belongsToMany(Alumno,{through:'Alumno_Profesor',foreignKey: 'ProfesorId',as: "Alumnos"});
-Dojan.belongsToMany(Profesor,{through:'Dojan_Profesor',foreignKey: 'DojanId', as: "Dojanes"});
-Profesor.belongsToMany(Dojan,{through:'Dojan_Profesor',foreignKey: 'ProfesorId', as:"Profesores"});
+Alumno.belongsToMany(Profesor,{through:'Alumno_Profesor',foreignKey: 'AlumnoId',as: "alumnosProfesores"});
+Profesor.belongsToMany(Alumno,{through:'Alumno_Profesor',foreignKey: 'ProfesorId',as: "profesoresAlumnos"});
+Dojan.belongsToMany(Profesor,{through:'Dojan_Profesor',foreignKey: 'DojanId', as: "dojanesProfesores"});
+Profesor.belongsToMany(Dojan,{through:'Dojan_Profesor',foreignKey: 'ProfesorId', as:"profesoresDojanes"});
 Usuario.belongsToMany(Eventos,{through:'Usuario_Eventos',foreignKey: 'UsuarioId', as:"Usuarios"});
 Eventos.belongsToMany(Usuario,{through:'Usuario_Eventos',foreignKey: 'EventsId', as:"Eventos"});
+Escuela.belongsToMany(Profesor,{through:'Escuela_Profesor', foreignKey: 'EscuelaId', as: "escuelaProfesores"});
+Profesor.belongsToMany(Escuela,{through:'Escuela_Profesor', foreignKey: 'ProfesorId', as: "profesoresEscuela"});
+Escuela.belongsToMany(Alumno,{through:'Escuela_Alumno', foreignKey: 'EscuelaId', as: "escuelaAlumnos"});
+Alumno.belongsToMany(Escuela,{through:'Escuela_Alumno', foreignKey: 'AlumnoId', as: "alumnosEscuela"});
+Escuela.belongsToMany(Dojan,{through:'Escuela_Dojan', foreignKey: 'EscuelaId', as: "escuelaDojanes"});
+Dojan.belongsToMany(Escuela,{through:'Escuela_Dojan', foreignKey: 'DojanId', as: "dojanesEscuela"});
+
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
