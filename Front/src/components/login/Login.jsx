@@ -55,14 +55,14 @@ function Login(props){
 
     return(
         
-        <div className="absolute w-full h-full bg-slate-400">
+        <div className="absolute w-full h-full ">
             <Nav/>
-                <div className="relative bg-transparent h-96 w-96 left-custom top-12 border-2 border-black  rounded-xl">
+                <div className="relative bg-transparent h-96 w-96 left-custom top-12 border-2 border-black rounded-xl">
                     <p className="text-center mx-10 font-bold text-2xl font-serif">Inicia Sesión</p>
                 <form className='' onSubmit={handleSubmit} >
                         <div className="relative  ">
                         <input 
-                            className="absolute bg-slate-300 border-2 border-black rounded-md left-18 top-5 w-60"
+                            className="absolute bg-slate-300 border-2 border-black rounded-md left-18 top-5 w-60 p-1"
                             type='text'
                             key="email"
                             name= "email"
@@ -72,12 +72,12 @@ function Login(props){
                         />
                     {/* <p className="text-red-500 ml-16">{ errors.email ? errors.email : null }</p> */}
                         <input
-                            className="absolute bg-slate-300 border-2 border-black rounded-md left-18 top-20 w-60" 
+                            className="absolute bg-slate-300 border-2 border-black rounded-md left-18 top-20 w-60 p-1" 
                             type='password'
                             key="password"
                             name= "password"
                             value={userData.password}
-                            placeholder="contraseña"
+                            placeholder="Contraseña"
                             onChange={handleChange}
                         />
                     {/* <p className="text-red-500 ml-10">{ errors.password && errors.password }</p> */}
@@ -88,7 +88,7 @@ function Login(props){
                         onClick={handleSubmit}>
                         Ingresar
                     </button>
-                    <p className="absolute top-48 left-48 -ml-2 text-center mx-10 font-bold text-2xl font-serif">o</p>
+                    <p className="absolute top-48 left-48 -ml-2 text-center mx-10 font-bold text-2xl font-serif">Ó</p>
                     <button
                         className="absolute top-56 left-18 w-60 border-2 border-cyan-800 bg-slate-300 rounded-xl p-1" 
                         type="button"

@@ -13,7 +13,7 @@ function Home() {
   return (
     <div>
         <Nav/>
-        {isLogged ? <User/> : <div className='relative flex items-center bg-blue-400 p-4 w-full '></div>}
+        {isLogged ? <User/> : <div className='relative flex items-center p-4 w-full '></div>}
         <Choi/>
         <Carousel/>
         <Body/>

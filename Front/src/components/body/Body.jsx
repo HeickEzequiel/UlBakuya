@@ -2,7 +2,7 @@ import React from 'react'
 
 function Body() {
   return (
-    <div className='flex mx-8 mt-8 '>
+    <div className='relative flex mx-8 mt-8 '>
     
         <div className='place-content-center p-4 border-2 border-gray-500 mx-1 transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-lime-200 duration-300'>
             <button className='ml-20 box transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300'>Cursos</button>

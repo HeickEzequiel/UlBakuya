@@ -55,3 +55,11 @@ export const ubk = escariel.resize(fill().width(300).height(300))
 export const pilsung = escdiego.resize(fill().width(300).height(300))
 export const gyeomson = escleo.resize(fill().width(300).height(300))
 export const ubuntu = escromi.resize(fill().width(300).height(300))
+
+const siluetaSalto = cld.image('ulbakuya/siluetasalto')
+const siluetaHombre = cld.image('ulbakuya/siluetahombre')
+const siluetamujer = cld.image('ulbakuya/siluetamujer')
+
+export const sombraSalto = siluetaSalto.resize(fill().width(300).height(300))
+export const sombraHombre = siluetaHombre.resize(fill().width(300).height(300))
+export const sombraMujer = siluetamujer.resize(fill().width(300).height(300))

@@ -8,6 +8,9 @@ export default {
       fontFamily:{
         cursiva:["Dancing Script",'sans-serif'],
         flower:["Indie Flower","sans-serif"]
+      },
+      backgroundImage:{
+        'imagen': "url('https://res.cloudinary.com/damoqjwmk/image/upload/v1719510409/ulbakuya/fondo.avif')"
       }
     },
   },

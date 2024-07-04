@@ -589,20 +589,17 @@ video {
 .relative{
   position: relative;
 }
+.bottom-0{
+  bottom: 0px;
+}
 .left-10{
   left: 2.5rem;
 }
 .left-12{
   left: 3rem;
 }
-.left-16{
-  left: 4rem;
-}
 .left-20{
   left: 5rem;
-}
-.left-32{
-  left: 8rem;
 }
 .left-48{
   left: 12rem;
@@ -625,11 +622,17 @@ video {
 .top-20{
   top: 5rem;
 }
+.top-36{
+  top: 9rem;
+}
+.top-48{
+  top: 12rem;
+}
 .top-5{
   top: 1.25rem;
 }
-.top-52{
-  top: 13rem;
+.top-56{
+  top: 14rem;
 }
 .top-7{
   top: 1.75rem;
@@ -637,32 +640,23 @@ video {
 .top-8{
   top: 2rem;
 }
-.top-32{
-  top: 8rem;
+.right-72{
+  right: 18rem;
 }
-.top-36{
-  top: 9rem;
+.left-72{
+  left: 18rem;
 }
-.left-14{
-  left: 3.5rem;
+.left-24{
+  left: 6rem;
 }
-.top-40{
-  top: 10rem;
+.left-32{
+  left: 8rem;
 }
-.top-44{
-  top: 11rem;
+.left-44{
+  left: 11rem;
 }
-.top-48{
-  top: 12rem;
-}
-.top-96{
-  top: 24rem;
-}
-.top-56{
-  top: 14rem;
-}
-.bottom-0{
-  bottom: 0px;
+.left-52{
+  left: 13rem;
 }
 .mx-1{
   margin-left: 0.25rem;
@@ -699,6 +693,9 @@ video {
 .my-6{
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+}
+.-ml-2{
+  margin-left: -0.5rem;
 }
 .mb-4{
   margin-bottom: 1rem;
@@ -748,11 +745,14 @@ video {
 .mt-8{
   margin-top: 2rem;
 }
-.-ml-4{
-  margin-left: -1rem;
+.mt-10{
+  margin-top: 2.5rem;
 }
-.-ml-2{
-  margin-left: -0.5rem;
+.mt-6{
+  margin-top: 1.5rem;
+}
+.ml-32{
+  margin-left: 8rem;
 }
 .block{
   display: block;
@@ -782,6 +782,9 @@ video {
 }
 .h-full{
   height: 100%;
+}
+.min-h-screen{
+  min-height: 100vh;
 }
 .w-60{
   width: 15rem;
@@ -865,16 +868,15 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(203 213 225 / var(--tw-bg-opacity));
 }
-.bg-slate-400{
-  --tw-bg-opacity: 1;
-  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
-}
 .bg-transparent{
   background-color: transparent;
 }
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+.bg-imagen{
+  background-image: url('https://res.cloudinary.com/damoqjwmk/image/upload/v1719510409/ulbakuya/fondo.avif');
 }
 .p-1{
   padding: 0.25rem;
@@ -891,6 +893,9 @@ video {
 .px-6{
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+.pb-32{
+  padding-bottom: 8rem;
 }
 .text-left{
   text-align: left;
@@ -942,6 +947,10 @@ video {
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+.text-black{
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 .underline{
   text-decoration-line: underline;

@@ -22,31 +22,17 @@ const userStore = create((set)=>{
     }
     return{
         ...initialState(),
+
         login: (userData) => {
-            const {
-                access,
-                nombre,
-                apellido,
-                tel,
-                email,
-                password,
-                id
-            }=userData
+            const { access, nombre, apellido, tel, email, password, id }=userData
             set({user: userData, isLogged: true})
-            localStorage.setItem(
-                "authState", JSON.stringify({
-                    user:{
-                        access,
-                        nombre,
-                        apellido,
-                        tel,
-                        email,
-                        password,
-                        id
-                    }, isLogged: true
+            localStorage.setItem("authState", JSON.stringify({
+                    user:{ access, nombre, apellido, tel, email, password, id }, 
+                    isLogged: true
                 })
             )
         },
+
         register: async (userData)=> {
             set({
                 isRegistering: true,
@@ -75,6 +61,7 @@ const userStore = create((set)=>{
               set({ isRegistering: false, registerSuccess: true})  
             }
         },
+
         logout: () => {
             set({ user: null, isLogged: false });
             localStorage.removeItem("authState");
@@ -82,7 +69,7 @@ const userStore = create((set)=>{
             localStorage.removeItem("userData");
             localStorage.removeItem("authStateLogin");
             window.location.replace('/');
-          },
+        },
 
     }
 })
