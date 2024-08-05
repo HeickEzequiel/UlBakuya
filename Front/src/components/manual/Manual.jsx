@@ -4,7 +4,7 @@ import Navbot from "../navbot/Navbot"
 function Manual() {
   
     return (
-        <div className="text-white">
+        <div className="">
             <Nav/>
                 <div className="ml-4">
                      <br/>

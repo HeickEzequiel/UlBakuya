@@ -5,7 +5,7 @@ import Carousel from '../carousel/Carousel'
 import Body from '../body/Body'
 import Navbot from '../navbot/Navbot'
 import userStore  from '../../store/loginStore.js'
-import User from '../user/User.jsx'
+import UserNav from '../usernav/UserNav.jsx'
 
 function Home() {
   const { isLogged, user, login, userData} = userStore()
@@ -13,7 +13,7 @@ function Home() {
   return (
     <div>
         <Nav/>
-        {isLogged ? <User/> : <div className='relative flex items-center p-4 w-full '></div>}
+        {isLogged ? <UserNav/> : <div className='relative flex items-center p-4 w-full '></div>}
         <Choi/>
         <Carousel/>
         <Body/>

@@ -17,7 +17,7 @@ import Examenes from './components/examenes/Examenes'
 function App() {
 
   return (
-    <div className='relative pb-32 bg-imagen'>
+    <div className='relative pb-32 '>
         
       <Routes>
         <Route path="/" element={<Home/>}/>

@@ -595,14 +595,17 @@ video {
 .left-10{
   left: 2.5rem;
 }
-.left-12{
-  left: 3rem;
-}
 .left-20{
   left: 5rem;
 }
 .left-48{
   left: 12rem;
+}
+.left-52{
+  left: 13rem;
+}
+.left-72{
+  left: 18rem;
 }
 .right-10{
   right: 2.5rem;
@@ -640,23 +643,17 @@ video {
 .top-8{
   top: 2rem;
 }
-.right-72{
-  right: 18rem;
+.left-80{
+  left: 20rem;
 }
-.left-72{
-  left: 18rem;
+.left-96{
+  left: 24rem;
 }
-.left-24{
-  left: 6rem;
+.right-96{
+  right: 24rem;
 }
 .left-32{
   left: 8rem;
-}
-.left-44{
-  left: 11rem;
-}
-.left-52{
-  left: 13rem;
 }
 .mx-1{
   margin-left: 0.25rem;
@@ -718,6 +715,9 @@ video {
 .ml-24{
   margin-left: 6rem;
 }
+.ml-32{
+  margin-left: 8rem;
+}
 .ml-4{
   margin-left: 1rem;
 }
@@ -742,20 +742,23 @@ video {
 .mt-4{
   margin-top: 1rem;
 }
-.mt-8{
-  margin-top: 2rem;
-}
-.mt-10{
-  margin-top: 2.5rem;
-}
 .mt-6{
   margin-top: 1.5rem;
 }
-.ml-32{
-  margin-left: 8rem;
+.mt-8{
+  margin-top: 2rem;
+}
+.mt-0{
+  margin-top: 0px;
+}
+.mt-1{
+  margin-top: 0.25rem;
 }
 .block{
   display: block;
+}
+.inline-block{
+  display: inline-block;
 }
 .flex{
   display: flex;
@@ -782,9 +785,6 @@ video {
 }
 .h-full{
   height: 100%;
-}
-.min-h-screen{
-  min-height: 100vh;
 }
 .w-60{
   width: 15rem;
@@ -874,6 +874,10 @@ video {
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+.bg-blue-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
 }
 .bg-imagen{
   background-image: url('https://res.cloudinary.com/damoqjwmk/image/upload/v1719510409/ulbakuya/fondo.avif');

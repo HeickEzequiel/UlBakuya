@@ -5,7 +5,7 @@ function Nav() {
   const {isLogged, logout, user}=userStore()
   console.log(user)
   return (
-    <div className=' flex items-center bg-transparent p-6 w-full'>
+    <div className=' flex items-center bg-blue-400 p-6 w-full'>
       
         <span className='absolute top-14 left-48 ml-4 text-bold text-2xl text-white'>FIT</span>
         <span className='text-white font-bold text-center justify-center text-2xl mb-5 tracking-tight ml-8 mx-2 mr-4'>Federacion Integral de Taekwondo</span>
