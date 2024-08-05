@@ -57,7 +57,7 @@ function Login(props){
         
         <div className="absolute w-full h-full ">
             <Nav/>
-                <div className="relative bg-transparent h-96 w-96 left-custom top-12 border-2 border-black rounded-xl">
+                <div className="relative bg-blue-600 h-96 w-96 left-custom top-12 border-2 border-black rounded-xl">
                     <p className="text-center mx-10 font-bold text-2xl font-serif">Inicia Sesión</p>
                 <form className='' onSubmit={handleSubmit} >
                         <div className="relative  ">
