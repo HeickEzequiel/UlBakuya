@@ -74,6 +74,18 @@ router.post("/login", login)
 const postUser = require("../controllers/Users/postUser.js")
 router.post("/newuser", postUser)
 
+const getAllUsers = require("../controllers/Users/getAllUsers.js")
+router.get("/users", getAllUsers)
+
+const getUser = require("../controllers/Users/getUser.js")
+router.get("/user/:id", getUser)
+
+const getUserByName = require("../controllers/Users/getUserByName.js")
+router.get("/user", getUserByName)
+
+const updateUser = require("../controllers/Users/updateUser.js")
+router.get("/updateuser/:id", updateUser)
+
 
 
 module.exports = router;

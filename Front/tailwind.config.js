@@ -11,9 +11,12 @@ export default {
       },
       backgroundImage:{
         'imagen': "url('https://res.cloudinary.com/damoqjwmk/image/upload/v1719510409/ulbakuya/fondo.avif')"
-      }
+      },
+      screens:{
+        'xs':'320px',
+      },
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-animated')],
 }
 

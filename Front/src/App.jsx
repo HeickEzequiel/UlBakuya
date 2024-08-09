@@ -17,7 +17,7 @@ import Examenes from './components/examenes/Examenes'
 function App() {
 
   return (
-    <div className='relative pb-32 '>
+    <div className=''>
         
       <Routes>
         <Route path="/" element={<Home/>}/>

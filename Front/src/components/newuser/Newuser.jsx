@@ -3,6 +3,7 @@ import { useState } from "react"
 import userValidation from "../../../utils/userValidation";
 import Nav from "../nav/Nav";
 import Navbot from "../navbot/Navbot";
+import userStore  from "../../store/loginStore"
 
 function Newuser (props){
     const navigate = useNavigate()
@@ -22,6 +23,7 @@ function Newuser (props){
       password:"Ingrese su contraseña"
     })
     
+    const { register } = userStore()
     const handleChange = (event) => {
         const {name, value} = event.target
         setUserData({...userData, [name]: value})
@@ -31,19 +33,9 @@ function Newuser (props){
     const handleSubmit = async (event) => {
       event.preventDefault();
       try {
-        const response = await fetch('http://localhost:3001/newuser/', {
-          method: 'POST',headers: {
-            'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(userData),
-        });
-        if (response.ok) {
-          alert('Nuevo usuario creado con éxito');
-          navigate("/")
-  
-        } else {
-          alert('Error al guardar nuevo usuario:', response.statusText);
-        }
+        register(userData)
+        alert("usuario creado con exito")
+        navigate("/login")
       } catch (error) {
           console.error('Error al realizar la solicitud:', error);
         }

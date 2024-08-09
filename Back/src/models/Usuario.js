@@ -16,6 +16,14 @@ module.exports = (sequelize) => {
          type: DataTypes.STRING,
          allowNull: false
       },
+      imagen:{
+         type:DataTypes.STRING,
+         allowNull: true
+      },
+      fecha_de_nacimiento:{
+         type:DataTypes.STRING,
+         allowNull: true
+      },
       tel:{
         type: DataTypes.STRING,
         allowNull: false
@@ -31,11 +39,11 @@ module.exports = (sequelize) => {
          type: DataTypes.STRING,
          allowNull: false
       },
-      // nivel:{
-      //    type: DataTypes.ENUM,
-      //    values:['Director','Profesor','Alumno','Observador'],
-      //    defaultValue:'Observador',
-      //    allowNull:true,
-      // }
+      nivel:{
+         type: DataTypes.ENUM,
+         values:['Director','Profesor','Alumno','Observador'],
+         defaultValue:'Observador',
+         allowNull:true,
+      }
    }, { timestamps: false });
 };
