@@ -11,7 +11,11 @@ const updateUser = async (req, res) => {
             tel,
             email,
             password,
-            nivel
+            nivel,
+            escuela,
+            graduacion,
+            fecha_de_examen,
+            profesor
         } = req.body;
 
         const newData = {
@@ -22,7 +26,11 @@ const updateUser = async (req, res) => {
             tel,
             email,
             password,
-            nivel
+            nivel,
+            escuela,
+            graduacion,
+            fecha_de_examen,
+            profesor
         };
 
         let updateFields = [];

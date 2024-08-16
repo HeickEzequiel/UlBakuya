@@ -10,6 +10,7 @@ function Newuser (props){
     const [userData, setUserData] = useState ({
       nombre:"",
       apellido:"",
+      fecha_de_nacimiento:"",
       tel:"",
       email:"",
       password: ""
@@ -18,6 +19,7 @@ function Newuser (props){
     const [errors, setErrors] = useState({
       nombre:"Ingrese su nombre",
       apellido:"Ingrese su apellido",
+      fecha_de_nacimiento:"Ingrese su fecha de nacimiento",
       tel:"ingrese numero de telefono",
       email:"Ingrese su email",
       password:"Ingrese su contraseña"
@@ -66,6 +68,16 @@ function Newuser (props){
                         onChange={handleChange}
                     />
                     <p className="text-red-500">{ errors.apellido ? errors.apellido : null }</p>
+                    <br />
+                    <input
+                        type='date'
+                        key="fecha_de_nacimiento"
+                        name= "fecha_de_nacimiento"
+                        value={userData.fecha_de_nacimiento}
+                        placeholder="Ingresar fecha de nacimiento"
+                        onChange={handleChange}
+                    />
+                    <br />
                     <br />
                     <input
                         type='text'

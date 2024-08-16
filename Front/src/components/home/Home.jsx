@@ -8,8 +8,9 @@ import userStore  from '../../store/loginStore.js'
 import UserNav from '../usernav/UserNav.jsx'
 
 function Home() {
-  const { isLogged, user, login, userData} = userStore()
-  //console.log("islogged-->",isLogged,"user-->", user,"login-->", login, "userData-->", userData)
+  const { isLogged } = userStore()
+
+
   return (
     <div>
         <Nav/>

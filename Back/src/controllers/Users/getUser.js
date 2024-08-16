@@ -1,4 +1,4 @@
-const {Usuario} = require("../../db.js")
+const {Usuario} = require("../../db.js");
 const getUser = async (req, res) => {
   try{
     const oneUsuarioDB = await Usuario.findByPk(req.params.id)
@@ -11,7 +11,11 @@ const getUser = async (req, res) => {
       tel: oneUsuarioDB.tel,
       email: oneUsuarioDB.email,
       password: oneUsuarioDB.password,
-      nivel: oneUsuarioDB.nivel
+      nivel: oneUsuarioDB.nivel,
+      escuela: oneUsuarioDB.escuela,
+      graduacion: oneUsuarioDB.graduacion,
+      fecha_de_examen: oneUsuarioDB.fecha_de_examen,
+      profesor: oneUsuarioDB.profesor
     }
       if(oneUsuario.imagen === null){
           oneUsuario.imagen = "https://res.cloudinary.com/damoqjwmk/image/upload/v1723139453/noimage.png"
