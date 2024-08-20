@@ -1,5 +1,6 @@
 import Nav from "../nav/Nav"
-import Navbot from "../navbot/Navbot"
+import Navbot from "../footer/Footer"
+import Footer from "../footer/Footer"
 
 function Manual() {
   
@@ -214,7 +215,7 @@ function Manual() {
                         <p></p><br/>
                     </div>                   
                 </div>
-            <Navbot />
+            <Footer/>
         </div>
     )
 }

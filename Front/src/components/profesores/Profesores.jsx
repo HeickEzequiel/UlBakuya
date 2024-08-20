@@ -1,8 +1,9 @@
 import React from 'react'
 import Nav from '../nav/Nav'
-import Navbot from '../navbot/Navbot'
+import Navbot from '../footer/Footer'
 import CardProfes from '../cards/CardProfes'
 import { useFetchProfes } from '../../hooks/useProfesor'
+import Footer from '../footer/Footer'
 
 
 function Profesores() {
@@ -35,7 +36,7 @@ function Profesores() {
             ))
           }
         </div>
-      <Navbot/>
+      <Footer/>
     </div>
   )
 }

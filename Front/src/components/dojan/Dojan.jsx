@@ -1,8 +1,9 @@
 import React from 'react'
 import Nav from '../nav/Nav'
-import Navbot from '../navbot/Navbot'
+import Navbot from '../footer/Footer'
 import CardDojan from '../cards/CardDojan'
 import { useFetchDojan } from '../../hooks/useDojan'
+import Footer from '../footer/Footer'
 
 function Dojan() {
   const {data, isLoading, error } = useFetchDojan()
@@ -33,7 +34,7 @@ function Dojan() {
             ))
             }
           </div>
-        <Navbot/>
+        <Footer/>
     </div>
   )
 }

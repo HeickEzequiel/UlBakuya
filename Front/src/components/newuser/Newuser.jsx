@@ -2,8 +2,9 @@ import { useNavigate} from "react-router-dom"
 import { useState } from "react"
 import userValidation from "../../../utils/userValidation";
 import Nav from "../nav/Nav";
-import Navbot from "../navbot/Navbot";
+import Navbot from "../footer/Footer";
 import userStore  from "../../store/loginStore"
+import Footer from "../footer/Footer";
 
 function Newuser (props){
     const navigate = useNavigate()
@@ -112,7 +113,7 @@ function Newuser (props){
                     <button className='' type="submit" disabled={ errors.email || errors.password }>Crear usuario! </button>
                 </form>
             </div>
-            <Navbot/>
+            <Footer/>
         </div>
     )
 }

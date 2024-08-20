@@ -7,7 +7,7 @@ function Nav() {
     <div className=' flex items-center bg-blue-400 p-6 w-full'>
       
         <span className='absolute top-14 left-48 ml-4 text-bold text-2xl text-white'>FIT</span>
-        <span className='text-white font-bold text-center justify-center text-2xl mb-5 tracking-tight ml-8 mx-2 mr-4'>Federacion Integral de Taekwondo</span>
+        <span className='text-white font-bold text-center justify-center text-2xl mb-5 tracking-tight ml-8 mx-2 mr-4'>Formación Integral de Taekwondo</span>
         <div className='ml-32 mb-4'>
           <button className='block mt-4 lg:inline-block lg:mt-0 text-white font-medium hover:text-lime-400 mr-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'><Link to='/'>Home</Link></button>
           <button className='block mt-4 lg:inline-block lg:mt-0 text-white font-medium hover:text-lime-400 mr-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'><Link to='/escuela'>La Federacion</Link></button>

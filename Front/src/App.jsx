@@ -15,6 +15,7 @@ import Seminarios from './components/seminarios/Seminarios'
 import ClasesEspeciales from './components/clasesEspeciales/ClasesEspeciales'
 import Examenes from './components/examenes/Examenes'
 import Paneldecontrol from './components/panelDeControl/Paneldecontrol'
+
 function App() {
 
   return (

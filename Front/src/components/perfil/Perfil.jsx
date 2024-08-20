@@ -1,10 +1,11 @@
 import React from 'react'
 import Nav from '../nav/Nav'
-import Navbot from '../navbot/Navbot'
+import Navbot from '../footer/Footer'
 import CardUser from '../cards/CardUser'
 import { useFetchUser } from '../../hooks/useUser'
 import userStore from '../../store/loginStore'
 import UserNav from '../usernav/UserNav'
+import Footer from '../footer/Footer'
 
 
 function Perfil() {
@@ -46,7 +47,7 @@ function Perfil() {
           <button className= "lg:relative lg:bottom-10 lg:left-28 boton" type='button'>Actualizar Perfil</button>
 
         </div>
-        <Navbot/>
+        <Footer/>
     </div>
   )
 }

@@ -5,7 +5,8 @@ import userStore  from "../../store/loginStore"
 import api from "../../api/ubk"
 import validation from "../../../utils/validation";
 import Nav from "../nav/Nav";
-import Navbot from "../navbot/Navbot";
+import Navbot from "../footer/Footer";
+import Footer from "../footer/Footer";
 
 
 function Login(props){
@@ -99,7 +100,7 @@ function Login(props){
                 </form>
                 </div>
                 
-            <Navbot/>
+            <Footer/>
         </div>
     )
 }
