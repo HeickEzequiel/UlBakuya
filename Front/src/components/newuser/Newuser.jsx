@@ -2,13 +2,15 @@ import { useNavigate} from "react-router-dom"
 import { useState } from "react"
 import userValidation from "../../../utils/userValidation";
 import Nav from "../nav/Nav";
-import Navbot from "../navbot/Navbot";
+import userStore  from "../../store/loginStore"
+import Footer from "../footer/Footer";
 
 function Newuser (props){
     const navigate = useNavigate()
     const [userData, setUserData] = useState ({
       nombre:"",
       apellido:"",
+      fecha_de_nacimiento:"",
       tel:"",
       email:"",
       password: ""
@@ -17,11 +19,13 @@ function Newuser (props){
     const [errors, setErrors] = useState({
       nombre:"Ingrese su nombre",
       apellido:"Ingrese su apellido",
+      fecha_de_nacimiento:"Ingrese su fecha de nacimiento",
       tel:"ingrese numero de telefono",
       email:"Ingrese su email",
       password:"Ingrese su contraseña"
     })
     
+    const { register } = userStore()
     const handleChange = (event) => {
         const {name, value} = event.target
         setUserData({...userData, [name]: value})
@@ -31,19 +35,9 @@ function Newuser (props){
     const handleSubmit = async (event) => {
       event.preventDefault();
       try {
-        const response = await fetch('http://localhost:3001/newuser/', {
-          method: 'POST',headers: {
-            'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(userData),
-        });
-        if (response.ok) {
-          alert('Nuevo usuario creado con éxito');
-          navigate("/")
-  
-        } else {
-          alert('Error al guardar nuevo usuario:', response.statusText);
-        }
+        register(userData)
+        alert("usuario creado con exito")
+        navigate("/login")
       } catch (error) {
           console.error('Error al realizar la solicitud:', error);
         }
@@ -74,6 +68,16 @@ function Newuser (props){
                         onChange={handleChange}
                     />
                     <p className="text-red-500">{ errors.apellido ? errors.apellido : null }</p>
+                    <br />
+                    <input
+                        type='date'
+                        key="fecha_de_nacimiento"
+                        name= "fecha_de_nacimiento"
+                        value={userData.fecha_de_nacimiento}
+                        placeholder="Ingresar fecha de nacimiento"
+                        onChange={handleChange}
+                    />
+                    <br />
                     <br />
                     <input
                         type='text'
@@ -108,7 +112,7 @@ function Newuser (props){
                     <button className='' type="submit" disabled={ errors.email || errors.password }>Crear usuario! </button>
                 </form>
             </div>
-            <Navbot/>
+            <Footer/>
         </div>
     )
 }

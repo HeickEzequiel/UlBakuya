@@ -11,6 +11,7 @@ const userStore = create((set)=>{
             user:{
                 nombre:"",
                 apellido:"",
+                fecha_de_nacimiento:"",
                 tel:"",
                 email:"",
                 password: ""
@@ -24,10 +25,10 @@ const userStore = create((set)=>{
         ...initialState(),
 
         login: (userData) => {
-            const { access, nombre, apellido, tel, email, password, id }=userData
+            const { access, nombre, apellido, fecha_de_nacimiento, tel, email, password, id }=userData
             set({user: userData, isLogged: true})
             localStorage.setItem("authState", JSON.stringify({
-                    user:{ access, nombre, apellido, tel, email, password, id }, 
+                    user:{ access, nombre, apellido, fecha_de_nacimiento, tel, email, password, id }, 
                     isLogged: true
                 })
             )
@@ -48,6 +49,7 @@ const userStore = create((set)=>{
                     user:{
                         nombre: newuser.nombre,
                         apellido: newuser.apellido,
+                        fecha_de_nacimiento: newuser.fecha_de_nacimiento,
                         tel: newuser.tel,
                         email: newuser.email,
                         password: newuser.password

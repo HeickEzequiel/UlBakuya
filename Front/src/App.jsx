@@ -14,10 +14,13 @@ import Torneos from './components/torneos/Torneos'
 import Seminarios from './components/seminarios/Seminarios'
 import ClasesEspeciales from './components/clasesEspeciales/ClasesEspeciales'
 import Examenes from './components/examenes/Examenes'
+import Paneldecontrol from './components/panelDeControl/Paneldecontrol'
+import Newalumno from './components/newalumno/Newalumno'
+
 function App() {
 
   return (
-    <div className='relative pb-32 '>
+    <div className=''>
         
       <Routes>
         <Route path="/" element={<Home/>}/>
@@ -33,6 +36,8 @@ function App() {
         <Route path='/seminarios' element={<Seminarios/>}/>
         <Route path='/examenes' element={<Examenes/>}/>
         <Route path='/clasesespeciales' element={<ClasesEspeciales/>}/>
+        <Route path='/paneldecontrol' element={<Paneldecontrol/>}/>
+        <Route path='/newalumno' element={<Newalumno/>}/>
       </Routes>
 
     </div>

@@ -3,13 +3,15 @@ import Nav from '../nav/Nav'
 import Choi from '../choi/Choi'
 import Carousel from '../carousel/Carousel'
 import Body from '../body/Body'
-import Navbot from '../navbot/Navbot'
+import Navbot from '../footer/Footer.jsx'
 import userStore  from '../../store/loginStore.js'
 import UserNav from '../usernav/UserNav.jsx'
+import Footer from '../footer/Footer.jsx'
 
 function Home() {
-  const { isLogged, user, login, userData} = userStore()
-  //console.log("islogged-->",isLogged,"user-->", user,"login-->", login, "userData-->", userData)
+  const { isLogged } = userStore()
+
+
   return (
     <div>
         <Nav/>
@@ -17,7 +19,7 @@ function Home() {
         <Choi/>
         <Carousel/>
         <Body/>
-        <Navbot/>
+        <Footer/>
     </div>
   )
 }

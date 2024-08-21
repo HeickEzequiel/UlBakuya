@@ -37,7 +37,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true
     },
-    Profesor:{
+    profesor:{
       type: DataTypes.STRING,
       allowNull:false
     }

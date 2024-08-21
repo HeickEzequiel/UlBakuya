@@ -1,13 +1,16 @@
 import Nav from "../nav/Nav"
-import Navbot from "../navbot/Navbot"
+import Navbot from "../footer/Footer"
+import Footer from "../footer/Footer"
 
 
 function Proximamente() {
   return (
-    <div>
+    <div className="">
         <Nav/>
+          <div className="grid min-h-screen grid-rows-1">
             <h1>PROXIMAMENTE</h1>
-        <Navbot />
+          </div>
+        <Footer />
     </div>
   )
 }

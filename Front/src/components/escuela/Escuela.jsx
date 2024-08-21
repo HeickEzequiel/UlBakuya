@@ -1,8 +1,9 @@
 import React from 'react'
 import { AdvancedImage } from '@cloudinary/react'
 import Nav from '../nav/Nav'
-import Navbot from '../navbot/Navbot'
+import Navbot from '../footer/Footer'
 import { farias, ubk,  } from '../../config/cloudinary'
+import Footer from '../footer/Footer'
 
 function Escuela() {
   return (
@@ -17,7 +18,7 @@ function Escuela() {
         <p>El concepto original se basaba en que el Mundo como tal, está en constante cambio, como la vida, y debemos adaptarnos sin perder nuestros principios y valores. En coreano, esa idea se traducía como 세상 을 바꾸 자; sesang eul bakku ja, “cambiar el mundo”, o “el mundo está cambiando”. Lograr la pronunciación correcta y retener el nombre en sí, se tornaba muy díficil en nuestro idioma español, por lo que se adaptó a la fonética y se acortó, optando por el definitivo Ul Bakuya.</p> <br/>
         <p>Como tal, se puede interpretar como “metamorfosis”, pero desde la idea de cambio y crecimiento. 
         Una vez establecido el nombre, se creó el logo, que sale de la primer imagen utilizada para promocionar la actividad en el año 1995, cuando comencé a dar clases con tan solo 15 años. Tanto el nombre como el logo fueron oportunamente registrados, y desde ese momento forman el pilar de nuestros ideales.</p> <br/>
-        <Navbot/>
+        <Footer/>
     </div>
   )
 }
