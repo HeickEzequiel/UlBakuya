@@ -2,7 +2,6 @@ import { useNavigate} from "react-router-dom"
 import { useState } from "react"
 import userValidation from "../../../utils/userValidation";
 import Nav from "../nav/Nav";
-import Navbot from "../footer/Footer";
 import userStore  from "../../store/loginStore"
 import Footer from "../footer/Footer";
 

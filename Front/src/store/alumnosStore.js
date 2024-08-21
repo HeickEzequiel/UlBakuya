@@ -2,7 +2,7 @@ import { create } from "zustand";
 import axios from "axios";
 
 const alumnosStore = create((set)=>{
-    initialState = () =>{
+    const initialState = () =>{
         const storedState = localStorage.getItem("alumnoState")
         if(storedState){
             return JSON.parse(storedState)
@@ -31,6 +31,7 @@ const alumnosStore = create((set)=>{
                 registerSuccess: false
             })
             try {
+                console.log(alumnoData)
                 const response = await axios.post(`http://localhost:3001/newalumno`, alumnoData)
                 const newAlumno = response.data
 

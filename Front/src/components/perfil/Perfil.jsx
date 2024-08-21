@@ -1,6 +1,5 @@
 import React from 'react'
 import Nav from '../nav/Nav'
-import Navbot from '../footer/Footer'
 import CardUser from '../cards/CardUser'
 import { useFetchUser } from '../../hooks/useUser'
 import userStore from '../../store/loginStore'

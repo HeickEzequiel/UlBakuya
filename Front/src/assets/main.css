@@ -842,6 +842,10 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
+.bg-sky-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(14 165 233 / var(--tw-bg-opacity));
+}
 .p-1{
   padding: 0.25rem;
 }
@@ -972,6 +976,19 @@ video {
 }
 
 .celda{
+  width: 11rem;
+  border-collapse: collapse;
+  border-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+.celdab{
+  width: 6rem;
   border-collapse: collapse;
   border-width: 2px;
   --tw-border-opacity: 1;
@@ -1302,6 +1319,11 @@ video {
 
   .lg\:rounded-lg{
     border-radius: 0.5rem;
+  }
+
+
+  .lg\:rounded-xl{
+    border-radius: 0.75rem;
   }
 
 

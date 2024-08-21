@@ -1,49 +1,55 @@
 import Nav from "../nav/Nav"
 import Footer from "../footer/Footer"
+import UserNav from "../usernav/UserNav"
+import { Link } from "react-router-dom"
+import { useFetchAlumnos } from "../../hooks/useAlumnos"
+import CardAlumnos from "../cards/CardAlumnos"
+import userStore from "../../store/loginStore"
 
 function Paneldecontrol() {
+  const { data, isLoading, error} = useFetchAlumnos()
+  const { isLogged } = userStore()
+  console.log(data)
+  if(isLoading){
+    return <div>Loading...</div>
+  }
+  if(error){
+    return <div>Error: {error.message}</div>
+  }
   return (
     <div>
       <Nav/>
+      {isLogged ? <div>
+      <UserNav/>
         <div className="min-h-screen">
-          <button className="boton lg:relative lg:top-20 lg:left-24">Agregar Alumno</button>
+          <button className="boton lg:relative lg:top-20 lg:left-24"><Link to='/newalumno'>Agregar Alumno</Link></button>
           <table className="lg:relative lg:top-24 lg:left-24 lg:border-collapse lg:border-2 lg:border-black">
-            <thead>
+          <thead>
               <tr>
-                <th className="celda">Nombre</th>
-                <th className="celda">Apellido</th>
-                <th className="celda">Escuela</th>
-                <th className="celda">Graduación</th>
-                <th className="celda">Profesor</th>
-                <th className="celda">Rol</th>
+                <th className="celda bg-sky-500">Nombre</th>
+                <th className="celda bg-sky-500">Apellido</th>
+                <th className="celda bg-sky-500">Escuela</th>
+                <th className="celda bg-sky-500">Graduación</th>
+                <th className="celda bg-sky-500">Profesor</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td className="celda">Ezequiel</td>
-                <td className="celda">Heick</td>
-                <td className="celda">Ul Bakuya</td>
-                <td className="celda">3er Dan</td>
-                <td className="celda">Ariel Farias</td>
-                <td className="celda">Profesor</td>
-                <td className="celda"> <button className="botonv">Ver</button></td>
-                <td className="celda"> <button className="botonm">Modificar</button></td>
-                <td className="celda"> <button className="botone">Eliminar</button></td>
-              </tr>
-              <tr>
-                <td className="celda">Catherine</td>
-                <td className="celda">Segovia</td>
-                <td className="celda">Ul Bakuya</td>
-                <td className="celda">1er Dan</td>
-                <td className="celda">Ezequiel Heick</td>
-                <td className="celda">Alumno</td>
-                <td className="celda"> <button className="botonv">Ver</button></td>
-                <td className="celda"> <button className="botonm">Modificar</button></td>
-                <td className="celda"> <button className="botone">Eliminar</button></td>
-              </tr>
-            </tbody>
           </table>
+           {!data ? <h1>No existen datos</h1>:
+            data.map((alumno, key)=>(
+            <CardAlumnos
+            key={key}
+            nombre={alumno.nombre}
+            apellido={alumno.apellido}
+            escuela={alumno.escuela}
+            graduacion={alumno.graduacion}
+            profesor={alumno.profesor}
+          />
+          ))}
+          
+          
+          
         </div>
+        </div> : <p>Debes iniciar sesion como administrador para ver el panel de control</p>}
       <Footer/>
     </div>
   )

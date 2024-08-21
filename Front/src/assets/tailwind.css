@@ -27,7 +27,10 @@
 }
 
 .celda{
-   @apply border-collapse border-2 border-black px-2 text-center text-xl;
+   @apply border-collapse border-2 border-black px-2 text-center text-xl w-44;
+}
+.celdab{
+   @apply border-collapse border-2 border-black px-2 text-center text-xl w-24;
 }
 
 .boton{
