@@ -1,6 +1,4 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
+import { Route, Routes} from 'react-router-dom'
 import Home from './components/home/Home'
 import Login from './components/login/Login'
 import Escuela from './components/escuela/Escuela'
@@ -16,6 +14,7 @@ import ClasesEspeciales from './components/clasesEspeciales/ClasesEspeciales'
 import Examenes from './components/examenes/Examenes'
 import Paneldecontrol from './components/panelDeControl/Paneldecontrol'
 import Newalumno from './components/newalumno/Newalumno'
+import AlumnoDetail from './components/details/AlumnoDetail'
 
 function App() {
 
@@ -38,6 +37,7 @@ function App() {
         <Route path='/clasesespeciales' element={<ClasesEspeciales/>}/>
         <Route path='/paneldecontrol' element={<Paneldecontrol/>}/>
         <Route path='/newalumno' element={<Newalumno/>}/>
+        <Route path='/alumno/:id' element={<AlumnoDetail/>}/>
       </Routes>
 
     </div>

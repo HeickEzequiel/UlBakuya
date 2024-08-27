@@ -2,7 +2,7 @@ import userStore  from '../../store/loginStore.js'
 import { Link } from 'react-router-dom'
 
 function Nav() {
-  const {isLogged, logout, user}=userStore()
+  const {isLogged, logout}=userStore()
   return (
     <div className=' flex items-center bg-blue-400 p-6 w-full'>
       

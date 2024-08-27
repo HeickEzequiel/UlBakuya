@@ -11,3 +11,16 @@ export function useFetchAlumnos(){
         queryFn: fetchAlumnos,
 })
 }
+
+
+export function useFetchAlumno(id){
+    return useQuery({
+        queryKey: ['alumno',id],
+        queryFn: 
+            async function fetchAlumno(){
+            const { data } = await api.get(`/alumno/${id}`)
+            return data
+        },
+        enabled:!!id
+    })
+}

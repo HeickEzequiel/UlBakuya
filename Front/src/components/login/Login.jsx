@@ -5,7 +5,6 @@ import userStore  from "../../store/loginStore"
 import api from "../../api/ubk"
 import validation from "../../../utils/validation";
 import Nav from "../nav/Nav";
-import Navbot from "../footer/Footer";
 import Footer from "../footer/Footer";
 
 
@@ -41,7 +40,6 @@ function Login(props){
             })
             login(response.data)
             localStorage.setItem("userData", JSON.stringify(response.data))
-            console.log("localStorage----->", localStorage.userData)
             navigate("/")
             toast.success("successful login")
             
