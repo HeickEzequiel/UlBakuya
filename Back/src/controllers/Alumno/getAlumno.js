@@ -10,8 +10,11 @@ const getAlumno = async (req, res) => {
       fecha_de_nacimiento: oneAlumnoDB.fecha_de_nacimiento,
       escuela: oneAlumnoDB.escuela,
       graduacion: oneAlumnoDB.graduacion,
-      fecha_de_examen: oneAlumnoDB.interests
+      fecha_de_examen: oneAlumnoDB.fecha_de_examen,
+      profesor: oneAlumnoDB.profesor
+
     }
+    console.log(oneAlumno)
   return res.status(200).json(oneAlumno)
   } catch (error){
     return res.status(400).send(error.message)

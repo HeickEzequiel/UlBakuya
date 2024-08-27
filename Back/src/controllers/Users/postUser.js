@@ -3,7 +3,7 @@ const { Usuario } = require("../../db.js");
 const postUser = async (req, res) => {
     try{
     const { nombre, apellido, imagen, fecha_de_nacimiento, tel, email, password, nivel, escuela, graduacion, fecha_de_examen, profesor } = req.body;
-    if( nombre && apellido && imagen && fecha_de_nacimiento && tel && email && password && nivel && escuela && graduacion && fecha_de_examen && profesor ){
+    if( nombre && apellido && fecha_de_nacimiento && tel && email && password){
         const newUser = await Usuario.findOrCreate({
             where: { nombre, apellido, imagen, fecha_de_nacimiento, tel, email, password, nivel, escuela, graduacion, fecha_de_examen, profesor }
         })

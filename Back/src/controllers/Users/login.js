@@ -11,7 +11,8 @@ const login = async (req, res) => {
             if(actualUser.password === password){
                 return res.json({
                     access:true,
-                    actualUser: actualUser.id 
+                    actualUser: actualUser.id,
+                    nivel: actualUser.nivel 
                 })
             }
             return res.status(403).send("Contraseña Incorrecta")

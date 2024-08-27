@@ -25,10 +25,10 @@ const userStore = create((set)=>{
         ...initialState(),
 
         login: (userData) => {
-            const { access, nombre, apellido, fecha_de_nacimiento, tel, email, password, id }=userData
+            const { access, nombre, apellido, fecha_de_nacimiento, tel, email, password, id, nivel }=userData
             set({user: userData, isLogged: true})
             localStorage.setItem("authState", JSON.stringify({
-                    user:{ access, nombre, apellido, fecha_de_nacimiento, tel, email, password, id }, 
+                    user:{ access, nombre, apellido, fecha_de_nacimiento, tel, email, password, id, nivel }, 
                     isLogged: true
                 })
             )
