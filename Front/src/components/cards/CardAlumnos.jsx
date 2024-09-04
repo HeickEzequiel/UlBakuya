@@ -14,8 +14,8 @@ function CardAlumnos(props) {
             <td className="celda">{props.graduacion}</td>
             <td className="celda">{props.profesor}</td>
             <td className="celdab"> <button className="botonv"> <Link to={`/alumno/${props.id}`}>Ver</Link></button></td>
-            <td className="celdab"> <button className="botonm">Modificar</button></td>
-            <td className="celdab"> <button className="botone">Eliminar</button></td>
+            <td className="celdab"> <button className="botonm"><Link to={`/updatealumno/${props.id}`}>Modificar</Link></button></td>
+            <td className="celdab"> <button className="botone"><Link to={`/deletealumno/${props.id}`}>Eliminar</Link></button></td>
           </tr>
         </tbody>
       </table>

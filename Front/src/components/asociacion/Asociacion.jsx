@@ -1,11 +1,10 @@
 import React from 'react'
 import { AdvancedImage } from '@cloudinary/react'
 import Nav from '../nav/Nav'
-import Navbot from '../footer/Footer'
 import { farias, ubk,  } from '../../config/cloudinary'
 import Footer from '../footer/Footer'
 
-function Escuela() {
+function Asociacion() {
   return (
     <div>
         <Nav/>
@@ -22,4 +21,4 @@ function Escuela() {
     </div>
   )
 }
-export default Escuela
+export default Asociacion

@@ -6,6 +6,7 @@ import Footer from "../footer/Footer"
 
 function Newalumno(props) {
     const Navigate = useNavigate()
+    const { register } = alumnosStore()
     const [alumnoData, setAlumnoData] = useState ({
         nombre:"",
         apellido:"",
@@ -17,12 +18,13 @@ function Newalumno(props) {
         profesor:"",
     })
 
-    const { register } = alumnosStore()
+    
     const handleChange = (event) =>{
         const {name, value} = event.target
         setAlumnoData({...alumnoData, [name]:value})
        
     }
+    
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {

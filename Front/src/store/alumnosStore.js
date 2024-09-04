@@ -31,7 +31,7 @@ const alumnosStore = create((set)=>{
                 registerSuccess: false
             })
             try {
-                console.log(alumnoData)
+
                 const response = await axios.post(`http://localhost:3001/newalumno`, alumnoData)
                 const newAlumno = response.data
 

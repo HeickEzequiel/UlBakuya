@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { useFetchUser } from "../../hooks/useUser"
 
-function User() {
+function UserNav() {
   const userData = JSON.parse(localStorage.userData)
   const userID = userData.actualUser
   const { data, isLoading, error } = useFetchUser(userID)
@@ -28,4 +28,4 @@ function User() {
     </div>
   )
 }
-export default User
+export default UserNav

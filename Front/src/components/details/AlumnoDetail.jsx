@@ -10,7 +10,7 @@ function AlumnoDetail() {
     const isLogged = userStore((state) => state.isLogged)
     const {id} = useParams()
     const { data:alumno, isLoading, error } = useFetchAlumno(id)
-console.log("data AlumnoDetail--->",alumno)
+
     if(isLoading){
         return <div>Loading...</div>
     }

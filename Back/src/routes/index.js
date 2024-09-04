@@ -16,6 +16,9 @@ router.post("/newalumno", postAlumno)
 const updateAlumno = require("../controllers/Alumno/updateAlumno.js");
 router.put("/updatealumno/:id",updateAlumno)
 
+const deleteAlumno = require("../controllers/Alumno/deleteAlumno.js")
+router.delete("/deletealumno/:id", deleteAlumno)
+
 //Profesor
 const getAllProfesor = require("../controllers/Profesor/getAllProfesor.js")
 router.get("/profesores", getAllProfesor)

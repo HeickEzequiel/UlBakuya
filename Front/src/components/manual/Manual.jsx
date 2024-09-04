@@ -1,5 +1,4 @@
 import Nav from "../nav/Nav"
-import Navbot from "../footer/Footer"
 import Footer from "../footer/Footer"
 
 function Manual() {
