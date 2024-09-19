@@ -11,11 +11,13 @@ import Torneos from './components/torneos/Torneos'
 import Seminarios from './components/seminarios/Seminarios'
 import ClasesEspeciales from './components/clasesEspeciales/ClasesEspeciales'
 import Examenes from './components/examenes/Examenes'
-import Paneldecontrol from './components/panelDeControl/Paneldecontrol'
+import Paneldecontrol from './components/paneldecontrol/Paneldecontrol'
 import Newalumno from './components/newalumno/Newalumno'
 import AlumnoDetail from './components/details/AlumnoDetail'
 import AlumnoUpdate from './components/update/AlumnoUpdate'
 import Asociacion from './components/asociacion/Asociacion'
+import DeleteAlumno from './components/delete/DeleteAlumno'
+import Eliminados from './components/paneldecontrol/Eliminados'
 
 function App() {
 
@@ -40,6 +42,8 @@ function App() {
         <Route path='/newalumno' element={<Newalumno/>}/>
         <Route path='/alumno/:id' element={<AlumnoDetail/>}/>
         <Route path='/updatealumno/:id' element={<AlumnoUpdate/>}/>
+        <Route path='/deletealumno/:id' element={<DeleteAlumno/>}/>
+        <Route path='/eliminados' element={<Eliminados/>}/>
       </Routes>
 
     </div>

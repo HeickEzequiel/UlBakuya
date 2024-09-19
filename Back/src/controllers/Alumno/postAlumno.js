@@ -10,19 +10,12 @@ const postAlumno = async(req, res) =>{
             escuela,
             graduacion,
             fecha_de_examen,
-            profesor
+            profesor,
+            estado,
+            eliminado
         } = req.body;
-console.log(           
-    nombre,
-    apellido,
-    imagen,
-    fecha_de_nacimiento,
-    escuela,
-    graduacion,
-    fecha_de_examen,
-    profesor)
 
-        if(nombre && apellido && imagen!==undefined && fecha_de_nacimiento && escuela && graduacion && fecha_de_examen && profesor){
+        if(nombre && apellido  && fecha_de_nacimiento && escuela && graduacion && profesor){
             const NewAlumno = await Alumno.findOrCreate({
                 where:{
                     nombre,
@@ -32,7 +25,9 @@ console.log(
                     escuela,
                     graduacion,
                     fecha_de_examen,
-                    profesor
+                    profesor,
+                    estado,
+                    eliminado
                 }
 
             })

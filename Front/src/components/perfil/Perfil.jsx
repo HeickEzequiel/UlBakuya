@@ -7,13 +7,15 @@ import UserNav from '../usernav/UserNav'
 import Footer from '../footer/Footer'
 
 
+
 function Perfil() {
   const { isLogged } = userStore()
   const userData = JSON.parse(localStorage.userData)
   const userID = userData.actualUser
+  const name = userData.apellido
   const { data:usuario, isLoading, error } = useFetchUser(userID)
-
-
+  
+console.log(userData)
 
   if(isLoading){
     return <div>Loading...</div>
@@ -36,14 +38,13 @@ function Perfil() {
                 Tel={usuario.tel}
                 email={usuario.email}
                 nivel={usuario.nivel}
-                graduacion={usuario.graduacion}
-                profesor={usuario.profesor}
                 escuela={usuario.escuela}
+                profesor={usuario.profesor}
+                graduacion={usuario.graduacion}
                 fecha_de_examen={usuario.fecha_de_examen}
-              />
+                />
+              </div>} 
 
-            </div> 
-          }
           <button className= "lg:relative lg:bottom-10 lg:left-28 boton" type='button'>Actualizar Perfil</button>
 
         </div>

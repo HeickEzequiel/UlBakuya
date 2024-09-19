@@ -3,7 +3,7 @@ import Nav from '../nav/Nav'
 import Footer from '../footer/Footer'
 import UserNav from '../usernav/UserNav'
 import userStore from '../../store/loginStore'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useFetchAlumno } from '../../hooks/useAlumnos'
 import CardImagen from '../cards/CardImagen'
 import api from '../../api/ubk'
@@ -82,7 +82,7 @@ function AlumnoUpdate() {
                     key="imagen"
                     name="imagen"
                     value={alumnoData.imagen}
-                    placeholder= {alumno.imagen}
+                    placeholder= "ingrese link de la imagen"
                     onChange={handleChange} />
                     <br />
                 <p>Nombre:</p>
@@ -155,9 +155,20 @@ function AlumnoUpdate() {
                     placeholder={alumno.profesor}
                     onChange={handleChange} />
                     <br />
+                    
+                <p>Estado:</p>
+                <input
+                    className="lg:border-2 lg:border-black lg:rounded-xl" 
+                    type="text"
+                    key="estado"
+                    name="estado"
+                    value={alumnoData.estado}
+                    placeholder={alumno.estado}
+                    onChange={handleChange} />
+                    <br />
                     <button className="boton">Actualizar Alumno</button>
             </form>
-
+            <Link to='/paneldecontrol'><button className="boton">🡸 Volver</button></Link>
         </div>
         <Footer/>
 

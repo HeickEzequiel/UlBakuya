@@ -18,7 +18,7 @@ const getUser = async (req, res) => {
       profesor: oneUsuarioDB.profesor
     }
       if(oneUsuario.imagen === null){
-          oneUsuario.imagen = "https://res.cloudinary.com/damoqjwmk/image/upload/v1723139453/noimage.png"
+          oneUsuario.imagen = "https://res.cloudinary.com/damoqjwmk/image/upload/v1723139453/no%20image.png"
       }
     console.log(oneUsuario)
   return res.status(200).json(oneUsuario)

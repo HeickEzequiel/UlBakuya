@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import alumnosStore from "../../store/alumnosStore"
 import Nav from "../nav/Nav"
 import Footer from "../footer/Footer"
@@ -16,6 +16,9 @@ function Newalumno(props) {
         graduacion:"",
         fecha_de_examen:"",
         profesor:"",
+        estado:"",
+        eliminado:false
+
     })
 
     
@@ -121,9 +124,20 @@ function Newalumno(props) {
                         onChange={handleChange}
                     />
                     <br />
+                    <input 
+                        className="lg:border-2 lg:border-black lg:rounded-xl"
+                        type='text'
+                        key='estado'
+                        name='estado'
+                        value={alumnoData.estado}
+                        placeholder="Ingrese estado"
+                        onChange={handleChange}
+                    />
+                    <br />
                     <button className="boton">Crear Alumno</button>
 
                 </form>
+                <Link to='/paneldecontrol'><button className="boton">🡸 Volver</button></Link>
             </div>
         <Footer/>
     </div>

@@ -1,5 +1,5 @@
 function CardUser (props){
-
+console.log(props)
     return(
         <div >
             <div className="lg:relative lg:left-20">

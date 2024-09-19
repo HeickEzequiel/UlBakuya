@@ -11,6 +11,7 @@ module.exports = (sequelize) => {
     },
     nombre: {
       type: DataTypes.STRING,
+      defaultValue: "https://res.cloudinary.com/damoqjwmk/image/upload/v1723139453/no%20image.png",
       allowNull: false,
     },
     apellido:{
@@ -31,7 +32,7 @@ module.exports = (sequelize) => {
     },
     graduacion:{
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false
     },
     fecha_de_examen:{
       type: DataTypes.STRING,
@@ -40,6 +41,17 @@ module.exports = (sequelize) => {
     profesor:{
       type: DataTypes.STRING,
       allowNull:false
+    },
+    estado:{
+      type: DataTypes.ENUM,
+      values:['Activo','Suspendido','Inactivo'],
+      defaultValue: 'Activo',
+      allowNull:true,
+    },
+    eliminado:{
+      type: DataTypes.BOOLEAN,
+      defaultValue:false,
+      allowNull:true
     }
 
   }, { timestamps: false});

@@ -19,6 +19,13 @@ router.put("/updatealumno/:id",updateAlumno)
 const deleteAlumno = require("../controllers/Alumno/deleteAlumno.js")
 router.delete("/deletealumno/:id", deleteAlumno)
 
+const logicDeleteAlumno = require("../controllers/Alumno/logicDeleteAlumno.js")
+router.get("/logicdeletealumno/:id", logicDeleteAlumno)
+
+const logicRestoreAlumno = require("../controllers/Alumno/logicRestoreAlumno.js")
+router.get("/logicrestorealumno/:id", logicRestoreAlumno)
+
+
 //Profesor
 const getAllProfesor = require("../controllers/Profesor/getAllProfesor.js")
 router.get("/profesores", getAllProfesor)

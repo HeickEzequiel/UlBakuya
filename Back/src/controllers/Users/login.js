@@ -12,6 +12,7 @@ const login = async (req, res) => {
                 return res.json({
                     access:true,
                     actualUser: actualUser.id,
+                    apellido:actualUser.apellido,
                     nivel: actualUser.nivel 
                 })
             }

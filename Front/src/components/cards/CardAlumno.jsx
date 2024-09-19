@@ -1,4 +1,5 @@
 function CardAlumno(props) {
+  console.log(props)
   return (
     <div>
         <img src={props.imagen} />
@@ -8,6 +9,7 @@ function CardAlumno(props) {
         <h1>Graduación: {props.graduacion}</h1>
         <h1>Fecha de examen: {props.fecha_de_examen}</h1>
         <h1>Profesor: {props.profesor}</h1>
+        <h1>Estado: {props.estado}</h1>
     </div>
   )
 }

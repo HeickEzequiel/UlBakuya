@@ -11,7 +11,8 @@ const updateAlumno = async (req, res) => {
             escuela,
             graduacion,
             fecha_de_examen,
-            profesor
+            profesor,
+            eliminado
         } = req.body;
 
         const newData = {
@@ -22,7 +23,8 @@ const updateAlumno = async (req, res) => {
             escuela,
             graduacion,
             fecha_de_examen,
-            profesor
+            profesor,
+            eliminado
         };
 
         let updateFields = [];

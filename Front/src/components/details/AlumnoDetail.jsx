@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useFetchAlumno } from "../../hooks/useAlumnos"
 import userStore from "../../store/loginStore"
 import Footer from "../footer/Footer"
@@ -36,8 +36,10 @@ function AlumnoDetail() {
                     graduacion={alumno.graduacion}
                     fecha_de_examen={alumno.fecha_de_examen}
                     profesor={alumno.profesor}
+                    estado={alumno.estado}
                     />
                 </div>}
+                <Link to='/paneldecontrol'><button className="boton">🡸 Volver</button></Link>
             </div>
             <Footer/>
         </div>
