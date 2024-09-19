@@ -46,21 +46,19 @@ module.exports = (sequelize) => {
          allowNull:true,
       },
       escuela:{
-         type: DataTypes.ENUM,
-         values:['Ul Bakuya','Pil Sung','Gyeomson','Ubuntu'],
+         type: DataTypes.STRING,
          allowNull:true
       },
-       graduacion:{
+      profesor:{
+         type: DataTypes.STRING,
+         allowNull:true,
+      },
+      graduacion:{
          type: DataTypes.STRING,
          allowNull: true
       },
-       fecha_de_examen:{
-         type: DataTypes.STRING,
-         allowNull: true
-      },
-       profesor:{
-         type: DataTypes.STRING,
-         allowNull:true
+      fecha_de_examen:{
+         type: DataTypes.STRING
       }
 
    }, { timestamps: false });

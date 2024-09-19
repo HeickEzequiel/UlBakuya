@@ -1,9 +1,7 @@
 import { CLOUD_NAME, CLOUD_API_KEY, CLOUD_API_SECRET_KEY } from "../../utils/keys";
 import {Cloudinary} from "@cloudinary/url-gen";
 import { fill } from "@cloudinary/url-gen/actions/resize";
-import { max } from "@cloudinary/url-gen/actions/roundCorners";
-import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
-import { face } from "@cloudinary/url-gen/qualifiers/focusOn";
+
 
 
   const cld = new Cloudinary({

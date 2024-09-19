@@ -1,6 +1,20 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import api from "../../api/ubk"
 
-function CardAlumnos(props) {
+function CardAlumnosEliminados(props) {
+    const id = props.id
+    const navigate = useNavigate()
+    
+    const handleClick = async () =>{
+        try {
+            const response = await api.get(`/logicrestorealumno/${id}`)
+            alert("Alumno restaurado")
+            navigate("/paneldecontrol")
+            console.log(response)
+        } catch (error) {
+            console.error('Error al realizar la solicitud:', error);
+        }
+    }
 
 
   return (
@@ -17,7 +31,7 @@ function CardAlumnos(props) {
             <td className="celda">{props.estado}</td>
             <td className="celdab"> <Link to={`/alumno/${props.id}`}> <button className="botonv"> Ver</button> </Link></td>
             <td className="celdab"> <Link to={`/updatealumno/${props.id}`}><button className="botonm">Modificar</button></Link></td>
-            <td className="celdab"> <Link to={`/deletealumno/${props.id}`}><button className="botone">Eliminar</button></Link></td>
+            <td className="celdab"> <button className="botone" onClick={handleClick}>Restaurar</button></td>
           </tr>
         </tbody>
       </table>
@@ -25,4 +39,4 @@ function CardAlumnos(props) {
   )
 }
 
-export default CardAlumnos
+export default CardAlumnosEliminados

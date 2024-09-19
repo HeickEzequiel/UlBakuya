@@ -11,9 +11,13 @@ const getAlumno = async (req, res) => {
       escuela: oneAlumnoDB.escuela,
       graduacion: oneAlumnoDB.graduacion,
       fecha_de_examen: oneAlumnoDB.fecha_de_examen,
-      profesor: oneAlumnoDB.profesor
+      profesor: oneAlumnoDB.profesor,
+      estado: oneAlumnoDB.estado,
+      eliminado: oneAlumnoDB.eliminado
 
     }
+
+    if(oneAlumno.imagen === "") oneAlumno.imagen= "https://res.cloudinary.com/damoqjwmk/image/upload/v1723139453/no%20image.png" 
     console.log(oneAlumno)
   return res.status(200).json(oneAlumno)
   } catch (error){

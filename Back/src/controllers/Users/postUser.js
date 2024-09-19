@@ -2,10 +2,23 @@ const { Usuario } = require("../../db.js");
 
 const postUser = async (req, res) => {
     try{
-    const { nombre, apellido, imagen, fecha_de_nacimiento, tel, email, password, nivel, escuela, graduacion, fecha_de_examen, profesor } = req.body;
+    const { nombre, apellido, fecha_de_nacimiento, tel, email, password, nivel, imagen, escuela, profesor, graduacion, fecha_de_examen} = req.body;
     if( nombre && apellido && fecha_de_nacimiento && tel && email && password){
         const newUser = await Usuario.findOrCreate({
-            where: { nombre, apellido, imagen, fecha_de_nacimiento, tel, email, password, nivel, escuela, graduacion, fecha_de_examen, profesor }
+            where: { 
+                nombre, 
+                apellido, 
+                fecha_de_nacimiento, 
+                tel, 
+                email, 
+                password, 
+                nivel: nivel || "Observador", 
+                imagen: imagen || null, 
+                escuela: escuela || null, 
+                profesor: profesor || null, 
+                graduacion: graduacion || null, 
+                fecha_de_examen: fecha_de_examen || null
+            }
         })
         return res.json(newUser)
     }

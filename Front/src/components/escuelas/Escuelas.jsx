@@ -1,7 +1,7 @@
 import { ubk,pilsung,gyeomson,ubuntu } from '../../config/cloudinary'
 import { AdvancedImage } from '@cloudinary/react'
 
-function Choi() {
+function Escuelas() {
   return (
     <div className='relative mt-4'>
       <p className='text-center text-6xl font-cursiva font-bold underline underline-offset-8 text-black mt-12'>Escuelas asociadas</p>
@@ -14,4 +14,4 @@ function Choi() {
     </div>
   )
 }
-export default Choi
+export default Escuelas

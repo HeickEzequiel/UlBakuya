@@ -10,7 +10,7 @@ function Nav() {
         <span className='text-white font-bold text-center justify-center text-2xl mb-5 tracking-tight ml-8 mx-2 mr-4'>Formación Integral de Taekwondo</span>
         <div className='ml-32 mb-4'>
           <button className='block mt-4 lg:inline-block lg:mt-0 text-white font-medium hover:text-lime-400 mr-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'><Link to='/'>Home</Link></button>
-          <button className='block mt-4 lg:inline-block lg:mt-0 text-white font-medium hover:text-lime-400 mr-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'><Link to='/escuela'>La Federacion</Link></button>
+          <button className='block mt-4 lg:inline-block lg:mt-0 text-white font-medium hover:text-lime-400 mr-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'><Link to='/asociacion'>La Asociaciòn</Link></button>
           <button className='block mt-4 lg:inline-block lg:mt-0 text-white font-medium hover:text-lime-400 mr-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'><Link to='/profesores'>Profesores</Link></button>
           <button className='block mt-4 lg:inline-block lg:mt-0 text-white font-medium hover:text-lime-400 mr-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'><Link to='/dojan'>Lugares de entrenamiento</Link></button>
           

@@ -16,7 +16,7 @@ const getAlumnoByName = async (req, res) =>{
 
         for(let i=0; AlumnoDB.length>i; i++){
             if(AlumnoDB[i].image === ""){
-                AlumnoDB[i].image = "https://media.istockphoto.com/id/109215640/es/vector/piloto-de-coches-de-carrera.jpg?s=612x612&w=0&k=20&c=DfxGsueT0CGKCwVb3aMIRto0b3kaFyV44aLOc-icZOY="
+                AlumnoDB[i].image = "https://res.cloudinary.com/damoqjwmk/image/upload/v1723139453/no%20image.png"
             }
         }
         return AlumnoDB.length > 0 
