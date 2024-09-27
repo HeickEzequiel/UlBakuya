@@ -59,7 +59,18 @@ module.exports = (sequelize) => {
       },
       fecha_de_examen:{
          type: DataTypes.STRING
+      }, 
+      estado:{
+         type: DataTypes.ENUM,
+         values:['Activo','Suspendido','Inactivo'],
+         defaultValue: 'Activo',
+         allowNull:true,
+      },
+      eliminado:{
+         type: DataTypes.BOOLEAN,
+         defaultValue:false,
+         allowNull:true
       }
 
-   }, { timestamps: false });
+   }, { timestamps: true });
 };

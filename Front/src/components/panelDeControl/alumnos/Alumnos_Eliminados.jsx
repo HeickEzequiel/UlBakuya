@@ -1,9 +1,10 @@
-import { useFetchAlumnos } from "../../hooks/useAlumnos";
-import userStore from "../../store/loginStore";
-import CardAlumnosEliminados from "../cards/CardAlumnosEliminados";
-import Footer from "../footer/Footer";
-import Nav from "../nav/Nav";
-import UserNav from "../usernav/UserNav";
+import { Link } from "react-router-dom";
+import { useFetchAlumnos } from "../../../hooks/useAlumnos";
+import userStore from "../../../store/loginStore";
+import CardAlumnosEliminados from "../../cards/alumnos/CardAlumnosEliminados";
+import Footer from "../../footer/Footer";
+import Nav from "../../nav/Nav";
+import UserNav from "../../usernav/UserNav";
 
 function Eliminados (){
     const {data:alumnos, isLoading, error} = useFetchAlumnos()
@@ -35,6 +36,7 @@ console.log(isLogged, user)
                     <div>
                         <UserNav/>
                         <div className="min-h-screen">
+                        <Link to='/pc_alumnos'><button className="boton">🡸 Volver</button></Link>
                             <table className="lg:relative lg:top-24 lg:left-24 lg:border-collapse lg:border-2 lg:border-black">
                                 <thead>
                                     <tr>

@@ -12,3 +12,5 @@ const deleteAlumno = async (req, res) =>{
     }
 }
 module.exports = deleteAlumno
+
+/// Alumno, Profesor, Dojan, Usuario, Eventos, Escuela

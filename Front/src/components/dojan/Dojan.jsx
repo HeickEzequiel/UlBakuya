@@ -1,8 +1,7 @@
-import React from 'react'
-import Nav from '../nav/Nav'
-import CardDojan from '../cards/CardDojan'
+import Nav from '../../components/nav/Nav'
+import CardDojan from '../../components/cards/dojan/CardDojan'
 import { useFetchDojan } from '../../hooks/useDojan'
-import Footer from '../footer/Footer'
+import Footer from '../../components/footer/Footer'
 
 function Dojan() {
   const {data, isLoading, error } = useFetchDojan()

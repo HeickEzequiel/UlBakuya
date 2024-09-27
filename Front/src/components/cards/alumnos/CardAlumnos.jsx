@@ -2,9 +2,7 @@ import { Link } from "react-router-dom"
 
 function CardAlumnos(props) {
 
-
   return (
-
     <div>
       <table className="lg:relative lg:top-24 lg:left-24 lg:border-collapse lg:border-2 lg:border-black">
         <tbody>
@@ -24,5 +22,4 @@ function CardAlumnos(props) {
     </div>
   )
 }
-
 export default CardAlumnos

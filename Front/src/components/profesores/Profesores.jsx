@@ -1,6 +1,6 @@
 import React from 'react'
 import Nav from '../nav/Nav'
-import CardProfes from '../cards/CardProfes'
+import CardProfes from '../cards/profesores/CardProfes'
 import { useFetchProfes } from '../../hooks/useProfesor'
 import Footer from '../footer/Footer'
 

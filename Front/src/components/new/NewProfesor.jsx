@@ -1,13 +1,13 @@
-import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import alumnosStore from "../../store/alumnosStore"
+import profesorStore from "../../store/profesorStore"
+import { useState } from "react"
 import Nav from "../nav/Nav"
 import Footer from "../footer/Footer"
 
-function Newalumno(props) {
-    const Navigate = useNavigate()
-    const { register } = alumnosStore()
-    const [alumnoData, setAlumnoData] = useState ({
+function NewProfesor(props) {
+    const navigate = useNavigate()
+    const { register } = profesorStore()
+    const [profesorData, setProfesorData] = useState({
         nombre:"",
         apellido:"",
         imagen:"",
@@ -15,30 +15,27 @@ function Newalumno(props) {
         escuela:"",
         graduacion:"",
         fecha_de_examen:"",
-        profesor:"",
+        instructor_mayor:"",
         estado:"",
-        eliminado:false
+        eliminado: false
 
     })
 
-    
     const handleChange = (event) =>{
         const {name, value} = event.target
-        setAlumnoData({...alumnoData, [name]:value})
-       
+        setProfesorData({...profesorData, [name]:value})
     }
-    
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+    const handleSubmit = async (event) =>{
+        event.preventDefault()
         try {
-            register(alumnoData)
-            alert("Alumno creado con exito")
-            Navigate("/paneldecontrol")
+            register(profesorData)
+            alert("Profesor creado con exito")
+            navigate("/pc_profesores")
         } catch (error) {
             console.error('Error al realizar la solicitud', error)
         }
     }
-    return (
+  return (
     <div>
         <Nav/>
             <div>
@@ -49,7 +46,7 @@ function Newalumno(props) {
                         type='text'
                         key='nombre'
                         name='nombre'
-                        value={alumnoData.nombre}
+                        value={profesorData.nombre}
                         placeholder="Ingrese nombre"
                         onChange={handleChange}
                     />
@@ -59,7 +56,7 @@ function Newalumno(props) {
                         type='text'
                         key='apellido'
                         name='apellido'
-                        value={alumnoData.apellido}
+                        value={profesorData.apellido}
                         placeholder="Ingrese apellido"
                         onChange={handleChange}
                     />
@@ -69,7 +66,7 @@ function Newalumno(props) {
                         type='text'
                         key='imagen'
                         name='imagen'
-                        value={alumnoData.imagen}
+                        value={profesorData.imagen}
                         placeholder="Ingrese link de la imagen"
                         onChange={handleChange}
                     />
@@ -79,7 +76,7 @@ function Newalumno(props) {
                         type='date'
                         key='fecha_de_nacimiento'
                         name='fecha_de_nacimiento'
-                        value={alumnoData.fecha_de_nacimiento}
+                        value={profesorData.fecha_de_nacimiento}
                         placeholder="Ingresar fecha de nacimiento"
                         onChange={handleChange}
                     />
@@ -89,7 +86,7 @@ function Newalumno(props) {
                         type='text'
                         key='escuela'
                         name='escuela'
-                        value={alumnoData.escuela}
+                        value={profesorData.escuela}
                         placeholder="Ingrese escuela"
                         onChange={handleChange}
                     />
@@ -99,7 +96,7 @@ function Newalumno(props) {
                         type='text'
                         key='graduacion'
                         name='graduacion'
-                        value={alumnoData.graduacion}
+                        value={profesorData.graduacion}
                         placeholder="Ingrese graduación"
                         onChange={handleChange}
                     />
@@ -109,7 +106,7 @@ function Newalumno(props) {
                         type='date'
                         key='fecha_de_examen'
                         name='fecha_de_examen'
-                        value={alumnoData.fecha_de_examen}
+                        value={profesorData.fecha_de_examen}
                         placeholder="Ingrese fecha de examen"
                         onChange={handleChange}
                     />
@@ -117,10 +114,10 @@ function Newalumno(props) {
                     <input 
                         className="lg:border-2 lg:border-black lg:rounded-xl"
                         type='text'
-                        key='profesor'
-                        name='profesor'
-                        value={alumnoData.profesor}
-                        placeholder="Ingrese profesor"
+                        key='instructor_mayor'
+                        name='instructor_mayor'
+                        value={profesorData.instructor_mayor}
+                        placeholder="Ingrese instructor mayor"
                         onChange={handleChange}
                     />
                     <br />
@@ -129,19 +126,19 @@ function Newalumno(props) {
                         type='text'
                         key='estado'
                         name='estado'
-                        value={alumnoData.estado}
+                        value={profesorData.estado}
                         placeholder="Ingrese estado"
                         onChange={handleChange}
                     />
                     <br />
-                    <button className="boton">Crear Alumno</button>
+                    <button className="boton">Crear Profesor</button>
 
                 </form>
-                <Link to='/paneldecontrol'><button className="boton">🡸 Volver</button></Link>
+                <Link to='/pc_profesores'><button className="boton">🡸 Volver</button></Link>
             </div>
         <Footer/>
     </div>
   )
 }
 
-export default Newalumno
+export default NewProfesor

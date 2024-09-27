@@ -31,6 +31,18 @@ module.exports = (sequelize) => {
       horarios: {
          type: DataTypes.STRING,
          allowNull: false
+      },    
+      estado:{
+        type: DataTypes.ENUM,
+        values:['Activo','Suspendido','Inactivo'],
+        defaultValue: 'Activo',
+        allowNull:true,
+      },
+      eliminado:{
+        type: DataTypes.BOOLEAN,
+        defaultValue:false,
+        allowNull:true
       }
-   }, { timestamps: false });
-};
+  
+    }, { timestamps: true});
+  };

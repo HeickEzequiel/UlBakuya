@@ -1,13 +1,12 @@
 import { Link, useNavigate } from "react-router-dom"
-import api from "../../api/ubk"
-
+import api from "../../../api/ubk"
 function CardAlumnosEliminados(props) {
     const id = props.id
     const navigate = useNavigate()
     
     const handleClick = async () =>{
         try {
-            const response = await api.get(`/logicrestorealumno/${id}`)
+            const response = await api.get(`/logideletealumno/${id}`)
             alert("Alumno restaurado")
             navigate("/paneldecontrol")
             console.log(response)
@@ -15,6 +14,17 @@ function CardAlumnosEliminados(props) {
             console.error('Error al realizar la solicitud:', error);
         }
     }
+
+    const handleDelete = async () =>{
+      try {
+          const response = await api.delete(`/deletealumno/${id}`)
+          alert("Alumno eliminado de la base de datos")
+          navigate("/paneldecontrol")
+          console.log(response)
+      } catch (error) {
+          console.error('Error al realizar la solicitud:', error);
+      }
+  }
 
 
   return (
@@ -32,6 +42,7 @@ function CardAlumnosEliminados(props) {
             <td className="celdab"> <Link to={`/alumno/${props.id}`}> <button className="botonv"> Ver</button> </Link></td>
             <td className="celdab"> <Link to={`/updatealumno/${props.id}`}><button className="botonm">Modificar</button></Link></td>
             <td className="celdab"> <button className="botone" onClick={handleClick}>Restaurar</button></td>
+            <td className="celdab"> <button className="botone" onClick={handleDelete}>Eliminar</button></td>
           </tr>
         </tbody>
       </table>

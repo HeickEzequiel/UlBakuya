@@ -94,7 +94,7 @@ const getUserByName = require("../controllers/Users/getUserByName.js")
 router.get("/user", getUserByName)
 
 const updateUser = require("../controllers/Users/updateUser.js")
-router.get("/updateuser/:id", updateUser)
+router.put("/updateuser/:id", updateUser)
 
 
 
