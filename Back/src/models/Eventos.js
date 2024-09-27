@@ -27,6 +27,12 @@ module.exports = (sequelize) => {
       imagen:{
         type: DataTypes.STRING,
         allowNull: false
-     },
-   }, { timestamps: false });
+     },    
+     estado:{
+      type: DataTypes.ENUM,
+      values:['Activo','Suspendido','Inactivo'],
+      defaultValue: 'Activo',
+      allowNull:true,
+    },
+   },{timestamps: true});
 };

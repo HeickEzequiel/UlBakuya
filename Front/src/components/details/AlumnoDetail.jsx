@@ -4,7 +4,7 @@ import userStore from "../../store/loginStore"
 import Footer from "../footer/Footer"
 import Nav from "../nav/Nav"
 import UserNav from "../usernav/UserNav"
-import CardAlumno from "../cards/CardAlumno"
+import CardAlumno from "../cards/alumnos/CardAlumno"
 
 function AlumnoDetail() {
     const isLogged = userStore((state) => state.isLogged)
@@ -39,7 +39,7 @@ function AlumnoDetail() {
                     estado={alumno.estado}
                     />
                 </div>}
-                <Link to='/paneldecontrol'><button className="boton">🡸 Volver</button></Link>
+                <Link to='/pc_alumnos'><button className="boton">🡸 Volver</button></Link>
             </div>
             <Footer/>
         </div>

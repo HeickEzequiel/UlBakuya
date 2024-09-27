@@ -168,7 +168,7 @@ function AlumnoUpdate() {
                     <br />
                     <button className="boton">Actualizar Alumno</button>
             </form>
-            <Link to='/paneldecontrol'><button className="boton">🡸 Volver</button></Link>
+            <Link to='/pc_alumnos'><button className="boton">🡸 Volver</button></Link>
         </div>
         <Footer/>
 

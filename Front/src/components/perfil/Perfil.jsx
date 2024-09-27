@@ -1,6 +1,6 @@
 import React from 'react'
 import Nav from '../nav/Nav'
-import CardUser from '../cards/CardUser'
+import CardUser from '../cards/usuarios/CardUser'
 import { useFetchUser } from '../../hooks/useUser'
 import userStore from '../../store/loginStore'
 import UserNav from '../usernav/UserNav'

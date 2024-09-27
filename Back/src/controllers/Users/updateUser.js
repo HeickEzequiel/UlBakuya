@@ -1,6 +1,7 @@
 const { Usuario } = require("../../db.js");
 
 const updateUser = async (req, res) => {
+  console.log(req.body)
     try {
         const { id } = req.params;
         const {
@@ -9,13 +10,13 @@ const updateUser = async (req, res) => {
             imagen,
             fecha_de_nacimiento,
             tel,
-            email,
             password,
             nivel,
             escuela,
             graduacion,
             fecha_de_examen,
-            profesor
+            profesor,
+         
         } = req.body;
 
         const newData = {
@@ -24,13 +25,13 @@ const updateUser = async (req, res) => {
             imagen,
             fecha_de_nacimiento,
             tel,
-            email,
             password,
             nivel,
             escuela,
             graduacion,
             fecha_de_examen,
-            profesor
+            profesor,
+           
         };
 
         let updateFields = [];

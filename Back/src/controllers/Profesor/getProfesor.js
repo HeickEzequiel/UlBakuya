@@ -10,7 +10,10 @@ const getProfesor = async (req, res) => {
       fecha_de_nacimiento: oneProfesorDB.fecha_de_nacimiento,
       escuela: oneProfesorDB.escuela,
       graduacion: oneProfesorDB.graduacion,
-      fecha_de_examen: oneProfesorDB.interests
+      fecha_de_examen: oneProfesorDB.fecha_de_examen,
+      instructor_mayor: oneProfesorDB.instructor_mayor,
+      estado:oneProfesorDB.estado,
+      eliminado:oneProfesorDB.eliminado
     }
   return res.status(200).json(oneProfesor)
   } catch (error){

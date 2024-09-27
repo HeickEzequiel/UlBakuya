@@ -9,7 +9,8 @@ const postProfesor = async(req, res) =>{
             fecha_de_nacimiento,
             escuela,
             graduacion,
-            fecha_de_examen
+            fecha_de_examen,
+            instructor_mayor
         } = req.body;
 
         if(nombre && apellido && imagen!==undefined && fecha_de_nacimiento && escuela && graduacion && fecha_de_examen){
@@ -21,7 +22,8 @@ const postProfesor = async(req, res) =>{
                     fecha_de_nacimiento,
                     escuela,
                     graduacion,
-                    fecha_de_examen
+                    fecha_de_examen,
+                    instructor_mayor
                 }
 
             })
