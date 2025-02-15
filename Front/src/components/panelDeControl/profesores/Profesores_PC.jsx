@@ -10,7 +10,7 @@ import CardProfes from "../../cards/profesores/CardProfes"
 function Profesores_PC() {
     const {data:profesores, isLoading, error} = useFetchProfes()
     const {isLogged, user} = userStore()
-console.log(profesores)
+    console.log(profesores)
     if(isLoading){
         return(
             <div>
@@ -34,15 +34,15 @@ console.log(profesores)
             <Footer/>
         </div>
     }
-  return (
+    return (
     <div>
         <Nav/>
-        {isLogged && user.nivel === "Director" || user.nivel === "Profesor" ?
-        <div>
-            <UserNav/>
-            <div className="min-h-screen">
-                <Link to='/newprofesor'><button className="boton lg:relative lg:top-20 lg:left-24">Agregar Profesor</button></Link>
-                <Link to='/profesoreseliminados'><button className="boton lg:relative lg:top-20 lg:left-24">Ver Eliminados</button></Link>
+            {isLogged && user.nivel === "Director" || user.nivel === "Profesor" ?
+            <div className="lg:relative">
+                <UserNav/>
+                <div className="min-h-screen">
+                    <Link to='/newprofesor'><button className="boton lg:relative lg:top-20 lg:left-24">Agregar Profesor</button></Link>
+                    <Link to='/profesoreseliminados'><button className="boton lg:relative lg:top-20 lg:left-24">Ver Eliminados</button></Link>
                     <table className="lg:relative lg:top-24 lg:left-24 lg:border-collapse lg:border-2 lg:border-black">
                         <thead>
                             <tr>
@@ -56,7 +56,7 @@ console.log(profesores)
                         </thead>
                     </table>
                     {profesores ?
-                        profesores.map((profesor, key)=>(profesor.eliminado===false?
+                        profesores.map((profesor, key)=>(profesor.eliminado===false ?
                             <CardProfes
                                 key={key}
                                 id={profesor.id}
@@ -69,12 +69,12 @@ console.log(profesores)
                                 eliminado={profesor.eliminado}
                             />:null    
                         )):null
-                        }
+                    }
                 </div>
-    </div>: <p>Debes inciar sesion como administrador</p>}
-    <Footer/>
+            </div>: <p>Debes inciar sesion como administrador</p>}
+        <Footer/>
     </div>
-  )
+    )
 }
 
 export default Profesores_PC

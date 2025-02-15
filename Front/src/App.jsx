@@ -34,6 +34,16 @@ import Dojanes_PC from './components/paneldecontrol/dojanes/Dojanes_PC'
 import DeleteDojan from './components/delete/DeleteDojan'
 import DojanesUpdate from './components/update/DojanesUpdate'
 import NewDojan from './components/new/NewDojan'
+import NewEscuela from './components/new/NewEscuela'
+import EscuelaUpdate from './components/update/EscuelaUpdate'
+import DeleteEscuela from './components/delete/DeleteEscuelas'
+import Escuelas_PC from './components/paneldecontrol/escuelas/Escuelas_PC'
+import EscuelaDetail from './components/details/EscuelaDetail'
+import Alumnos_Eliminados from './components/paneldecontrol/alumnos/Alumnos_Eliminados'
+import Dojanes_Eliminados from './components/paneldecontrol/dojanes/Dojanes_Eliminados'
+import Escuelas_Eliminadas from './components/paneldecontrol/escuelas/Escuelas_Eliminadas'
+import Profesores_Eliminados from './components/paneldecontrol/profesores/Profesores_Eliminados'
+import Usuarios_Eliminados from './components/paneldecontrol/usuarios/Usuarios_Eliminados'
 
 function App() {
 
@@ -61,26 +71,37 @@ function App() {
         <Route path='/newusuario' element={<NewUsuario/>}/>
         <Route path='/newprofesor' element={<NewProfesor/>}/>
         <Route path='/newdojan' element={<NewDojan/>}/>
+        <Route path='/newescuela' element={<NewEscuela/>}/>
 
         <Route path='/updatealumno/:id' element={<AlumnoUpdate/>}/>
         <Route path='/updateuser/:id' element={<UserUpdate/>}/>
         <Route path='/updateprofesor/:id' element={<ProfesorUpdate/>}/>
         <Route path='/updatedojan/:id' element={<DojanesUpdate/>}/>
+        <Route path='/updateescuela/:id' element={<EscuelaUpdate/>}/>
         
         <Route path='/deletealumno/:id' element={<DeleteAlumno/>}/>
         <Route path='/deleteprofesor/:id' element={<DeleteProfesor/>}/>
         <Route path='/deleteuser/:id' element={<DeleteUser/>}/>
         <Route path='/deletedojan/:id' element={<DeleteDojan/>}/>
+        <Route path='/deleteescuela/:id' element={<DeleteEscuela/>}/>
 
         <Route path='/pc_alumnos' element={<Alumnos_PC/>}/>
         <Route path='/pc_usuarios' element={<Usuarios_PC/>}/>
         <Route path='/pc_profesores' element={<Profesores_PC/>}/>
         <Route path='/pc_dojanes' element={<Dojanes_PC/>}/>
+        <Route path='/pc_escuelas' element={<Escuelas_PC/>}/>
+
+        <Route path='/alumnos_eliminados' element={<Alumnos_Eliminados/>}/>
+        <Route path='/usuarios_eliminados' element={<Usuarios_Eliminados/>}/>
+        <Route path='/profesores_eliminados' element={<Profesores_Eliminados/>}/>
+        <Route path='/dojanes_eliminados' element={<Dojanes_Eliminados/>}/>
+        <Route path='/escuelas_eliminados' element={<Escuelas_Eliminadas/>}/>
 
         <Route path='/alumno/:id' element={<AlumnoDetail/>}/>
         <Route path='/user/:id' element={<UserDetail/>}/>
         <Route path='/profesor/:id' element={<ProfesorDetail/>}/>
         <Route path='/dojan/:id' element={<DojanDetail/>}/>
+        <Route path='/escuelas/:id' element={<EscuelaDetail/>}/>
       </Routes>
 
     </div>

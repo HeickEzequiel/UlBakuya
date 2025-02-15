@@ -12,6 +12,7 @@ const updateAlumno = async (req, res) => {
             graduacion,
             fecha_de_examen,
             profesor,
+            estado,
             eliminado
         } = req.body;
 
@@ -24,6 +25,7 @@ const updateAlumno = async (req, res) => {
             graduacion,
             fecha_de_examen,
             profesor,
+            estado,
             eliminado
         };
 

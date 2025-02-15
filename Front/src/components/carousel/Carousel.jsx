@@ -9,9 +9,10 @@ import 'swiper/css/pagination';
 import "swiper/css/scrollbar";
 
 function Carousel() {
+ 
   return (
     <div className='mt-8'
-    style={{ display: "flex", justifyContent: "center" }}>
+      style={{ display: "flex", justifyContent: "center" }}>
       <div
         className="swiper-container custom-swiper-container relative"
         style={{
@@ -29,25 +30,16 @@ function Carousel() {
           speed={1000}
           style={{
             overflow: "hidden",
-            margin: "auto 0",
+            margin: "auto 1",
           }}
           slidesPerView={1}
           centeredSlides={true}
           navigation={{
-            // Configuración de las flechas de navegación
             nextEl: ".swiper-button-next-custom",
             prevEl: ".swiper-button-prev-custom",
           }}
           pagination={{ clickable: true }}
         >
-         
-            <div className="relative">
-              
-              {/* <div className="absolute top-20 left-20 text-white text-4xl font-bold p-4 border-4 border-white">
-                Explore the world
-              </div> */}
-            </div>
-        
           <SwiperSlide>
             <AdvancedImage cldImg={img2} />
           </SwiperSlide>
@@ -66,9 +58,7 @@ function Carousel() {
           <SwiperSlide>
             <AdvancedImage cldImg={img7} />
           </SwiperSlide>
-
         </Swiper>
-
         {/* Flecha izquierda y derecha */}
         <div className="swiper-button-prev swiper-button-prev-custom text-deco font-extrabold  px-6 rounded-full"></div>
         <div className="swiper-button-next swiper-button-next-custom text-deco font-extrabold  px-6 rounded-full"></div>

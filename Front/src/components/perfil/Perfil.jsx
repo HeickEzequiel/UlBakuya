@@ -14,8 +14,7 @@ function Perfil() {
   const userID = userData.actualUser
   const name = userData.apellido
   const { data:usuario, isLoading, error } = useFetchUser(userID)
-  
-console.log(userData)
+
 
   if(isLoading){
     return <div>Loading...</div>

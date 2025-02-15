@@ -9,6 +9,8 @@ const postDojan = async(req, res) =>{
             tel,
             profesor,
             horarios,
+            estado,
+            eliminado
         } = req.body;
 
         if(club && direccion && imagen!==undefined && tel && profesor && horarios){
@@ -20,6 +22,8 @@ const postDojan = async(req, res) =>{
                     tel,
                     profesor,
                     horarios,
+                    estado,
+                    eliminado
                 }
 
             })

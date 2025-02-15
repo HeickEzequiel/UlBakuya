@@ -42,6 +42,15 @@ router.post("/newprofesor", postProfesor)
 const updateProfesor = require("../controllers/Profesor/updateProfesor.js");
 router.put("/updateprofesor/:id", updateProfesor);
 
+const deleteProfesor = require("../controllers/Profesor/deteteProfesor.js")
+router.delete("/deleteprofesor/:id", deleteProfesor)
+
+const logicDeleteProfesor = require("../controllers/Profesor/logicDeleteProfesor.js")
+router.delete("/logicdeleteprofesor/:id", logicDeleteProfesor)
+
+const logicRestoreProfesor = require("../controllers/Profesor/logicRestoreProfesor.js")
+router.delete("/logicrestoreprofesor/:id", logicRestoreProfesor)
+
 //Dojan
 
 const getAllDojan = require("../controllers/Dojan/getAllDojan.js")
@@ -76,6 +85,16 @@ router.post("/newescuela", postEscuela)
 const updateEscuela = require("../controllers/Escuelas/updateEscuela.js");
 router.put("/updateescuela/:id",updateEscuela);
 
+const deleteEscuela = require("../controllers/Escuelas/deleteEscuelas.js")
+router.delete("/deleteescuela/:id", deleteEscuela)
+
+const logicDeleteEscuela = require("../controllers/Escuelas/logicDeleteEscuelas.js")
+router.delete("/logicdeleteescuela/:id", logicDeleteEscuela)
+
+const logicRestoreEscuela = require("../controllers/Escuelas/logicRestoreEscuelas.js")
+router.delete("/logicrestorescuela/:id", logicRestoreEscuela)
+
+
 
 //Usuario
 const login = require("../controllers/Users/login.js")
@@ -95,6 +114,15 @@ router.get("/user", getUserByName)
 
 const updateUser = require("../controllers/Users/updateUser.js")
 router.put("/updateuser/:id", updateUser)
+
+const deleteUser = require("../controllers/Users/deleteUser.js")
+router.delete("/deleteuser/:id", deleteUser)
+
+const logicDeleteUser = require("../controllers/Users/logicDeleteUser.js")
+router.delete("/logicdeleteuser/:id", logicDeleteUser)
+
+const logicRestoreUser = require("../controllers/Users/logicRestoreUser.js")
+router.delete("/logicrestoreuser/:id", logicRestoreUser)
 
 
 

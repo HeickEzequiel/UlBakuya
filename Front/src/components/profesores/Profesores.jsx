@@ -1,8 +1,8 @@
 import React from 'react'
 import Nav from '../nav/Nav'
-import CardProfes from '../cards/profesores/CardProfes'
 import { useFetchProfes } from '../../hooks/useProfesor'
 import Footer from '../footer/Footer'
+import CardProfesores from '../cards/profesores/CardProfesores'
 
 
 function Profesores() {
@@ -21,11 +21,11 @@ function Profesores() {
   return (
     <div>
       <Nav/>
-        <div className='grid mt-4 ml-4 mr-4 p-4'>
+        <div className='lg:relative lg:grid lg:mt-4 lg:ml-4 lg:mr-4 lg:p-4'>
           {!data.length 
            ? <h1>no existen profesores</h1> 
            : data.map((profes, key)=>(
-              <CardProfes
+              <CardProfesores
                 key={key}
                 nombre={profes.nombre}
                 apellido={profes.apellido}
