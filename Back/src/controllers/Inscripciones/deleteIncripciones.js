@@ -1,7 +1,7 @@
 const { Inscripciones } = require("../../db.js")
 const deleteInscripcion = async(req, res) =>{
     try{
-        const oneInscripcionDB = await Inscripcion.findByPk(req.params.id)
+        const oneInscripcionDB = await Inscripciones.findByPk(req.params.id)
         if(!oneInscripcionDB){
             return res.status(404).json({message:"Inscripcion no encontrada"})
         }

@@ -18,8 +18,7 @@ const getAlumno = async (req, res) => {
     }
 
     if(oneAlumno.imagen === "") oneAlumno.imagen= "https://res.cloudinary.com/damoqjwmk/image/upload/v1723139453/no%20image.png" 
-    console.log(oneAlumno)
-  return res.status(200).json(oneAlumno)
+    return res.status(200).json(oneAlumno)
   } catch (error){
     return res.status(400).send(error.message)
   }

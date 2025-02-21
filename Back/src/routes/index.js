@@ -74,7 +74,7 @@ const getAllEscuelas = require("../controllers/Escuelas/getAllEscuelas.js")
 router.get("/escuelas", getAllEscuelas)
 
 const getEscuela = require("../controllers/Escuelas/getEscuela.js")
-router.get("/escuela/:id", getDojan)
+router.get("/escuela/:id", getEscuela)
 
 const getEscuelaByName = require("../controllers/Escuelas/getEscuelaByName.js")
 router.get("/escuela", getEscuelaByName)
@@ -93,7 +93,6 @@ router.delete("/logicdeleteescuela/:id", logicDeleteEscuela)
 
 const logicRestoreEscuela = require("../controllers/Escuelas/logicRestoreEscuelas.js")
 router.delete("/logicrestorescuela/:id", logicRestoreEscuela)
-
 
 
 //Usuario
@@ -123,6 +122,34 @@ router.delete("/logicdeleteuser/:id", logicDeleteUser)
 
 const logicRestoreUser = require("../controllers/Users/logicRestoreUser.js")
 router.delete("/logicrestoreuser/:id", logicRestoreUser)
+
+
+// Inscripciones
+
+const getAllInscripciones= require("../controllers/Inscripciones/getAllIncripciones.js")
+router.get("/inscripciones", getAllInscripciones)
+
+const getInscripcion = require("../controllers/Inscripciones/getInscripcion.js")
+router.get("/inscripcion/:id", getInscripcion)
+
+const getInscripcionByName = require("../controllers/Inscripciones/getInscripcionByName.js")
+router.get("/inscripcion", getInscripcionByName)
+
+const postInscripcion = require("../controllers/Inscripciones/postInscripcion.js")
+router.post("/newinscripcion", postInscripcion)
+
+const updateInscripcion = require("../controllers/Inscripciones/updateInscripcion.js");
+router.put("/updateinscripcion/:id",updateInscripcion);
+
+const deleteInscripcion = require("../controllers/Inscripciones/deleteIncripciones.js")
+router.delete("/deleteinscripcion/:id", deleteInscripcion)
+
+const logicDeleteInscripcion = require("../controllers/Inscripciones/logicDeleteInscripcion.js")
+router.delete("/logicdeleteinscripcion/:id", logicDeleteInscripcion)
+
+const logicRestoreInscripcion = require("../controllers/Inscripciones/logicRestoreInscripcion.js");
+router.delete("/logicrestoreinscripcion/:id", logicRestoreInscripcion)
+
 
 
 
