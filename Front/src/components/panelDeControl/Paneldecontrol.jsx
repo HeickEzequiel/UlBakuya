@@ -15,12 +15,12 @@ function Paneldecontrol() {
         <div>
           <UserNav/>
           <div className="min-h-screen">
-            <div className="relative border-2 border-red-500 mt-24 w-fit left-60">
+            <div className="relative  mt-24 w-fit left-60">
               <Link to='/pc_usuarios'><button className="relative boton mx-2">Usuarios</button></Link> 
               <Link to='/pc_alumnos'><button className="relative boton mx-2">Alumnos</button></Link> 
               <Link to='/pc_profesores'><button className="relative boton mx-2">Profesores</button></Link>
-              <button className="relative boton mx-2">Escuelas</button>
-              <button className="relative boton mx-2">Dojan</button>
+              <Link to='/pc_escuelas'><button className="relative boton mx-2">Escuelas</button></Link>
+              <Link to='/pc_dojanes'><button className="relative boton mx-2">Dojan</button></Link>
               <button className="relative boton mx-2">Examenes</button>
               <button className="relative boton mx-2">Torneos</button>
               <button className="relative boton mx-2">Seminarios</button>

@@ -7,15 +7,19 @@ const postEscuela = async(req, res) =>{
             director,
             dojan,
             imagen,
+            estado,
+            eliminado
             } = req.body;
 
-        if(nombre && director && director && dojan && imagen!==undefined){
+        if(nombre && director  && dojan && imagen!==undefined){
             const newEscuela = await Escuela.findOrCreate({
                 where:{
                     nombre,
                     director,
                     dojan,
                     imagen,
+                    estado,
+                    eliminado
                 }
 
             })

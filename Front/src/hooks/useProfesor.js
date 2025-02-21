@@ -11,3 +11,15 @@ export function useFetchProfes(){
         queryFn: fetchProfes,
 })
 }
+
+export function useFetchProfe(id){
+    return useQuery({
+        queryKey: ['profesor',id],
+        queryFn: 
+            async function fetchProfe(){
+            const { data } = await api.get(`/profesor/${id}`)
+            return data
+        },
+        enabled:!!id
+    })
+}

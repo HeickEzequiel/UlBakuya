@@ -7,8 +7,14 @@ function Dojan() {
   const {data, isLoading, error } = useFetchDojan()
 
   if(isLoading){
-    return <div>Loading...</div>
-  }
+    return( 
+      <div>
+        <Nav/>
+          <div>Loading...</div>
+        <Footer/>  
+      </div>
+    )
+    }
   if(error){
     return <div>Error: {error.message}</div>
   }

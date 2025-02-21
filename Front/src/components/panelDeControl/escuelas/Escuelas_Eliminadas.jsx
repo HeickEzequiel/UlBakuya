@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
-import { useFetchAlumnos } from "../../../hooks/useAlumnos";
+import { useFetchEscuelas } from "../../../hooks/useEscuela";
 import userStore from "../../../store/loginStore";
-import CardAlumnosEliminados from "../../cards/alumnos/CardAlumnosEliminados";
+import CardEscuelasEliminadas from "../../cards/escuelas/CardEscuelasEliminadas";
 import Footer from "../../footer/Footer";
 import Nav from "../../nav/Nav";
 import UserNav from "../../usernav/UserNav";
 
-function Alumnos_Eliminados (){
-    const {data:alumnos, isLoading, error} = useFetchAlumnos()
+function Escuelas_Eliminadas (){
+    const {data:escuelas, isLoading, error} = useFetchEscuelas()
     const { isLogged, user } =  userStore()
-console.log(isLogged, user)
+
     if(isLoading){
         return(
             <div>
@@ -36,29 +36,24 @@ console.log(isLogged, user)
                     <div>
                         <UserNav/>
                         <div className="min-h-screen">
-                        <Link to='/pc_alumnos'><button className="boton">🡸 Volver</button></Link>
+                        <Link to='/pc_escuelas'><button className="boton">🡸 Volver</button></Link>
                             <table className="lg:relative lg:top-24 lg:left-24 lg:border-collapse lg:border-2 lg:border-black">
                                 <thead>
                                     <tr>
                                         <th className="celda bg-sky-500">Nombre</th>
-                                        <th className="celda bg-sky-500">Apellido</th>
-                                        <th className="celda bg-sky-500">Escuela</th>
-                                        <th className="celda bg-sky-500">Graduación</th>
-                                        <th className="celda bg-sky-500">Profesor</th>
-                                        <th className="celda bg-sky-500">Estado</th>
+                                        <th className="celda bg-sky-500">Director</th>
+                                        <th className="celda bg-sky-500">Dojan</th>
                                     </tr>
                                 </thead>
                             </table>
-                            {alumnos ? 
-                                alumnos.map((alumno, key)=>( alumno.eliminado===true ?
-                                    <CardAlumnosEliminados
+                            {escuelas ? 
+                                escuelas.map((escuela, key)=>( escuela.eliminado===true ?
+                                    <CardEscuelasEliminadas
                                         key={key}
                                         id={alumno.id}
-                                        nombre={alumno.nombre}
-                                        apellido={alumno.apellido}
-                                        escuela={alumno.escuela}
-                                        graduacion={alumno.graduacion}
-                                        profesor={alumno.profesor}
+                                        nombre={escuela.nombre}
+                                        director={escuela.director}
+                                        dojan={escuela.dojan}
                                         estado={alumno.estado}
                                         eliminado={alumno.eliminado}
                                     />:null
@@ -72,4 +67,4 @@ console.log(isLogged, user)
     )
 }
 
-export default Alumnos_Eliminados
+export default Escuelas_Eliminadas

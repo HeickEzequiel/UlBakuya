@@ -1,30 +1,34 @@
-const { Alumno } = require("../../db.js");
+const { Inscripciones } = require("../../db.js");
 
-const updateAlumno = async (req, res) => {
+const updateIncripcion = async (req, res) => {
     try {
         const { id } = req.params;
         const {
+            tipo_de_evento,
+            horarios,
             nombre,
             apellido,
+            edad,
+            altura,
+            peso,
+            graduacion_actual,
+            proxima_graduacion,
             imagen,
-            fecha_de_nacimiento,
-            escuela,
-            graduacion,
-            fecha_de_examen,
-            profesor,
             estado,
             eliminado
         } = req.body;
 
         const newData = {
+            tipo_de_evento,
+            horarios,
             nombre,
             apellido,
+            edad,
+            altura,
+            peso,
+            graduacion_actual,
+            proxima_graduacion,
             imagen,
-            fecha_de_nacimiento,
-            escuela,
-            graduacion,
-            fecha_de_examen,
-            profesor,
             estado,
             eliminado
         };
@@ -42,7 +46,7 @@ const updateAlumno = async (req, res) => {
             return res.status(400).json({ error: "No se proporcionaron datos para actualizar" });
         }
 
-        const result = await Alumno.update(Object.assign({}, ...updateFields), {
+        const result = await Inscripciones.update(Object.assign({}, ...updateFields), {
             where: {
                 id: id
             }
@@ -50,12 +54,12 @@ const updateAlumno = async (req, res) => {
 
         if (result[0] > 0) {
             res.json({
-                status: "Alumno actualizado correctamente"
+                status: "inscripcion actualizada correctamente"
             });
-            console.log("Alumno actualizado correctamente");
+            console.log("inscripcion actualizada correctamente");
         } else {
-            res.status(404).json({ error: "No se encontró ningún alumno con ese ID" });
-            console.log("No se encontró ningún alumno con ese ID");
+            res.status(404).json({ error: "No se encontró ningúna inscripcion" });
+            console.log("No se encontró ningúna inscripcion");
         }
     } catch (error) {
         console.error(error);
@@ -63,4 +67,4 @@ const updateAlumno = async (req, res) => {
     }
 };
 
-module.exports = updateAlumno;
+module.exports = updateIncripcion;

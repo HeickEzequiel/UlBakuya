@@ -7,7 +7,9 @@ const getEscuela = async (req, res) => {
       nombre: oneEscuelaDB.nombre,
       director: oneEscuelaDB.apellido,
       dojan: oneEscuelaDB.imagen,
-      imagen: oneEscuelaDB.imagen
+      imagen: oneEscuelaDB.imagen,
+      estado: oneEscuelaDB.estado,
+      eliminado:oneEscuelaDB.eliminado
     }
   return res.status(200).json(oneEscuela)
   } catch (error){

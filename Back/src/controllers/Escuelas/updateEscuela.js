@@ -8,6 +8,8 @@ const updateEscuela = async (req, res) => {
             director,
             dojan,
             imagen,
+            estado,
+            eliminado
         } = req.body;
 
         const newData = {
@@ -15,6 +17,8 @@ const updateEscuela = async (req, res) => {
             director,
             dojan,
             imagen,
+            estado,
+            eliminado
         };
 
         let updateFields = [];
