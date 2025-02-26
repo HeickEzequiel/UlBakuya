@@ -1,16 +1,15 @@
 import Nav from '../../components/nav/Nav'
 import CardDojan from '../../components/cards/dojan/CardDojan'
-import { useFetchDojan } from '../../hooks/useDojan'
+import { useFetchDojanes } from '../../hooks/useDojan'
 import Footer from '../../components/footer/Footer'
 
 function Dojan() {
-  const {data, isLoading, error } = useFetchDojan()
+  const {data, isLoading, error } = useFetchDojanes()
 
   if(isLoading){
     return( 
       <div>
         <Nav/>
-          <div>Loading...</div>
         <Footer/>  
       </div>
     )

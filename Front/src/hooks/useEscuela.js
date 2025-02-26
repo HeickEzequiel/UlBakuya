@@ -12,13 +12,14 @@ export function useFetchEscuelas(){
     })
 }
 
-export function useFetchEscuela(){
+export function useFetchEscuela(id){
     return useQuery({
         queryKey: ['escuela'. id],
         queryFn: 
             async function fetchEscuela() {
                 const { data } = await api.get(`/escuela/${id}`)
                 return data
-            }
+            },
+            enabled:!!id
     })
 }

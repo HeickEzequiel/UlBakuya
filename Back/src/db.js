@@ -6,6 +6,9 @@ const DojanModel = require("./models/Dojan.js");
 const UsuarioModel = require("./models/Usuario.js");
 const EventosModel = require("./models/Eventos.js");
 const EscuelasModel = require("./models/Escuela.js");
+const InscripcionesModel = require("./models/Inscripciones.js")
+const EventosModelo = require("./models/Eventos.js")
+
 
 const fs = require('fs');
 const path = require('path');
@@ -39,7 +42,7 @@ UsuarioModel(sequelize);
 EventosModel(sequelize);
 EscuelasModel(sequelize);
 
-const { Alumno, Profesor, Dojan, Usuario, Eventos, Escuela } = sequelize.models;
+const { Alumno, Profesor, Dojan, Usuario, Eventos, Escuela, Inscripciones } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
@@ -56,6 +59,8 @@ Escuela.belongsToMany(Alumno,{through:'Escuela_Alumno', foreignKey: 'EscuelaId',
 Alumno.belongsToMany(Escuela,{through:'Escuela_Alumno', foreignKey: 'AlumnoId', as: "alumnosEscuela"});
 Escuela.belongsToMany(Dojan,{through:'Escuela_Dojan', foreignKey: 'EscuelaId', as: "escuelaDojanes"});
 Dojan.belongsToMany(Escuela,{through:'Escuela_Dojan', foreignKey: 'DojanId', as: "dojanesEscuela"});
+Eventos.belongsToMany(Inscripciones,{through:'Eventos_Inscripciones', foreignKey: 'EventosId', as: "eventosinscripciones"});
+Inscripciones.belongsToMany(Eventos,{through:'Inscripciones_Eventos', foreignKey: 'InscripcionesId', as: "inscripcioneseventos"});
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
