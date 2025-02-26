@@ -1,4 +1,4 @@
-const { Inscripciones } = requiere ("../../db.js")
+const { Inscripciones } = require ("../../db.js")
 
 const getAllinscripciones = async (req, res) =>{
     try{

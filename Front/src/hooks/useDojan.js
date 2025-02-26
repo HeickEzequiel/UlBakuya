@@ -1,13 +1,25 @@
 import api from "../api/ubk";
 import { useQuery } from "@tanstack/react-query";
 
-async function fetchDojan() {
+async function fetchDojanes() {
     const { data } = await api.get('/dojanes')
     return data
 }
-export function useFetchDojan(){
+export function useFetchDojanes(){
     return useQuery({
         queryKey: ['dojanes'], 
-        queryFn: fetchDojan,
+        queryFn: fetchDojanes,
 })
+}
+
+export function useFetchDojan(id){
+    return useQuery({
+        queryKey: ['dojan',id],
+        queryFN:
+            async function fetchDojan() {
+                const { data } = await api.get(`/dojan/${id}`)
+                return data
+            },
+            enabled:!!id
+    })
 }
