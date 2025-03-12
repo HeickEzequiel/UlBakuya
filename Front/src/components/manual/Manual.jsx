@@ -1,14 +1,17 @@
 import Nav from "../nav/Nav"
 import Footer from "../footer/Footer"
+import UserNav from "../usernav/UserNav"
+import userStore from "../../store/loginStore"
 
 function Manual() {
-  
+  const { isLogged, user } = userStore()
     return (
         <div className="">
             <Nav/>
-                <div className="ml-4">
+            {isLogged ? <UserNav/> : <div className='relative flex items-center p-4 w-full '></div>}
+                <div className="p-8">
                      <br/>
-                    <div>
+                    <div > 
                         <p className="">Introducción</p>
                         <p className="">
                         Nuestro sistema educativo tiene como principal objetivo mejorar la calidad de vida de las personas, cualidades físicas y psíquicas.
@@ -204,14 +207,306 @@ function Manual() {
                         Choi Hong Hi es un Mayor General retirado del Ejército de Corea del Sur, y fue el primer embajador de su país en Malasia. Para agregar a sus logros militares y diplomáticos, realizó exhibiciones individuales, tanto en su país como en el exterior, ganando varios premios en la Exhibición Anual de Arte Nacional de Corea por su exquisita caligrafía.<br/>
                         El General Choi, uno de los padres fundadores de las fuerzas armadas R.O.K., fue responsable de varias contribuciones e innovaciones para el mejoramiento de operaciones y procedimientos militares. Al mismo tiempo, el General Choi se encontraba ocupado en la fundación del Sistema de Inteligencia Militar Coreano, escribiendo la Teoría General de Inteligencia Militar, En 1961, mientras comandaba el 6° cuerpo R.O.K. del Ejército, el Gral. Choi tuvo bajo su control operativo a la 7ma. División de Infantería del Ejército Norteamericano, convirtiéndose así en el primer general de la historia de Corea en tener control militar sobre tropas extranjeras. Choi Hong Hi ha publicado una gran cantidad de libros sobre el Taekwon-do, comenzando con la primera edición de texto del Taekwon-do en 1958, un manual de Taekwon-do en 1965, una guía de Taekwon-do en 1972, y la Enciclopedia del Taekwon-do en 1985, consistente en 15 volúmenes con más de 30.000 fotografías e ilustraciones. El 15 de junio del año 2002, Choi Hong Hi fallece en la ciudad de Pyong Yang en Corea del Norte a causa del Cáncer
                         </p><br/>
-                        <p></p><br/>
-                        <p></p><br/>
-                        <p></p><br/>
-                        <p></p><br/>
-                        <p></p><br/>
-                        <p></p><br/>
-                        <p></p><br/>
-                        <p></p><br/>
+
+                        <h1>TEORÍA DE CINTURÓN</h1>
+    <h2>BLANCO PTA.AMARILLA</h2>
+    <h3>DOCTRINAS DEL TAEKWON-DO</h3>
+    <ul>
+        <li>Cortesía</li>
+        <li>Integridad</li>
+        <li>Perseverancia</li>
+        <li>Auto control</li>
+        <li>Espíritu indomable</li>
+    </ul>
+    
+    <h3>SIGNIFICADO DEL COLOR BLANCO DEL CINTURÓN</h3>
+    <p>BLANCO: Representa la inocencia, debido a que el estudiante principiante no tiene conocimientos previos del TAEKWON-DO</p>
+    
+    <h3>SIGNIFICADO Y CANTIDAD DE MOVIMIENTOS DE CHON-JI</h3>
+    <p>CHON-JI - 19 movimientos</p>
+    <p>Significa literalmente "El Cielo - La Tierra". Esto es interpretado en Oriente como la creación del mundo o el principio de la historia de la Humanidad, por tal motivo este Tul es ejecutado por el principiante. El mismo consiste en dos partes similares: una representa el Cielo y la otra, la Tierra.</p>
+    
+    <h3>EXPLICACIÓN DE LAS POSICIONES DE PIERNA (SOGUI)</h3>
+    <h4>CHARYOT SOGUI (Posición de atención)</h4>
+    <p>Es la posición que se usa para saludar, por lo tanto es la primera que aprende el estudiante.</p>
+    <p>Los pies forman un ángulo de 45° y al saludar se inclina el torso. Las rodillas van extendidas.</p>
+    
+    <h2>TEORÍA DE CINTURÓN AMARILLO</h2>
+    <h3>JURAMENTOS DE LOS PRACTICANTES</h3>
+    <ul>
+        <li>Respetaré las doctrinas del TAEKWON-DO</li>
+        <li>Respetaré al instructor</li>
+        <li>Nunca abusaré del TAEKWON-DO</li>
+        <li>Seré un campeón de la justicia y de la libertad</li>
+        <li>Crearé un mundo de paz</li>
+    </ul>
+    
+    <h3>SIGNIFICADO DEL COLOR AMARILLO DEL CINTURÓN</h3>
+    <p>AMARILLO: Representa la tierra, en la que crece una planta que desarrolla sus raíces, como el cimiento del TAEKWON-DO es colocado en el estudiante.</p>
+    
+    <h3>SIGNIFICADO Y CANTIDAD DE MOVIMIENTOS DE DAN-GUN</h3>
+    <p>DAN-GUN- 21 movimientos</p>
+    <p>Significado: Es el nombre del Santo Dan-Gun, fundador legendario de Corea en el año 2333 A.C.</p>
+    
+    <h3>EXPLICACIÓN DE LAS POSICIONES DE PIERNA (SOGUI)</h3>
+    <h4>NARANI SOGUI (Posición con pies paralelos)</h4>
+    <p>Tiene un ancho de hombros de separación por el canto externo de los pies, que a su vez los mismos van paralelos. El peso del cuerpo se distribuye el 50 % en cada pierna. Se la utiliza para realizar posiciones frontales o laterales.</p>
+    
+    <h4>GUNNUN SOGUI (Posición para caminar)</h4>
+    <p>Esta es una posición sólida tanto en defensa como en ataque. Tiene un ancho y medio de hombros de separación entre la punta de los dedos gordos de cada pie a lo largo y a una distancia lateral de ancho de hombros formada desde el centro del empeine de cada pie. La rodilla de atrás va extendida y la de adelante va flexionada formando una línea perpendicular con el talón. El peso del cuerpo se distribuye la mitad en cada pierna. El pie de atrás tiene una inclinación de 25° hacia afuera. Se utiliza con frente total o semi frontal. La posición será derecha o izquierda, según el pie avanzado.</p>
+
+    <h1>TEORÍA DE CINTURÓN AMARILLO PUNTA VERDE</h1>
+    <h2>INSTRUCTORES QUE INTRODUJERON EL TAEKWON-DO EN LA ARGENTINA</h2>
+    <ul>
+        <li>HAN CHANG KIM</li>
+        <li>NAM SUN CHOI</li>
+        <li>KWANG DUK CHUNG</li>
+    </ul>
+    <p>Todos de nacionalidad coreana.</p>
+    
+    <h2>CLASIFICACIÓN DE INSTRUCTORES</h2>
+    <ul>
+        <li>I, II y III DAN: Instructor Asistente (Boosabum)</li>
+        <li>IV, V y VI DAN: Instructor (Sabum)</li>
+        <li>VII y VIII DAN: Maestro (Sajium)</li>
+        <li>IX DAN: Gran Maestro (Sasong)</li>
+    </ul>
+    <p>En todos los casos se utiliza la partícula Nim. Por ejemplo: Sabum Nim; se refiere a una forma tradicional oriental de respeto que debe mantener siempre el de menor grado hacia el de mayor grado.</p>
+    
+    <h2>SIGNIFICADO Y CANTIDAD DE MOVIMIENTOS DE DO-SAN</h2>
+    <p>DO-SAN - 24 movimientos</p>
+    <p>Significado: Es el seudónimo del patriota Ahn Chang-jo (1876-1938). Los 24 movimientos representan toda su vida, la cual dedicó al desarrollo de la educación de Corea y a su movimiento de independencia.</p>
+    
+    <h2>EXPLICACIÓN DE LAS POSICIONES DE PIERNA (SOGUI)</h2>
+    <h3>NIUNJA SOGUI (posición en L)</h3>
+    <p>Tiene un ancho y medio de hombros de separación en largo entre el canto externo del pie de atrás hasta la punta del dedo gordo del pie de adelante, que a su vez debe estar en línea recta con el talón del pie de atrás. La rodilla del pie de atrás cae perpendicularmente sobre el dedo gordo, mientras que la del pie de adelante cae sobre el talón. Siempre se la utiliza en posición semi frontal. Los pies van 15° hacia adentro. El peso del cuerpo se distribuye en un 70% sobre la pierna de atrás y un 30% sobre la de adelante.</p>
+    
+    <h3>ANNUN SOGUI (posición de jinete)</h3>
+    <p>Tiene un ancho y medio de hombros de separación entre el canto interno de cada pie, los que a su vez van paralelos. Se utiliza con frente total o lateral. Las rodillas caen perpendicularmente sobre el dedo gordo de cada pie. La espalda debe estar erguida y la cintura curvada. El peso del cuerpo se distribuye mitad en cada pierna.</p>
+    
+    <h1>TEORÍA DE CINTURÓN VERDE</h1>
+    <h2>FUNDACIÓN DEL TKD, LA I.T.F. Y LA INTRODUCCIÓN EN ARGENTINA</h2>
+    <ul>
+        <li>TKD SE FUNDO 11/04/1955</li>
+        <li>I.T.F. SE FUNDÓ 22/03/1966</li>
+        <li>ARGENTINA SE INTRODUJO 1967</li>
+    </ul>
+    
+    <h2>¿QUÉ REPRESENTA EL COLOR DEL CINTURÓN VERDE?</h2>
+    <p>VERDE: Representa el crecimiento de la planta, así como la destreza del TAEKWON-DO comienza a desarrollarse.</p>
+    
+    <h2>SIGNIFICADO Y CANTIDAD DE MOVIMIENTOS DE WON-HYO</h2>
+    <p>WON-HYO - 28 movimientos</p>
+    <p>Significado: Fue el notable monje que introdujo el budismo en la Dinastía Silla en el año 686 A.C.</p>
+    <h1>TEORÍA DE CINTURÓN VERDE PUNTA AZUL</h1>
+
+<h2>EXPLICACIÓN DEL SALUDO</h2>
+<p>Se grita la palabra <strong>TAEKWON</strong> solamente cuando se saluda entre personas. Por ejemplo: alumno - instructor; alumno - alumno.</p>
+<p><strong>CHARYOT</strong>: Atención, posición de saludo.</p>
+<p><strong>KYONG YE</strong>: Saludo.</p>
+
+<h3>Ejemplos de Saludo:</h3>
+<ul>
+    <li><strong>CHARYOT, KYONG YE:</strong> Atención, saludo.</li>
+    <li><strong>CHARYOT, SABUM NIM KE, KYONG YE:</strong> Atención al instructor, saludo.</li>
+</ul>
+
+<p>Al saludar se inclina el torso 15º, se mantiene la vista al frente y la espalda erguida. Los talones deben estar juntos, mientras que las puntas de los pies van separadas formando un ángulo de 45º.</p>
+
+<h2>DEBERES DEL ALUMNO</h2>
+<ol>
+    <li>Nunca te canses de aprender, un buen estudiante puede aprender en cualquier lugar y momento. Este es el secreto del conocimiento.</li>
+    <li>Un buen estudiante debe estar deseoso de sacrificarse por su arte e Instructor. Muchos de ellos sienten que su entrenamiento es una mercancía comprada en cuotas y no están deseosos de participar en demostraciones, torneos, enseñar o trabajar alrededor del gimnasio, un Instructor debe forzarse para corregir este tipo de estudiante.</li>
+    <li>Siempre sé un buen ejemplo para cinturones de menor graduación. Es natural que ellos intenten imitar a estudiantes más avanzados.</li>
+    <li>Siempre sé leal y nunca critiques al instructor, al TAEKWON-DO o los métodos de enseñanza.</li>
+    <li>Si un Instructor te enseña una técnica practícala e intenta utilizarla.</li>
+    <li>Recuerda que la conducta del estudiante fuera del gimnasio refleja el arte y al Instructor.</li>
+    <li>Si un estudiante adopta una técnica y el Instructor la desaprueba, el estudiante debe descartarla inmediatamente.</li>
+    <li>Nunca seas irrespetuoso con tu Instructor. Pese a que un estudiante le esté permitido estar en desacuerdo, debe eventualmente seguir al instructor y posteriormente discutir ese tema.</li>
+    <li>Un estudiante debe estar siempre ansioso por aprender y hacer preguntas.</li>
+    <li>Nunca traiciones al Instructor.</li>
+</ol>
+
+<h2>SIGNIFICADO Y CANTIDAD DE MOVIMIENTOS DE YUL-GOK</h2>
+<p><strong>YUL-GOK</strong> - 38 movimientos</p>
+<p><strong>Significado:</strong> Es el seudónimo del gran filósofo y erudito de Corea YI I (1536-1584), llamado el "Confucio de Corea". Los 38 movimientos de este Tul se refieren a su lugar de nacimiento sobre el paralelo 38 y el diagrama representa "erudito".</p>
+
+<h2>EXPLICACIÓN DE LA POSICIÓN DE PIERNA (SOGUI)</h2>
+<h3>Kyocha Sogui (posición en X)</h3>
+<p>A: El pie semi apoyado cruza por detrás cuando se salta cayendo en esta posición o desplaza con patadas laterales.</p>
+<p>B: El pie semi apoyado cruza por adelante cuando se la utiliza con los ejercicios fundamentales de brazos o patadas.</p>
+<p>Las rodillas van flexionadas y los pies paralelos en diagonal. Se la utiliza con frente total o semi frontal.</p>
+
+<h2>TEORÍA DE CINTURÓN AZUL</h2>
+<h3>RELACIÓN INSTRUCTOR-ALUMNO</h3>
+<p>Hoy día en Corea, continúan utilizándose algunas de las antiguas enseñanzas de Confucio, que alcanzaron trascendencia tras su muerte. Una de ellas es el profundo respeto hacia el maestro. Resaltando esta doctrina con un proverbio coreano que dice "Padre y madre son aquellos que me crían; mientras que el maestro es aquel que me educa". Este es el motivo por el cual el alumno debe prestar tanta atención a sus padres como a su maestro.</p>
+<p>Educar un niño para que se convierta en un hombre con fuertes principios éticos y morales, es la difícil tarea que ejerce el maestro, respetando el deseo de los padres.</p>
+<p>Este mismo tipo de relación debe estar presente también en el TAEKWON-DO. La responsabilidad de la correcta enseñanza del arte recae en el instructor. El cual procurará educar a sus alumnos física y mentalmente fuertes, para que puedan contribuir con el prójimo y la sociedad.</p>
+
+<h2>HISTORIA DEL TAEKWONDO</h2>
+<p>Hace aproximadamente 1.300 años, durante el siglo VII, la península de Corea estuvo dividida en tres reinos: Silla, Koguryo y Baek Je. Silla el más pequeño de estos reinos, estuvo constantemente invadida y acosada por sus dos vecinos más poderosos del norte y del oeste.</p>
+<p>Durante el reinado de Chin Heung, el vigésimo cuarto Rey de Silla, los jóvenes aristócratas y la clase guerrera, formaron una elite de cuerpo oficial llamado Hwa Rang Do. Este cuerpo guerrero, además de la práctica de lanza, arco, espada y gancho, también se entrenaba en las disciplinas físicas, mentales y variadas formas de lucha con pies y manos.</p>
+<p>Para fortalecer sus cuerpos escalaban escarpadas montañas y nadaban ríos turbulentos en los meses más fríos. De esta manera se impulsaron sin piedad a prepararse para la tarea de defender su patria.</p>
+<p>Los Hwa Rang Do se hicieron conocidos en la península por su coraje y destreza en la lucha, ganando el respeto de sus adversarios más grandes.</p>
+
+<h2>¿QUÉ REPRESENTA EL COLOR DEL CINTURÓN AZUL?</h2>
+<p><strong>AZUL:</strong> Representa el cielo, hacia el cual se dirige la plata que madura y se convierte en un árbol, a medida que progresa el entrenamiento en el TAEK WON-DO.</p>
+
+<h2>SIGNIFICADO Y CANTIDAD DE MOVIMIENTOS DE JOONG-GUN</h2>
+<p><strong>JOONG-GUN</strong> - 32 movimientos</p>
+<p>Quien asesinó a Hiro Bumi Ho, el primer gobernador general japonés en Corea. También conocido por ser el hombre que desempeñó el papel principal en la fusión Coreo-japonesa. Los 32 movimientos representan la edad del Sr. Ahn cuando fue ejecutado en la prisión de Lui-Shung (1910).</p>
+
+<h2>EXPLICACIÓN DE LA POSICIÓN DE PIERNA (SOGUI) PARA CINTURÓN AZUL</h2>
+<h3>Dwibal Sogui (posición L corta)</h3>
+<p>Tiene un ancho de hombros de separación entre el canto externo del pie de atrás hasta la punta del dedo gordo del pie de adelante. La rodilla del pie de atrás cae perpendicularmente flexionada sobre el del dedo gordo, mientras que el de adelante apoya el metatarso levemente. El pie de adelante tiene una inclinación de 25°, mientras que el de atrás lleva solamente 15°, ambos hacia adentro. Siempre se utiliza en posición semi frontal.</p>
+
+<h3>Nachuo Sogui (posición para caminar baja)</h3>
+<p>Se la utiliza con frente total o semi frontal. Sirve para controlar la distancia al atacar. El peso del cuerpo se distribuye mitad en cada pierna.</p>
+<h1>TEORÍA DE CINTURÓN AZUL PUNTA ROJA</h1>
+
+<h2>¿QUÉ ES EL TUL?</h2>
+<p>La antigua ley en Oriente era similar a la ley de Hammurabi: "ojo por ojo, diente por diente". Ese era el motivo por el cual los estudiantes no tenían la posibilidad de ejercitarse en el arte del combate ya que cuando se llevaba a cabo, "era real". Hasta que un día un practicante creó algo similar a un tul y de esa manera se pudo ejercitar todo tipo de ataques y defensas sin ningún oponente (sin riesgos).</p>
+
+<p>Entonces: "El Tul, consiste en una serie de ejercicios fundamentales que muchos de ellos representan técnicas estáticas y otros en movimiento, tanto en ataque como en defensa, armados con una secuencia fija y lógica." El estudiante trata con uno o diversos oponentes imaginarios, en distintas direcciones y situaciones, utilizando todo tipo de herramientas para el ataque o la defensa. Permite desarrollar técnicas de combate, moldear el cuerpo, controlar la respiración y crear movimientos armónicos y fluidos. También permite evaluar el poder y trabajar la destreza con características de belleza.</p>
+
+<p>Al practicar un Tul se debe tener en cuenta las siguientes indicaciones:</p>
+<ul>
+    <li>A- Deben comenzar y terminar en el mismo lugar. Esto muestra la exactitud del estudiante.</li>
+    <li>B- Se debe mantener la correcta postura y mirada en cada movimiento.</li>
+    <li>C- Se deben tensar y relajar los músculos en el momento justo.</li>
+    <li>D- Debe ser ejecutado rítmicamente, sin rigidez.</li>
+    <li>E- Los movimientos deben ejecutarse acelerada o desaceleradamente, según se indique en el Tul.</li>
+    <li>F- Se debe perfeccionar cada Tul antes de aprender el siguiente.</li>
+    <li>G- Los estudiantes deben conocer el propósito de cada movimiento.</li>
+    <li>H- Se deben ejecutar los movimientos con realismo.</li>
+    <li>I- Las técnicas de ataque o defensa se deben repartir por igual entre las manos y los pies derechos e izquierdos.</li>
+</ul>
+
+<p>En TAEKWON-DO existen 24 TUL, que representan las 24 horas, un día, o toda la vida.</p>
+
+<h2>¿QUÉ REPRESENTA EL COLOR BLANCO DEL TRAJE DO BOK?</h2>
+<p>El color blanco del Do Bok representa la pureza del estudiante, debido a que no posee ningún conocimiento previo sobre el TAEKWON-DO. Comparándolo así con una hoja de papel en blanco, la cual el Instructor comenzará a escribir con las técnicas del TAEKWON-DO junto a los principios éticos y morales de este.</p>
+
+<h2>SIGNIFICADO Y CANTIDAD DE MOVIMIENTOS DE TOI-GYE</h2>
+<p>TOI-GYE - 37 movimientos. Significado: Es el pseudónimo del célebre erudito Yi Hwang (siglo XVI), una autoridad en el Confucionismo. Los 37 movimientos se refieren al lugar de nacimiento sobre el paralelo 37°, el diagrama significa "erudito".</p>
+
+<h2>EXPLICACIÓN DE LA POSICIÓN DE PIERNA (SOGUI)</h2>
+<p>MOA SOGUI (posición con pies juntos): Los pies van juntos. Las rodillas van extendidas. Se utiliza con frente total o lateral.</p>
+
+<h1>TEORÍA DE CINTURÓN ROJO</h1>
+
+<h2>¿QUÉ ES EL COMBATE? DISTINTOS TIPOS</h2>
+<p>"El combate es la aplicación física de las técnicas de ataque y defensa que se obtienen de los modelos (TUL) y de los ejercicios fundamentales, contra uno o varios oponentes, en diversas situaciones y diferentes sentidos. Por lo tanto, no sólo es indispensable promover el espíritu de lucha y el coraje, sino también entrenar la vista, interpretar la táctica y la maniobra de los oponentes. Fraguar, endurecer o desarrollar las herramientas de ataque o de bloqueo también forman parte del entrenamiento, que a su vez nos sirve para probar nuestra propia capacidad."</p>
+
+<p>En realidad, casi todos los estudiantes se hallan ansiosos de moverse en esta fase del aprendizaje. No sólo el entrenamiento se torna más interesante, sino que por primera vez el estudiante comienza a adquirir un grado de satisfacción a través de la aplicación de las técnicas. Por lo tanto, el instructor estimula al estudiante a que aprenda los ejercicios fundamentales, los modelos necesarios y las técnicas de combate antes de que participe de las clases de combate y especialmente de las competencias. Debido a que, si no ha consolidado una buena base, podría desarrollar malos hábitos que son muy difíciles de perder cuando un estudiante progresa.</p>
+
+<h3>DISTINTOS TIPOS DE COMBATE</h3>
+
+<h4>COMBATE A TRES PASOS (SAMBO MATSOGI)</h4>
+<p>Este es el ejercicio básico de enfrentamiento para principiantes. Usualmente se lo utiliza entre 10° y 6° GUP. Este es un ejercicio para familiarizarse con las correctas técnicas de ataque y defensa, principalmente las de mano a las zonas media y alta. Sirve para desarrollar el balance de cuerpo, mejorar los desplazamientos y ajustar la distancia entre el ataque y la defensa.</p>
+
+<ul>
+    <li>1-Un sentido: El ataque es ejecutado cuando se avanza y el bloqueo cuando se retrocede. Puede ser ejecutado solo o con un compañero.</li>
+    <li>2-Dos sentidos: Los ataques y las defensas son ejecutados en avance y retroceso. Ambas pueden ser ejecutadas a solas o con un compañero.</li>
+</ul>
+
+<h4>COMBATE DOS PASOS (IBO MATSOGI)</h4>
+<p>El objetivo principal de este enfrentamiento es adquirir una técnica donde estén asociados el uso de manos y pies, puesto que el atacante debe utilizarlos de un modo alternativo. Sin embargo, es opcional para el atacante, utilizar primero la mano o el pie. Como el caso del enfrentamiento a tres pasos, existen dos métodos para su práctica.</p>
+
+<ul>
+    <li>1-El ataque se ejecuta únicamente cuando se avanza y la defensa cuando se retrocede.</li>
+    <li>2-El ataque y la defensa se ejecutan avanzando o retrocediendo.</li>
+</ul>
+
+<h4>COMBATE A UN PASO (ILBO MATSOGI)</h4>
+<p>Este enfrentamiento está considerado como el más importante desde el punto de vista que es el propósito último del Taekwon-do, en un combate real, es vencer con un solo golpe. Por esto, no es solamente un ejercicio para todos los niveles, sino también se puede utilizar en situaciones reales.</p>
+
+<h2>¿QUÉ REPRESENTA EL COLOR DEL CINTURÓN ROJO?</h2>
+<p>ROJO: Representa el peligro alertando al estudiante para que ejercite el control, y aconseje a sus adversarios a mantener distancia.</p>
+
+<h2>SIGNIFICADO Y CANTIDAD DE MOVIMIENTOS DE HWA-RANG</h2>
+<p>HWA-RANG - 29 movimientos. Significado: Es el nombre del grupo de jóvenes, que tiene su origen en la Dinastía Silla a principios del siglo VII. Los 29 movimientos se refieren a la división de infantería vigesimonovena (29°) donde el TAEKWON-DO fue desarrollado hasta su madurez.</p>
+
+<h2>EXPLICACIÓN DE LA POSICIÓN DE PIERNA (SOGUI)</h2>
+<p>SOOJIK SOGUI (posición L vertical o parada): Tiene un ancho de hombros de separación entre el canto interno del pie de atrás hasta la punta del dedo gordo del pie de adelante. Las rodillas van extendidas, y los pies 15° hacia adentro. Siempre se utiliza en posición semi-frontal. El peso del cuerpo se distribuye, 60% en la pierna de atrás y 40% en la de adelante.</p>
+
+<h2>TEORÍA DE CINTURÓN ROJO PUNTA NEGRA</h2>
+<h3>TEORÍA DEL PODER</h3>
+<ol>
+    <li><strong>I-Fuerza de Reacción:</strong>
+        Según la Ley de Newton, cada fuerza aplicada sobre un cuerpo genera una fuerza de reacción de igual magnitud, pero de sentido opuesto. También llamamos fuerza de reacción a la obtenida, por ejemplo, al realizar un golpe de puño derecho, al mismo tiempo que se lleva con fuerza similar el puño izquierdo hacia la cadera.
+    </li>
+    <li><strong>II-Concentración:</strong>
+        Al aplicar la fuerza de impacto sobre la menor superficie, se logra concentrar la fuerza y como consecuencia se incrementa su efecto (presión). Otro aspecto importante de la concentración es el de liberar la fuerza principalmente en el momento del impacto y no al comienzo. Cuanto más corto es el tiempo de concentración, más fuerte es el impacto.
+    </li>
+    <li><strong>III -Equilibrio:</strong>
+        Siempre se mantiene el cuerpo en equilibrio. Las posturas deben ser estables y flexibles. El equilibrio puede ser de estabilidad estática o dinámica.
+    </li>
+    <li><strong>IV-Control de la Respiración:</strong>
+        Una respiración controlada actúa sobre la resistencia y la velocidad, pero principalmente puede controlar el cuerpo al recibir un impacto e incrementar el poder cuando un golpe va dirigido hacia el adversario.
+    </li>
+    <li><strong>V-Masa:</strong>
+        Matemáticamente el máximo de energía cinética se obtiene al multiplicar el peso del cuerpo por la velocidad máxima. Por eso es muy importante incrementar el peso del cuerpo al ejecutar un golpe. Esto se produce por medio de la rotación de la cadera o por la elevación de esta durante la ejecución del movimiento y bajando en el momento del impacto (movimiento ondulatorio).
+    </li>
+    <li><strong>VI- Velocidad:</strong>
+        Este es el factor más importante de la potencia. Científicamente la potencia es igual a masa por aceleración (F=M x A) o (P=M x V<sup>2</sup>). Como se aprecia en la fórmula de la potencia, la velocidad se encuentra elevada al cuadrado, por lo tanto, es el factor más influyente en el resultado.
+    </li>
+</ol>
+
+<h3>LOS SECRETOS DEL ENTRENAMIENTO</h3>
+<p>
+    Un antiguo proverbio dice que aun el cielo no puede empobrecer al obrero diligente. Sin embargo, en Taekwon-Do, la diligencia o el entrenamiento intensivo solo, no producen técnicas de calidad. Por el contrario, enseñanzas que provengan de un instructor falso o "no calificado" pueden ser peores que no aprender nada. En efecto, los movimientos que no son científicos no solamente reducen la potencia, sino también necesitan una gran cantidad de tiempo para ser corregidos. Por otro lado, bajo la guía correcta de un instructor competente un estudiante que se entrena honradamente, con devoción, aprenderá las verdaderas técnicas del Taekwon-Do en un período de tiempo reducido y realizando menos esfuerzos.
+</p>
+
+<h4>Los estudiantes deben guardar claramente en su mente los secretos siguientes:</h4>
+<ol>
+    <li>Estudiar la teoría del poder a fondo.</li>
+    <li>Comprender el objetivo de cada movimiento claramente.</li>
+    <li>Realizar el movimiento de los ojos, de las manos, de los pies y la respiración en una acción coordinada única.</li>
+    <li>Elegir sus armas de ataque de modo apropiado para cada punto vital.</li>
+    <li>Familiarizarse con el ángulo y la distancia correcta en ataque o defensa.</li>
+    <li>Mantener los brazos y las piernas ligeramente flexionadas al realizar el movimiento.</li>
+    <li>Cada movimiento debe empezar con una acción hacia atrás, con pocas excepciones. Sin embargo, una vez que el movimiento ha empezado, no debe pararse antes de haber alcanzado el blanco.</li>
+    <li>Crear un movimiento ondulante, utilizando correctamente las rodillas para eso.</li>
+    <li>Exhalar corta y bruscamente en el momento de cada golpe, salvo en caso de movimiento conectado.</li>
+</ol>
+
+<h3>CICLO DE COMPOSICIÓN DEL TAEKWON-DO</h3>
+<p>
+    El Tae Kwon-Do se compone de 5 fases:
+    <ul>
+        <li>Movimientos fundamentales</li>
+        <li>Forma</li>
+        <li>Práctica con accesorios</li>
+        <li>Ejercicios de combate</li>
+        <li>Defensa personal</li>
+    </ul>
+    Es imposible separar estas fases, ya que todas componen un ciclo, donde cada una de ellas es imprescindible para el desarrollo de la otra. Así, por ejemplo, los movimientos fundamentales se necesitan para el combate y las formas y coincidentemente, el combate y la forma son necesarios para perfeccionar los movimientos fundamentales.
+</p>
+<p>
+    Es por ello, que en la ilustración no se pueden distinguir el principio y el fin del ciclo. El estudiante deberá retomar cada uno de los movimientos fundamentales para perfeccionar sus técnicas avanzadas de combate y defensa personal. Los movimientos fundamentales practicados exhaustivamente, permiten desarrollar habilidad de manera que el alumno pueda enfrentar situaciones de combate real con confianza.
+</p>
+<p>
+    Las formas lo colocan en una situación hipotética, donde debe poder defenderse, contraatacar y atacar frente a varios oponentes. Luego de la práctica de los movimientos fundamentales y las formas, se debe aplicar la pericia obtenida en el combate contra oponentes reales. Paralelamente, el alumno debe desarrollar su cuerpo, endurecer las herramientas de ataque y defensa, para obtener máximo poder y provocar la concentración contra ataques espontáneos, es decir: situaciones donde aplicar la defensa personal.
+</p>
+<p>
+    Sin embargo, siempre ha de volverse a los movimientos básicos aun cuando se haya desarrollado una alta capacitación en defensa personal.
+</p>
+
+<h3>¿QUÉ REPRESENTA EL COLOR DEL CINTURÓN NEGRO?</h3>
+<p>
+    <strong>NEGRO:</strong> Representa el contrario del blanco, es decir, la madurez y el conocimiento del Taekwon-do. Indica también la imprevisibilidad de la oscuridad y el miedo.
+</p>
+
+<h3>SIGNIFICADO Y CANTIDAD DE MOVIMIENTOS DE CHOONG-MOO</h3>
+<p>
+    <strong>CHOONG-MOO - 30 movimientos</strong>
+</p>
+<p>
+    <strong>Significado:</strong> Fue el nombre dado al Gran Almirante Yi Soon-Sin de la Dinastía Lee. Tuvo notoriedad por haber inventado el primer barco de guerra armado (kobukson) en 1592; que fue, según se dice el precursor de los submarinos modernos. La razón por la cual este Tul termina con el ataque de la mano izquierda es que simbolizan su muerte lamentable, sin tener oportunidad de poder demostrar su potencial por causa de su forzada restricción, debida a su lealtad al Rey.
+</p>
+
+               
                     </div>                   
                 </div>
             <Footer/>
