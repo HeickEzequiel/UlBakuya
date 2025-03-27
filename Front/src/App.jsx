@@ -44,6 +44,7 @@ import Dojanes_Eliminados from './components/paneldecontrol/dojanes/Dojanes_Elim
 import Escuelas_Eliminadas from './components/paneldecontrol/escuelas/Escuelas_Eliminadas'
 import Profesores_Eliminados from './components/paneldecontrol/profesores/Profesores_Eliminados'
 import Usuarios_Eliminados from './components/paneldecontrol/usuarios/Usuarios_Eliminados'
+import Inscripciones from './components/inscripciones/Inscripciones'
 
 function App() {
 
@@ -102,6 +103,8 @@ function App() {
         <Route path='/profesor/:id' element={<ProfesorDetail/>}/>
         <Route path='/dojan/:id' element={<DojanDetail/>}/>
         <Route path='/escuelas/:id' element={<EscuelaDetail/>}/>
+
+        <Route path='/Inscripciones' element={<Inscripciones/>}/>
       </Routes>
 
     </div>

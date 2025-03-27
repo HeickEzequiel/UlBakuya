@@ -20,7 +20,7 @@ const getUser = async (req, res) => {
       if(oneUsuario.imagen === null){
           oneUsuario.imagen = "https://res.cloudinary.com/damoqjwmk/image/upload/v1723139453/no%20image.png"
       }
-    console.log(oneUsuario)
+
   return res.status(200).json(oneUsuario)
   } catch (error){
     return res.status(400).send(error.message)

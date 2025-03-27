@@ -2,6 +2,7 @@ import Nav from "../nav/Nav"
 import Footer from "../footer/Footer"
 import userStore from "../../store/loginStore"
 import UserNav from "../usernav/UserNav"
+import { Link } from "react-router-dom"
 
 function Examenes() {
     const { isLogged, user } = userStore()
@@ -47,6 +48,7 @@ function Examenes() {
   <p className="text-lg font-medium text-gray-900 mt-6">
     ¿Estás por rendir un examen? ¿Para qué cinturón? 😃
   </p>
+  <Link to='/inscripciones'><button className="lg:relative lg:bottom-9 lg:left-96 lg:ml-20 boton" type='button'>Inscribite</button></Link>
 </div>
 
             <Footer/>
