@@ -6,7 +6,7 @@ function CardAlumnosEliminados(props) {
     
     const handleClick = async () =>{
         try {
-            const response = await api.get(`/logideletealumno/${id}`)
+            const response = await api.get(`/logicrestorealumno/${id}`)
             alert("Alumno restaurado")
             navigate("/paneldecontrol")
             console.log(response)

@@ -42,7 +42,7 @@ function Profesores_PC() {
                 <UserNav/>
                 <div className="min-h-screen">
                     <Link to='/newprofesor'><button className="boton lg:relative lg:top-20 lg:left-24">Agregar Profesor</button></Link>
-                    <Link to='/profesoreseliminados'><button className="boton lg:relative lg:top-20 lg:left-24">Ver Eliminados</button></Link>
+                    <Link to='/profesores_eliminados'><button className="boton lg:relative lg:top-20 lg:left-24">Ver Eliminados</button></Link>
                     <table className="lg:relative lg:top-24 lg:left-24 lg:border-collapse lg:border-2 lg:border-black">
                         <thead>
                             <tr>

@@ -44,6 +44,8 @@ import Dojanes_Eliminados from './components/paneldecontrol/dojanes/Dojanes_Elim
 import Escuelas_Eliminadas from './components/paneldecontrol/escuelas/Escuelas_Eliminadas'
 import Profesores_Eliminados from './components/paneldecontrol/profesores/Profesores_Eliminados'
 import Usuarios_Eliminados from './components/paneldecontrol/usuarios/Usuarios_Eliminados'
+import Inscripciones from './components/inscripciones/Inscripciones'
+import Examenes_PC from './components/paneldecontrol/examenes/Examenes_PC'
 
 function App() {
 
@@ -65,7 +67,6 @@ function App() {
         <Route path='/seminarios' element={<Seminarios/>}/>
         <Route path='/examenes' element={<Examenes/>}/>
         <Route path='/clasesespeciales' element={<ClasesEspeciales/>}/>
-        <Route path='/eliminados' element={<Eliminados/>}/>
 
         <Route path='/newalumno' element={<Newalumno/>}/>
         <Route path='/newusuario' element={<NewUsuario/>}/>
@@ -90,6 +91,7 @@ function App() {
         <Route path='/pc_profesores' element={<Profesores_PC/>}/>
         <Route path='/pc_dojanes' element={<Dojanes_PC/>}/>
         <Route path='/pc_escuelas' element={<Escuelas_PC/>}/>
+        <Route path='/pc_examenes' element={<Examenes_PC/>}/>
 
         <Route path='/alumnos_eliminados' element={<Alumnos_Eliminados/>}/>
         <Route path='/usuarios_eliminados' element={<Usuarios_Eliminados/>}/>
@@ -102,6 +104,8 @@ function App() {
         <Route path='/profesor/:id' element={<ProfesorDetail/>}/>
         <Route path='/dojan/:id' element={<DojanDetail/>}/>
         <Route path='/escuelas/:id' element={<EscuelaDetail/>}/>
+
+        <Route path='/Inscripciones' element={<Inscripciones/>}/>
       </Routes>
 
     </div>

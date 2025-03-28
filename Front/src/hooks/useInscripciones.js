@@ -5,7 +5,7 @@ export function useFetchInscripciones(){
     return useQuery({
         queryKey:['Inscripciones'],
         queryFn: async function fetchInscripciones(){
-            const { data } = await api.get('/escuelas')
+            const { data } = await api.get('/inscripciones')
             return data
         }
     })
@@ -13,10 +13,10 @@ export function useFetchInscripciones(){
 
 export function useFetchInscripcion(id){
     return useQuery({
-        queryKey: ['escuela'. id],
+        queryKey: ['inscripcion'. id],
         queryFn:
             async function fetchInscripcion() {
-                const { data } = await api.get(`/escuela/${id}`)
+                const { data } = await api.get(`/inscripcion/${id}`)
                 return data                
             },
             enabled:!!id

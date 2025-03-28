@@ -43,7 +43,7 @@ function Alumnos_PC() {
           <UserNav/>
           <div className="min-h-screen">
             <Link to='/newalumno'><button className="boton lg:relative lg:top-20 lg:left-24">Agregar Alumno</button></Link>
-           <div>{user.nivel==="Director" ? <Link to='/eliminados'><button className="boton lg:relative lg:top-20 lg:left-24"> Ver Eliminados</button></Link>:null}</div> 
+           <div>{user.nivel==="Director" ? <Link to='/alumnos_eliminados'><button className="boton lg:relative lg:top-20 lg:left-24"> Ver Eliminados</button></Link>:null}</div> 
             <table className="lg:relative lg:top-24 lg:left-24 lg:border-collapse lg:border-2 lg:border-black">
               <thead>
                 <tr>

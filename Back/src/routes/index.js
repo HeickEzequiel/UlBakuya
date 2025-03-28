@@ -46,10 +46,10 @@ const deleteProfesor = require("../controllers/Profesor/deteteProfesor.js")
 router.delete("/deleteprofesor/:id", deleteProfesor)
 
 const logicDeleteProfesor = require("../controllers/Profesor/logicDeleteProfesor.js")
-router.delete("/logicdeleteprofesor/:id", logicDeleteProfesor)
+router.get("/logicdeleteprofesor/:id", logicDeleteProfesor)
 
 const logicRestoreProfesor = require("../controllers/Profesor/logicRestoreProfesor.js")
-router.delete("/logicrestoreprofesor/:id", logicRestoreProfesor)
+router.get("/logicrestoreprofesor/:id", logicRestoreProfesor)
 
 //Dojan
 
@@ -67,6 +67,15 @@ router.post("/newdojan", postDojan)
 
 const updateDojan = require("../controllers/Dojan/updateDojan.js");
 router.put("/updatedojan/:id",updateDojan);
+
+const deleteDojan = require("../controllers/Dojan/deleteDojan.js")
+router.post("/deletedojan/:id", deleteDojan)
+
+const logicDeleteDojan = require("../controllers/Dojan/logicDeleteDojan.js")
+router.get("/logicdeletedojan/:id", logicDeleteDojan)
+
+const logicRestoreDojan = require("../controllers/Dojan/logicRestoreDojan.js")
+router.get("/logicretoredojan/:id", logicRestoreDojan)
 
 //Escuelas
 
@@ -89,10 +98,10 @@ const deleteEscuela = require("../controllers/Escuelas/deleteEscuelas.js")
 router.delete("/deleteescuela/:id", deleteEscuela)
 
 const logicDeleteEscuela = require("../controllers/Escuelas/logicDeleteEscuelas.js")
-router.delete("/logicdeleteescuela/:id", logicDeleteEscuela)
+router.get("/logicdeleteescuela/:id", logicDeleteEscuela)
 
 const logicRestoreEscuela = require("../controllers/Escuelas/logicRestoreEscuelas.js")
-router.delete("/logicrestorescuela/:id", logicRestoreEscuela)
+router.get("/logicrestorescuela/:id", logicRestoreEscuela)
 
 
 //Usuario
@@ -118,10 +127,10 @@ const deleteUser = require("../controllers/Users/deleteUser.js")
 router.delete("/deleteuser/:id", deleteUser)
 
 const logicDeleteUser = require("../controllers/Users/logicDeleteUser.js")
-router.delete("/logicdeleteuser/:id", logicDeleteUser)
+router.get("/logicdeleteuser/:id", logicDeleteUser)
 
 const logicRestoreUser = require("../controllers/Users/logicRestoreUser.js")
-router.delete("/logicrestoreuser/:id", logicRestoreUser)
+router.get("/logicrestoreuser/:id", logicRestoreUser)
 
 
 // Inscripciones
@@ -145,10 +154,10 @@ const deleteInscripcion = require("../controllers/Inscripciones/deleteIncripcion
 router.delete("/deleteinscripcion/:id", deleteInscripcion)
 
 const logicDeleteInscripcion = require("../controllers/Inscripciones/logicDeleteInscripcion.js")
-router.delete("/logicdeleteinscripcion/:id", logicDeleteInscripcion)
+router.get("/logicdeleteinscripcion/:id", logicDeleteInscripcion)
 
 const logicRestoreInscripcion = require("../controllers/Inscripciones/logicRestoreInscripcion.js");
-router.delete("/logicrestoreinscripcion/:id", logicRestoreInscripcion)
+router.get("/logicrestoreinscripcion/:id", logicRestoreInscripcion)
 
 
 

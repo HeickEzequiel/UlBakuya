@@ -61,3 +61,16 @@
 .w-600px{
     width: 600px;
 }
+
+.encabezado{
+    @apply text-xl font-bold text-indigo-600 border-b-2 border-gray-300 pb-2
+}
+.parrafo{
+    @apply text-justify leading-relaxed
+}
+.lista{
+    @apply list-disc pl-6 space-y-2 text-gray-700
+}
+.subtitulo{
+    @apply text-lg font-semibold text-gray-800 uppercase tracking-wide
+}
