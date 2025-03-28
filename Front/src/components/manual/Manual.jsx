@@ -531,9 +531,9 @@ function Manual() {
           <p className="parrafo">
             Los pies forman un ángulo de 45° y al saludar se inclina el torso.
             Las rodillas van extendidas.
-          </p>
+          </p><br />
 
-          <h2 className="subtitulo">TEORÍA DE CINTURÓN AMARILLO</h2><br />
+          <h2 className="encabezado">TEORÍA DE CINTURÓN AMARILLO</h2><br />
           <h3 className="subtitulo">JURAMENTOS DE LOS PRACTICANTES</h3>
           <ol type="I" className="m-5">
             <li className="lista">Respetaré las doctrinas del TAEKWON-DO</li>

@@ -21,10 +21,7 @@ function Paneldecontrol() {
               <Link to='/pc_profesores'><button className="relative boton mx-2">Profesores</button></Link>
               <Link to='/pc_escuelas'><button className="relative boton mx-2">Escuelas</button></Link>
               <Link to='/pc_dojanes'><button className="relative boton mx-2">Dojan</button></Link>
-              <button className="relative boton mx-2">Examenes</button>
-              <button className="relative boton mx-2">Torneos</button>
-              <button className="relative boton mx-2">Seminarios</button>
-              <button className="relative boton mx-2">Clases Especiales</button>
+              <Link to='/pc_examenes'><button className="relative boton mx-2">Eventos</button></Link>
             </div>
           </div>
         </div> 

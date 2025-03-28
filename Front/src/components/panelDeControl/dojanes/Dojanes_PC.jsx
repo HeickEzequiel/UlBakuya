@@ -1,14 +1,14 @@
 import React from 'react'
-import { useFetchDojan } from '../../../hooks/useDojan'
+import { useFetchDojan, useFetchDojanes } from '../../../hooks/useDojan'
 import userStore from '../../../store/loginStore'
 import Nav from '../../nav/Nav'
 import UserNav from '../../usernav/UserNav'
-import CardDojanes from '../../cards/dojan/CardDojanes'
 import Footer from '../../footer/Footer'
 import { Link } from 'react-router-dom'
+import CardDojanes_PC from '../../cards/dojan/CardDojanes_PC'
 
 function Dojanes_PC() {
-  const { data: dojanes, isLoading, error } = useFetchDojan()
+  const { data: dojanes, isLoading, error } = useFetchDojanes()
   const { isLogged, user } = userStore()
 console.log(dojanes)
   if(isLoading){
@@ -47,7 +47,7 @@ console.log(dojanes)
 
             {dojanes ? 
               dojanes.map((dojan, key)=>(dojan.eliminado===false?
-                <CardDojanes
+                <CardDojanes_PC
                   key={key}
                   id={dojan.id}
                   imagen={dojan.imagen}
