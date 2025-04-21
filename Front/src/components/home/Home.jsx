@@ -5,17 +5,15 @@ import Body from '../body/Body'
 import userStore  from '../../store/loginStore.js'
 import UserNav from '../usernav/UserNav.jsx'
 import Footer from '../footer/Footer.jsx'
-import Escuelas from '../escuelas/Escuelas.jsx'
 
 function Home() {
   const { isLogged } = userStore()
 
 
   return (
-    <div>
+    <div className='bg-[url(https://res.cloudinary.com/damoqjwmk/image/upload/v1744644035/ulbakuya/cintas.png)] bg-contain '>
         <Nav/>
         {isLogged ? <UserNav/> : <div className='relative flex items-center p-4 w-full '></div>}
-        <Escuelas/>
         <Carousel/>
         <Body/>
         <Footer/>

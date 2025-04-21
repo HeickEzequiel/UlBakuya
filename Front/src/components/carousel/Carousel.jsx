@@ -11,12 +11,12 @@ import "swiper/css/scrollbar";
 function Carousel() {
  
   return (
-    <div className='mt-8'
+    <div className='mt-24 '
       style={{ display: "flex", justifyContent: "center" }}>
       <div
         className="swiper-container custom-swiper-container relative"
         style={{
-          width: "83.5%",
+          width: "90%",
           justifyItems: "center",
           alignItems: "center",
           placeContent: "center",

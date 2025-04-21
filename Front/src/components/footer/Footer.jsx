@@ -4,7 +4,7 @@ import { x, facebook, instagram, tiktok } from '../../config/cloudinary'
 function Footer() {
   return (
     
-    <footer className='lg:inset-x-0 lg:top-full bg-blue-400'>
+    <footer className='lg:inset-x-0 lg:top-full bg-black'>
         <div>
           <h2 className='lg:text-white lg:text-left lg:mr-4 lg:my-1 lg:mx-2'>Seguinos en nuestras redes</h2>
             <div className="lg:flex lg:absolute lg:gap-1">

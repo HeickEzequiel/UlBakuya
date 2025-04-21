@@ -35,20 +35,22 @@ console.log(isLogged, user)
                 {isLogged && user.nivel==="Director" ?
                     <div>
                         <UserNav/>
-                        <div className="min-h-screen">
-                        <Link to='/pc_alumnos'><button className="boton">🡸 Volver</button></Link>
-                            <table className="lg:relative lg:top-24 lg:left-24 lg:border-collapse lg:border-2 lg:border-black">
+                        <div className="min-h-screen my-10">
+                        <Link to='/pc_alumnos'><button className="my-10 ml-10">🡸 Volver</button></Link>
+                        <div className="px-6 py-4">
+                            <table className=" border-collapse border border-gray-300 shadow-md rounded-md overflow-hidden">
                                 <thead>
-                                    <tr>
-                                        <th className="celda bg-sky-500">Nombre</th>
-                                        <th className="celda bg-sky-500">Apellido</th>
-                                        <th className="celda bg-sky-500">Escuela</th>
-                                        <th className="celda bg-sky-500">Graduación</th>
-                                        <th className="celda bg-sky-500">Profesor</th>
-                                        <th className="celda bg-sky-500">Estado</th>
+                                    <tr className="even:bg-gray-100 hover:bg-gray-200 transition-colors">
+                                        <th className="px-2 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Nombre</th>
+                                        <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Apellido</th>
+                                        <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Escuela</th>
+                                        <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Graduación</th>
+                                        <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Profesor</th>
+                                        <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Estado</th>
                                     </tr>
                                 </thead>
                             </table>
+                        </div>
                             {alumnos ? 
                                 alumnos.map((alumno, key)=>( alumno.eliminado===true ?
                                     <CardAlumnosEliminados
