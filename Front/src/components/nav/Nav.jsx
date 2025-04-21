@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function Nav() {
   const {isLogged, logout}=userStore()
   return (
-    <div className=' flex items-center bg-blue-400 p-6 w-full'>
+    <div className=' flex items-center bg-black p-6 w-full'>
       
         <span className='absolute top-14 left-48 ml-4 text-bold text-2xl text-white'>FIT</span>
         <span className='text-white font-bold text-center justify-center text-2xl mb-5 tracking-tight ml-8 mx-2 mr-4'>Formación Integral de Taekwondo</span>
