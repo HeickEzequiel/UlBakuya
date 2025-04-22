@@ -18,12 +18,12 @@ function Examenes() {
     En Taekwon-Do ITF, los exámenes de graduación son evaluaciones en las que los practicantes demuestran su progreso para obtener un nuevo cinturón. Estos exámenes varían según el nivel, pero generalmente incluyen los siguientes aspectos:
   </p>
 
-  <h2 className="text-xl font-semibold text-gray-800 mt-4">🔹 Aspectos evaluados</h2>
+  <h2 className="text-xl font-semibold text-gray-800 mt-4"> Aspectos evaluados</h2>
   <ul className="list-disc list-inside text-gray-700">
     <li><strong>Técnicas básicas:</strong> Posiciones (sogui), Bloqueos (makgi), Golpes de mano (jirugi, taerigi), Patadas (chagi).</li>
     <li><strong>Tul (Formas o patrones):</strong> Precisión, potencia, postura, equilibrio y respiración.</li>
     <li><strong>Técnicas de combate:</strong> 
-      <ul className="list-disc list-inside ml-4">
+      <ul className="list-disc list-inside ml-6">
         <li>Combate preestablecido: Movimientos coordinados con un compañero.</li>
         <li>Combate libre (matsogi): Aplicación de técnicas en una situación dinámica.</li>
       </ul>
@@ -33,16 +33,16 @@ function Examenes() {
     <li><strong>Conocimiento teórico:</strong> Historia del Taekwon-Do, significado de los tul y cinturones, principios del Taekwon-Do.</li>
   </ul>
 
-  <h2 className="text-xl font-semibold text-gray-800 mt-6">🔹 Duración y formato</h2>
+  <h2 className="text-xl font-semibold text-gray-800 mt-6"> Duración y formato</h2>
   <p className="text-gray-700">Suele durar entre 60 y 120 minutos, dependiendo del número de participantes. Puede ser individual o en grupo.</p>
 
-  <h2 className="text-xl font-semibold text-gray-800 mt-6">🔹 Consejos para aprobar el examen</h2>
+  <h2 className="text-xl font-semibold text-gray-800 mt-6"> Consejos para aprobar el examen</h2>
   <ul className="list-disc list-inside text-gray-700">
-    <li>✅ Practica tus <strong>tul</strong> con precisión y energía.</li>
-    <li>✅ Perfecciona tu técnica de combate y defensa personal.</li>
-    <li>✅ Mantén una buena actitud y muestra respeto.</li>
-    <li>✅ Conoce bien la teoría y el significado de los movimientos.</li>
-    <li>✅ Controla la respiración y la postura.</li>
+    <li>Practica tus <strong>tul</strong> con precisión y energía.</li>
+    <li>Perfecciona tu técnica de combate y defensa personal.</li>
+    <li>Mantén una buena actitud y muestra respeto.</li>
+    <li>Conoce bien la teoría y el significado de los movimientos.</li>
+    <li>Controla la respiración y la postura.</li>
   </ul>
 
   <p className="text-lg font-medium text-gray-900 mt-6">

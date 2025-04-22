@@ -19,7 +19,7 @@ function Seminarios() {
                     Los cursos técnicos de Taekwon-Do ITF son capacitaciones especializadas dirigidas a practicantes y entrenadores que desean perfeccionar sus conocimientos y habilidades en diversas áreas del arte marcial.
                 </p>
 
-                <h2 className="text-xl font-semibold text-gray-800 mt-4">🔹 Tipos de cursos</h2>
+                <h2 className="text-xl font-semibold text-gray-800 mt-4">Tipos de cursos</h2>
                 <ul className="list-disc list-inside text-gray-700">
                     <li><strong>Curso de Tul:</strong> Enfoque detallado en la ejecución correcta de los patrones.</li>
                     <li><strong>Curso de Combate:</strong> Estrategias, técnicas avanzadas y táctica en el combate.</li>
@@ -28,13 +28,13 @@ function Seminarios() {
                     <li><strong>Curso de Preparación Física:</strong> Métodos de entrenamiento para mejorar fuerza, resistencia y flexibilidad.</li>
                 </ul>
 
-                <h2 className="text-xl font-semibold text-gray-800 mt-6">🔹 Beneficios</h2>
+                <h2 className="text-xl font-semibold text-gray-800 mt-6">Beneficios</h2>
                 <ul className="list-disc list-inside text-gray-700">
-                    <li>✅ Mejora técnica y conocimiento profundo de Taekwon-Do.</li>
-                    <li>✅ Certificación oficial y reconocimiento internacional.</li>
-                    <li>✅ Mayor preparación para exámenes de grado y competencias.</li>
-                    <li>✅ Oportunidad de entrenar con instructores de alto nivel.</li>
-                    <li>✅ Desarrollo de habilidades de enseñanza y liderazgo.</li>
+                    <li>Mejora técnica y conocimiento profundo de Taekwon-Do.</li>
+                    <li>Certificación oficial y reconocimiento internacional.</li>
+                    <li>Mayor preparación para exámenes de grado y competencias.</li>
+                    <li>Oportunidad de entrenar con instructores de alto nivel.</li>
+                    <li>Desarrollo de habilidades de enseñanza y liderazgo.</li>
                 </ul>
 
                 <p className="text-lg font-medium text-gray-900 mt-6">
