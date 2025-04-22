@@ -62,10 +62,9 @@ function Profesores_PC() {
                     )}
                     </div>
 
-                    <table className="min-w-full table-auto border-collapse border border-gray-300 mb-8">
-                        <tbody>
-                            {profesores && profesores.map((profesor, key)=>
-                                !profesor.eliminado &&(
+                    <div className="min-w-full table-auto border-collapse border border-gray-300 mb-8">
+                        {profesores && profesores.map((profesor, key)=>
+                            !profesor.eliminado &&(
                                 <CardProfes
                                     key={key}
                                     id={profesor.id}
@@ -77,10 +76,9 @@ function Profesores_PC() {
                                     estado={profesor.estado}
                                     eliminado={profesor.eliminado}
                                 />
-                                )    
-                            )}
-                        </tbody>
-                    </table>
+                            )    
+                        )}
+                    </div>
                 </div>
             </div>
         ):( 

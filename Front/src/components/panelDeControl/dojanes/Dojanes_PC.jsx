@@ -10,58 +10,81 @@ import CardDojanes_PC from '../../cards/dojan/CardDojanes_PC'
 function Dojanes_PC() {
   const { data: dojanes, isLoading, error } = useFetchDojanes()
   const { isLogged, user } = userStore()
-console.log(dojanes)
   if(isLoading){
     return (
       <div>
         <Nav/>
-        <div>Loading...</div>
+        <div className='text-center py-12'>Cargando...</div>
         <Footer/>
       </div>
     )
   }
   if(error){
-    error.response.status===404 ? 
-      <div> 
+    return(
+    <div> 
         <Nav/> 
-        <Link to='/newdojan'><button className="boton lg:relative lg:top-20 lg:left-24">Agregar Dojan</button></Link>
-        <p className="absolute top-20">No existen Dojanes cargados por favor ingresar el primero</p>
-        <Footer/>
-      </div>:
-      <div>
-        <Nav/>
-        <div>Error: {error.message}</div>
-        <Footer/>
+        {error.response.status===404 ?(
+          <div className='text-center py-12'> 
+            <Link to='/newdojan'>
+              <button className="mb-4 bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md transition">
+                Agregar Dojan
+              </button>
+            </Link>
+            <p className="absolute top-20">No existen Dojanes cargados por favor ingresar el primero</p>
+          </div>
+        ):(
+          <div className="text-center py-12">
+            <div>Error: {error.message}</div>
+          </div>
+        )}
+        <Footer />
       </div>
+    );
   }
+
 
   return (
     <div>
       <Nav/>
-      {isLogged && user.nivel==="Director"|| user.nivel==="Profesor"?
-        <div>
-          <UserNav/>
+        {isLogged && user.nivel==="Director"|| user.nivel==="Profesor"?
           <div>
-            <Link to='/newdojan'><button className="boton lg:relative lg:top-20 lg:left-24">Agregar Dojan</button></Link>
-            <div>{user.nivel==="Director" ? <Link to='/dojanes_eliminados'><button className="boton lg:relative lg:top-20 lg:left-24"> Ver Eliminados</button></Link>:null}</div> 
+            <UserNav/>
+            <div className="min-h-screen px-6 py-12">
+              <div className="flex flex-col md:flex-row justify-between mb-6">
+                <Link to='/newdojan'>
+                  <button className="mb-4 md:mb-0 bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg shadow-md transition">
+                    Agregar Dojan
+                  </button>
+                </Link>
+                {user.nivel==="Director" && (
+                  <Link to='/dojanes_eliminados'>
+                    <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-lg shadow-md transition">
+                      Ver Eliminados
+                    </button>
+                  </Link>
+                )}
+              </div>
 
-            {dojanes ? 
-              dojanes.map((dojan, key)=>(dojan.eliminado===false?
-                <CardDojanes_PC
-                  key={key}
-                  id={dojan.id}
-                  imagen={dojan.imagen}
-                  club={dojan.club}
-                  direccion={dojan.direccion}
-                  horarios={dojan.horarios}
-                  profesores={dojan.profesores}
-                  estado={dojan.estado}
-                  eliminado={dojan.eliminado}
-                />:null
-              )):null
-            }  
-          </div>
-        </div>: <p>Debes iniciar sesion como administrador para acceder al panel de control</p>}
+              <div className='min-w-full table-auto border-collapse border border-gray-300 mb-8'>
+                  {dojanes && dojanes.map((dojan, key) =>
+                  !dojan.eliminado && (
+                    <CardDojanes_PC
+                      key={key}
+                      id={dojan.id}
+                      imagen={dojan.imagen}
+                      club={dojan.club}
+                      direccion={dojan.direccion}
+                      horarios={dojan.horarios}
+                      profesores={dojan.profesores}
+                      estado={dojan.estado}
+                      eliminado={dojan.eliminado}
+                    />
+                  )
+                  )}
+              </div>
+            </div>
+          </div>: <p className="text-center py-12 text-xl">Debes iniciar sesion como administrador para acceder al panel de control</p>
+        }
       <Footer/>
     </div>
   )

@@ -27,7 +27,7 @@ function Alumnos_PC() {
         {error.response.status === 404 ? (
           <div className="text-center py-12">
             <Link to='/newalumno'>
-              <button className="boton mb-4 bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md transition">Agregar Alumno</button>
+              <button className="mb-4 bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md transition">Agregar Alumno</button>
             </Link>
             <p className="text-gray-700">No existen alumnos cargados, por favor ingresa el primero.</p>
           </div>
@@ -63,26 +63,23 @@ function Alumnos_PC() {
               )}
             </div>
 
-            <table className="min-w-full table-auto border-collapse border border-gray-300 mb-8">
-
-              <tbody>
-                {alumnos && alumnos.map((alumno, key) =>
-                  !alumno.eliminado && (
-                    <CardAlumnos
-                      key={key}
-                      id={alumno.id}
-                      nombre={alumno.nombre}
-                      apellido={alumno.apellido}
-                      escuela={alumno.escuela}
-                      graduacion={alumno.graduacion}
-                      profesor={alumno.profesor}
-                      estado={alumno.estado}
-                      eliminado={alumno.eliminado}
-                    />
-                  )
-                )}
-              </tbody>
-            </table>
+            <div className="min-w-full table-auto border-collapse border border-gray-300 mb-8">
+              {alumnos && alumnos.map((alumno, key) =>
+                !alumno.eliminado && (
+                  <CardAlumnos
+                    key={key}
+                    id={alumno.id}
+                    nombre={alumno.nombre}
+                    apellido={alumno.apellido}
+                    escuela={alumno.escuela}
+                    graduacion={alumno.graduacion}
+                    profesor={alumno.profesor}
+                    estado={alumno.estado}
+                    eliminado={alumno.eliminado}
+                  />
+                )
+              )}
+            </div>
           </div>
         </div>
       ) : (
