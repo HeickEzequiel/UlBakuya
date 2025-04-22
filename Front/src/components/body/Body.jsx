@@ -33,7 +33,7 @@ function Body() {
 
         <div className='relative my-24 mx-20 border-2 border-gray-300 rounded-lg shadow-lgs bg-white'>
             <p className='text-center text-6xl font-cursiva font-bold underline underline-offset-8 text-black my-24'>Escuelas asociadas</p>
-            <div className='relative flex size-48 mx-80 -top-16 left-20'>
+            <div className='relative flex size-48 mx-80 -top-16 left-1'>
                 <AdvancedImage cldImg={ubk} className= 'mx-4 my-4 hover:-translate-y-1 hover:scale-110 duration-300'/>
                 <AdvancedImage cldImg={pilsung} className= 'mx-4 my-4 hover:-translate-y-1 hover:scale-110 duration-300'/>
                 <AdvancedImage cldImg={gyeomson} className= 'mx-4 my-4 hover:-translate-y-1 hover:scale-110 duration-300'/>
@@ -56,10 +56,10 @@ function Body() {
             </p>
             <h1 className="text-2xl font-semibold text-center text-blue-500 mb-4">Beneficios del Taekwondo</h1>
             <ul className="list-disc list-inside text-gray-700 space-y-2 ml-48">
-                <li><strong>✅ Mejora la condición física:</strong> Aumenta la fuerza, flexibilidad y resistencia.</li>
-                <li><strong>✅ Fomenta la disciplina:</strong> Refuerza el autocontrol y la concentración.</li>
-                <li><strong>✅ Defensa personal:</strong> Enseña técnicas efectivas para situaciones de riesgo.</li>
-                <li><strong>✅ Desarrollo mental y emocional:</strong> Ayuda a fortalecer la confianza y la autoestima.</li>
+                <li><strong>Mejora la condición física:</strong> Aumenta la fuerza, flexibilidad y resistencia.</li>
+                <li><strong>Fomenta la disciplina:</strong> Refuerza el autocontrol y la concentración.</li>
+                <li><strong>Defensa personal:</strong> Enseña técnicas efectivas para situaciones de riesgo.</li>
+                <li><strong>Desarrollo mental y emocional:</strong> Ayuda a fortalecer la confianza y la autoestima.</li>
             </ul>
             <p className="text-gray-700  mt-6">
                 El Taekwondo es más que un deporte, es un estilo de vida que promueve el crecimiento personal y el respeto hacia los demás. ¡Descubre todo lo que esta disciplina puede ofrecerte!

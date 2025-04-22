@@ -18,7 +18,7 @@ function Torneos() {
                     Los torneos de Taekwon-Do ITF son eventos donde los practicantes compiten en diversas categorías, demostrando sus habilidades y espíritu marcial. Estos torneos incluyen varias modalidades de competencia:
                 </p>
 
-                <h2 className="text-xl font-semibold text-gray-800 mt-4">🔹 Modalidades de competencia</h2>
+                <h2 className="text-xl font-semibold text-gray-800 mt-4">Modalidades de competencia</h2>
                 <ul className="list-disc list-inside text-gray-700">
                     <li><strong>Tul (Formas o patrones):</strong> Evaluación de precisión, potencia, postura y equilibrio.</li>
                     <li><strong>Combate (Matsogi):</strong> Peleas organizadas por categorías de edad, peso y graduación.</li>
@@ -27,16 +27,16 @@ function Torneos() {
                     <li><strong>Defensa personal (Hosin Sul):</strong> Demostraciones de habilidades en situaciones simuladas.</li>
                 </ul>
 
-                <h2 className="text-xl font-semibold text-gray-800 mt-6">🔹 Reglas y categorías</h2>
+                <h2 className="text-xl font-semibold text-gray-800 mt-6">Reglas y categorías</h2>
                 <p className="text-gray-700">Las reglas y categorías varían según la organización, pero suelen estar divididas por edad, género y nivel de experiencia.</p>
 
-                <h2 className="text-xl font-semibold text-gray-800 mt-6">🔹 Consejos para competir</h2>
+                <h2 className="text-xl font-semibold text-gray-800 mt-6">Consejos para competir</h2>
                 <ul className="list-disc list-inside text-gray-700">
-                    <li>✅ Entrena con disciplina y enfócate en mejorar tu técnica.</li>
-                    <li>✅ Mantén la calma y confía en tu preparación.</li>
-                    <li>✅ Respeta a tus compañeros y árbitros.</li>
-                    <li>✅ Conoce bien las reglas del torneo.</li>
-                    <li>✅ Controla tu respiración y mantén una mentalidad fuerte.</li>
+                    <li>Entrena con disciplina y enfócate en mejorar tu técnica.</li>
+                    <li>Mantén la calma y confía en tu preparación.</li>
+                    <li>Respeta a tus compañeros y árbitros.</li>
+                    <li>Conoce bien las reglas del torneo.</li>
+                    <li>Controla tu respiración y mantén una mentalidad fuerte.</li>
                 </ul>
 
                 <p className="text-lg font-medium text-gray-900 mt-6">

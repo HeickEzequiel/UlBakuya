@@ -1,18 +1,21 @@
-
 function CardProfe(props) {
-  console.log(props)
   return (
-    <div>
-      <img src={props.imagen} alt="no se puede mostrar la imagen" />
-      <h1>{props.nombre} {props.apellido}</h1>
-      <h1>Fecha de nacimiento: {props.fecha_de_nacimiento}</h1>
-      <h1>Escuela: {props.escuela}</h1>
-      <h1>Graduacion: {props.graduacion}</h1>
-      <h1>Instructor Mayor: {props.instructor_mayor}</h1>
-      <h1>Estado: {props.estado}</h1>
-
+    <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 w-full max-w-xl mx-auto hover:shadow-xl transition-shadow">
+      <img
+        src={props.imagen}
+        alt="Foto del profesor"
+        className="w-full h-64 object-contain rounded-xl border border-black mb-6"
+      />
+      <h1 className="text-2xl font-bold text-gray-800 mb-2">
+        {props.nombre} {props.apellido}
+      </h1>
+      <p className="text-gray-600 mb-1"><span className="font-medium">Fecha de nacimiento:</span> {props.fecha_de_nacimiento}</p>
+      <p className="text-gray-600 mb-1"><span className="font-medium">Escuela:</span> {props.escuela}</p>
+      <p className="text-gray-600 mb-1"><span className="font-medium">Graduación:</span> {props.graduacion}</p>
+      <p className="text-gray-600 mb-1"><span className="font-medium">Instructor Mayor:</span> {props.instructor_mayor}</p>
+      <p className="text-gray-600"><span className="font-medium">Estado:</span> {props.estado}</p>
     </div>
-  )
+  );
 }
 
-export default CardProfe
+export default CardProfe;
