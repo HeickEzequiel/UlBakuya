@@ -7,7 +7,12 @@ function CardEscuelas(props) {
         <div className="flex-1 mb-4 lg:mb-0">
           <p className="text-lg font-semibold text-gray-800">{props.nombre}</p>
           <p className="text-sm text-gray-600">Director: {props.director}</p>
-          <p className="text-sm text-gray-600">Dojan: {props.dojan}</p>
+          <p className="text-sm text-gray-600">Dojan:</p>
+          <ul className="list-disc list-inside text-sm text-gray-600">
+            {props.dojan.map((dojan, index)=>(
+            <li key={index}>{dojan}</li>
+            ))}
+          </ul>
         </div>
         
         <div className="flex flex-wrap gap-4">

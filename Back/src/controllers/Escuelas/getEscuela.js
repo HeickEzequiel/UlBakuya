@@ -5,8 +5,8 @@ const getEscuela = async (req, res) => {
     const oneEscuela = {
       id: oneEscuelaDB.id,
       nombre: oneEscuelaDB.nombre,
-      director: oneEscuelaDB.apellido,
-      dojan: oneEscuelaDB.imagen,
+      director: oneEscuelaDB.director,
+      dojan: oneEscuelaDB.dojan,
       imagen: oneEscuelaDB.imagen,
       estado: oneEscuelaDB.estado,
       eliminado:oneEscuelaDB.eliminado

@@ -75,7 +75,7 @@ function Dojanes_PC() {
                       club={dojan.club}
                       direccion={dojan.direccion}
                       horarios={dojan.horarios}
-                      profesores={dojan.profesores}
+                      profesor={dojan.profesor}
                       estado={dojan.estado}
                       eliminado={dojan.eliminado}
                     />
