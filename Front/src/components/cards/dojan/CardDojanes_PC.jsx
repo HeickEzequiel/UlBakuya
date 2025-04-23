@@ -8,7 +8,14 @@ function CardDojanes_PC(props) {
             <p className="text-lg font-semibold text-gray-800">{props.club}</p>
             <p className="text-sm text-gray-600">Direccion: {props.direccion}</p>
             <p className="text-sm text-gray-600">Horarios: {props.horarios}</p>
-            <p className="text-sm text-gray-600">Profesores: {props.profesores}</p>
+            <div className="mt-1">
+              <p className="text-sm font-medium text-gray-700">Profesores: </p>
+              <ul className="list-disc list-inside text-gray-600">
+                {props.profesor.map((profe, index) => (
+                  <li key={index}>{profe}</li>
+                ))}
+              </ul>
+            </div>
             <p className="text-sm text-gray-600">Estado: {props.estado}</p>
         </div>
 

@@ -74,104 +74,63 @@ function AlumnoUpdate() {
         <UserNav/>
         <div>
             <CardImagen imagen = {alumno.imagen}/>
-            <form onSubmit={handleSubmit}>
-                <p>Ingrese link de la imagen:</p>
+            <form 
+                onSubmit={handleSubmit}
+                className="max-w-2xl mx-auto p-6 bg-white shadow-xl rounded-2xl space-y-6 mt-8"
+            >
+            <h2 className="text-2xl font-bold text-gray-800 text-center">Editar Alumno</h2>
+
+            {[
+                { label: "Link de imagen", name: "imagen", placeholder: "ingrese link de la imagen" },
+                { label: "Nombre", name: "nombre", placeholder: alumno.nombre },
+                { label: "Apellido", name: "apellido", placeholder: alumno.apellido },
+                { label: "Fecha de nacimiento", name: "fecha_de_nacimiento", placeholder: alumno.fecha_de_nacimiento },
+                { label: "Escuela", name: "escuela", placeholder: alumno.escuela },
+                { label: "Graduación", name: "graduacion", placeholder: alumno.graduacion },
+                { label: "Fecha de examen", name: "fecha_de_examen", placeholder: alumno.fecha_de_examen },
+                { label: "Profesor", name: "profesor", placeholder: alumno.profesor },
+                { label: "Estado", name: "estado", placeholder: alumno.estado }
+            ].map(({ label, name, placeholder }) => (
+                <div key={name}>
+                <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-1">
+                    {label}
+                </label>
                 <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
                     type="text"
-                    key="imagen"
-                    name="imagen"
-                    value={alumnoData.imagen}
-                    placeholder= "ingrese link de la imagen"
-                    onChange={handleChange} />
-                    <br />
-                <p>Nombre:</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="nombre"
-                    name="nombre"
-                    value={alumnoData.nombre}
-                    placeholder={alumno.nombre}
-                    onChange={handleChange} />
-                    <br />
-                <p>Apellido</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="apellido"
-                    name="apellido"
-                    value={alumnoData.apellido}
-                    placeholder={alumno.apellido}
-                    onChange={handleChange} />
-                    <br />
-                <p>Fecha de nacimiento</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="fecha_de_nacimiento"
-                    name="fecha_de_nacimiento"
-                    value={alumnoData.fecha_de_nacimiento}
-                    placeholder={alumno.fecha_de_nacimiento}
-                    onChange={handleChange} />
-                    <br />
-                <p>Escuela:</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="escuela"
-                    name="escuela"
-                    value={alumnoData.escuela}
-                    placeholder={alumno.escuela}
-                    onChange={handleChange} />
-                    <br />
-                <p>Graduaciòn:</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="graduacion"
-                    name="graduacion"
-                    value={alumnoData.graduacion}
-                    placeholder={alumno.graduacion}
-                    onChange={handleChange} />
-                    <br />
-                <p>Fecha de examen:</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="fecha_de_examen"
-                    name="fecha_de_examen"
-                    value={alumnoData.fecha_de_examen}
-                    placeholder={alumno.fecha_de_examen}
-                    onChange={handleChange} />
-                    <br />
-                <p>Profesor:</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="profesor"
-                    name="profesor"
-                    value={alumnoData.profesor}
-                    placeholder={alumno.profesor}
-                    onChange={handleChange} />
-                    <br />
-                    
-                <p>Estado:</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="estado"
-                    name="estado"
-                    value={alumnoData.estado}
-                    placeholder={alumno.estado}
-                    onChange={handleChange} />
-                    <br />
-                    <button className="boton">Actualizar Alumno</button>
+                    id={name}
+                    name={name}
+                    value={alumnoData[name]}
+                    onChange={handleChange}
+                    placeholder={placeholder}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                </div>
+            ))}
+
+            <div className="flex justify-between items-center">
+                <button 
+                    type="submit" 
+                    className="bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                        Actualizar Alumno
+                </button>
+                <Link to='/pc_alumnos'>
+                    <button 
+                        type="button"
+                        className="bg-gray-300 text-gray-800 font-semibold px-6 py-2 rounded-lg hover:bg-gray-400 transition">
+                        🡸 Volver
+                    </button>
+                </Link>
+            </div>
             </form>
-            <Link to='/pc_alumnos'><button className="boton">🡸 Volver</button></Link>
+            <Link to='/pc_alumnos'>
+                    <button 
+                        type="button"
+                        className="bg-gray-300 text-gray-800 font-semibold px-6 py-2 rounded-lg hover:bg-gray-400 transition">
+                        🡸 Volver
+                    </button>
+                </Link>
         </div>
         <Footer/>
-
     </div>
   )
 }

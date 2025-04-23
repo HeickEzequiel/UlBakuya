@@ -15,7 +15,7 @@ export function useFetchDojanes(){
 export function useFetchDojan(id){
     return useQuery({
         queryKey: ['dojan',id],
-        queryFN:
+        queryFn:
             async function fetchDojan() {
                 const { data } = await api.get(`/dojan/${id}`)
                 return data

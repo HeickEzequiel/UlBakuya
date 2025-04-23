@@ -70,51 +70,55 @@ function EscuelaUpdate() {
         <UserNav/>
         <div>
             <CardImagen imagen = {escuela.imagen}/>
-            <form onSubmit={handleSubmit}>
-                <p>Ingrese link de la imagen:</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="imagen"
-                    name="imagen"
-                    value={escuelaData.imagen}
-                    placeholder= "ingrese link de la imagen"
-                    onChange={handleChange} />
-                    <br />
-                <p>Nombre:</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="nombre"
-                    name="nombre"
-                    value={escuelaData.nombre}
-                    placeholder={escuela.nombre}
-                    onChange={handleChange} />
-                    <br />
-                <p>Director:</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="director"
-                    name="director"
-                    value={escuelaData.director}
-                    placeholder={escuela.director}
-                    onChange={handleChange} />
-                    <br />
-                <p>Dojan</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="dojan"
-                    name="dojan"
-                    value={escuelaData.dojan}
-                    placeholder={escuela.dojan}
-                    onChange={handleChange} />
-                    <br />
-                
-                    <button className="boton">Actualizar Alumno</button>
+            <form 
+            onSubmit={handleSubmit}
+            className="max-w-2xl mx-auto p-6 bg-white shadow-xl rounded-2xl space-y-6 mt-8"
+            >
+                <h1 className="text-2xl font-bold text-gray-800 text-center">Editar Escuela</h1>
+                {[
+                    {label:"Link de imagen", name:"imagen", placeholder:"Ingrese link de la imagen"},
+                    {label:"Nombre", name:"nombre", placeholder: escuela.nombre},
+                    {label:"Director", name:"director", placeholder: escuela.director},
+                    {label:"Dojan", name:"dojan", placeholder: escuela.dojan},
+                    {label:"Estado", name:"estado", placeholder: escuela.estado},
+                ].map(({label, name, placeholder}) =>(
+                    <div key={name}>
+                        <label htmlFor={name} className='block text-sm font-medium text-gray-700 mb-1'>
+                            {label}
+                        </label>
+                        <input
+                            type='text'
+                            id={name}
+                            name={name}
+                            value={escuelaData[name]}
+                            onChange={handleChange}
+                            placeholder={placeholder}
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+                ))}
+                <div className="flex justify-between items-center">
+                    <button 
+                    type="submit" 
+                    className="bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                        Actualizar Escuela
+                    </button>
+                    <Link to='/pc_escuelas'>
+                        <button 
+                        type="button"
+                        className="bg-gray-300 text-gray-800 font-semibold px-6 py-2 rounded-lg hover:bg-gray-400 transition">
+                            🡸 Volver
+                        </button>
+                    </Link>
+                </div>
             </form>
-            <Link to='/pc_escuelas'><button className="boton">🡸 Volver</button></Link>
+            <Link to='/pc_escuelas'>
+                <button 
+                type="button"
+                className="bg-gray-300 text-gray-800 font-semibold px-6 py-2 rounded-lg hover:bg-gray-400 transition">
+                    🡸 Volver
+                </button>
+            </Link>
         </div>
         <Footer/>
 
