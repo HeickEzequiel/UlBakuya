@@ -45,6 +45,11 @@ function Paneldecontrol() {
                   Inscripciones
                 </button>
               </Link>
+              <Link to='/pc_eventos'>
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out w-full text-center">
+                  Eventos
+                </button>
+              </Link>
             </div>
           </div>
         </div>

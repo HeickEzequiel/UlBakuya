@@ -4,6 +4,7 @@ const postInscripcion = async(req, res) =>{
     try {
         const{
             tipo_de_evento,
+            fecha_del_evento,
             horarios,
             nombre,
             apellido,
@@ -11,6 +12,7 @@ const postInscripcion = async(req, res) =>{
             altura,
             peso,
             escuela,
+            profesor,
             graduacion_actual,
             proxima_graduacion,
             imagen,
@@ -20,6 +22,7 @@ const postInscripcion = async(req, res) =>{
             const NewInscripcion = await Inscripciones.findOrCreate({
                 where:{
                     tipo_de_evento,
+                    fecha_del_evento,
                     horarios,
                     nombre,
                     apellido,
@@ -27,6 +30,7 @@ const postInscripcion = async(req, res) =>{
                     altura,
                     peso,
                     escuela,
+                    profesor,
                     graduacion_actual,
                     proxima_graduacion,
                     imagen,

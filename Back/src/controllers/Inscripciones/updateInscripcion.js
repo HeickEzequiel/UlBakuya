@@ -5,6 +5,7 @@ const updateIncripcion = async (req, res) => {
         const { id } = req.params;
         const {
             tipo_de_evento,
+            fecha_del_evento,
             horarios,
             nombre,
             apellido,
@@ -12,6 +13,7 @@ const updateIncripcion = async (req, res) => {
             altura,
             peso,
             escuela,
+            profesor,
             graduacion_actual,
             proxima_graduacion,
             imagen,
@@ -21,6 +23,7 @@ const updateIncripcion = async (req, res) => {
 
         const newData = {
             tipo_de_evento,
+            fecha_del_evento,
             horarios,
             nombre,
             apellido,
@@ -28,6 +31,7 @@ const updateIncripcion = async (req, res) => {
             altura,
             peso,
             escuela,
+            profesor,
             graduacion_actual,
             proxima_graduacion,
             imagen,
