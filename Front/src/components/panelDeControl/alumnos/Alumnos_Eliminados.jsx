@@ -9,7 +9,7 @@ import UserNav from "../../usernav/UserNav";
 function Alumnos_Eliminados (){
     const {data:alumnos, isLoading, error} = useFetchAlumnos()
     const { isLogged, user } =  userStore()
-console.log(isLogged, user)
+
     if(isLoading){
         return(
             <div>

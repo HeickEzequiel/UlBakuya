@@ -12,6 +12,10 @@ module.exports = (sequelize) =>{
             type: DataTypes.STRING,
             allowNull:false
         },
+        fecha_del_evento:{
+            type: DataTypes.STRING,
+            allowNull:false
+        },
         horarios: {
             type: DataTypes.STRING,
             allowNull: false
@@ -37,6 +41,10 @@ module.exports = (sequelize) =>{
             allowNull:false
         },
         escuela:{
+            type: DataTypes.STRING,
+            allowNull:false
+        },
+        profesor:{
             type: DataTypes.STRING,
             allowNull:false
         },

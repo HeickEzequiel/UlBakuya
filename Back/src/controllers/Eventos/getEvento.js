@@ -10,7 +10,8 @@ const getEvento = async (req, res) =>{
             horarios: oneEventoDB.horarios,
             club: oneEventoDB.club,
             direccion: oneEventoDB.direccion,
-            imagen: oneEventoDB.imagen
+            imagen: oneEventoDB.imagen,
+            estado: oneEventoDB.estado
         }
         return res.status(200).json(oneEvento)
     }catch(error){

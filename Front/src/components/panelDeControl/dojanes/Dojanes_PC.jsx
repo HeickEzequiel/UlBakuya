@@ -1,5 +1,4 @@
-import React from 'react'
-import { useFetchDojan, useFetchDojanes } from '../../../hooks/useDojan'
+import { useFetchDojanes } from '../../../hooks/useDojan'
 import userStore from '../../../store/loginStore'
 import Nav from '../../nav/Nav'
 import UserNav from '../../usernav/UserNav'

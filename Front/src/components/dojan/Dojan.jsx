@@ -14,6 +14,7 @@ function Dojan() {
     return( 
       <div>
         <Nav/>
+        <p>Cargando...</p>
         <Footer/>  
       </div>
     )

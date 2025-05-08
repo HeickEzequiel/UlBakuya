@@ -10,12 +10,15 @@ const inscripcionStore = create((set)=>{
         return{
             inscripcion:{
                 tipo_de_evento:"",
+                fecha_del_evento:"",
                 horarios:"",
                 nombre:"",
                 apellido:"",
                 edad:"",
                 altura:"",
                 peso:"",
+                escuela:"",
+                profesor:"",
                 graduacion_actual:"",
                 proxima_graduacion:"",
                 imagen:""

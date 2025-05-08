@@ -4,8 +4,8 @@ const getAllinscripciones = async (req, res) =>{
     try{
         const inscripciones = await Inscripciones.findAll();
         const allInscripciones = inscripciones.map(
-            ({id, tipo_de_evento, horarios, nombre, apellido, edad, altura, peso, escuela, graduacion_actual, proxima_graduacion, imagen, estado, eliminado})=>
-            ({id, tipo_de_evento, horarios, nombre, apellido, edad, altura, peso, escuela, graduacion_actual, proxima_graduacion, imagen, estado, eliminado})
+            ({id, tipo_de_evento, fecha_del_evento, horarios, nombre, apellido, edad, altura, peso, escuela, profesor, graduacion_actual, proxima_graduacion, imagen, estado, eliminado})=>
+            ({id, tipo_de_evento, fecha_del_evento, horarios, nombre, apellido, edad, altura, peso, escuela, profesor, graduacion_actual, proxima_graduacion, imagen, estado, eliminado})
         )
         for(let i=0; allInscripciones.length>i; i++){
             if(allInscripciones[i].imagen === ""){

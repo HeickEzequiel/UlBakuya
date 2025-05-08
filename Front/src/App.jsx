@@ -3,7 +3,6 @@ import Home from './components/home/Home'
 import Login from './components/login/Login'
 import Profesores from './components/profesores/Profesores'
 import Dojan from './components/dojan/Dojan'
-import Proximamente from './components/proximamente/Proximamente'
 import Newuser from './components/newuser/Newuser'
 import Perfil from './components/perfil/Perfil'
 import Manual from './components/manual/Manual'
@@ -47,6 +46,7 @@ import Usuarios_Eliminados from './components/paneldecontrol/usuarios/Usuarios_E
 import Inscripciones from './components/inscripciones/Inscripciones'
 import Inscripciones_PC from './components/paneldecontrol/inscripciones/Inscripciones_PC'
 import DeleteInscripciones from './components/delete/DeleteInscripciones'
+import Eventos_PC from './components/paneldecontrol/eventos/Eventos_PC'
 function App() {
 
   return (
@@ -59,7 +59,6 @@ function App() {
         <Route path="/asociacion" element={<Asociacion/>}/>
         <Route path="/profesores" element={<Profesores/>}/>
         <Route path="/dojan" element={<Dojan/>}/>
-        <Route path='/Proximamente' element={<Proximamente/>}/>
         <Route path='/newuser' element={<Newuser/>}/>
         <Route path='/perfil' element={<Perfil/>}/>
         <Route path='/manual' element={<Manual/>}/>
@@ -93,6 +92,7 @@ function App() {
         <Route path='/pc_dojanes' element={<Dojanes_PC/>}/>
         <Route path='/pc_escuelas' element={<Escuelas_PC/>}/>
         <Route path='/pc_inscripciones' element={<Inscripciones_PC/>}/>
+        <Route path='/pc_eventos' element={<Eventos_PC/>}/>
 
         <Route path='/alumnos_eliminados' element={<Alumnos_Eliminados/>}/>
         <Route path='/usuarios_eliminados' element={<Usuarios_Eliminados/>}/>
