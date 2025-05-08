@@ -159,6 +159,32 @@ router.get("/logicdeleteinscripcion/:id", logicDeleteInscripcion)
 const logicRestoreInscripcion = require("../controllers/Inscripciones/logicRestoreInscripcion.js");
 router.get("/logicrestoreinscripcion/:id", logicRestoreInscripcion)
 
+//Eventos
+
+const getAllEventos = require("../controllers/Eventos/getAllEventos.js")
+router.get("/eventos", getAllEventos)
+
+const getEvento = require("../controllers/Eventos/getEvento.js")
+router.get("/evento/:id", getEvento)
+
+const getEventoByName = require("../controllers/Eventos/getEventoByName.js")
+router.get("/evento",getEventoByName)
+
+const postEvento = require("../controllers/Eventos/postEvento.js")
+router.post("/newevento", postEvento)
+
+const updateEvento = require("../controllers/Eventos/updateEvento.js")
+router.put("/updateevento/:id", updateEvento)
+
+const deleteEventos = require("../controllers/Eventos/deleteEventos.js");
+router.delete("/deleteevento/:id", deleteEventos)
+
+const logicDeleteEventos = require("../controllers/Eventos/logicDeleteEventos.js")
+router.get("/logicdeleteevento/:id", logicDeleteEventos)
+
+const logicRestoreEventos = require("../controllers/Eventos/logicRestoreEventos.js")
+router.get("/logicrestoreevento/:id", logicRestoreEventos)
+
 
 
 

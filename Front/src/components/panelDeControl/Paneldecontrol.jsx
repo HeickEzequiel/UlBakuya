@@ -40,9 +40,9 @@ function Paneldecontrol() {
                   Dojan
                 </button>
               </Link>
-              <Link to='/pc_examenes'>
+              <Link to='/pc_inscripciones'>
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out w-full text-center">
-                  Eventos
+                  Inscripciones
                 </button>
               </Link>
             </div>

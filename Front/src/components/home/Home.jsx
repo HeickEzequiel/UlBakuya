@@ -11,7 +11,7 @@ function Home() {
 
 
   return (
-    <div className='bg-[url(https://res.cloudinary.com/damoqjwmk/image/upload/v1744644035/ulbakuya/cintas.png)] bg-contain '>
+    <div className=''>
         <Nav/>
         {isLogged ? <UserNav/> : <div className='relative flex items-center p-4 w-full '></div>}
         <Carousel/>

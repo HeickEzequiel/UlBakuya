@@ -9,7 +9,8 @@ const postEscuela = async(req, res) =>{
             imagen,
             estado,
             eliminado
-            } = req.body;
+        } = req.body;
+        
 
         if(nombre && director  && dojan && imagen!==undefined){
             const newEscuela = await Escuela.findOrCreate({
@@ -20,14 +21,18 @@ const postEscuela = async(req, res) =>{
                     imagen,
                     estado,
                     eliminado
-                }
+                },
 
+                
             })
+            
             return res.status(200).json(newEscuela)
         }
         return res.status(400).send("Datos incorrectos")
     }catch (error){
-        return res.status(500).send(error.message)
+        console.log(error)
+        return  res.status(500).send(error.message) 
+        
     }
 }
 module.exports = postEscuela

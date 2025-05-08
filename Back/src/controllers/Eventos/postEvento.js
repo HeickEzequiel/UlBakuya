@@ -1,8 +1,9 @@
 const { Eventos } = require("../../db.js")
-const postEvento = async(res,res) =>{
+const postEvento = async(req, res) =>{
     try {
         const {
             tipo_de_evento,
+            fecha_del_evento,
             horarios,
             club,
             direccion,
@@ -13,6 +14,7 @@ const postEvento = async(res,res) =>{
             const NewEvento = await Eventos.findOrCreate({
                 where:{
                     tipo_de_evento,
+                    fecha_del_evento,
                     horarios,
                     club,
                     direccion,

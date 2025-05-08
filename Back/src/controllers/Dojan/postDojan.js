@@ -5,6 +5,7 @@ const postDojan = async(req, res) =>{
         const {
             club,
             direccion,
+            escuela,
             imagen,
             tel,
             profesor,
@@ -18,6 +19,7 @@ const postDojan = async(req, res) =>{
                 where:{
                     club,
                     direccion,
+                    escuela,
                     imagen,
                     tel,
                     profesor,

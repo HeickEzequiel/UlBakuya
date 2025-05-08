@@ -10,12 +10,13 @@ const postInscripcion = async(req, res) =>{
             edad,
             altura,
             peso,
+            escuela,
             graduacion_actual,
             proxima_graduacion,
             imagen,
         } = req.body
         
-        if(tipo_de_evento && horarios && nombre && apellido && edad && altura && peso && graduacion_actual && proxima_graduacion && imagen){
+        if(tipo_de_evento && horarios && nombre && apellido && edad && altura && peso && escuela && graduacion_actual && proxima_graduacion && imagen){
             const NewInscripcion = await Inscripciones.findOrCreate({
                 where:{
                     tipo_de_evento,
@@ -25,6 +26,7 @@ const postInscripcion = async(req, res) =>{
                     edad,
                     altura,
                     peso,
+                    escuela,
                     graduacion_actual,
                     proxima_graduacion,
                     imagen,

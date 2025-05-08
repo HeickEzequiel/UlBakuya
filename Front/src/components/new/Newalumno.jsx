@@ -1,147 +1,108 @@
-import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import alumnosStore from "../../store/alumnosStore"
-import Nav from "../nav/Nav"
-import Footer from "../footer/Footer"
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import alumnosStore from "../../store/alumnosStore";
+import Nav from "../nav/Nav";
+import Footer from "../footer/Footer";
 
-function Newalumno(props) {
-    const Navigate = useNavigate()
-    const { register } = alumnosStore()
-    const [alumnoData, setAlumnoData] = useState ({
-        nombre:"",
-        apellido:"",
-        imagen:"",
-        fecha_de_nacimiento:"",
-        escuela:"",
-        graduacion:"",
-        fecha_de_examen:"",
-        profesor:"",
-        estado:"",
-        eliminado:false
+function Newalumno() {
+  const Navigate = useNavigate();
+  const { register } = alumnosStore();
+  const [alumnoData, setAlumnoData] = useState({
+    nombre: "",
+    apellido: "",
+    imagen: "",
+    fecha_de_nacimiento: "",
+    escuela: "",
+    graduacion: "",
+    fecha_de_examen: "",
+    profesor: "",
+    estado: "Activo",
+    eliminado: false,
+  });
 
-    })
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setAlumnoData({ ...alumnoData, [name]: value });
+  };
 
-    
-    const handleChange = (event) =>{
-        const {name, value} = event.target
-        setAlumnoData({...alumnoData, [name]:value})
-       
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      register(alumnoData);
+      alert("Alumno creado con éxito");
+      Navigate("/pc_alumnos");
+    } catch (error) {
+      console.error("Error al realizar la solicitud", error);
     }
-    
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            register(alumnoData)
-            alert("Alumno creado con exito")
-            Navigate("/pc_alumnos")
-        } catch (error) {
-            console.error('Error al realizar la solicitud', error)
-        }
-    }
-    return (
-    <div>
-        <Nav/>
-            <div>
-                <form onSubmit={handleSubmit}>
-                    
-                    <input 
-                        className="lg:border-2 lg:border-black lg:rounded-xl"
-                        type='text'
-                        key='nombre'
-                        name='nombre'
-                        value={alumnoData.nombre}
-                        placeholder="Ingrese nombre"
-                        onChange={handleChange}
-                    />
-                    <br />
-                    <input 
-                        className="lg:border-2 lg:border-black lg:rounded-xl"
-                        type='text'
-                        key='apellido'
-                        name='apellido'
-                        value={alumnoData.apellido}
-                        placeholder="Ingrese apellido"
-                        onChange={handleChange}
-                    />
-                    <br />
-                    <input 
-                        className="lg:border-2 lg:border-black lg:rounded-xl"
-                        type='text'
-                        key='imagen'
-                        name='imagen'
-                        value={alumnoData.imagen}
-                        placeholder="Ingrese link de la imagen"
-                        onChange={handleChange}
-                    />
-                    <br />
-                   <p>fecha de nacimiento</p> <input 
-                        className="lg:border-2 lg:border-black lg:rounded-xl"
-                        type='date'
-                        key='fecha_de_nacimiento'
-                        name='fecha_de_nacimiento'
-                        value={alumnoData.fecha_de_nacimiento}
-                        placeholder="Ingresar fecha de nacimiento"
-                        onChange={handleChange}
-                    />
-                    <br />
-                    <input 
-                        className="lg:border-2 lg:border-black lg:rounded-xl"
-                        type='text'
-                        key='escuela'
-                        name='escuela'
-                        value={alumnoData.escuela}
-                        placeholder="Ingrese escuela"
-                        onChange={handleChange}
-                    />
-                    <br />
-                    <input 
-                        className="lg:border-2 lg:border-black lg:rounded-xl"
-                        type='text'
-                        key='graduacion'
-                        name='graduacion'
-                        value={alumnoData.graduacion}
-                        placeholder="Ingrese graduación"
-                        onChange={handleChange}
-                    />
-                    <br />
-                    <input 
-                        className="lg:border-2 lg:border-black lg:rounded-xl"
-                        type='date'
-                        key='fecha_de_examen'
-                        name='fecha_de_examen'
-                        value={alumnoData.fecha_de_examen}
-                        placeholder="Ingrese fecha de examen"
-                        onChange={handleChange}
-                    />
-                    <br />
-                    <input 
-                        className="lg:border-2 lg:border-black lg:rounded-xl"
-                        type='text'
-                        key='profesor'
-                        name='profesor'
-                        value={alumnoData.profesor}
-                        placeholder="Ingrese profesor"
-                        onChange={handleChange}
-                    />
-                    <br />
-                    <input 
-                        className="lg:border-2 lg:border-black lg:rounded-xl"
-                        type='text'
-                        key='estado'
-                        name='estado'
-                        value={alumnoData.estado}
-                        placeholder="Ingrese estado"
-                        onChange={handleChange}
-                    />
-                    <br />
-                    <button className="boton">Crear Alumno</button>
+  };
 
-                </form>
-                <Link to='/pc_alumnos'><button className="boton">🡸 Volver</button></Link>
-            </div>
-        <Footer/>
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Nav />
+      <main className="flex-grow flex justify-center items-center bg-gray-100 px-4 py-10">
+        <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-2xl space-y-6">
+          <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">
+            Crear Nuevo Alumno
+          </h2>
+          
+          <form onSubmit={handleSubmit} className="space-y-4">
+            
+            {[
+              { name: "nombre", placeholder: "Ingrese nombre" },
+              { name: "apellido", placeholder: "Ingrese apellido" },
+              { name: "imagen", placeholder: "Ingrese link de la imagen" },
+              {
+                name: "fecha_de_nacimiento",
+                type: "date",
+                label: "Fecha de nacimiento",
+              },
+              { name: "escuela", placeholder: "Ingrese escuela" },
+              { name: "graduacion", placeholder: "Ingrese graduación" },
+              {
+                name: "fecha_de_examen",
+                type: "date",
+                label: "Fecha de examen",
+              },
+              { name: "profesor", placeholder: "Ingrese profesor" },
+              { name: "estado", placeholder: "Ingrese estado" },
+            ].map((field) => (
+              <div key={field.name}>
+                {field.label && (
+                  <label className="block mb-1 font-semibold text-gray-700">
+                    {field.label}
+                  </label>
+                )}
+
+                <input
+                  className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  type={field.type || "text"}
+                  name={field.name}
+                  value={alumnoData[field.name]}
+                  placeholder={field.placeholder}
+                  onChange={handleChange}
+                />
+              </div>
+            ))}
+
+            <button
+              type="submit"
+              className="w-full py-2 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition">
+              Crear Alumno
+            </button>
+
+          </form>
+          <div className="text-center">
+            <Link to="/pc_alumnos">
+              <button className="mt-4 text-blue-600 hover:underline">
+                🡸 Volver
+              </button>
+            </Link>
+          </div>
+        </div>
+      </main>
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default Newalumno
+export default Newalumno;

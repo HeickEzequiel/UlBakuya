@@ -1,5 +1,5 @@
 import { AdvancedImage } from "@cloudinary/react"
-import { fondoverdeazul, gyeomson, pilsung, ubk, ubuntu } from "../../config/cloudinary"
+import { gyeomson, pilsung, ubk, ubuntu } from "../../config/cloudinary"
 
 function Body() {
   const items = [
@@ -11,7 +11,7 @@ function Body() {
 
   return (
     <div className="bg-transparent">
-        <div className="flex justify-center gap-6 py-8 px-32 mt-24 mx-20 border-2 border-gray-300 rounded-lg shadow-lgs bg-white ">
+        <div className="flex justify-center gap-6 py-8 px-32 mt-24 mx-20 border-2  border-gray-300 rounded-lg shadow-lgs bg-white ">
             {items.map((item, index) => (
             <div
                 key={index}

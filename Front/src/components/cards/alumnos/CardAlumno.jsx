@@ -1,15 +1,15 @@
 function CardAlumno(props) {
   const graduacionColor = {
     blanca: 'border-gray-300',
-    puntaamarilla:"border-gray-300 outline-2 outline-offset-2 outline-yellow-400",
+    blancopuntaamarilla:"border-gray-300 outline-2 outline-offset-2 outline-yellow-400",
     amarilla: 'border-yellow-400',
-    puntaverde:"border-yellow-400 outline-2 outline-offset-2 outline-green-500",
+    amarillopuntaverde:"border-yellow-400 outline-2 outline-offset-2 outline-green-500",
     verde: 'border-green-500',
-    puntaazul:"border-green-500 outline-2 outline-offset-2 outline-blue-500",
+    verdepuntaazul:"border-green-500 outline-2 outline-offset-2 outline-blue-500",
     azul: 'border-blue-500',
-    puntaroja:"border-blue-500 outline-2 outline-offset-2 border-blue-500",
+    azulpuntaroja:"border-blue-500 outline-2 outline-offset-2 border-blue-500",
     roja: 'border-red-500',
-    puntanegra:"border-red-500 outline-2 outline-offset-2 border-red-500",
+    rojopuntanegra:"border-red-500 outline-2 outline-offset-2 border-red-500",
     negra: 'border-black'
   };
 

@@ -37,7 +37,7 @@ function UserUpdate() {
     if(!isLogged){
         return <p>Debes iniciar sesion como administrador</p>
     }
-console.log(userData)
+
     const updateUser = async (userData) =>{
         try{
             const response = await api.put(`/updateuser/${id}`, userData,{
@@ -79,124 +79,63 @@ console.log(userData)
         <UserNav/>
         <div>
             <CardImagen imagen = {usuario.imagen}/>
-            <form onSubmit={handleSubmit}>
-                <p>Ingrese link de la imagen:</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="imagen"
-                    name="imagen"
-                    value={userData.imagen}
-                    placeholder= "ingrese link de la imagen"
-                    onChange={handleChange} />
-                    <br />
-                <p>Nombre:</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="nombre"
-                    name="nombre"
-                    value={userData.nombre}
-                    placeholder={usuario.nombre}
-                    onChange={handleChange} />
-                    <br />
-                <p>Apellido</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="apellido"
-                    name="apellido"
-                    value={userData.apellido}
-                    placeholder={usuario.apellido}
-                    onChange={handleChange} />
-                    <br />
-                <p>Fecha de nacimiento</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="fecha_de_nacimiento"
-                    name="fecha_de_nacimiento"
-                    value={userData.fecha_de_nacimiento}
-                    placeholder={usuario.fecha_de_nacimiento}
-                    onChange={handleChange} />
-                    <br />
-                <p>Telefono:</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="tel"
-                    name="tel"
-                    value={userData.tel}
-                    placeholder={usuario.tel}
-                    onChange={handleChange} />
-                    <br />
-                <p>password:</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="password"
-                    name="password"
-                    value={userData.password}
-                    placeholder={usuario.password}
-                    onChange={handleChange} />
-                    <br />
-                <p>nivel:</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="nivel"
-                    name="nivel"
-                    value={userData.nivel}
-                    placeholder={usuario.nivel}
-                    onChange={handleChange} />
-                    <br />
-                <p>Escuela:</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="escuela"
-                    name="escuela"
-                    value={userData.escuela}
-                    placeholder={usuario.escuela}
-                    onChange={handleChange} />
-                    <br />
-                <p>Profesor:</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="profesor"
-                    name="profesor"
-                    value={userData.profesor}
-                    placeholder={usuario.profesor}
-                    onChange={handleChange} />
-                    <br />
-                    
-                <p>Graduaciòn:</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="graduacion"
-                    name="graduacion"
-                    value={userData.graduacion}
-                    placeholder={usuario.graduacion}
-                    onChange={handleChange} />
-                    <br />
-                <p>Fecha de examen:</p>
-                <input
-                    className="lg:border-2 lg:border-black lg:rounded-xl" 
-                    type="text"
-                    key="fecha_de_examen"
-                    name="fecha_de_examen"
-                    value={userData.fecha_de_examen}
-                    placeholder={usuario.fecha_de_examen}
-                    onChange={handleChange} />
-                    <br />
-                
-                <button className="boton">Actualizar Usuario</button>
-            </form>
-            <Link to='/pc_usuarios'><button className="boton">🡸 Volver</button></Link>
-        </div>
-        <Footer/>
+            <form 
+          onSubmit={handleSubmit}
+          className="max-w-2xl mx-auto p-6 bg-white shadow-xl rounded-2xl space-y-6 mt-8"
+          >
+              <h1 className="text-2xl font-bold text-gray-800 text-center">Editar Escuela</h1>
+              {[
+                  {label:"Link de imagen", name:"imagen", placeholder:"Ingrese link de la imagen"},
+                  {label:"Nombre", name:"nombre", placeholder: usuario.nombre},
+                  {label:"Apellido", name:"apellido", placeholder: usuario.apellido},
+                  {label:"Fecha_de_nacimiento", name:"fecha_de_nacimiento", placeholder: usuario.fecha_de_nacimiento},
+                  {label:"Telefono", name:"tel", placeholder: usuario.tel},
+                  {label:"Password", name:"password", placeholder: usuario.password},
+                  {label:"Nivel", name:"nivel", placeholder: usuario.nivel},
+                  {label:"Escuela", name:"escuela", placeholder: usuario.escuela},
+                  {label:"Graduacion", name:"graduacion", placeholder: usuario.graduacion},
+                  {label:"Fecha_de_examen", name:"fecha_de_examen", placeholder: usuario.fecha_de_examen},
+                  {label:"Profesor", name:"profesor", placeholder: usuario.profesor},
+              ].map(({label, name, placeholder}) =>(
+                  <div key={name}>
+                      <label htmlFor={name} className='block text-sm font-medium text-gray-700 mb-1'>
+                          {label}
+                      </label>
+                      <input
+                          type='text'
+                          id={name}
+                          name={name}
+                          value={userData[name]}
+                          onChange={handleChange}
+                          placeholder={placeholder}
+                          className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                  </div>
+              ))}
+              <div className="flex justify-between items-center">
+                  <button 
+                  type="submit" 
+                  className="bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                      Actualizar Usuario
+                  </button>
+                  <Link to='/pc_usuarios'>
+                      <button 
+                      type="button"
+                      className="bg-gray-300 text-gray-800 font-semibold px-6 py-2 rounded-lg hover:bg-gray-400 transition">
+                          🡸 Volver
+                      </button>
+                  </Link>
+              </div>
+          </form>
+          <Link to='/pc_usuarios'>
+              <button 
+              type="button"
+              className="bg-gray-300 text-gray-800 font-semibold px-6 py-2 rounded-lg hover:bg-gray-400 transition">
+                  🡸 Volver
+              </button>
+          </Link>
+      </div>
+      <Footer/>
 
     </div>
   )

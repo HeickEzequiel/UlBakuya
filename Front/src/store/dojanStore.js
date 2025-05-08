@@ -10,6 +10,7 @@ const dojanStore = create((set)=>{
         return{
             dojan:{
                 club:"",
+                escuela:"",
                 direccion:"",
                 imagen:"",
                 tel:"",

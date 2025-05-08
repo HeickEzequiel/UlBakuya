@@ -5,20 +5,26 @@ const updateDojan = async (req, res) => {
         const { id } = req.params;
         const {
             club,
+            escuela,
             direccion,
             imagen,
             tel,
             profesor,
             horarios,
+            estado,
+            eliminado
         } = req.body;
 
         const newData = {
             club,
             direccion,
+            escuela,
             imagen,
             tel,
             profesor,
             horarios,
+            estado,
+            eliminado
         };
 
         let updateFields = [];

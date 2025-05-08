@@ -10,6 +10,7 @@ const eventoStore = create((set)=>{
         return{
             evento:{
                 tipo_de_evento:"",
+                fecha_del_evento:"",
                 horarios:"",
                 club:"",
                 direccion:"",

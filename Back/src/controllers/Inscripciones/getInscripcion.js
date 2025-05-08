@@ -11,6 +11,7 @@ const getInscripcion = async (req, res) =>{
             edad: oneInscripcionDB.edad,
             altura: oneInscripcionDB.altura,
             peso: oneInscripcionDB.peso,
+            escuela: oneInscripcionDB.escuela,
             graduacion_actual: oneInscripcionDB.graduacion_actual,
             proxima_graduacion: oneInscripcionDB.proxima_graduacion,
             imagen: oneInscripcionDB.imagen,
