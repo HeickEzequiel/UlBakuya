@@ -36,6 +36,10 @@ module.exports = (sequelize) =>{
             type: DataTypes.STRING,
             allowNull:false
         },
+        escuela:{
+            type: DataTypes.STRING,
+            allowNull:false
+        },
         graduacion_actual:{
             type: DataTypes.STRING,
             allowNull:false

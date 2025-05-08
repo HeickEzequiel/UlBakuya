@@ -4,12 +4,11 @@ function CardProfes (props){
         <div className="bg-white shadow-md rounded-lg overflow-hidden mb-4 border border-gray-300">
           <div className="flex flex-col lg:flex-row items-center p-6">
             <div className="flex-1 mb-4 lg:mb-0">
-              <p className="celda">{props.nombre}</p>
-              <p className="celda">{props.apellido}</p>
-              <p className="celda">{props.escuela}</p>
-              <p className="celda">{props.graduacion}</p>
-              <p className="celda">{props.instructor_mayor}</p>
-              <p className="celda">{props.estado}</p>
+              <p className="text-lg font-semibold text-gray-800">{props.nombre} {props.apellido}</p>
+              <p className="text-sm text-gray-600">Escuela: {props.escuela}</p>
+              <p className="text-sm text-gray-600">Graduacion: {props.graduacion}</p>
+              <p className="text-sm text-gray-600">Instructor mayor: {props.instructor_mayor}</p>
+              <p className="text-sm text-gray-600">Estado: {props.estado}</p>
             </div>
             <div className="flex flex-wrap gap-4">
               <Link to={`/profesor/${props.id}`}> 

@@ -21,18 +21,24 @@ function Escuelas_PC() {
   }
   
   if(error){
-    error.response.status===404 ? 
-      <div> 
-        <Nav/> 
-        <Link to='/newescuela'><button className="mb-4 bg-blue-500 hover:bg-blue-600 text-white px-6 py-6 rounded-lg shadow-md transition">Agregar Escuela</button></Link>
-        <p className="text-gray-700">No existen escuelas cargadas por favor ingresar la primera</p>
-        <Footer/>
-      </div>:
+    return (
       <div>
-        <Nav/>
-        <div>Error: {error.message}</div>
-        <Footer/>
+        <Nav />
+        {error.response.status === 404 ? (
+          <div className="text-center py-12">
+            <Link to='/newescuela'>
+              <button className="mb-4 bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md transition">Agregar Escuela</button>
+            </Link>
+            <p className="text-gray-700">No existen escuelas cargadas, por favor ingresa la primera.</p>
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <div>Error: {error.message}</div>
+          </div>
+        )}
+        <Footer />
       </div>
+    );
   }
 
   return (

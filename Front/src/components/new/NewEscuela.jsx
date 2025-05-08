@@ -12,7 +12,8 @@ function NewEscuela(props) {
         imagen:"",
         director:"",
         dojan:"",
-        eliminado:false
+        estado:"Activo",
+        eliminado: false
     })
 
     
@@ -21,11 +22,22 @@ function NewEscuela(props) {
         setEscuelaData({...escuelaData, [name]:value})
        
     }
-    
+    console.log(escuelaData)
     const handleSubmit = async (event) => {
         event.preventDefault();
+
         try {
-            register(escuelaData)
+            
+            // convierte los strings ingresados con , en un array para que la BD lo pueda guardar
+            const payload = {
+                ...escuelaData,
+                dojan: escuelaData.dojan
+                  .split(",")
+                  .map((d) => d.trim())
+                  .filter((d) => d.length > 0), 
+            };
+
+            register(payload)
             alert("Escuela creada con exito")
             Navigate("/pc_escuelas")
         } catch (error) {
@@ -33,58 +45,58 @@ function NewEscuela(props) {
         }
     }
     return (
-    <div>
+    <div className="min-h-screen flex flex-col">
         <Nav/>
-            <div>
-                <form onSubmit={handleSubmit}>
-                    
-                    <input 
-                        className="lg:border-2 lg:border-black lg:rounded-xl"
-                        type='text'
-                        key='nombre'
-                        name='nombre'
-                        value={escuelaData.nombre}
-                        placeholder="Ingrese nombre"
-                        onChange={handleChange}
-                    />
-                    <br />
-                    <input 
-                        className="lg:border-2 lg:border-black lg:rounded-xl"
-                        type='text'
-                        key='imagen'
-                        name='imagen'
-                        value={escuelaData.imagen}
-                        placeholder="Ingrese link de la imagen"
-                        onChange={handleChange}
-                    />
-                    <br />
-                    <input 
-                        className="lg:border-2 lg:border-black lg:rounded-xl"
-                        type='text'
-                        key='director'
-                        name='director'
-                        value={escuelaData.director}
-                        placeholder="Ingrese el director"
-                        onChange={handleChange}
-                    />
-                    <br />
-                   
-                    <input 
-                        className="lg:border-2 lg:border-black lg:rounded-xl"
-                        type='text'
-                        key='dojan'
-                        name='dojan'
-                        value={escuelaData.dojan}
-                        placeholder="Ingrese dojan"
-                        onChange={handleChange}
-                    />
-                    <br />
-                    
-                    <button className="boton">Crear Escuela</button>
+        <main className="flew-grow flex justify-center items-center bg-gray-100 px-4 py-10">
+            <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-2xl space-y-6">
+                <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">
+                    Crear Nueva Escuela
+                </h1>
 
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    {[
+                        {name:"nombre", placeholder:"Ingrese nombre"},
+                        {name:"director", placeholder:"Ingrese Director"},
+                        {name:"dojan", placeholder:"Ingrese dojan"},
+                        {name:"imagen", placeholder:"Ingrese link de la imagen"},
+                        {name:"estado", placeholder:"Ingrese estado"}
+                    ].map((field) =>(
+                        <div key={field.name}>
+                            {field.label && (
+                                <label className="block mb-1 font-semibold text-gray-700">
+                                    {field.label}
+                                </label>
+                            )}
+
+                            <input
+                                className="w-full px-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                type={field.type || "text"}
+                                name={field.name}
+                                value={escuelaData[field.name]}
+                                placeholder={field.placeholder}
+                                onChange={handleChange}
+                            />
+                        </div>
+                    ))}
+
+                    <button
+                        type="submit"
+                        className="w-full py-2 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition">
+                            Crear Escuela
+                    </button>
                 </form>
-                <Link to='/pc_escuelas'><button className="boton">🡸 Volver</button></Link>
+
+                <div className="text-center">
+                    <Link to="/pc_escuelas">
+                        <button className="mt-4 text-blue-600 hover:underline">
+                        🡸 Volver 
+                        </button>
+                    </Link>
+                </div>
             </div>
+
+        </main>
+            
         <Footer/>
     </div>
   )

@@ -6,7 +6,7 @@ import userStore from "../../../store/loginStore"
 import { useFetchInscripciones } from "../../../hooks/useInscripciones"
 import CardInscripciones from "../../cards/inscripciones/CardInscripciones"
 
-function Examenes_PC() {
+function Inscripciones_PC() {
   const { data:inscripciones, isLoading, error} = useFetchInscripciones()
   const { isLogged, user } = userStore()
 
@@ -76,6 +76,7 @@ function Examenes_PC() {
                       edad={inscripcion.edad}
                       altura={inscripcion.altura}
                       peso={inscripcion.peso}
+                      escuela={inscripcion.escuela}
                       graduacion_actual={inscripcion.graduacion_actual}
                       proxima_graduacion={inscripcion.proxima_graduacion}
                       imagen={inscripcion.imagen}
@@ -92,4 +93,4 @@ function Examenes_PC() {
   )
 }
 
-export default Examenes_PC
+export default Inscripciones_PC

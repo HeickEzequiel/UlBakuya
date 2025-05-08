@@ -27,7 +27,7 @@ function Profesores_PC() {
             {error.response.status === 404 ? (
               <div className="text-center py-12">
                 <Link to='/newprofesor'>
-                  <button className="boton mb-4 bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md transition">Agregar Alumno</button>
+                  <button className="boton mb-4 bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md transition">Agregar Profesor</button>
                 </Link>
                 <p className="text-gray-700">No existen profesores cargados, por favor ingresa el primero.</p>
               </div>

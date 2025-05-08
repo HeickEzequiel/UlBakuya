@@ -6,6 +6,7 @@ const updateEvento = async (req, res) =>{
         const { id } = req.params
         const {
             tipo_de_evento,
+            fecha_del_evento,
             horarios,
             club,
             direccion,
@@ -14,6 +15,7 @@ const updateEvento = async (req, res) =>{
 
         const newData = {
             tipo_de_evento,
+            fecha_del_evento,
             horarios,
             club,
             direccion,

@@ -6,6 +6,7 @@ const getEvento = async (req, res) =>{
         const oneEvento = {
             id: oneEventoDB.id,
             tipo_de_evento: oneEventoDB.tipo_de_evento,
+            fecha_del_evento: oneEventoDB.fecha_del_evento,
             horarios: oneEventoDB.horarios,
             club: oneEventoDB.club,
             direccion: oneEventoDB.direccion,
