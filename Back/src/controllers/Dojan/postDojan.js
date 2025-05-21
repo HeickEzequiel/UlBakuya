@@ -1,11 +1,12 @@
 const { Dojan } = require("../../db.js");
 
 const postDojan = async(req, res) =>{
+   console.log(req.body)
     try{
         const {
             club,
-            direccion,
             escuela,
+            direccion,
             imagen,
             tel,
             profesor,
@@ -18,8 +19,8 @@ const postDojan = async(req, res) =>{
             const newDojan = await Dojan.findOrCreate({
                 where:{
                     club,
-                    direccion,
                     escuela,
+                    direccion,
                     imagen,
                     tel,
                     profesor,

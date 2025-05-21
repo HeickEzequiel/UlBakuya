@@ -4,7 +4,7 @@ import Nav from '../../nav/Nav'
 import UserNav from '../../usernav/UserNav'
 import Footer from '../../footer/Footer'
 import { Link } from 'react-router-dom'
-import CardDojanes_PC from '../../cards/dojan/CardDojanes_PC'
+import CardDojanes from '../../cards/dojan/CardDojanes'
 
 function Dojanes_PC() {
   const { data: dojanes, isLoading, error } = useFetchDojanes()
@@ -67,7 +67,7 @@ function Dojanes_PC() {
               <div className='min-w-full table-auto border-collapse border border-gray-300 mb-8'>
                   {dojanes && dojanes.map((dojan, key) =>
                   !dojan.eliminado && (
-                    <CardDojanes_PC
+                    <CardDojanes
                       key={key}
                       id={dojan.id}
                       imagen={dojan.imagen}

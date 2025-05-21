@@ -4,7 +4,7 @@ import userStore from "../../../store/loginStore";
 import Footer from "../../footer/Footer";
 import Nav from "../../nav/Nav";
 import UserNav from "../../usernav/UserNav";
-import CardEventos_PC from "../../cards/eventos/CardEventos_PC";
+import CardEventos from "../../cards/eventos/CardEventos";
 
 function Eventos_PC() {
     const { data: eventos, isLoading, error } = useFetchEventos()
@@ -67,7 +67,7 @@ function Eventos_PC() {
                 <div className='min-w-full table-auto border-collapse border border-gray-300 mb-8'>
                     {eventos && eventos.map((evento, key) =>
                     !evento.eliminado && (
-                      <CardEventos_PC
+                      <CardEventos
                         key={key}
                         id={evento.id}
                         tipo_de_evento={evento.tipo_de_evento}

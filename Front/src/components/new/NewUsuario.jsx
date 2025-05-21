@@ -3,11 +3,12 @@ import userStore from "../../store/loginStore";
 import { useState } from "react";
 import Nav from "../nav/Nav";
 import Footer from "../footer/Footer";
+import usuarioStore from "../../store/usuarioStore";
 
 function NewUsuario() {
   const Navigate = useNavigate();
-  const { register } = userStore();
-  const [userData, setuserData] = useState({
+  const { register } = usuarioStore();
+  const [userData, setUserData] = useState({
     nombre: "",
     apellido: "",
     fecha_de_nacimiento: "",
@@ -26,7 +27,7 @@ function NewUsuario() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setAlumnoData({ ...userData, [name]: value });
+    setUserData({ ...userData, [name]: value });
   };
 
   const handleSubmit = async (event) => {
@@ -59,7 +60,7 @@ function NewUsuario() {
                 type: "date",
                 label: "Fecha de nacimiento",
               },
-              { name: "telefono", placeholder: "Ingrese numero de telefono" },
+              { name: "tel", placeholder: "Ingrese numero de telefono" },
               { name: "email", placeholder: "Ingrese correo electronico" },
               { name: "password", placeholder: "Ingrese contraseña" },
               { name: "nivel", placeholder: "Ingrese nivel" },

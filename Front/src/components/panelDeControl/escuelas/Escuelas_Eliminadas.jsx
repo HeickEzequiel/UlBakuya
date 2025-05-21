@@ -37,25 +37,28 @@ function Escuelas_Eliminadas (){
                         <UserNav/>
                         <div className="min-h-screen">
                         <Link to='/pc_escuelas'><button className="boton">🡸 Volver</button></Link>
-                            <table className="lg:relative lg:top-24 lg:left-24 lg:border-collapse lg:border-2 lg:border-black">
+                        <div className="px-6 py-4">
+                            <table className=" border-collapse border border-gray-300 shadow-md rounded-md overflow-hidden">
                                 <thead>
-                                    <tr>
-                                        <th className="celda bg-sky-500">Nombre</th>
-                                        <th className="celda bg-sky-500">Director</th>
-                                        <th className="celda bg-sky-500">Dojan</th>
+                                    <tr className="even:bg-gray-100 hover:bg-gray-200 transition-colors">
+                                        <th className="px-2 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Nombre</th>
+                                        <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Director</th>
+                                        <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Dojang</th>
+                                        <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Estado</th>
                                     </tr>
                                 </thead>
                             </table>
+                        </div>
                             {escuelas ? 
                                 escuelas.map((escuela, key)=>( escuela.eliminado===true ?
                                     <CardEscuelasEliminadas
                                         key={key}
-                                        id={alumno.id}
+                                        id={escuela.id}
                                         nombre={escuela.nombre}
                                         director={escuela.director}
                                         dojan={escuela.dojan}
-                                        estado={alumno.estado}
-                                        eliminado={alumno.eliminado}
+                                        estado={escuela.estado}
+                                        eliminado={escuela.eliminado}
                                     />:null
                                 )):null
                             }
