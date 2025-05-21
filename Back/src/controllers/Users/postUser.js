@@ -1,6 +1,7 @@
 const { Usuario } = require("../../db.js");
 
 const postUser = async (req, res) => {
+    console.log(req.body)
     try{
     const { nombre, apellido, fecha_de_nacimiento, tel, email, password, nivel, imagen, escuela, profesor, graduacion, fecha_de_examen} = req.body;
     if( nombre && apellido && fecha_de_nacimiento && tel && email && password){

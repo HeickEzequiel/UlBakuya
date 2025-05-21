@@ -27,7 +27,16 @@ function NewDojan() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      register(dojanData);
+      
+      const payload = {
+      ...dojanData,
+      profesor: dojanData.profesor
+      .split(",")
+      .map((d) => d.trim())
+      .filter((d) => d.length > 0), 
+      };
+
+      register(payload);
       alert("Dojan creado con éxito");
       Navigate("/pc_dojanes");
     } catch (error) {

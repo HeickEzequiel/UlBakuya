@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import api from "../../../api/ubk"
 
-function CardEventosEliminados() {
+function CardEventosEliminados(props) {
     const id = props.id
     const navigate = useNavigate()
     
