@@ -74,9 +74,9 @@ function DojanesUpdate() {
             <h1 className="text-2xl font-bold text-gray-800 text-center">Editar Dojan</h1>
 
             {[
-              {label:"Link de la imagen", name:"imagen", placeholder:"Ingrese link de la imagen"},
               {label:"Club", name:"club", placeholder: dojan.club},
               {label:"Direccion", name:"direccion", placeholder: dojan.direccion},
+              {label:"Link de la imagen", name:"imagen", placeholder:"Ingrese link de la imagen"},
               {label:"Telefono", name:"tel", placeholder: dojan.tel},
               {label:"Profesor", name:"profesor", placeholder: dojan.profesor},
               {label:"Horarios", name:"horarios", placeholder: dojan.horarios},
@@ -88,6 +88,7 @@ function DojanesUpdate() {
               <input
                 type="text"
                 id={name}
+                name={name}
                 value={dojanData[name]}
                 onChange={handleChange}
                 placeholder={placeholder}

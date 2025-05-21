@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
 function CardDojanes(props) {
@@ -6,15 +5,10 @@ function CardDojanes(props) {
     <div className="bg-white shadow-md rounded-lg overflow-hidden mb-4 border border-gray-300">
       <div className='flex flex-col lg:flow-row items-center p-6'>
         <div className="flex-1 mb-4 lg:mb-0">
-          <img
-            src={props.imagen}
-            alt={`Imagen del club ${props.club}`}
-            className="w-full h-48 object-cover rounded-xl border border-black mb-4"
-          />
           <p className="text-lg font-semibold text-gray-800">{props.club}</p>
           <p className="text-sm text-gray-600">Dirección: {props.direccion}</p>
           <p className="text-sm text-gray-600">Horarios: {props.horarios}</p>
-          <p className="text-sm text-gray-600">Profesores: {props.profesores}</p>
+          <p className="text-sm text-gray-600">Profesores: {props.profesor}</p>
         </div>
 
         <div className="flex flex-wrap gap-4">

@@ -83,7 +83,7 @@ function UserUpdate() {
           onSubmit={handleSubmit}
           className="max-w-2xl mx-auto p-6 bg-white shadow-xl rounded-2xl space-y-6 mt-8"
           >
-              <h1 className="text-2xl font-bold text-gray-800 text-center">Editar Escuela</h1>
+              <h1 className="text-2xl font-bold text-gray-800 text-center">Editar Usuario</h1>
               {[
                   {label:"Link de imagen", name:"imagen", placeholder:"Ingrese link de la imagen"},
                   {label:"Nombre", name:"nombre", placeholder: usuario.nombre},
