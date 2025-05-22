@@ -31,7 +31,7 @@ function EventoDetail() {
                     <CardEvento
                     tipo_de_evento={evento.tipo_de_evento}
                     fecha_del_evento={evento.fecha_del_evento}
-                    horario={evento.horario}
+                    horarios={evento.horarios}
                     club={evento.club}
                     direccion={evento.direccion}
                     imagen={evento.imagen}
