@@ -37,21 +37,18 @@ function Inscripciones_Eliminadas (){
                         <UserNav/>
                         <div className="min-h-screen my-10">
                         <Link to='/pc_inscripciones'><button className="my-10 ml-10">🡸 Volver</button></Link>
-                        <div className="px-6 py-4">
+                        <div className="px-4 py-4">
                             <table className=" border-collapse border border-gray-300 shadow-md rounded-md overflow-hidden">
                                 <thead>
                                     <tr className="even:bg-gray-100 hover:bg-gray-200 transition-colors">
-                                        <th className="px-2 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Tipo de evento</th>
-                                        <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Horario</th>
-                                        <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Nombre</th>
-                                        <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Apellido</th>
-                                        <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Edad</th>
-                                        <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Altura</th>
-                                        <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Peso</th>
-                                        <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Escuela</th>
-                                        <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Graduacion Actual</th>
-                                        <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Proxima Graduacion</th>
-                                        <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Imagen</th>
+                                        <th className="px-2 py-2 w-40 border border-gray-300 text-sm bg-sky-500">Tipo de evento</th>
+                                        <th className="px-2 py-2 w-40 border border-gray-300 text-sm bg-sky-500">Horario</th>
+                                        <th className="px-2 py-2 w-40 border border-gray-300 text-sm bg-sky-500">Nombre</th>
+                                        <th className="px-2 py-2 w-40 border border-gray-300 text-sm bg-sky-500">Apellido</th>
+                                        <th className="px-2 py-2 w-40 border border-gray-300 text-sm bg-sky-500">Escuela</th>
+                                        <th className="px-2 py-2 w-40 border border-gray-300 text-sm bg-sky-500">Profesor</th>
+                                        <th className="px-2 py-2 w-40 border border-gray-300 text-sm bg-sky-500">Graduacion Actual</th>
+                                        <th className="px-2 py-2 w-40 border border-gray-300 text-sm bg-sky-500">Proxima Graduacion</th>
                                         
                                     </tr>
                                 </thead>
@@ -66,13 +63,10 @@ function Inscripciones_Eliminadas (){
                                     horarios={inscripcion.horarios}
                                     nombre={inscripcion.nombre}
                                     apellido={inscripcion.apellido}
-                                    edad={inscripcion.edad}
-                                    altura={inscripcion.altura}
-                                    peso={inscripcion.peso}
                                     escuela={inscripcion.escuela}
+                                    profesor={inscripcion.profesor}
                                     graduacion_actual={inscripcion.graduacion_actual}
                                     proxima_graduacion={inscripcion.proxima_graduacion}
-                                    imagen={inscripcion.imagen}
                                     estado={inscripcion.estado}
                                     eliminado={inscripcion.eliminado}
                                     />:null

@@ -18,6 +18,7 @@ function Eventos_PC() {
         </div>
       )
     }
+    console.log(eventos.eliminado)
     if(error){
       return(
       <div> 
@@ -75,9 +76,9 @@ function Eventos_PC() {
                         horarios={evento.horarios}
                         club={evento.club}
                         direccion={evento.direccion}
-                        imagen={dojan.imagen}
-                        estado={dojan.estado}
-                        eliminado={dojan.eliminado}
+                        imagen={evento.imagen}
+                        estado={evento.estado}
+                        eliminado={evento.eliminado}
                       />
                     )
                     )}

@@ -20,7 +20,7 @@ function InscripcionDetail() {
     if(!isLogged){
         return <p>Debes iniciar sesion como administrador</p>
     }
-
+console.log(inscripcion.imagen, inscripcion.horarios)
     return (
         <div>
             <Nav/>
@@ -31,7 +31,7 @@ function InscripcionDetail() {
                     <CardInscripcion
                     tipo_de_evento={inscripcion.tipo_de_evento}
                     fecha_del_evento={inscripcion.fecha_del_evento}
-                    horario={inscripcion.horario}
+                    horarios={inscripcion.horarios}
                     nombre={inscripcion.nombre} 
                     apellido={inscripcion.apellido}
                     edad={inscripcion.edad}

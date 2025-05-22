@@ -5,7 +5,7 @@ export function useFetchEventos(){
     return useQuery({
         queryKey: ['eventos'],
         queryFn: async function fetchEvento() {
-            const { data } = await api.get('/evento')
+            const { data } = await api.get('/eventos')
             return data
         }
     })

@@ -47,6 +47,15 @@ import Inscripciones from './components/inscripciones/Inscripciones'
 import Inscripciones_PC from './components/paneldecontrol/inscripciones/Inscripciones_PC'
 import DeleteInscripciones from './components/delete/DeleteInscripciones'
 import Eventos_PC from './components/paneldecontrol/eventos/Eventos_PC'
+import NewInscripcion from './components/new/NewInscripcion'
+import InscripcionDetail from './components/details/InscripcionDetail'
+import InscripcionUpdate from './components/update/InscripcionUpdate'
+import Inscripciones_Eliminadas from './components/paneldecontrol/inscripciones/Inscripciones_Eliminadas'
+import Eventos_Eliminados from './components/paneldecontrol/eventos/Eventos_Eliminados'
+import EventoDetail from './components/details/EventoDetail'
+import DeleteEvento from './components/delete/DeleteEvento'
+import EventoUpdate from './components/update/EventoUpdate'
+import NewEvento from './components/new/NewEvento'
 function App() {
 
   return (
@@ -72,12 +81,16 @@ function App() {
         <Route path='/newprofesor' element={<NewProfesor/>}/>
         <Route path='/newdojan' element={<NewDojan/>}/>
         <Route path='/newescuela' element={<NewEscuela/>}/>
+        <Route path='/newinscripcion' element={<NewInscripcion/>}/>
+        <Route path='/newevento' element={<NewEvento/>}/>
 
         <Route path='/updatealumno/:id' element={<AlumnoUpdate/>}/>
         <Route path='/updateuser/:id' element={<UserUpdate/>}/>
         <Route path='/updateprofesor/:id' element={<ProfesorUpdate/>}/>
         <Route path='/updatedojan/:id' element={<DojanesUpdate/>}/>
         <Route path='/updateescuela/:id' element={<EscuelaUpdate/>}/>
+        <Route path='/updateinscripcion/:id' element={<InscripcionUpdate/>}/>
+        <Route path='/updateevento/:id' element={<EventoUpdate/>}/>
         
         <Route path='/deletealumno/:id' element={<DeleteAlumno/>}/>
         <Route path='/deleteprofesor/:id' element={<DeleteProfesor/>}/>
@@ -85,6 +98,7 @@ function App() {
         <Route path='/deletedojan/:id' element={<DeleteDojan/>}/>
         <Route path='/deleteescuela/:id' element={<DeleteEscuela/>}/>
         <Route path='/deleteinscripcion/:id' element={<DeleteInscripciones/>}/>
+        <Route path='/deleteevento/:id' element={<DeleteEvento/>}/>
 
         <Route path='/pc_alumnos' element={<Alumnos_PC/>}/>
         <Route path='/pc_usuarios' element={<Usuarios_PC/>}/>
@@ -99,12 +113,16 @@ function App() {
         <Route path='/profesores_eliminados' element={<Profesores_Eliminados/>}/>
         <Route path='/dojanes_eliminados' element={<Dojanes_Eliminados/>}/>
         <Route path='/escuelas_eliminados' element={<Escuelas_Eliminadas/>}/>
+        <Route path='/inscripciones_eliminados' element={<Inscripciones_Eliminadas/>}/>
+        <Route path='/eventos_eliminados' element={<Eventos_Eliminados/>}/>
 
         <Route path='/alumno/:id' element={<AlumnoDetail/>}/>
         <Route path='/user/:id' element={<UserDetail/>}/>
         <Route path='/profesor/:id' element={<ProfesorDetail/>}/>
         <Route path='/dojan/:id' element={<DojanDetail/>}/>
         <Route path='/escuelas/:id' element={<EscuelaDetail/>}/>
+        <Route path='/inscripcion/:id' element={<InscripcionDetail/>}/>
+        <Route path='/evento/:id' element={<EventoDetail/>}/>
 
         <Route path='/Inscripciones' element={<Inscripciones/>}/>
       </Routes>

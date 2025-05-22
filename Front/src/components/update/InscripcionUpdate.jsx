@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import userStore from "../../store/loginStore"
 import { useFetchInscripcion } from "../../hooks/useInscripciones"
 import { useState } from "react"
@@ -6,6 +6,7 @@ import Nav from "../nav/Nav"
 import UserNav from "../usernav/UserNav"
 import CardImagen from "../cards/CardImagen"
 import Footer from "../footer/Footer"
+import api from "../../api/ubk"
 
 function InscripcionUpdate() {
   const isLogged = userStore((state)=>state.isLogged)
@@ -89,7 +90,7 @@ function InscripcionUpdate() {
                     {label:"Imagen", name:"imagen", placeholder: inscripcion.imagen},
                     {label:"Tipo de evento", name:"tipo_de_evento", placeholder: inscripcion.tipo_de_evento},
                     {label:"Fecha del evento", name:"fecha_del_evento", placeholder: inscripcion.fecha_del_evento},
-                    {label:"Horarios", name:"horarios", placeholder: inscripcion.horarios},
+                    {label:"Horarios", name:"horario", placeholder: inscripcion.horarios},
                     {label:"Nombre", name:"nombre", placeholder: inscripcion.nombre},
                     {label:"Apellido", name:"apellido", placeholder: inscripcion.apellido},
                     {label:"Edad", name:"edad", placeholder: inscripcion.edad},

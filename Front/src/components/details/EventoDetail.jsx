@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import userStore from "../../store/loginStore"
 import { useFetchEvento } from "../../hooks/useEventos"
 import Nav from "../nav/Nav"

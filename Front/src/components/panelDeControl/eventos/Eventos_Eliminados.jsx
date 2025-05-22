@@ -55,14 +55,14 @@ function Eventos_Eliminados() {
                                 eventos.map((evento, key)=>( evento.eliminado===true ?
                                     <CardEventosEliminados
                                         key={key}
-                                        id={alumno.id}
+                                        id={evento.id}
                                         tipo_de_evento={evento.tipo_de_evento}
                                         fecha_del_evento={evento.fecha_del_evento}
                                         horarios={evento.horarios}
                                         club={evento.club}
                                         direccion={evento.direccion}
-                                        estado={alumno.estado}
-                                        eliminado={alumno.eliminado}
+                                        estado={evento.estado}
+                                        eliminado={evento.eliminado}
                                     />:null
                                 )):null
                             }
