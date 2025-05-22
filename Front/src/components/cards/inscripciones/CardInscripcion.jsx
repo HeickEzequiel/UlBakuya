@@ -3,7 +3,7 @@ function CardInscripcion(props) {
         <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 w-full max-w-xl mx-auto hover:shadow-xl transition-shadow">
           <img
             src={props.imagen}
-            alt="Foto del evento"
+            alt="Foto"
             className="w-full h-64 object-contain rounded-xl border border-black mb-6"
           />
           <h1 className="text-2xl font-bold text-gray-800 mb-2">
@@ -16,7 +16,7 @@ function CardInscripcion(props) {
           <p className="text-gray-600 mb-1"><span className="font-medium">Edad:</span> {props.edad}</p>
           <p className="text-gray-600 mb-1"><span className="font-medium">Altura:</span> {props.altura}</p>
           <p className="text-gray-600 mb-1"><span className="font-medium">Peso:</span> {props.peso}</p>
-          <p className="text-gray-600 mb-1"><span className="font-medium">Escuela:</span> {props.escula}</p>
+          <p className="text-gray-600 mb-1"><span className="font-medium">Escuela:</span> {props.escuela}</p>
           <p className="text-gray-600 mb-1"><span className="font-medium">Profesor:</span> {props.profesor}</p>
           <p className="text-gray-600 mb-1"><span className="font-medium">Graduacion_actual:</span> {props.graduacion_actual}</p>
           <p className="text-gray-600 mb-1"><span className="font-medium">Proxima_graduacion:</span> {props.proxima_graduacion}</p>

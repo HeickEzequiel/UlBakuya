@@ -42,14 +42,14 @@ function Profesores_Eliminados (){
                           <table className=" border-collapse border border-gray-300 shadow-md rounded-md overflow-hidden">
                               <thead>
                                   <tr className="even:bg-gray-100 hover:bg-gray-200 transition-colors">
-                                      <th className="px-2 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Nombre</th>
-                                      <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Apellido</th>
-                                      <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Fecha de Nacimiento</th>
-                                      <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Escuela</th>
-                                      <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Graduación</th>
-                                      <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Fecha de Examen</th>
-                                      <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Instructor Mayor</th>
-                                      <th className="px-4 py-2 w-44 border border-gray-300 text-sm bg-sky-500">Estado</th>
+                                      <th className="px-2 py-2 w-36 border border-gray-300 text-sm bg-sky-500">Nombre</th>
+                                      <th className="px-4 py-2 w-36 border border-gray-300 text-sm bg-sky-500">Apellido</th>
+                                      <th className="px-4 py-2 w-36 border border-gray-300 text-sm bg-sky-500">Fecha de Nacimiento</th>
+                                      <th className="px-4 py-2 w-36 border border-gray-300 text-sm bg-sky-500">Escuela</th>
+                                      <th className="px-4 py-2 w-36 border border-gray-300 text-sm bg-sky-500">Graduación</th>
+                                      <th className="px-4 py-2 w-36 border border-gray-300 text-sm bg-sky-500">Fecha de Examen</th>
+                                      <th className="px-4 py-2 w-36 border border-gray-300 text-sm bg-sky-500">Instructor Mayor</th>
+                                      <th className="px-4 py-2 w-36 border border-gray-300 text-sm bg-sky-500">Estado</th>
                                   </tr>
                               </thead>
                           </table>

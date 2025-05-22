@@ -1,10 +1,10 @@
-import React from 'react'
 import userStore from '../../store/loginStore'
 import { Link, useParams } from 'react-router-dom'
 import { useFetchDojan } from '../../hooks/useDojan'
 import Nav from '../nav/Nav'
 import UserNav from '../usernav/UserNav'
 import CardDojan from '../cards/dojan/CardDojan'
+import Footer from '../footer/Footer'
 
 function DojanDetail() {
   const isLogged = userStore((state) => state.isLogged)
