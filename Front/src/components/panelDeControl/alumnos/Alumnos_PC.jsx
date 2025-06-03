@@ -7,9 +7,13 @@ import CardAlumnos from "../../cards/alumnos/CardAlumnos";
 import userStore from "../../../store/loginStore";
 import alumnosStore from "../../../store/alumnosStore";
 import { useEffect } from "react";
+import { useFetchProfes } from "../../../hooks/useProfesor";
+import { useFetchEscuelas } from "../../../hooks/useEscuela";
 
 function Alumnos_PC() {
   const { data: alumnos, isLoading, error } = useFetchAlumnos();
+  const { data: profesores } = useFetchProfes();
+  const { data: escuelas } = useFetchEscuelas();
   const { isLogged, user } = userStore();
   const getFilteredAlumnos = alumnosStore((state)=>state.getFilteredAlumnos)
   const {
@@ -42,7 +46,7 @@ function Alumnos_PC() {
     "9no Dan"
   ]
   const setAlumnos = alumnosStore((state) => state.setAlumnos);
-
+console.log(profesores)
   useEffect(() => {
     if (alumnos) {
       setAlumnos(alumnos);
@@ -115,10 +119,13 @@ function Alumnos_PC() {
               onChange={(e) => setSelectedEscuela(e.target.value)}
               className="p-2 border rounded-xl">
               <option value="todas">Todas las Escuelas</option>
-              <option value="Ul Bakuya">Ul Bakuya</option>
-              <option value="Pilsung">Pil Sung</option> 
-              <option value="Gyeomson">Gyeomson</option> 
-              <option value="Ubuntu">Ubuntu</option> 
+              {escuelas.map((esc, key) => (
+                <option 
+                key={key}
+                value={esc.nombre}>
+                  {esc.nombre}
+                </option>
+              ))}
             </select>
 
             <select
@@ -136,8 +143,13 @@ function Alumnos_PC() {
               onChange={(e) => setSelectedProfesor(e.target.value)}
               className="p-2 border rounded-xl">
               <option value="todas">Todos los Profesores</option>
-              <option value="Ariel Farias">Ariel Farias</option>
-              <option value="Ezequiel Heick">Ezequiel Heick</option>
+              {profesores.map((profe, key) => (
+                <option
+                key={key}
+                value={`${profe.nombre} ${profe.apellido}`}>
+                    {profe.nombre} {profe.apellido}
+                </option>
+              ))}
             </select>
 
             <select

@@ -81,7 +81,7 @@ const alumnosStore = create((set, get)=>{
                 selectedProfesor,
                 sortBy
             } = get()
-            
+            console.log(selectedProfesor)
             let results = [...alumnos]
 
             if(searchTerm){
@@ -98,7 +98,7 @@ const alumnosStore = create((set, get)=>{
                 results = results.filter((alumnosArray) => alumnosArray.graduacion === selectedGraduacion)
             }
             if(selectedProfesor !== "todas"){
-                results = results.filter((alumnosArray) => alumnosArray.profesor=== selectedProfesor)
+                results = results.filter((alumnosArray) => alumnosArray.profesor === selectedProfesor)
             }
 
             if(sortBy === "nombre-asc"){
@@ -107,13 +107,8 @@ const alumnosStore = create((set, get)=>{
                 results.sort((a,b)=>b.nombre.localeCompare(a.nombre))
             }
 
-            return results;
+            return results
         }
-
-
-        
-
-
     }
 })
 

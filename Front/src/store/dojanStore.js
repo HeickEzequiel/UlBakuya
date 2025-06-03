@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const dojanStore = create((set)=>{
+const dojanStore = create((set, get)=>{
     const initialState = ()=>{
         const storedState = localStorage.getItem("dojanState")
         if(storedState){
@@ -52,6 +52,52 @@ const dojanStore = create((set)=>{
             }catch(error){
                 set({isREgistering: false, registerSuccess: true})
             }
+        },
+
+        dojanes: [],
+        searchTerm: "",
+        selectedProfesor: "",
+        selectedEscuela: "",
+        sortBy: "nombre-asc",
+
+        setDojanes:(dojanes) => set({dojanes}),
+        setSearchTerm:(term) => set({searchTerm: term}),
+        setSelectedProfesor:(profesor) => set({selectedProfesor: profesor}),
+        setSelectedEscuela:(escuela) => set({selectedEscuela: escuela}),
+        setSortBy: (sort) => set({sortBy: sort}),
+
+        getFilteredDojanes: () =>{
+            const{
+                dojanes,
+                searchTerm,
+                selectedProfesor,
+                selectedEscuela,
+                sortBy
+            } = get()
+
+            let results = [...dojanes]
+
+            if(searchTerm){
+                results = results.filter((dojan) =>
+                dojan.nombre.toLowerCase().includes(searchTerm.toLowerCase()) 
+                )
+            }
+
+            if(selectedProfesor !== "todas"){
+                results = results.filter((dojanArray)=> dojanArray.profesor === selectedProfesor)
+            }
+
+            if(selectedEscuela !== "todas"){
+                results = results.filter((escuelaArray)=> escuelaArray.escuela === selectedEscuela)
+            }
+
+            if(sortBy === "nombre-asc"){
+                results.sort((a,b)=>a.nombre.localeCompare(b.nombre))
+            } else if (sortBy === "nombre-desc"){
+                results.sort((a,b)=>b.nombre.localeCompare(a.nombre))
+            }
+
+            return results
         }
     }
 })
