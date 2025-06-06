@@ -81,7 +81,7 @@ const alumnosStore = create((set, get)=>{
                 selectedProfesor,
                 sortBy
             } = get()
-            console.log(selectedProfesor)
+            
             let results = [...alumnos]
 
             if(searchTerm){

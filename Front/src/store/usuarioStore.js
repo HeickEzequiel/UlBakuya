@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const usuarioStore = create((set)=>{
+const usuarioStore = create((set, get)=>{
     const initialState = () =>{
         const storedState = localStorage.getItem("usuarioState")
         if(storedState){
@@ -64,7 +64,49 @@ const usuarioStore = create((set)=>{
             } catch (error) {
                 set({isRegistering: false, registerSuccess: true})
             }
+        },
+
+        usuarios: [],
+        searchTerm:"",
+        selectedNivel:"todas",
+        sortBy:"nombre-asc",
+
+        setUsuarios:(usuarios) => set({usuarios}),
+        setSearchTerm:(term) => set({searchTerm: term}),
+        setSelectedNivel:(nivel) => set({selectedNivel: nivel}),
+        setSortBy: (sort) => set({sortBy: sort}),
+
+        getFilteredUsuarios: () =>{
+            const{
+                usuarios,
+                searchTerm,
+                selectedNivel,
+                sortBy
+            } = get()
+
+            let results = [...usuarios]
+
+            if(searchTerm){
+                results = results.filter((usuario)=>
+                usuario.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                usuario.apellido.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+            }
+
+            if(selectedNivel !== "todas"){
+                results = results.filter((usuariosArray)=> usuariosArray.nivel === selectedNivel)
+            }
+
+            if(sortBy === "nombre-asc"){
+                results.sort((a,b)=>a.nombre.localeCompare(b.nombre))
+            } else if (sortBy === "nombre-desc"){
+                results.sort((a,b)=>b.nombre.localeCompare(a.nombre))
+            }
+
+            return results
         }
+
+
     }
 })
 

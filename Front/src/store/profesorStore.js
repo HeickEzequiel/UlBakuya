@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const profesorStore = create((set)=>{
+const profesorStore = create((set, get)=>{
     const initialState = () =>{
         const storedState = localStorage.getItem("profesorState")
         if(storedState){
@@ -60,7 +60,59 @@ const profesorStore = create((set)=>{
             } catch (error) {
                 set({isRegistering: false, registerSuccess: true})
             }
+        },
+
+        profesores: [],
+        searchTerm: "",
+        selectedEscuela:"todas",
+        selectedGraduacion:"todas",
+        selectedInstructorMayor:"todas",
+        sortBy:"nombre-asc",
+
+        setAlumnos:(alumnos) => set({alumnos}),
+        setSearchTerm:(term) => set({searchTerm: term}),
+        setSelectedEscuela:(escuela) => set({selectedEscuela: escuela}),
+        setSelectedGraduacion:(graduacion) => set({selectedGraduacion: graduacion}),
+        setSelectedInstructorMayor:(instructor_mayor) => set({selectedInstructorMayor: instructor_mayor}),
+        setSortBy: (sort) => set({sortBy: sort}),
+
+        getFilteredProfesores: () => {
+            const{
+                profesores,
+                searchTerm,
+                selectedEscuela,
+                selectedGraduacion,
+                selectedInstructorMayor,
+                sortBy
+            } = get()
+
+            let results = [...profesores]
+
+            if(searchTerm){
+                results = results.filter((profesor)=>
+                profesor.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                profesor.apellido.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+            }
+
+            if(selectedEscuela !== "todas"){
+                results = results.filter((profesoresArray) => profesoresArray.escuela === selectedEscuela)
+            }
+            if(selectedGraduacion !== "todas"){
+                results = results.filter((profesoresArray) => profesoresArray.graduacion === selectedGraduacion)
+            }
+            if(selectedInstructorMayor !== "todas"){
+                results = results.filter((profesoresArray) => profesoresArray.instructor_mayor === selectedInstructorMayor)
+            }
+
+            if(sortBy === "nombre-asc"){
+                results.sort((a,b)=>a.nombre.localeCompare(b.nombre))
+            } else if (sortBy === "nombre-desc"){
+                results.sort((a,b)=>b.nombre.localeCompare(a.nombre))
+            }
+
         }
+
     }
 })
 

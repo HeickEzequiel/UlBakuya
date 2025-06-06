@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const escuelasStore = create((set)=>{
+const escuelasStore = create((set, get)=>{
     const initialState = () =>{
         const storedState = localStorage.getItem("escuelaState")
         if(storedState){
@@ -47,7 +47,45 @@ const escuelasStore = create((set)=>{
             }catch(error){
                 set({isRegistering: false, registerSuccess: true})
             }
-        }
+        },
+
+        escuelas: [],
+        searchTerm:"",
+        selectedDojan:"todas",
+        sortBy:"nombra-asc",
+
+        setEscuelas: (escuelas) => set({escuelas}),
+        setSearchTerm: (term) => set({searchTerm: term}),
+        setSelectedDojan: (dojan) => set({selectedDojan: dojan}),
+        sotSortBy: (sort) => set({sortBy: sort}),
+
+        getFilteredEscuelas: () =>{
+            const{
+                escuelas,
+                searchTerm,
+                selectedDojan,
+                sortBy
+            } = get()
+
+            let results = [...escuelas]
+
+            if(searchTerm){
+                results = results.filter((escuela)=>
+                escuela.nombre.toLowerCase().includes(searchTerm.toLowerCase()))
+            }
+            
+            if(selectedDojan !== "todas"){
+                results = results.filter((escuelasArray) => escuelasArray.nombre === selectedDojan)
+            }
+
+            if(sortBy === "nombre-asc"){
+                results.sort((a,b) => a.nombre.localeCompare(b.nombre))
+            } else if (sortBy === "nombre-desc"){
+                results.sort((a,b) => b.nombre.localeCompare(a.nombre))
+            }
+
+            return results
+        }   
     }
 })
 export default escuelasStore

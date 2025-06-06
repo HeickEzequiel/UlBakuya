@@ -7,9 +7,13 @@ import { Link } from 'react-router-dom'
 import CardDojanes from '../../cards/dojan/CardDojanes'
 import dojanStore from '../../../store/dojanStore'
 import { useEffect } from 'react'
+import { useFetchEscuelas } from '../../../hooks/useEscuela'
+import { useFetchProfes } from '../../../hooks/useProfesor'
 
 function Dojanes_PC() {
   const { data: dojanes, isLoading, error } = useFetchDojanes()
+  const { data: escuelas } = useFetchEscuelas()
+  const { data: profesores } = useFetchProfes()
   const { isLogged, user } = userStore()
   const getFilteredDojanes = dojanStore((state)=>state.getFilteredDojanes)
   const {
@@ -96,10 +100,13 @@ function Dojanes_PC() {
                   onChange={(e) => setSelectedEscuela(e.target.value)}
                   className="p-2 border rounded-xl">
                   <option value="todas">Todas las Escuelas</option>
-                  <option value="Ul Bakuya">Ul Bakuya</option>
-                  <option value="Pilsung">Pil Sung</option> 
-                  <option value="Gyeomson">Gyeomson</option> 
-                  <option value="Ubuntu">Ubuntu</option> 
+                  {escuelas.map((esc, key) => (
+                  <option 
+                    key={key}
+                    value={esc.nombre}>
+                      {esc.nombre}
+                  </option>
+                  ))}
                 </select>
 
 
@@ -107,8 +114,13 @@ function Dojanes_PC() {
                   onChange={(e) => setSelectedProfesor(e.target.value)}
                   className="p-2 border rounded-xl">
                   <option value="todas">Todos los Profesores</option>
-                  <option value="Ariel Farias">Ariel Farias</option>
-                  <option value="Ezequiel Heick">Ezequiel Heick</option>
+                  {profesores.map((profe, key) => (
+                  <option
+                    key={key}
+                    value={`${profe.nombre} ${profe.apellido}`}>
+                      {profe.nombre} {profe.apellido}
+                  </option>
+                  ))}
                 </select>
 
                 <select
