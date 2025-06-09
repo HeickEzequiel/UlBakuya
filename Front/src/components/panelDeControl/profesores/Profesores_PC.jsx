@@ -5,12 +5,32 @@ import Footer from "../../footer/Footer"
 import Nav from "../../nav/Nav"
 import UserNav from "../../usernav/UserNav"
 import CardProfes from "../../cards/profesores/CardProfes"
+import { useFetchEscuelas } from "../../../hooks/useEscuela"
+import profesorStore from "../../../store/profesorStore"
+import { useEffect } from "react"
 
 
 function Profesores_PC() {
     const {data:profesores, isLoading, error} = useFetchProfes()
+    const {data:escuela } = useFetchEscuelas()
     const {isLogged, user} = userStore()
-    console.log(profesores)
+    const getFilteredProfesores = profesorStore((state)=>state.getFilteredProfesores)
+    const {
+        setSearchTerm,
+        setSelectedEscuela,
+        setSelectedGraduacion,
+        setSelectedInstructorMayor,
+        setSortBy
+    } = profesorStore()
+    const profesoresFiltrados = getFilteredProfesores()
+    const setProfesores = profesorStore((state)=>state.setProfesores)
+console.log(profesoresFiltrados)
+    useEffect(()=>{
+        if(profesores){
+            setProfesores(profesores)
+        }
+    }, [profesores])
+
     if(isLoading){
         return(
             <div>
@@ -62,8 +82,65 @@ function Profesores_PC() {
                     )}
                     </div>
 
+                    <div className="mb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      
+                        <input
+                            type="text"
+                            placeholder="Buscar por nombre"
+                            className="p-2 border rounded-xl"
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+
+                        <select
+                            onChange={(e) => setSelectedEscuela(e.target.value)}
+                            className="p-2 border rounded-xl">
+                            <option value="todas">Todas las Escuelas</option>
+                            {escuela.map((esc, key) => (
+                            <option 
+                                key={key}
+                                value={esc.nombre}>
+                                {esc.nombre}
+                            </option>
+                            ))}
+                        </select>
+
+
+                        <select
+                            onChange={(e) => setSelectedGraduacion(e.target.value)}
+                            className="p-2 border rounded-xl">
+                            <option value="todas">Todos las Graduaciones</option>
+                            {profesores.map((profe, key) => (
+                                <option
+                                    key={key}
+                                    value={profe.graduacion}>
+                                    {profe.graduacion}
+                                </option>
+                            ))}
+                        </select>
+
+                        <select
+                            onChange={(e) => setSelectedInstructorMayor(e.target.value)}
+                            className="p-2 border rounded-xl">
+                            <option value="todas">Todos los Instructores Mayores</option>
+                            {profesores.map((profe, key) => (
+                                <option
+                                    key={key}
+                                    value={profe.instructor_mayor}>
+                                    {profe.instructor_mayor}
+                                </option>
+                            ))}
+                        </select>
+
+                        <select
+                            onChange={(e) => setSortBy(e.target.value)}
+                            className="p-2 border rounded-xl">
+                            <option value="nombre-asc">Nombre A-Z</option>
+                            <option value="nombre-desc">Nombre Z-A</option>
+                        </select>
+                    </div>
+
                     <div className="min-w-full table-auto border-collapse border border-gray-300 mb-8">
-                        {profesores && profesores.map((profesor, key)=>
+                        {profesoresFiltrados.map((profesor, key)=>
                             !profesor.eliminado &&(
                                 <CardProfes
                                     key={key}

@@ -24,7 +24,7 @@ function Dojanes_PC() {
   } = dojanStore()
   const dojanesFiltrados = getFilteredDojanes()
   const setDojanes = dojanStore((state) => state.setDojanes)
-
+console.log(dojanesFiltrados)
   useEffect(() => {
     if(dojanes){
       setDojanes(dojanes)
@@ -68,7 +68,7 @@ function Dojanes_PC() {
   return (
     <div>
       <Nav/>
-        {isLogged && user.nivel==="Director"|| user.nivel==="Profesor"?
+        {isLogged && (user.nivel==="Director"|| user.nivel==="Profesor")?
           <div>
             <UserNav/>
             <div className="min-h-screen px-6 py-12">

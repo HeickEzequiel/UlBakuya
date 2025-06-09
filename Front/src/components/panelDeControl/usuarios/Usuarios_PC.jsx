@@ -5,10 +5,27 @@ import Footer from "../../footer/Footer";
 import Nav from "../../nav/Nav";
 import UserNav from "../../usernav/UserNav";
 import CardUsuarios from "../../cards/usuarios/CardUsuarios";
+import usuarioStore from "../../../store/usuarioStore";
+import { useEffect } from "react";
 
 function Usuarios_PC(){
     const {data: usuarios, isLoading, error} = usefetchUsers()
     const { isLogged, user } = userStore()
+    const getFilteredUsuarios = usuarioStore((state)=>state.getFilteredUsuarios)
+    const {
+        setSearchTerm,
+        setSelectedNivel,
+        setSortBy
+    } = usuarioStore()
+    const usuariosFiltrados = getFilteredUsuarios()
+    const setUsuarios = usuarioStore((state) => state.setUsuarios)
+
+    useEffect(()=> {
+        if(usuarios){
+            setUsuarios(usuarios)
+        }
+    }, [usuarios])
+
     if(isLoading){
         return(
             <div>
@@ -53,9 +70,40 @@ function Usuarios_PC(){
                             </button>
                         </Link>
                     </div>
+
+                    <div className="mb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      
+                <input
+                  type="text"
+                  placeholder="Buscar por nombre"
+                  className="p-2 border rounded-xl"
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+
+                <select
+                  onChange={(e) => setSelectedNivel(e.target.value)}
+                  className="p-2 border rounded-xl">
+                  <option value="todas">Todas los niveles</option>
+                  {usuarios.map((usu, key) => (
+                    <option 
+                        key={key}
+                        value={usu.nivel}>
+                            {usu.nivel}
+                    </option>
+                    ))}
+                </select>
+
+
+                <select
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="p-2 border rounded-xl">
+                  <option value="nombre-asc">Nombre A-Z</option>
+                  <option value="nombre-desc">Nombre Z-A</option>
+                </select>
+              </div>
                     
                     <div className="min-w-full table-auto border-collapse border border-gray-300 mb-8">
-                        {usuarios && usuarios.map((usuario, key)=>
+                        {usuariosFiltrados.map((usuario, key)=>
                             !usuario.eliminado &&(
                                 <CardUsuarios
                                     key={key}

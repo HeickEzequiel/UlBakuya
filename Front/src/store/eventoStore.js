@@ -94,7 +94,7 @@ const eventoStore = create((set, get)=>{
                 results = results.filter((eventoArray) => eventoArray.fecha_del_evento === selectedFecha)
             }
             if(selectedHorario !== "todas"){
-                results = results.filter((eventoArray) => eventoArray.horario === selectedHorario)
+                results = results.filter((eventoArray) => eventoArray.horarios === selectedHorario)
             }
 
             if(sortByEvento === "tipo_de_evento-asc"){

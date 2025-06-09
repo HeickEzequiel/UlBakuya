@@ -127,6 +127,8 @@ const inscripcionStore = create((set, get)=>{
             } else if (sortBy === "nombre-desc"){
                 results.sort((a,b)=>b.nombre.localeCompare(a.nombre))
             }
+
+            return results
         }
 
 

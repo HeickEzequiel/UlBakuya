@@ -46,7 +46,7 @@ function Alumnos_PC() {
     "9no Dan"
   ]
   const setAlumnos = alumnosStore((state) => state.setAlumnos);
-console.log(profesores)
+
   useEffect(() => {
     if (alumnos) {
       setAlumnos(alumnos);

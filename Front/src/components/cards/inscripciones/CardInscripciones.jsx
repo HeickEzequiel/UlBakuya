@@ -12,6 +12,7 @@ function CardInscripciones(props) {
           <p className="text-sm text-gray-600">Altura: {props.altura}</p>
           <p className="text-sm text-gray-600">Peso: {props.peso}</p>
           <p className="text-sm text-gray-600">Escuela: {props.escuela}</p>
+          <p className="text-sm text-gray-600">Profesor: {props.profesor}</p>
           <p className="text-sm text-gray-600">Graduacion Actual: {props.graduacion_actual}</p>
           { props.tipo_de_evento==="Examen" ? <p className="text-sm text-gray-600">Proxima Graducion: {props.proxima_graduacion}</p> :null }
           

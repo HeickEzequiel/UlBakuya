@@ -69,7 +69,7 @@ const profesorStore = create((set, get)=>{
         selectedInstructorMayor:"todas",
         sortBy:"nombre-asc",
 
-        setAlumnos:(alumnos) => set({alumnos}),
+        setProfesores:(profesores) => set({profesores}),
         setSearchTerm:(term) => set({searchTerm: term}),
         setSelectedEscuela:(escuela) => set({selectedEscuela: escuela}),
         setSelectedGraduacion:(graduacion) => set({selectedGraduacion: graduacion}),
@@ -111,6 +111,7 @@ const profesorStore = create((set, get)=>{
                 results.sort((a,b)=>b.nombre.localeCompare(a.nombre))
             }
 
+            return results
         }
 
     }

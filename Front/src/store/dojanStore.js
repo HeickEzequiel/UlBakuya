@@ -50,14 +50,14 @@ const dojanStore = create((set, get)=>{
                     registerSuccess: true
                 }))
             }catch(error){
-                set({isREgistering: false, registerSuccess: true})
+                set({isRegistering: false, registerSuccess: true})
             }
         },
 
         dojanes: [],
         searchTerm: "",
-        selectedProfesor: "",
-        selectedEscuela: "",
+        selectedProfesor: "todas",
+        selectedEscuela: "todas",
         sortBy: "nombre-asc",
 
         setDojanes:(dojanes) => set({dojanes}),
@@ -79,7 +79,7 @@ const dojanStore = create((set, get)=>{
 
             if(searchTerm){
                 results = results.filter((dojan) =>
-                dojan.nombre.toLowerCase().includes(searchTerm.toLowerCase()) 
+                dojan.club.toLowerCase().includes(searchTerm.toLowerCase()) 
                 )
             }
 
@@ -92,9 +92,9 @@ const dojanStore = create((set, get)=>{
             }
 
             if(sortBy === "nombre-asc"){
-                results.sort((a,b)=>a.nombre.localeCompare(b.nombre))
+                results.sort((a,b)=>a.club.localeCompare(b.club))
             } else if (sortBy === "nombre-desc"){
-                results.sort((a,b)=>b.nombre.localeCompare(a.nombre))
+                results.sort((a,b)=>b.club.localeCompare(a.club))
             }
 
             return results
