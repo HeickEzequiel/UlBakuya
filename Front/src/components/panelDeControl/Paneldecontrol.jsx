@@ -8,53 +8,43 @@ function Paneldecontrol() {
   const { isLogged, user } = userStore();
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <Nav />
       {isLogged && (user.nivel === "Director" || user.nivel === "Profesor") ? (
-        <div>
+        <>
           <UserNav />
-          <div className="min-h-screen px-6 py-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              <Link to='/pc_usuarios'>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out w-full text-center">
-                  Usuarios
-                </button>
-              </Link>
-              <Link to='/pc_alumnos'>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out w-full text-center">
-                  Alumnos
-                </button>
-              </Link>
-              <Link to='/pc_profesores'>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out w-full text-center">
-                  Profesores
-                </button>
-              </Link>
-              <Link to='/pc_escuelas'>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out w-full text-center">
-                  Escuelas
-                </button>
-              </Link>
-              <Link to='/pc_dojanes'>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out w-full text-center">
-                  Dojan
-                </button>
-              </Link>
-              <Link to='/pc_inscripciones'>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out w-full text-center">
-                  Inscripciones
-                </button>
-              </Link>
-              <Link to='/pc_eventos'>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out w-full text-center">
-                  Eventos
-                </button>
-              </Link>
+          <main className="flex-1 px-4 sm:px-8 lg:px-16 py-12 bg-gray-50">
+            <div className="max-w-6xl mx-auto">
+              <h1 className="text-3xl font-semibold text-center text-gray-800 mb-10">
+                Panel de Control
+              </h1>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  { path: "/pc_usuarios", label: "Usuarios" },
+                  { path: "/pc_alumnos", label: "Alumnos" },
+                  { path: "/pc_profesores", label: "Profesores" },
+                  { path: "/pc_escuelas", label: "Escuelas" },
+                  { path: "/pc_dojanes", label: "Dojan" },
+                  { path: "/pc_inscripciones", label: "Inscripciones" },
+                  { path: "/pc_eventos", label: "Eventos" },
+                ].map((item, idx) => (
+                  <Link key={idx} to={item.path} className="w-full">
+                    <div className="bg-blue-300 hover:bg-blue-100 border border-gray-700 text-gray-800 font-semibold py-5 px-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 text-center">
+                      {item.label}
+                    </div>
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
-        </div>
+          </main>
+        </>
       ) : (
-        <p className="text-center text-xl py-12">Debes iniciar sesión como administrador para ver el panel de control</p>
+        <div className="flex-1 flex items-center justify-center">
+          <p className="text-xl text-gray-600 text-center px-4">
+            Debes iniciar sesión como administrador para ver el panel de control
+          </p>
+        </div>
       )}
       <Footer />
     </div>
@@ -62,5 +52,3 @@ function Paneldecontrol() {
 }
 
 export default Paneldecontrol;
-          
-          

@@ -5,10 +5,53 @@ import { Link } from "react-router-dom";
 import { useFetchAlumnos } from "../../../hooks/useAlumnos";
 import CardAlumnos from "../../cards/alumnos/CardAlumnos";
 import userStore from "../../../store/loginStore";
+import alumnosStore from "../../../store/alumnosStore";
+import { useEffect } from "react";
+import { useFetchProfes } from "../../../hooks/useProfesor";
+import { useFetchEscuelas } from "../../../hooks/useEscuela";
 
 function Alumnos_PC() {
   const { data: alumnos, isLoading, error } = useFetchAlumnos();
+  const { data: profesores } = useFetchProfes();
+  const { data: escuelas } = useFetchEscuelas();
   const { isLogged, user } = userStore();
+  const getFilteredAlumnos = alumnosStore((state)=>state.getFilteredAlumnos)
+  const {
+    setSearchTerm,
+    setSelectedEscuela,
+    setSelectedGraduacion,
+    setSelectedProfesor,
+    setSortBy
+  } = alumnosStore()
+  const alumnosFiltrados = getFilteredAlumnos()
+  const grados = [
+    "Blanco",
+    "Blanco Punta Amarilla",
+    "Amarillo",
+    "Amarillo Punta Verde",
+    "Verde",
+    "Verde Punta Azul",
+    "Azul",
+    "Azul Punta Roja",
+    "Rojo",
+    "Rojo Punta Negra",
+    "1er Dan",
+    "2do Dan",
+    "3er Dan",
+    "4to Dan",
+    "5to Dan",
+    "6to Dan",
+    "7mo Dan",
+    "8vo Dan",
+    "9no Dan"
+  ]
+  const setAlumnos = alumnosStore((state) => state.setAlumnos);
+
+  useEffect(() => {
+    if (alumnos) {
+      setAlumnos(alumnos);
+    }
+  }, [alumnos]);
 
   if (isLoading) {
     return (
@@ -63,8 +106,62 @@ function Alumnos_PC() {
               )}
             </div>
 
+            <div className="mb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      
+            <input
+              type="text"
+              placeholder="Buscar por nombre o apellido"
+              className="p-2 border rounded-xl"
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+
+            <select
+              onChange={(e) => setSelectedEscuela(e.target.value)}
+              className="p-2 border rounded-xl">
+              <option value="todas">Todas las Escuelas</option>
+              {escuelas.map((esc, key) => (
+                <option 
+                key={key}
+                value={esc.nombre}>
+                  {esc.nombre}
+                </option>
+              ))}
+            </select>
+
+            <select
+              onChange={(e) => setSelectedGraduacion(e.target.value)}
+              className="p-2 border rounded-xl">
+              <option value="todas">Todas las Graduaciones</option>
+              {grados.map((grado,i)=>(
+                <option key={i} value={grado}>
+                  {grado}
+                </option>
+              ))}
+            </select>
+
+            <select
+              onChange={(e) => setSelectedProfesor(e.target.value)}
+              className="p-2 border rounded-xl">
+              <option value="todas">Todos los Profesores</option>
+              {profesores.map((profe, key) => (
+                <option
+                key={key}
+                value={`${profe.nombre} ${profe.apellido}`}>
+                    {profe.nombre} {profe.apellido}
+                </option>
+              ))}
+            </select>
+
+            <select
+              onChange={(e) => setSortBy(e.target.value)}
+              className="p-2 border rounded-xl">
+              <option value="nombre-asc">Nombre A-Z</option>
+              <option value="nombre-desc">Nombre Z-A</option>
+            </select>
+            </div>
+
             <div className="min-w-full table-auto border-collapse border border-gray-300 mb-8">
-              {alumnos && alumnos.map((alumno, key) =>
+              {alumnosFiltrados.map((alumno, key) =>
                 !alumno.eliminado && (
                   <CardAlumnos
                     key={key}

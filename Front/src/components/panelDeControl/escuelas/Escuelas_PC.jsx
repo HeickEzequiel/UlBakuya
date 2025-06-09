@@ -5,10 +5,30 @@ import { Link } from "react-router-dom"
 import { useFetchEscuelas } from "../../../hooks/useEscuela"
 import userStore from "../../../store/loginStore"
 import CardEscuelas from "../../cards/escuelas/CardEscuelas"
+import { useFetchDojanes } from "../../../hooks/useDojan"
+import escuelasStore from "../../../store/escuelaStore"
+import { useEffect } from "react"
+
 
 function Escuelas_PC() {
   const { data:escuelas, isLoading, error} = useFetchEscuelas()
+  const { data:dojanes } = useFetchDojanes()
   const { isLogged, user } = userStore()
+  const getFilteredEscuelas = escuelasStore((state)=>state.getFilteredEscuelas)
+  const {
+    setSearchTerm,
+    setSelectedDojan,
+    setSortBy
+  } = escuelasStore()
+  const escuelasfiltradas = getFilteredEscuelas()
+  const setEscuelas = escuelasStore((state)=> state.setEscuelas)
+
+  useEffect(()=>{
+    if(escuelas){
+      setEscuelas(escuelas)
+    }
+  },[escuelas])
+
 
   if(isLoading){
     return (
@@ -63,9 +83,44 @@ function Escuelas_PC() {
                   </Link>
                 )}
               </div>
+
+
+              <div className="mb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      
+                <input
+                  type="text"
+                  placeholder="Buscar por escuela"
+                  className="p-2 border rounded-xl"
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+
+                <select
+                  onChange={(e) => setSelectedDojan(e.target.value)}
+                  className="p-2 border rounded-xl">
+                  <option value="todas">Todos los Dojangs</option>
+                  {dojanes.map((doj, key) => (
+                  <option 
+                    key={key}
+                    value={doj.nombre}>
+                      {doj.nombre}
+                  </option>
+                  ))}
+                </select>
+
+
+
+                <select
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="p-2 border rounded-xl">
+                  <option value="nombre-asc">Nombre A-Z</option>
+                  <option value="nombre-desc">Nombre Z-A</option>
+                </select>
+              </div>
+
+
                
             <div className="min-w-full table-auto border-collapse border border-gray-300 mb-8">
-                {escuelas && escuelas.map((escuela, key)=>
+                {escuelasfiltradas.map((escuela, key)=>
                   !escuela.eliminado && (
                 <CardEscuelas
                 key={key}

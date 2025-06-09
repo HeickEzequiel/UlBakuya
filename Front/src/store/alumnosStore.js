@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const alumnosStore = create((set)=>{
+const alumnosStore = create((set, get)=>{
     const initialState = () =>{
         const storedState = localStorage.getItem("alumnoState")
         if(storedState){
@@ -56,6 +56,58 @@ const alumnosStore = create((set)=>{
             } catch (error) {
                 set({isRegistering: false, registerSuccess: true})
             }
+        },
+
+        alumnos: [],
+        searchTerm:"",
+        selectedEscuela:"todas",
+        selectedGraduacion:"todas",
+        selectedProfesor:"todas",
+        sortBy:"nombre-asc",
+
+        setAlumnos:(alumnos) => set({alumnos}),
+        setSearchTerm:(term) => set({searchTerm: term}),
+        setSelectedEscuela:(escuela) => set({selectedEscuela: escuela}),
+        setSelectedGraduacion:(graduacion) => set({selectedGraduacion: graduacion}),
+        setSelectedProfesor:(profesor) => set({selectedProfesor: profesor}),
+        setSortBy: (sort) => set({sortBy: sort}),
+
+        getFilteredAlumnos: () =>{
+            const{
+                alumnos,
+                searchTerm,
+                selectedEscuela,
+                selectedGraduacion,
+                selectedProfesor,
+                sortBy
+            } = get()
+            
+            let results = [...alumnos]
+
+            if(searchTerm){
+                results = results.filter((alumno)=>
+                alumno.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                alumno.apellido.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+            }
+
+            if(selectedEscuela !== "todas"){
+                results = results.filter((alumnosArray) => alumnosArray.escuela === selectedEscuela)
+            }
+            if(selectedGraduacion !== "todas"){
+                results = results.filter((alumnosArray) => alumnosArray.graduacion === selectedGraduacion)
+            }
+            if(selectedProfesor !== "todas"){
+                results = results.filter((alumnosArray) => alumnosArray.profesor === selectedProfesor)
+            }
+
+            if(sortBy === "nombre-asc"){
+                results.sort((a,b)=>a.nombre.localeCompare(b.nombre))
+            } else if (sortBy === "nombre-desc"){
+                results.sort((a,b)=>b.nombre.localeCompare(a.nombre))
+            }
+
+            return results
         }
     }
 })

@@ -5,10 +5,58 @@ import { Link } from "react-router-dom"
 import userStore from "../../../store/loginStore"
 import { useFetchInscripciones } from "../../../hooks/useInscripciones"
 import CardInscripciones from "../../cards/inscripciones/CardInscripciones"
+import { useFetchEscuelas } from "../../../hooks/useEscuela"
+import { useFetchProfes } from "../../../hooks/useProfesor"
+import { useFetchEventos } from "../../../hooks/useEventos"
+import inscripcionStore from "../../../store/inscripcionStore"
+import { useEffect } from "react"
 
 function Inscripciones_PC() {
   const { data:inscripciones, isLoading, error} = useFetchInscripciones()
+  const { data:escuelas } = useFetchEscuelas()
+  const { data:profesores } = useFetchProfes()
+  const { data:eventos } = useFetchEventos()
   const { isLogged, user } = userStore()
+  const getFilteredInscripciones = inscripcionStore((state)=>state.getFilteredInscripciones)
+  const {
+    setSearchTerm,
+    setSelectedEvento,
+    setSelectedFechaEvento,
+    setSelectedEscuela,
+    setSelectedProfesor,
+    setSelectedGraduacion,
+    setSortBy
+  } = inscripcionStore()
+  const inscripcionesFiltradas = getFilteredInscripciones()
+    const grados = [
+    "Blanco",
+    "Blanco Punta Amarilla",
+    "Amarillo",
+    "Amarillo Punta Verde",
+    "Verde",
+    "Verde Punta Azul",
+    "Azul",
+    "Azul Punta Roja",
+    "Rojo",
+    "Rojo Punta Negra",
+    "1er Dan",
+    "2do Dan",
+    "3er Dan",
+    "4to Dan",
+    "5to Dan",
+    "6to Dan",
+    "7mo Dan",
+    "8vo Dan",
+    "9no Dan"
+  ]
+
+  const setInscripciones = inscripcionStore((state)=>state.setInscripciones)
+console.log(inscripcionesFiltradas)
+  useEffect(()=>{
+    if(inscripciones){
+      setInscripciones(inscripciones)
+    }
+  }, [inscripciones])
 
   if(isLoading){
     return (
@@ -44,7 +92,7 @@ function Inscripciones_PC() {
   return (
     <div>
       <Nav/>
-      {isLogged && user.nivel==="Director"|| user.nivel==="Profesor" ? 
+      {isLogged && (user.nivel==="Director"|| user.nivel==="Profesor") ? 
         <div>
           <UserNav/>
           <div className="min-h-screen px-6 py-12">
@@ -63,8 +111,88 @@ function Inscripciones_PC() {
               )}
             </div>
 
+            <div className="mb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      
+              <input
+                type="text"
+                placeholder="Buscar por nombre o apellido"
+                className="p-2 border rounded-xl"
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+
+              <select
+                onChange={(e) => setSelectedEscuela(e.target.value)}
+                className="p-2 border rounded-xl">
+                <option value="todas">Todas las Escuelas</option>
+                {escuelas.map((esc, key) => (
+                  <option 
+                    key={key}
+                    value={esc.nombre}>
+                      {esc.nombre}
+                  </option>
+                ))}
+              </select>
+
+              <select
+                onChange={(e) => setSelectedEvento(e.target.value)}
+                className="p-2 border rounded-xl">
+                <option value="todas">Todos los Eventos</option>
+                {eventos.map((eve, key) => (
+                  <option 
+                    key={key}
+                    value={eve.tipo_de_evento}>
+                      {eve.tipo_de_evento}
+                  </option>
+                ))}
+              </select>
+
+              <select
+                onChange={(e) => setSelectedFechaEvento(e.target.value)}
+                className="p-2 border rounded-xl">
+                <option value="todas">Todas las fechas</option>
+                {eventos.map((eve, key) => (
+                  <option 
+                    key={key}
+                    value={eve.fecha_del_evento}>
+                      {eve.fecha_del_evento}
+                  </option>
+                ))}
+              </select>
+              
+            <select
+              onChange={(e) => setSelectedGraduacion(e.target.value)}
+              className="p-2 border rounded-xl">
+              <option value="todas">Todas las Graduaciones</option>
+              {grados.map((grado,i)=>(
+                <option key={i} value={grado}>
+                  {grado}
+                </option>
+              ))}
+            </select>
+
+            <select
+              onChange={(e) => setSelectedProfesor(e.target.value)}
+              className="p-2 border rounded-xl">
+              <option value="todas">Todos los Profesores</option>
+              {profesores.map((profe, key) => (
+                <option
+                key={key}
+                value={`${profe.nombre} ${profe.apellido}`}>
+                    {profe.nombre} {profe.apellido}
+                </option>
+              ))}
+            </select>
+
+            <select
+              onChange={(e) => setSortBy(e.target.value)}
+              className="p-2 border rounded-xl">
+              <option value="nombre-asc">Nombre A-Z</option>
+              <option value="nombre-desc">Nombre Z-A</option>
+            </select>
+            </div>
+
             <div className="min-w-full table-auto border-collapse border border-gray-300 mb-8">
-              {inscripciones && inscripciones.map((inscripcion, key)=>
+              {inscripcionesFiltradas.map((inscripcion, key)=>
                   !inscripcion.eliminado && (
                     <CardInscripciones
                       key={key}
@@ -77,6 +205,7 @@ function Inscripciones_PC() {
                       altura={inscripcion.altura}
                       peso={inscripcion.peso}
                       escuela={inscripcion.escuela}
+                      profesor={inscripcion.profesor}
                       graduacion_actual={inscripcion.graduacion_actual}
                       proxima_graduacion={inscripcion.proxima_graduacion}
                       imagen={inscripcion.imagen}

@@ -5,10 +5,33 @@ import UserNav from '../../usernav/UserNav'
 import Footer from '../../footer/Footer'
 import { Link } from 'react-router-dom'
 import CardDojanes from '../../cards/dojan/CardDojanes'
+import dojanStore from '../../../store/dojanStore'
+import { useEffect } from 'react'
+import { useFetchEscuelas } from '../../../hooks/useEscuela'
+import { useFetchProfes } from '../../../hooks/useProfesor'
 
 function Dojanes_PC() {
   const { data: dojanes, isLoading, error } = useFetchDojanes()
+  const { data: escuelas } = useFetchEscuelas()
+  const { data: profesores } = useFetchProfes()
   const { isLogged, user } = userStore()
+  const getFilteredDojanes = dojanStore((state)=>state.getFilteredDojanes)
+  const {
+    setSearchTerm,
+    setSelectedProfesor,
+    setSelectedEscuela,
+    setSortBy
+  } = dojanStore()
+  const dojanesFiltrados = getFilteredDojanes()
+  const setDojanes = dojanStore((state) => state.setDojanes)
+console.log(dojanesFiltrados)
+  useEffect(() => {
+    if(dojanes){
+      setDojanes(dojanes)
+    }
+  }, [dojanes])
+
+
   if(isLoading){
     return (
       <div>
@@ -45,7 +68,7 @@ function Dojanes_PC() {
   return (
     <div>
       <Nav/>
-        {isLogged && user.nivel==="Director"|| user.nivel==="Profesor"?
+        {isLogged && (user.nivel==="Director"|| user.nivel==="Profesor")?
           <div>
             <UserNav/>
             <div className="min-h-screen px-6 py-12">
@@ -64,8 +87,52 @@ function Dojanes_PC() {
                 )}
               </div>
 
+              <div className="mb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      
+                <input
+                  type="text"
+                  placeholder="Buscar por dojang"
+                  className="p-2 border rounded-xl"
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+
+                <select
+                  onChange={(e) => setSelectedEscuela(e.target.value)}
+                  className="p-2 border rounded-xl">
+                  <option value="todas">Todas las Escuelas</option>
+                  {escuelas.map((esc, key) => (
+                  <option 
+                    key={key}
+                    value={esc.nombre}>
+                      {esc.nombre}
+                  </option>
+                  ))}
+                </select>
+
+
+                <select
+                  onChange={(e) => setSelectedProfesor(e.target.value)}
+                  className="p-2 border rounded-xl">
+                  <option value="todas">Todos los Profesores</option>
+                  {profesores.map((profe, key) => (
+                  <option
+                    key={key}
+                    value={`${profe.nombre} ${profe.apellido}`}>
+                      {profe.nombre} {profe.apellido}
+                  </option>
+                  ))}
+                </select>
+
+                <select
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="p-2 border rounded-xl">
+                  <option value="nombre-asc">Nombre A-Z</option>
+                  <option value="nombre-desc">Nombre Z-A</option>
+                </select>
+              </div>
+
               <div className='min-w-full table-auto border-collapse border border-gray-300 mb-8'>
-                  {dojanes && dojanes.map((dojan, key) =>
+                  {dojanesFiltrados.map((dojan, key) =>
                   !dojan.eliminado && (
                     <CardDojanes
                       key={key}
