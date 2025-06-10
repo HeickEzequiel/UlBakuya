@@ -98,7 +98,7 @@ function Escuelas_PC() {
                   onChange={(e) => setSelectedDojan(e.target.value)}
                   className="p-2 border rounded-xl">
                   <option value="todas">Todos los Dojangs</option>
-                  {dojanes.map((doj, key) => (
+                  {Array.isArray(dojanes) && dojanes.map((doj, key) => (
                   <option 
                     key={key}
                     value={doj.nombre}>
@@ -120,7 +120,7 @@ function Escuelas_PC() {
 
                
             <div className="min-w-full table-auto border-collapse border border-gray-300 mb-8">
-                {escuelasfiltradas.map((escuela, key)=>
+                {Array.isArray(escuelasfiltradas) && escuelasfiltradas.map((escuela, key)=>
                   !escuela.eliminado && (
                 <CardEscuelas
                 key={key}

@@ -84,7 +84,7 @@ function Usuarios_PC(){
                   onChange={(e) => setSelectedNivel(e.target.value)}
                   className="p-2 border rounded-xl">
                   <option value="todas">Todas los niveles</option>
-                  {usuarios.map((usu, key) => (
+                  {Array.isArray(usuarios) && usuarios.map((usu, key) => (
                     <option 
                         key={key}
                         value={usu.nivel}>
@@ -103,7 +103,7 @@ function Usuarios_PC(){
               </div>
                     
                     <div className="min-w-full table-auto border-collapse border border-gray-300 mb-8">
-                        {usuariosFiltrados.map((usuario, key)=>
+                        {Array.isArray(usuariosFiltrados) && usuariosFiltrados.map((usuario, key)=>
                             !usuario.eliminado &&(
                                 <CardUsuarios
                                     key={key}

@@ -95,7 +95,7 @@ console.log(profesoresFiltrados)
                             onChange={(e) => setSelectedEscuela(e.target.value)}
                             className="p-2 border rounded-xl">
                             <option value="todas">Todas las Escuelas</option>
-                            {escuela.map((esc, key) => (
+                            {Array.isArray(escuela) && escuela.map((esc, key) => (
                             <option 
                                 key={key}
                                 value={esc.nombre}>
@@ -109,7 +109,7 @@ console.log(profesoresFiltrados)
                             onChange={(e) => setSelectedGraduacion(e.target.value)}
                             className="p-2 border rounded-xl">
                             <option value="todas">Todos las Graduaciones</option>
-                            {profesores.map((profe, key) => (
+                            {Array.isArray(profesores) && profesores.map((profe, key) => (
                                 <option
                                     key={key}
                                     value={profe.graduacion}>
@@ -122,7 +122,7 @@ console.log(profesoresFiltrados)
                             onChange={(e) => setSelectedInstructorMayor(e.target.value)}
                             className="p-2 border rounded-xl">
                             <option value="todas">Todos los Instructores Mayores</option>
-                            {profesores.map((profe, key) => (
+                            {Array.isArray(profesores) && profesores.map((profe, key) => (
                                 <option
                                     key={key}
                                     value={profe.instructor_mayor}>
@@ -140,7 +140,7 @@ console.log(profesoresFiltrados)
                     </div>
 
                     <div className="min-w-full table-auto border-collapse border border-gray-300 mb-8">
-                        {profesoresFiltrados.map((profesor, key)=>
+                        {Array.isArray(profesoresFiltrados) && profesoresFiltrados.map((profesor, key)=>
                             !profesor.eliminado &&(
                                 <CardProfes
                                     key={key}

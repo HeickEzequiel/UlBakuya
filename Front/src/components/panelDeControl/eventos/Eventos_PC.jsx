@@ -98,7 +98,7 @@ function Eventos_PC() {
                     onChange={(e) => setSelectedEvento(e.target.value)}
                     className="p-2 border rounded-xl">
                     <option value="todas">Todas los Eventos</option>
-                    {eventos.map((eve, key) => (
+                    {Array.isArray(eventos) && eventos.map((eve, key) => (
                       <option 
                         key={key}
                         value={eve.tipo_de_evento}>
@@ -111,7 +111,7 @@ function Eventos_PC() {
                     onChange={(e) => setSelectedFecha(e.target.value)}
                     className="p-2 border rounded-xl">
                     <option value="todas">Todas las Fechas</option>
-                    {eventos.map((eve,key)=>(
+                    {Array.isArray(eventos) && eventos.map((eve,key)=>(
                       <option 
                         key={key} 
                         value={eve.fecha_del_evento}>
@@ -124,7 +124,7 @@ function Eventos_PC() {
                     onChange={(e) => setSelectedHorario(e.target.value)}
                     className="p-2 border rounded-xl">
                     <option value="todas">Todos los horarios</option>
-                    {eventos.map((eve, key) => (
+                    {Array.isArray(eventos) && eventos.map((eve, key) => (
                       <option
                         key={key}
                         value={eve.horarios}>
@@ -150,7 +150,7 @@ function Eventos_PC() {
                 </div>
   
                 <div className='min-w-full table-auto border-collapse border border-gray-300 mb-8'>
-                    {eventosFiltrados.map((evento, key) =>
+                    {Array.isArray(eventosFiltrados) && eventosFiltrados.map((evento, key) =>
                     !evento.eliminado && (
                       <CardEventos
                         key={key}
