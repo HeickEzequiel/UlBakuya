@@ -119,7 +119,7 @@ function Alumnos_PC() {
               onChange={(e) => setSelectedEscuela(e.target.value)}
               className="p-2 border rounded-xl">
               <option value="todas">Todas las Escuelas</option>
-              {escuelas.map((esc, key) => (
+              {Array.isArray(escuelas) &&  escuelas.map((esc, key) => (
                 <option 
                 key={key}
                 value={esc.nombre}>
@@ -143,7 +143,7 @@ function Alumnos_PC() {
               onChange={(e) => setSelectedProfesor(e.target.value)}
               className="p-2 border rounded-xl">
               <option value="todas">Todos los Profesores</option>
-              {profesores.map((profe, key) => (
+              {Array.isArray(profesores) && profesores.map((profe, key) => (
                 <option
                 key={key}
                 value={`${profe.nombre} ${profe.apellido}`}>
@@ -161,7 +161,7 @@ function Alumnos_PC() {
             </div>
 
             <div className="min-w-full table-auto border-collapse border border-gray-300 mb-8">
-              {alumnosFiltrados.map((alumno, key) =>
+              {Array.isArray(alumnosFiltrados) && alumnosFiltrados.map((alumno, key) =>
                 !alumno.eliminado && (
                   <CardAlumnos
                     key={key}

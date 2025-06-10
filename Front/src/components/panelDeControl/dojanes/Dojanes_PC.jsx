@@ -100,7 +100,7 @@ console.log(dojanesFiltrados)
                   onChange={(e) => setSelectedEscuela(e.target.value)}
                   className="p-2 border rounded-xl">
                   <option value="todas">Todas las Escuelas</option>
-                  {escuelas.map((esc, key) => (
+                  {Array.isArray(escuelas) && escuelas.map((esc, key) => (
                   <option 
                     key={key}
                     value={esc.nombre}>
@@ -114,7 +114,7 @@ console.log(dojanesFiltrados)
                   onChange={(e) => setSelectedProfesor(e.target.value)}
                   className="p-2 border rounded-xl">
                   <option value="todas">Todos los Profesores</option>
-                  {profesores.map((profe, key) => (
+                  {Array.isArray(profesores) && profesores.map((profe, key) => (
                   <option
                     key={key}
                     value={`${profe.nombre} ${profe.apellido}`}>
@@ -132,7 +132,7 @@ console.log(dojanesFiltrados)
               </div>
 
               <div className='min-w-full table-auto border-collapse border border-gray-300 mb-8'>
-                  {dojanesFiltrados.map((dojan, key) =>
+                  {Array.isArray(dojanesFiltrados) && dojanesFiltrados.map((dojan, key) =>
                   !dojan.eliminado && (
                     <CardDojanes
                       key={key}

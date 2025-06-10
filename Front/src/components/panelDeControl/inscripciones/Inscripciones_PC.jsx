@@ -124,7 +124,7 @@ console.log(inscripcionesFiltradas)
                 onChange={(e) => setSelectedEscuela(e.target.value)}
                 className="p-2 border rounded-xl">
                 <option value="todas">Todas las Escuelas</option>
-                {escuelas.map((esc, key) => (
+                {Array.isArray(escuelas) && escuelas.map((esc, key) => (
                   <option 
                     key={key}
                     value={esc.nombre}>
@@ -137,7 +137,7 @@ console.log(inscripcionesFiltradas)
                 onChange={(e) => setSelectedEvento(e.target.value)}
                 className="p-2 border rounded-xl">
                 <option value="todas">Todos los Eventos</option>
-                {eventos.map((eve, key) => (
+                {Array.isArray(eventos) && eventos.map((eve, key) => (
                   <option 
                     key={key}
                     value={eve.tipo_de_evento}>
@@ -150,7 +150,7 @@ console.log(inscripcionesFiltradas)
                 onChange={(e) => setSelectedFechaEvento(e.target.value)}
                 className="p-2 border rounded-xl">
                 <option value="todas">Todas las fechas</option>
-                {eventos.map((eve, key) => (
+                {Array.isArray(eventos) && eventos.map((eve, key) => (
                   <option 
                     key={key}
                     value={eve.fecha_del_evento}>
@@ -174,7 +174,7 @@ console.log(inscripcionesFiltradas)
               onChange={(e) => setSelectedProfesor(e.target.value)}
               className="p-2 border rounded-xl">
               <option value="todas">Todos los Profesores</option>
-              {profesores.map((profe, key) => (
+              {Array.isArray(profesores) && profesores.map((profe, key) => (
                 <option
                 key={key}
                 value={`${profe.nombre} ${profe.apellido}`}>
@@ -192,7 +192,7 @@ console.log(inscripcionesFiltradas)
             </div>
 
             <div className="min-w-full table-auto border-collapse border border-gray-300 mb-8">
-              {inscripcionesFiltradas.map((inscripcion, key)=>
+              {Array.isArray(inscripcionesFiltradas) && inscripcionesFiltradas.map((inscripcion, key)=>
                   !inscripcion.eliminado && (
                     <CardInscripciones
                       key={key}

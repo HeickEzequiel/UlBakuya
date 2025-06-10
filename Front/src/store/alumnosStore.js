@@ -81,6 +81,8 @@ const alumnosStore = create((set, get)=>{
                 selectedProfesor,
                 sortBy
             } = get()
+
+            if (!Array.isArray(alumnos)) return [];
             
             let results = [...alumnos]
 
