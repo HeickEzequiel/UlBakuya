@@ -48,7 +48,7 @@ function Newalumno() {
           <form onSubmit={handleSubmit} className="space-y-4">
             
             {[
-              { name: "nombre", placeholder: "Ingrese nombre" },
+              { name: "nombre", label: "Nombre", placeholder: "Ingrese nombre" },
               { name: "apellido", placeholder: "Ingrese apellido" },
               { name: "imagen", placeholder: "Ingrese link de la imagen" },
               {
@@ -56,15 +56,15 @@ function Newalumno() {
                 type: "date",
                 label: "Fecha de nacimiento",
               },
-              { name: "escuela", placeholder: "Ingrese escuela" },
-              { name: "graduacion", placeholder: "Ingrese graduación" },
+              { name: "escuela", label: "Escuela", placeholder: "Ingrese escuela" },
+              { name: "graduacion", label: "Graduación", placeholder: "Ingrese graduación" },
               {
                 name: "fecha_de_examen",
                 type: "date",
                 label: "Fecha de examen",
               },
-              { name: "profesor", placeholder: "Ingrese profesor" },
-              { name: "estado", placeholder: "Ingrese estado" },
+              { name: "profesor", label: "Profesor", placeholder: "Ingrese profesor" },
+              { name: "estado", label: "Estado", placeholder: "Ingrese estado" },
             ].map((field) => (
               <div key={field.name}>
                 {field.label && (

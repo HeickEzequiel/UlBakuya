@@ -3,12 +3,19 @@ import { Link } from 'react-router-dom'
 function CardDojanes(props) {
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden mb-4 border border-gray-300">
-      <div className='flex flex-col lg:flow-row items-center p-6'>
+      <div className='flex flex-col lg:flex-row items-center p-6'>
         <div className="flex-1 mb-4 lg:mb-0">
           <p className="text-lg font-semibold text-gray-800">{props.club}</p>
           <p className="text-sm text-gray-600">Dirección: {props.direccion}</p>
           <p className="text-sm text-gray-600">Horarios: {props.horarios}</p>
-          <p className="text-sm text-gray-600">Profesores: {props.profesor}</p>
+          <p className="text-sm text-gray-600">Profesores: 
+            <ul className="list-disc list-inside text-sm text-gray-600">
+              {props.profesor.map((profe, index)=>(
+              <li key={index}>{profe}</li>
+              ))}
+            </ul>
+          </p>
+
         </div>
 
         <div className="flex flex-wrap gap-4">

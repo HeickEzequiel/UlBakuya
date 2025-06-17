@@ -84,11 +84,12 @@ const dojanStore = create((set, get)=>{
             }
 
             if(selectedProfesor !== "todas"){
-                results = results.filter((dojanArray)=> dojanArray.profesor === selectedProfesor)
+                results = results.filter((dojanArray)=> 
+                    dojanArray.profesor.includes(selectedProfesor))
             }
 
             if(selectedEscuela !== "todas"){
-                results = results.filter((escuelaArray)=> escuelaArray.escuela === selectedEscuela)
+                results = results.filter((escuelaArray)=> escuelaArray.escuela.toLowerCase() === selectedEscuela.toLowerCase())
             }
 
             if(sortBy === "nombre-asc"){

@@ -46,15 +46,15 @@ function NewProfesor(props) {
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     {[
-                        {name: "nombre", placeholder: "Ingrese nombre"},
-                        {name: "apellido", placeholder: "Ingrese apellido"},
-                        {name: "imagen", placeholder: "Ingrese link de la imagen"},
+                        {name: "nombre", label: "Nombre", placeholder: "Ingrese nombre"},
+                        {name: "apellido", label: "Apellido", placeholder: "Ingrese apellido"},
+                        {name: "imagen", label: "Foto", placeholder: "Ingrese link de la imagen"},
                         {name: "fecha_de_nacimiento", type:"date", label:"Fecha de nacimiento"},
-                        {name: "escuela", placeholder:"Ingrese escuela"},
-                        {name: "graduacion", placeholder:"Ingrese graduacion"},
+                        {name: "escuela", label: "Escuela", placeholder:"Ingrese escuela"},
+                        {name: "graduacion", label: "Graduacion", placeholder:"Ingrese graduacion"},
                         {name: "fecha_de_examen", type:"date", label:"Fecha de examen"},
-                        {name: "instructor_mayor", placeholder:"Ingrese instructor mayor"},
-                        {name: "estado", placeholder:"Ingrese estado"},
+                        {name: "instructor_mayor", label: "Instructor mayor", placeholder:"Ingrese instructor mayor"},
+                        {name: "estado", label: "Estado", placeholder:"Ingrese estado"},
                     ].map((field) =>(
                         <div key={field.name}>
                             {field.label && (

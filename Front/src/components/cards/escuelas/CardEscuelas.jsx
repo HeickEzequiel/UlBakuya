@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 
 function CardEscuelas(props) {
+
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden mb-4 border border-gray-300">
       <div className="flex flex-col lg:flex-row items-center p-6">

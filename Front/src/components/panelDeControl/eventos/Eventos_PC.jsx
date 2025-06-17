@@ -22,6 +22,12 @@ function Eventos_PC() {
     } = eventoStore()
     const eventosFiltrados = getFilteredEvento()
     const setEventos = eventoStore((state)=>state.setEventos)
+    const evento = [
+      "Torneo",
+      "Examen",
+      "Curso técnico",
+      "Clase especial"
+    ]
 
     useEffect(()=>{
       if(eventos){
@@ -98,11 +104,11 @@ function Eventos_PC() {
                     onChange={(e) => setSelectedEvento(e.target.value)}
                     className="p-2 border rounded-xl">
                     <option value="todas">Todas los Eventos</option>
-                    {Array.isArray(eventos) && eventos.map((eve, key) => (
+                    {evento.map((eve, key) => (
                       <option 
                         key={key}
-                        value={eve.tipo_de_evento}>
-                          {eve.tipo_de_evento}
+                        value={eve}>
+                          {eve}
                       </option>
                     ))}
                   </select>

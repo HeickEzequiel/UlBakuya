@@ -5,14 +5,12 @@ import { Link } from "react-router-dom"
 import { useFetchEscuelas } from "../../../hooks/useEscuela"
 import userStore from "../../../store/loginStore"
 import CardEscuelas from "../../cards/escuelas/CardEscuelas"
-import { useFetchDojanes } from "../../../hooks/useDojan"
 import escuelasStore from "../../../store/escuelaStore"
 import { useEffect } from "react"
 
 
 function Escuelas_PC() {
   const { data:escuelas, isLoading, error} = useFetchEscuelas()
-  const { data:dojanes } = useFetchDojanes()
   const { isLogged, user } = userStore()
   const getFilteredEscuelas = escuelasStore((state)=>state.getFilteredEscuelas)
   const {
@@ -98,12 +96,13 @@ function Escuelas_PC() {
                   onChange={(e) => setSelectedDojan(e.target.value)}
                   className="p-2 border rounded-xl">
                   <option value="todas">Todos los Dojangs</option>
-                  {Array.isArray(dojanes) && dojanes.map((doj, key) => (
-                  <option 
-                    key={key}
-                    value={doj.nombre}>
-                      {doj.nombre}
-                  </option>
+                  {Array.isArray(escuelas) && escuelas.map((doj, key) => (
+                    (doj.dojan.map((dojan, key)=>(
+                      <option 
+                        key={key}
+                        value={dojan}>
+                          {dojan}
+                      </option>)))
                   ))}
                 </select>
 

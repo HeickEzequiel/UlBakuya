@@ -7,9 +7,9 @@ function CardUsuarios(props){
       <div className="flex flex-col lg:flex-row items-center p-6">
         <div className="flex-1 mb-4 lg:mb-0">
           <p className="text-lg font-semibold text-gray-800">{props.nombre} {props.apellido}</p>
-          <p className="text-sm text-gray-600">{props.telefono}</p>
-          <p className="text-sm text-gray-600">{props.email}</p>
-          <p className="text-sm text-gray-600">{props.nivel}</p>
+          <p className="text-sm text-gray-600">Telefono: {props.telefono}</p>
+          <p className="text-sm text-gray-600">e-Mail: {props.email}</p>
+          <p className="text-sm text-gray-600">Nivel: {props.nivel}</p>
         </div>
         <div className="flex flex-wrap gap-4">
           <Link to={`/user/${props.id}`}> 

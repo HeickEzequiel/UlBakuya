@@ -88,7 +88,7 @@ const eventoStore = create((set, get)=>{
             }
 
             if(selectedEvento !== "todas"){
-                results = results.filter((eventoArray) => eventoArray.tipo_de_evento === selectedEvento)
+                results = results.filter((eventoArray) => eventoArray.tipo_de_evento.toLowerCase() === selectedEvento.toLowerCase())
             }
             if(selectedFecha !== "todas"){
                 results = results.filter((eventoArray) => eventoArray.fecha_del_evento === selectedFecha)
