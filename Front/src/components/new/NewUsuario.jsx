@@ -53,27 +53,27 @@ function NewUsuario() {
           <form onSubmit={handleSubmit} className="space-y-4">
             
             {[
-              { name: "nombre", placeholder: "Ingrese nombre" },
-              { name: "apellido", placeholder: "Ingrese apellido" },
+              { name: "nombre", label: "Nombre", placeholder: "Ingrese nombre" },
+              { name: "apellido", label: "Apellido", placeholder: "Ingrese apellido" },
               {
                 name: "fecha_de_nacimiento",
                 type: "date",
                 label: "Fecha de nacimiento",
               },
-              { name: "tel", placeholder: "Ingrese numero de telefono" },
-              { name: "email", placeholder: "Ingrese correo electronico" },
-              { name: "password", placeholder: "Ingrese contraseña" },
-              { name: "nivel", placeholder: "Ingrese nivel" },
-              { name: "imagen", placeholder: "Ingrese link de la imagen" },
-              { name: "escuela", placeholder: "Ingrese escuela" },
-              { name: "profesor", placeholder: "Ingrese profesor" },
-              { name: "graduacion", placeholder: "Ingrese graduación" },
+              { name: "tel", label: "Telefono", placeholder: "Ingrese numero de telefono" },
+              { name: "email", label: "Correo electronico", placeholder: "Ingrese correo electronico" },
+              { name: "password", label: "Contraseña", placeholder: "Ingrese contraseña" },
+              { name: "nivel", label: "Nivel", placeholder: "Ingrese nivel" },
+              { name: "imagen", label: "Foto", placeholder: "Ingrese link de la imagen" },
+              { name: "escuela", label: "Escuela", placeholder: "Ingrese escuela" },
+              { name: "profesor", label: "Profesor", placeholder: "Ingrese profesor" },
+              { name: "graduacion", label: "Graduación", placeholder: "Ingrese graduación" },
               {
                 name: "fecha_de_examen",
                 type: "date",
                 label: "Fecha de examen",
               },
-              { name: "estado", placeholder: "Ingrese estado" },
+              { name: "estado", label: "Estado", placeholder: "Ingrese estado" },
             ].map((field) => (
               <div key={field.name}>
                 {field.label && (

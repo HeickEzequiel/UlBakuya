@@ -94,13 +94,14 @@ const alumnosStore = create((set, get)=>{
             }
 
             if(selectedEscuela !== "todas"){
-                results = results.filter((alumnosArray) => alumnosArray.escuela === selectedEscuela)
+                results = results.filter((alumnosArray) => alumnosArray.escuela.toLowerCase() === selectedEscuela.toLowerCase())
             }
             if(selectedGraduacion !== "todas"){
-                results = results.filter((alumnosArray) => alumnosArray.graduacion === selectedGraduacion)
+                results = results.filter((alumnosArray) => alumnosArray.graduacion.toLowerCase() === selectedGraduacion.toLowerCase())
+                console.log(results)
             }
             if(selectedProfesor !== "todas"){
-                results = results.filter((alumnosArray) => alumnosArray.profesor === selectedProfesor)
+                results = results.filter((alumnosArray) => alumnosArray.profesor.toLowerCase() === selectedProfesor.toLowerCase())
             }
 
             if(sortBy === "nombre-asc"){

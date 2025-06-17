@@ -49,9 +49,15 @@ function Inscripciones_PC() {
     "8vo Dan",
     "9no Dan"
   ]
+  const evento = [
+    "Torneo",
+    "Examen",
+    "Curso técnico",
+    "Clase especial"
+  ]
 
   const setInscripciones = inscripcionStore((state)=>state.setInscripciones)
-console.log(inscripcionesFiltradas)
+
   useEffect(()=>{
     if(inscripciones){
       setInscripciones(inscripciones)
@@ -137,11 +143,11 @@ console.log(inscripcionesFiltradas)
                 onChange={(e) => setSelectedEvento(e.target.value)}
                 className="p-2 border rounded-xl">
                 <option value="todas">Todos los Eventos</option>
-                {Array.isArray(eventos) && eventos.map((eve, key) => (
+                {evento.map((eve, key) => (
                   <option 
                     key={key}
-                    value={eve.tipo_de_evento}>
-                      {eve.tipo_de_evento}
+                    value={eve}>
+                      {eve}
                   </option>
                 ))}
               </select>
@@ -159,15 +165,15 @@ console.log(inscripcionesFiltradas)
                 ))}
               </select>
               
-            <select
-              onChange={(e) => setSelectedGraduacion(e.target.value)}
-              className="p-2 border rounded-xl">
-              <option value="todas">Todas las Graduaciones</option>
-              {grados.map((grado,i)=>(
-                <option key={i} value={grado}>
-                  {grado}
-                </option>
-              ))}
+              <select
+                onChange={(e) => setSelectedGraduacion(e.target.value)}
+                className="p-2 border rounded-xl">
+                <option value="todas">Todas las Graduaciones</option>
+                {grados.map((grado,i)=>(
+                  <option key={i} value={grado}>
+                    {grado}
+                  </option>
+                ))}
             </select>
 
             <select
@@ -198,6 +204,7 @@ console.log(inscripcionesFiltradas)
                       key={key}
                       id={inscripcion.id}
                       tipo_de_evento={inscripcion.tipo_de_evento}
+                      fecha_del_evento={inscripcion.fecha_del_evento}
                       horarios={inscripcion.horarios}
                       nombre={inscripcion.nombre}
                       apellido={inscripcion.apellido}

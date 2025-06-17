@@ -78,11 +78,11 @@ const inscripcionStore = create((set, get)=>{
 
         setInscripciones:(inscripciones) => set({inscripciones}),
         setSearchTerm:(term) => set({searchTerm: term}),
-        setSelectedEvento:(evento)=> set({setSelectedEvento: evento}),
-        setSelectedFechaEvento:(fechaevento)=>set({setSelectedEvento: fechaevento}),
-        setSelectedEscuela:(escuela)=>set({setSelectedEscuela: escuela}),
-        setSelectedProfesor:(profesor)=>set({setSelectedProfesor: profesor}),
-        setSelectedGraduacion:(graduacion)=>set({setSelectedGraduacion: graduacion}),
+        setSelectedEvento:(evento)=> set({selectedEvento: evento}),
+        setSelectedFechaEvento:(fecha_del_evento)=>set({selectedFechaEvento: fecha_del_evento}),
+        setSelectedEscuela:(escuela)=>set({selectedEscuela: escuela}),
+        setSelectedProfesor:(profesor)=>set({selectedProfesor: profesor}),
+        setSelectedGraduacion:(graduacion)=>set({selectedGraduacion: graduacion}),
         setSortBy:(sort) => set({sortBy: sort}),
 
         getFilteredInscripciones: ()=>{
@@ -107,19 +107,20 @@ const inscripcionStore = create((set, get)=>{
             }
 
             if(selectedEvento !== "todas"){
-                results = results.filter((inscripcionesArray) => inscripcionesArray.evento === selectedEvento)
+                results = results.filter((inscripcionesArray) => inscripcionesArray.tipo_de_evento === selectedEvento)
             }
             if(selectedFechaEvento !== "todas"){
                 results = results.filter((inscripcionesArray) => inscripcionesArray.fecha_del_evento === selectedFechaEvento)
+                console.log(results)
             }
             if(selectedEscuela !== "todas"){
-                results = results.filter((inscripcionesArray) => inscripcionesArray.escuela === selectedEscuela)
+                results = results.filter((inscripcionesArray) => inscripcionesArray.escuela.toLowerCase() === selectedEscuela.toLowerCase())
             }
             if(selectedProfesor !== "todas"){
-                results = results.filter((inscripcionesArray) => inscripcionesArray.Profesor === selectedProfesor)
+                results = results.filter((inscripcionesArray) => inscripcionesArray.profesor.toLowerCase() === selectedProfesor.toLowerCase())
             }
             if(selectedGraduacion !== "todas"){
-                results = results.filter((inscripcionesArray) => inscripcionesArray.graduacion === selectedGraduacion)
+                results = results.filter((inscripcionesArray) => inscripcionesArray.graduacion_actual.toLowerCase() === selectedGraduacion.toLowerCase())
             }
 
             if(sortBy === "nombre-asc"){

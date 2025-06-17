@@ -7,6 +7,7 @@ function CardInscripciones(props) {
         <div className="flex-1 mb-4 lg:mb-0">
           <p className="text-lg font-semibold text-gray-800">{props.tipo_de_evento}</p>
           <p className="text-sm text-gray-600text-lg font-semibold text-gray-800">Alumno: {props.apellido} {props.nombre}</p>
+          <p className="text-sm text-gray-600">Fecha del evento: {props.fecha_del_evento}</p>
           <p className="text-sm text-gray-600">Horario: {props.horarios}</p>
           <p className="text-sm text-gray-600">Edad: {props.edad}</p>
           <p className="text-sm text-gray-600">Altura: {props.altura}</p>

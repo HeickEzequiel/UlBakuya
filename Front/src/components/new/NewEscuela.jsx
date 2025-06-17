@@ -55,11 +55,11 @@ function NewEscuela(props) {
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     {[
-                        {name:"nombre", placeholder:"Ingrese nombre"},
-                        {name:"director", placeholder:"Ingrese Director"},
-                        {name:"dojan", placeholder:"Ingrese dojan"},
-                        {name:"imagen", placeholder:"Ingrese link de la imagen"},
-                        {name:"estado", placeholder:"Ingrese estado"}
+                        {name:"nombre", label: "Nombre", placeholder:"Ingrese nombre"},
+                        {name:"director", label: "Director", placeholder:"Ingrese Director"},
+                        {name:"dojan", label: "Dojang", placeholder:"Ingrese dojang"},
+                        {name:"imagen", label: "Escudo", placeholder:"Ingrese link de la imagen"},
+                        {name:"estado", label: "Estado", placeholder:"Ingrese estado"}
                     ].map((field) =>(
                         <div key={field.name}>
                             {field.label && (

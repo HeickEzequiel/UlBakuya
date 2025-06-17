@@ -45,17 +45,17 @@ function NewEvento() {
             <form onSubmit={handleSubmit} className="space-y-4">
               
               {[
-                { name: "tipo_de_evento", placeholder: "Ingrese evento" },
+                { name: "tipo_de_evento", label: "Evento", placeholder: "Ingrese evento" },
                 {
                     name: "fecha_del_evento",
                     type: "date",
                     label: "Fecha del evento",
                 },
-                { name: "horarios", placeholder: "Ingrese horario" },
-                { name: "club", placeholder: "Ingrese club" },
-                { name: "direccion", placeholder: "Ingrese direccion" },
-                { name: "imagen", placeholder: "Ingrese link de la imagen" },
-                { name: "estado", placeholder: "Ingrese estado" },
+                { name: "horarios", label: "Horario", placeholder: "Ingrese horario" },
+                { name: "club", label: "Club", placeholder: "Ingrese club" },
+                { name: "direccion", label: "Dirección", placeholder: "Ingrese direccion" },
+                { name: "imagen", label: "Imagen", placeholder: "Ingrese link de la imagen" },
+                { name: "estado", label: "Estado", placeholder: "Ingrese estado" },
               ].map((field) => (
                 <div key={field.name}>
                   {field.label && (

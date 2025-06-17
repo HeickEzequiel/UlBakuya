@@ -96,13 +96,13 @@ const profesorStore = create((set, get)=>{
             }
 
             if(selectedEscuela !== "todas"){
-                results = results.filter((profesoresArray) => profesoresArray.escuela === selectedEscuela)
+                results = results.filter((profesoresArray) => profesoresArray.escuela.toLowerCase() === selectedEscuela.toLowerCase())
             }
             if(selectedGraduacion !== "todas"){
-                results = results.filter((profesoresArray) => profesoresArray.graduacion === selectedGraduacion)
+                results = results.filter((profesoresArray) => profesoresArray.graduacion.toLowerCase() === selectedGraduacion.toLowerCase())
             }
             if(selectedInstructorMayor !== "todas"){
-                results = results.filter((profesoresArray) => profesoresArray.instructor_mayor === selectedInstructorMayor)
+                results = results.filter((profesoresArray) => profesoresArray.instructor_mayor.toLowerCase() === selectedInstructorMayor.toLowerCase())
             }
 
             if(sortBy === "nombre-asc"){

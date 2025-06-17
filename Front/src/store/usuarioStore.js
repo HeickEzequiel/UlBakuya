@@ -94,7 +94,7 @@ const usuarioStore = create((set, get)=>{
             }
 
             if(selectedNivel !== "todas"){
-                results = results.filter((usuariosArray)=> usuariosArray.nivel === selectedNivel)
+                results = results.filter((usuariosArray)=> usuariosArray.nivel.toLowerCase() === selectedNivel.toLowerCase())
             }
 
             if(sortBy === "nombre-asc"){

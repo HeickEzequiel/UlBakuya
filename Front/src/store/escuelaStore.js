@@ -75,7 +75,8 @@ const escuelasStore = create((set, get)=>{
             }
             
             if(selectedDojan !== "todas"){
-                results = results.filter((escuelasArray) => escuelasArray.nombre === selectedDojan)
+                results = results.filter((escuelasArray) => 
+                    escuelasArray.dojan.includes (selectedDojan))
             }
 
             if(sortBy === "nombre-asc"){

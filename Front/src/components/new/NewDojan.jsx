@@ -56,14 +56,14 @@ function NewDojan() {
           <form onSubmit={handleSubmit} className="space-y-4">
             
             {[
-              { name: "club", placeholder: "Ingrese club" },
-              { name: "escuela", placeholder: "Ingrese escuela" },
-              { name: "direccion", placeholder: "Ingrese direccion" },
-              { name: "imagen", placeholder: "Ingrese link de la imagen" },
-              { name: "tel", placeholder: "Ingrese numero de telefono" },
-              { name: "profesor", placeholder: "Ingrese profesor" },
-              { name: "horarios", placeholder: "Ingrese horarios" },
-              { name: "estado", placeholder: "Ingrese estado" },
+              { name: "club", label: "Club", placeholder: "Ingrese club" },
+              { name: "escuela", label: "Escuela", placeholder: "Ingrese escuela" },
+              { name: "direccion", label: "Dirección", placeholder: "Ingrese direccion" },
+              { name: "imagen", label: "Imagen", placeholder: "Ingrese link de la imagen" },
+              { name: "tel", label: "Telefono", placeholder: "Ingrese numero de telefono" },
+              { name: "profesor", label: "Profesor", placeholder: "Ingrese profesor" },
+              { name: "horarios", label: "Horarios", placeholder: "Ingrese horarios" },
+              { name: "estado", label: "Estado", placeholder: "Ingrese estado" },
             ].map((field) => (
               <div key={field.name}>
                 {field.label && (
