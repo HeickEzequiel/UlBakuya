@@ -1,4 +1,5 @@
-const { Dojan } = require("../../db.js");
+const { Dojan, Escuela, Profesor} = require("../../db.js");
+
 
 const postDojan = async(req, res) =>{
    console.log(req.body)
@@ -30,7 +31,25 @@ const postDojan = async(req, res) =>{
                 }
 
             })
-            return res.status(200).json(newDojan)
+
+            const profesoresDB = await Profesor.findAll({
+                where:{
+                    id: Array.isArray(profesor) ? profesor : [profesor]
+                }
+            })
+            await newDojan.setDojanesProfesores(profesoresDB)
+
+            const escuelasDB = await Escuela.findAll({
+                where:{
+                    id: Array.isArray(escuela) ? escuela : [escuela]
+                }
+            })
+            await newDojan.setDojanesEscuela(escuelasDB)
+
+            return res.status(200).json({
+                dojan: newDojan,
+                escuela: escuelasDB
+            })
         }
         return res.status(400).send("Datos incorrectos")
     }catch (error){

@@ -1,32 +1,57 @@
-import userStore  from '../../store/loginStore.js'
-import { Link } from 'react-router-dom'
+import userStore from '../../store/loginStore.js';
+import { Link } from 'react-router-dom';
 
 function Nav() {
-  const {isLogged, logout}=userStore()
-  return (
-    <div className=' flex items-center bg-black p-6 w-full'>
-      
-        <span className='absolute top-14 left-48 ml-4 text-bold text-2xl text-white'>FIT</span>
-        <span className='text-white font-bold text-center justify-center text-2xl mb-5 tracking-tight ml-8 mx-2 mr-4'>Formación Integral de Taekwondo</span>
-        <div className='ml-32 mb-4'>
-          <button className='block mt-4 lg:inline-block lg:mt-0 text-white font-medium hover:text-lime-400 mr-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'><Link to='/'>Home</Link></button>
-          <button className='block mt-4 lg:inline-block lg:mt-0 text-white font-medium hover:text-lime-400 mr-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'><Link to='/asociacion'>La Asociaciòn</Link></button>
-          <button className='block mt-4 lg:inline-block lg:mt-0 text-white font-medium hover:text-lime-400 mr-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'><Link to='/profesores'>Profesores</Link></button>
-          <button className='block mt-4 lg:inline-block lg:mt-0 text-white font-medium hover:text-lime-400 mr-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'><Link to='/dojan'>Lugares de entrenamiento</Link></button>
-          
-          {!isLogged?
-            <div className='absolute right-12 top-8'>
-              <button className='block mt-4 lg:inline-block lg:mt-0 text-white font-medium hover:text-lime-400 ml-96 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'><Link to= '/login'>Ingresar </Link></button>
-            </div>
-          :<div>
-          
-          <button className=' absolute block mt-4 lg:inline-block lg:mt-0 text-white font-medium hover:text-lime-400 right-10 top-7 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300' > <Link to='/perfil'> Perfil </Link> </button>
-          <button onClick ={logout} className=' absolute block mt-4 lg:inline-block lg:mt-0 text-white font-medium hover:text-lime-400 right-24 top-7 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'><Link to= '/'>Desconectarse </Link></button>
-          </div>
-          }
+  const { isLogged, logout } = userStore();
 
-        </div>
-    </div>
-  )
+  return (
+    <header className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-md">
+      <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+
+        {/* Logo */}
+        <Link to="/" className="text-lime-400 text-3xl font-extrabold tracking-wide hover:opacity-90 transition">
+          FIT
+        </Link>
+
+        {/* Título */}
+        <h1 className="hidden md:block text-white text-lg md:text-xl font-semibold tracking-tight">
+          Formación Integral de Taekwondo
+        </h1>
+
+        {/* Navegación */}
+        <nav className="flex items-center space-x-4 md:space-x-6">
+          <Link to="/" className="text-white font-medium hover:text-lime-400 transition-transform transform hover:-translate-y-1 hover:scale-105">
+            Home
+          </Link>
+          <Link to="/asociacion" className="text-white font-medium hover:text-lime-400 transition-transform transform hover:-translate-y-1 hover:scale-105">
+            La Asociación
+          </Link>
+          <Link to="/profesores" className="text-white font-medium hover:text-lime-400 transition-transform transform hover:-translate-y-1 hover:scale-105">
+            Profesores
+          </Link>
+          <Link to="/dojan" className="text-white font-medium hover:text-lime-400 transition-transform transform hover:-translate-y-1 hover:scale-105">
+            Lugares
+          </Link>
+
+          {!isLogged ? (
+            <Link to="/login" className="relative left-36 text-white font-semibold border border-lime-400 px-3 py-1 rounded-xl hover:bg-lime-400 hover:text-black transition duration-300">
+              Ingresar
+            </Link>
+          ) : (
+            <>
+              <Link to="/perfil" className="relative left-36 text-white font-medium hover:text-lime-400 transition-transform transform hover:-translate-y-1 hover:scale-105">
+                Perfil
+              </Link>
+              <button onClick={logout} className="relative left-36 text-white font-medium border border-red-400 px-3 py-1 rounded-xl hover:text-red-400 transition-transform transform hover:-translate-y-1 hover:scale-105">
+                Desconectarse
+              </button>
+            </>
+          )}
+        </nav>
+      </div>
+    </header>
+  );
 }
-export default Nav
+
+export default Nav;
+

@@ -50,7 +50,7 @@ function Login() {
   const handleNewUser = () => {
     navigate("/newuser");
   };
-
+ 
   return (
     <div className="min-h-screen flex flex-col justify-between bg-gray-100">
       <Nav />

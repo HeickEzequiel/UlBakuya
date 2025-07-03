@@ -1,4 +1,4 @@
-const { Inscripciones } = require("../../db.js")
+const { Inscripciones, Eventos } = require("../../db.js")
 
 const postInscripcion = async(req, res) =>{
     try {
@@ -19,7 +19,7 @@ const postInscripcion = async(req, res) =>{
         } = req.body
         
         if(tipo_de_evento && horarios && nombre && apellido && edad && altura && peso && escuela && graduacion_actual && imagen){
-            const NewInscripcion = await Inscripciones.findOrCreate({
+            const newInscripcion = await Inscripciones.findOrCreate({
                 where:{
                     tipo_de_evento,
                     fecha_del_evento,
@@ -36,7 +36,18 @@ const postInscripcion = async(req, res) =>{
                     imagen,
                 }
             })
-            return res.status(200).json(NewInscripcion)
+
+            const eventosDB = await Eventos.findAll({
+                where: {
+                    id: Array.isArray(tipo_de_evento) ? tipo_de_evento : [tipo_de_evento]
+                }
+            })
+            await newInscripcion.setInscripcionesEventos(eventosDB)
+            
+            return res.status(200).json({
+                inscripcion: newInscripcion,
+                evento: eventosDB
+            })
         }
         return res.status(400).send("Datos Incorrectos")
     } catch (error) {

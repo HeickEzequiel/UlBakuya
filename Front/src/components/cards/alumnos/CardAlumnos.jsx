@@ -1,29 +1,51 @@
 import { Link } from "react-router-dom";
 
 function CardAlumnos(props) {
+  const { id, nombre, apellido, graduacion, escuela, profesor, estado } = props;
+console.log(escuela)
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden mb-4 border border-gray-300">
       <div className="flex flex-col lg:flex-row items-center p-6">
         <div className="flex-1 mb-4 lg:mb-0">
-          <p className="text-lg font-semibold text-gray-800">{props.nombre} {props.apellido}</p>
-          <p className="text-sm text-gray-600">Escuela: {props.escuela}</p>
-          <p className="text-sm text-gray-600">Graduación: {props.graduacion}</p>
-          <p className="text-sm text-gray-600">Profesor: {props.profesor}</p>
-          <p className="text-sm text-gray-600">Estado: {props.estado}</p>
+          <p className="text-lg font-semibold text-gray-800">
+            {nombre} {apellido}
+          </p>
+
+          <p className="text-sm text-gray-600">
+            <strong>Escuela:</strong>{" "}
+            {Array.isArray(escuela) && escuela.length > 0
+              ? escuela.map((e) => e.nombre).join(" / ")
+              : "Sin asignar"}
+          </p>
+
+          <p className="text-sm text-gray-600">
+            <strong>Graduación:</strong> {graduacion}
+          </p>
+
+          <p className="text-sm text-gray-600">
+            <strong>Profesor:</strong>{" "}
+            {Array.isArray(profesor) && profesor.length > 0
+              ? profesor.map((p) => `${p.nombre} ${p.apellido}`).join(" / ")
+              : "Sin asignar"}
+          </p>
+
+          <p className="text-sm text-gray-600">
+            <strong>Estado:</strong> {estado}
+          </p>
         </div>
-        
+
         <div className="flex flex-wrap gap-4">
-          <Link to={`/alumno/${props.id}`}>
+          <Link to={`/alumno/${id}`}>
             <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md transition">
               Ver
             </button>
           </Link>
-          <Link to={`/updatealumno/${props.id}`}>
+          <Link to={`/updatealumno/${id}`}>
             <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg shadow-md transition">
               Modificar
             </button>
           </Link>
-          <Link to={`/deletealumno/${props.id}`}>
+          <Link to={`/deletealumno/${id}`}>
             <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg shadow-md transition">
               Eliminar
             </button>

@@ -1,66 +1,60 @@
-const { Alumno } = require("../../db.js");
+const { Alumno, Profesor, Escuela } = require("../../db.js");
 
 const updateAlumno = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const {
-            nombre,
-            apellido,
-            imagen,
-            fecha_de_nacimiento,
-            escuela,
-            graduacion,
-            fecha_de_examen,
-            profesor,
-            estado,
-            eliminado
-        } = req.body;
+  try {
+    const { id } = req.params;
+    const {
+      nombre,
+      apellido,
+      imagen,
+      fecha_de_nacimiento,
+      escuela,
+      graduacion,
+      fecha_de_examen,
+      profesor,
+      estado,
+      eliminado
+    } = req.body;
 
-        const newData = {
-            nombre,
-            apellido,
-            imagen,
-            fecha_de_nacimiento,
-            escuela,
-            graduacion,
-            fecha_de_examen,
-            profesor,
-            estado,
-            eliminado
-        };
-
-        let updateFields = [];
-
-      
-        for (let key in newData) {
-            if (newData[key]) {
-                updateFields.push({ [key]: newData[key] });
-            }
-        }
-
-        if (updateFields.length === 0) {
-            return res.status(400).json({ error: "No se proporcionaron datos para actualizar" });
-        }
-
-        const result = await Alumno.update(Object.assign({}, ...updateFields), {
-            where: {
-                id: id
-            }
-        });
-
-        if (result[0] > 0) {
-            res.json({
-                status: "Alumno actualizado correctamente"
-            });
-            console.log("Alumno actualizado correctamente");
-        } else {
-            res.status(404).json({ error: "No se encontró ningún alumno con ese ID" });
-            console.log("No se encontró ningún alumno con ese ID");
-        }
-    } catch (error) {
-        console.error(error);
-        res.status(500).send("Error interno del servidor");
+    const alumno = await Alumno.findByPk(id);
+    if (!alumno) {
+      return res.status(404).json({ error: "Alumno no encontrado" });
     }
+
+    // ✅ Actualiza los campos del modelo
+    await alumno.update({
+      nombre,
+      apellido,
+      imagen,
+      fecha_de_nacimiento,
+      graduacion,
+      fecha_de_examen,
+      estado,
+      eliminado
+    });
+
+    // ✅ Si vienen profesores, actualiza la relación
+    if (profesor && Array.isArray(profesor)) {
+      const profesoresDB = await Profesor.findAll({
+        where: { id: profesor }
+      });
+      await alumno.setAlumnosProfesores(profesoresDB);
+    }
+
+    // ✅ Si vienen escuelas, actualiza la relación
+    if (escuela && Array.isArray(escuela)) {
+      const escuelasDB = await Escuela.findAll({
+        where: { id: escuela }
+      });
+      await alumno.setAlumnosEscuela(escuelasDB);
+    }
+
+    return res.json({ status: "Alumno actualizado correctamente" });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error interno del servidor");
+  }
 };
 
 module.exports = updateAlumno;

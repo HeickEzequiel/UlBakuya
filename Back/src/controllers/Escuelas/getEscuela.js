@@ -1,5 +1,6 @@
 const {Escuela} = require("../../db.js")
 const getEscuela = async (req, res) => {
+  
   try{
     const oneEscuelaDB = await Escuela.findByPk(req.params.id)
     const oneEscuela = {
