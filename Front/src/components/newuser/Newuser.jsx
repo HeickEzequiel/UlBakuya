@@ -1,120 +1,93 @@
-import { useNavigate} from "react-router-dom"
-import { useState } from "react"
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import userValidation from "../../../utils/userValidation";
 import Nav from "../nav/Nav";
-import userStore  from "../../store/loginStore"
+import userStore from "../../store/loginStore";
 import Footer from "../footer/Footer";
 
-function Newuser (props){
-    const navigate = useNavigate()
-    const [userData, setUserData] = useState ({
-      nombre:"",
-      apellido:"",
-      fecha_de_nacimiento:"",
-      tel:"",
-      email:"",
-      password: ""
-    })
-          
-    const [errors, setErrors] = useState({
-      nombre:"Ingrese su nombre",
-      apellido:"Ingrese su apellido",
-      fecha_de_nacimiento:"Ingrese su fecha de nacimiento",
-      tel:"ingrese numero de telefono",
-      email:"Ingrese su email",
-      password:"Ingrese su contraseña"
-    })
-    
-    const { register } = userStore()
-    const handleChange = (event) => {
-        const {name, value} = event.target
-        setUserData({...userData, [name]: value})
-        setErrors(userValidation({...userData, [name]: value }))
-    }        
-    
-    const handleSubmit = async (event) => {
-      event.preventDefault();
-      try {
-        register(userData)
-        alert("usuario creado con exito")
-        navigate("/login")
-      } catch (error) {
-          console.error('Error al realizar la solicitud:', error);
-        }
-    };
-  
-    return(
-        <div className='bg-orange-200'>
-            <Nav/>
-            <div className=" bg-blue-400 relative w-96 h-auto mt-12 p-4 left-custom border-2 border-black  rounded-xl">
-                <form className='p-2 bg-lime-500' onSubmit={handleSubmit} >
-                    <input
-                        className="bg-slate-300 border-2 border-black rounded-xl ml-6" 
-                        type='text'
-                        key="nombre"
-                        name= "nombre"
-                        value={userData.nombre}
-                        placeholder="Ingresar nombre"
-                        onChange={handleChange}
-                    />
-                    <p className="text-red-500">{ errors.nombre ? errors.nombre : null }</p>
-                    <br />
-                    <input
-                        type='text'
-                        key="apellido"
-                        name= "apellido"
-                        value={userData.apellido}
-                        placeholder="Ingresar apellido"
-                        onChange={handleChange}
-                    />
-                    <p className="text-red-500">{ errors.apellido ? errors.apellido : null }</p>
-                    <br />
-                    <input
-                        type='date'
-                        key="fecha_de_nacimiento"
-                        name= "fecha_de_nacimiento"
-                        value={userData.fecha_de_nacimiento}
-                        placeholder="Ingresar fecha de nacimiento"
-                        onChange={handleChange}
-                    />
-                    <br />
-                    <br />
-                    <input
-                        type='text'
-                        key="tel"
-                        name= "tel"
-                        value={userData.tel}
-                        placeholder="Ingresar numero de telefono"
-                        onChange={handleChange}
-                    />
-                    <p className="text-red-500">{ errors.tel ? errors.tel : null }</p>
-                    <br />
-                    <input
-                        type='text'
-                        key="email"
-                        name= "email"
-                        value={userData.email}
-                        placeholder="Ingresar email"
-                        onChange={handleChange}
-                    />
-                    <p className="text-red-500">{ errors.email ? errors.email : null }</p>
-                    <br />
-                    <input
-                        type='password'
-                        key="password"
-                        name="password"
-                        value={userData.password}
-                        placeholder="Ingresar password"
-                        onChange={handleChange}
-                    />
-                    <p className="text-red-500">{ errors.password && errors.password }</p>
-                    <br />
-                    <button className='' type="submit" disabled={ errors.email || errors.password }>Crear usuario! </button>
-                </form>
-            </div>
-            <Footer/>
+function Newuser(props) {
+  const navigate = useNavigate();
+  const [userData, setUserData] = useState({
+    nombre: "",
+    apellido: "",
+    fecha_de_nacimiento: "",
+    tel: "",
+    email: "",
+    password: "",
+  });
+
+  const [errors, setErrors] = useState({
+    nombre: "Ingrese su nombre",
+    apellido: "Ingrese su apellido",
+    fecha_de_nacimiento: "Ingrese su fecha de nacimiento",
+    tel: "Ingrese número de teléfono",
+    email: "Ingrese su email",
+    password: "Ingrese su contraseña",
+  });
+
+  const { register } = userStore();
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setUserData({ ...userData, [name]: value });
+    setErrors(userValidation({ ...userData, [name]: value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      register(userData);
+      navigate("/login");
+    } catch (error) {
+      console.log("Error al realizar la solicitud:", error);
+    }
+  };
+
+  return (
+    <div className="bg-gray-100 min-h-screen flex flex-col">
+      <Nav />
+      <main className="flex-grow flex justify-center items-center p-4">
+        <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
+          <h2 className="text-2xl font-semibold text-center mb-6 text-gray-800">Crear nuevo usuario</h2>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {[
+              { name: "nombre", type: "text", placeholder: "Nombre" },
+              { name: "apellido", type: "text", placeholder: "Apellido" },
+              { name: "fecha_de_nacimiento", type: "date", placeholder: "Fecha de nacimiento" },
+              { name: "tel", type: "text", placeholder: "Teléfono" },
+              { name: "email", type: "email", placeholder: "Email" },
+              { name: "password", type: "password", placeholder: "Contraseña" },
+            ].map(({ name, type, placeholder }) => (
+              <div key={name}>
+                <input
+                  className="w-full px-4 py-2 border rounded-xl border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  type={type}
+                  name={name}
+                  value={userData[name]}
+                  placeholder={placeholder}
+                  onChange={handleChange}
+                />
+                {errors[name] && (
+                  <p className="text-sm text-red-500 mt-1">{errors[name]}</p>
+                )}
+              </div>
+            ))}
+
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700 disabled:bg-gray-400 transition-colors"
+              disabled={
+                Object.values(errors).some((err) => err !== "")
+              }
+            >
+              Crear usuario
+            </button>
+          </form>
         </div>
-    )
+      </main>
+      <Footer />
+    </div>
+  );
 }
 
-export default Newuser
+export default Newuser;

@@ -39,10 +39,12 @@ function Carousel() {
         >
           {[img2, img3, img4, img5, img6, img7].map((img, i) => (
             <SwiperSlide key={i}>
+              <div className="w-full h-[500px] relative">
               <AdvancedImage
                 cldImg={img}
-                className="w-full h-[500px] object-cover rounded-xl transition-transform duration-500 hover:scale-105"
+                className="absolute inset-0 w-full h-full object-cover object-center rounded-xl transition-transform duration-500 hover:scale-105"
               />
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>

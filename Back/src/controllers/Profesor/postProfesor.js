@@ -14,12 +14,14 @@ const postProfesor = async(req, res) =>{
         } = req.body;
 
         if(nombre && apellido && imagen!==undefined && fecha_de_nacimiento && escuela && graduacion && fecha_de_examen){
-            const NewProfesor = await Profesor.findOrCreate({
+            const [newProfesor, created] = await Profesor.findOrCreate({
                 where:{
                     nombre,
                     apellido,
+                    fecha_de_nacimiento
+                },
+                defaults:{
                     imagen,
-                    fecha_de_nacimiento,
                     escuela,
                     graduacion,
                     fecha_de_examen,
@@ -27,7 +29,8 @@ const postProfesor = async(req, res) =>{
                 }
 
             })
-            return res.status(200).json(NewProfesor)
+            
+            return res.status(200).json(newProfesor)
         }
         return res.status(400).send("Datos incorrectos")
     }catch (error){

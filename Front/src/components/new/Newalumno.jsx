@@ -3,10 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import alumnosStore from "../../store/alumnosStore";
 import Nav from "../nav/Nav";
 import Footer from "../footer/Footer";
+import { useFetchEscuelas } from "../../hooks/useEscuela";
+import { useFetchProfes } from "../../hooks/useProfesor";
 
 function Newalumno() {
   const Navigate = useNavigate();
   const { register } = alumnosStore();
+  const {data: escuelas =[] } = useFetchEscuelas()
+  const {data: profesores =[] } = useFetchProfes()
   const [alumnoData, setAlumnoData] = useState({
     nombre: "",
     apellido: "",
@@ -15,15 +19,17 @@ function Newalumno() {
     escuela: "",
     graduacion: "",
     fecha_de_examen: "",
-    profesor: "",
+    profesor: [],
     estado: "Activo",
     eliminado: false,
   });
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setAlumnoData({ ...alumnoData, [name]: value });
-  };
+console.log(profesores, escuelas)
+const handleChange = (e) => {
+  setAlumnoData({
+    ...alumnoData,
+    [e.target.name]: e.target.value
+  });
+};
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -56,14 +62,12 @@ function Newalumno() {
                 type: "date",
                 label: "Fecha de nacimiento",
               },
-              { name: "escuela", label: "Escuela", placeholder: "Ingrese escuela" },
               { name: "graduacion", label: "Graduación", placeholder: "Ingrese graduación" },
               {
                 name: "fecha_de_examen",
                 type: "date",
                 label: "Fecha de examen",
               },
-              { name: "profesor", label: "Profesor", placeholder: "Ingrese profesor" },
               { name: "estado", label: "Estado", placeholder: "Ingrese estado" },
             ].map((field) => (
               <div key={field.name}>
@@ -83,6 +87,51 @@ function Newalumno() {
                 />
               </div>
             ))}
+
+              <div>
+                <label className="block mb-1 font-semibold text-gray-700">Escuela</label>
+                <select
+                  name="escuela"
+                  value={alumnoData.escuela}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                <option value="">Seleccione una escuela</option>
+                {escuelas.map((escuela) => (
+                  <option key={escuela.id} value={escuela.id}>
+                    {escuela.nombre}
+                  </option>
+                ))}
+                </select>
+              </div>
+
+            <div>
+            <label className="block mb-1 font-semibold text-gray-700">
+              Profesores (podés elegir más de uno)
+            </label>
+            <div className="grid grid-cols-2 gap-2">
+              {profesores.map((prof) => (
+                <label key={prof.id} className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    value={prof.id}
+                    checked={alumnoData.profesor.includes(prof.id)}
+                    onChange={(e) => {
+                    
+                      const value = e.target.value;
+                        setAlumnoData((prev) => ({
+                        ...prev,
+                        profesor: e.target.checked
+                        ? [...prev.profesor, value]
+                        : prev.profesor.filter((id) => id !== value)
+                      }));
+                    }}
+                  />
+                  {prof.nombre} {prof.apellido}
+                </label>
+              ))}
+            </div>
+            </div>
 
             <button
               type="submit"

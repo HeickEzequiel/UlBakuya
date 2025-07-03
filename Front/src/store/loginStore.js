@@ -42,6 +42,7 @@ const userStore = create((set)=>{
             try {
                 const response = await axios.post(`http://localhost:3001/newuser`, userData)
                 const newuser = response.data
+                
 
                 set({
                     isRegistering: false,
@@ -59,8 +60,14 @@ const userStore = create((set)=>{
                     "authState",
                     JSON.stringify({ user: newuser, registerSuccess: true})
                 )
+                
+                alert("Usuario creado con éxito");
+
             } catch (error) {
-              set({ isRegistering: false, registerSuccess: true})  
+              set({ isRegistering: false, registerSuccess: false})  
+                if(error.response.request.status === 401){
+                    alert("Ya existe un usuario registrado con ese correo electrónico")
+                }
             }
         },
 

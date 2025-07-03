@@ -13,12 +13,12 @@ import { fill } from "@cloudinary/url-gen/actions/resize";
 });
 
 
-const imagen2 = cld.image("ulbakuya/gcsdjecrcflpzihhvar2")
-const imagen3 = cld.image("ulbakuya/torneo")
-const imagen4 = cld.image("ulbakuya/clase")
-const imagen5 = cld.image("ulbakuya/curso")
-const imagen6 = cld.image("ulbakuya/grupalclase1")
-const imagen7 = cld.image("ulbakuya/clase2")
+const imagen2 = cld.image("ulbakuya/474151623_956224553104658_8127790081122476212_n_gzyd7u")
+const imagen3 = cld.image("ulbakuya/20250619_rkmxhh")
+const imagen4 = cld.image("ulbakuya/505179995_4015451208693113_4222451096396355847_n_jjbug6")
+const imagen5 = cld.image("ulbakuya/20250619pilsung_j8dyzb")
+const imagen6 = cld.image("ulbakuya/20250619ubuntu_v96rzg")
+const imagen7 = cld.image("ulbakuya/IMG_20240714_165813_u69kp3")
 const fondo = cld.image("ulbakuya/fondo")
 
 
@@ -27,7 +27,7 @@ export const img2 = imagen2.resize(fill().width(1920).height(700))
 export const img3 = imagen3.resize(fill().width(1920).height(700))
 export const img4 = imagen4.resize(fill().width(1920).height(700))
 export const img5 = imagen5.resize(fill().width(1920).height(700))
-export const img6 = imagen6.resize(fill().width(1920).height(700))
+export const img6 = imagen6.resize(fill().width(1920).height(1080))
 export const img7 = imagen7.resize(fill().width(1920).height(700))
 
 

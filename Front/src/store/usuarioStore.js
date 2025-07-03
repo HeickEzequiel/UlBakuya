@@ -38,7 +38,7 @@ const usuarioStore = create((set, get)=>{
 
                 const response = await axios.post(`http://localhost:3001/newuser`, usuarioData)
                 const newUsuario = response.data
-
+        
                 set({
                     isRegistering: false,
                     registerSuccess: true,
@@ -62,7 +62,7 @@ const usuarioStore = create((set, get)=>{
                     JSON.stringify({ usuario: newUsuario, registerSuccess: true})
                 )
             } catch (error) {
-                set({isRegistering: false, registerSuccess: true})
+                set({isRegistering: false, registerSuccess: false})
             }
         },
 

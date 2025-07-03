@@ -46,7 +46,7 @@ function Alumnos_PC() {
     "9no Dan"
   ]
   const setAlumnos = alumnosStore((state) => state.setAlumnos);
-
+console.log(alumnosFiltrados)
   useEffect(() => {
     if (alumnos) {
       setAlumnos(alumnos);
@@ -168,9 +168,9 @@ function Alumnos_PC() {
                     id={alumno.id}
                     nombre={alumno.nombre}
                     apellido={alumno.apellido}
-                    escuela={alumno.escuela}
                     graduacion={alumno.graduacion}
-                    profesor={alumno.profesor}
+                    escuela={alumno.escuelas}
+                    profesor={alumno.profesores}
                     estado={alumno.estado}
                     eliminado={alumno.eliminado}
                   />

@@ -39,7 +39,7 @@ module.exports = (sequelize) => {
       allowNull: true
     },
     profesor:{
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull:false
     },
     estado:{

@@ -60,6 +60,10 @@ console.log(profesoresFiltrados)
           </div>
         );
       }
+
+    const instructoresUnicos = [...new Set(Array.isArray(profesores) && profesores.map(profe => profe.instructor_mayor))];
+    const graduacionUnica = [...new Set(Array.isArray(profesores) && profesores.map(profe => profe.graduacion))]  
+
     return (
     <div>
         <Nav/>
@@ -109,11 +113,11 @@ console.log(profesoresFiltrados)
                             onChange={(e) => setSelectedGraduacion(e.target.value)}
                             className="p-2 border rounded-xl">
                             <option value="todas">Todos las Graduaciones</option>
-                            {Array.isArray(profesores) && profesores.map((profe, key) => (
+                            {graduacionUnica.map((profe, key) => (
                                 <option
                                     key={key}
-                                    value={profe.graduacion}>
-                                    {profe.graduacion}
+                                    value={profe}>
+                                    {profe}
                                 </option>
                             ))}
                         </select>
@@ -122,11 +126,11 @@ console.log(profesoresFiltrados)
                             onChange={(e) => setSelectedInstructorMayor(e.target.value)}
                             className="p-2 border rounded-xl">
                             <option value="todas">Todos los Instructores Mayores</option>
-                            {Array.isArray(profesores) && profesores.map((profe, key) => (
+                            {instructoresUnicos.map((profe, key) => (
                                 <option
                                     key={key}
-                                    value={profe.instructor_mayor}>
-                                    {profe.instructor_mayor}
+                                    value={profe}>
+                                    {profe}
                                 </option>
                             ))}
                         </select>

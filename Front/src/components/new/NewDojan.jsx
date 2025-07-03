@@ -33,7 +33,11 @@ function NewDojan() {
       profesor: dojanData.profesor
       .split(",")
       .map((d) => d.trim())
-      .filter((d) => d.length > 0), 
+      .filter((d) => d.length > 0),
+      horarios: dojanData.horarios
+      .split(",")
+      .map((h) => h.trim())
+      .filter((h) => h.length > 0) 
       };
 
       register(payload);

@@ -28,10 +28,17 @@ function EscuelaUpdate() {
     if(!isLogged){
         return <p>Debes iniciar sesion como administrador</p>
     }
-
+//updateescuela
     const updateEscuela = async (escuelaData) =>{
         try{
-            const response = await api.put(`/updateescuela/${id}`, escuelaData,{
+            const payload = {
+                ...escuelaData,
+                dojan: escuelaData.dojan
+                  .split(",")
+                  .map((d) => d.trim())
+                  .filter((d) => d.length > 0), 
+            };
+            const response = await api.put(`/updateescuela/${id}`, payload,{
                 headers:{
                     'Content-Type': 'application/json',
                 },
@@ -59,7 +66,7 @@ function EscuelaUpdate() {
         event.preventDefault()
         try {
             updateEscuela(escuelaData)            
-            navigate(`/escuela/${id}`)       
+            navigate(`/escuelas/${id}`)       
         } catch (error) {
             console.error('Error al realizar la solicitud')
         }
