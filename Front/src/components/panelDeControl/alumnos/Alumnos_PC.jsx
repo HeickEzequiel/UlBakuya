@@ -46,7 +46,7 @@ function Alumnos_PC() {
     "9no Dan"
   ]
   const setAlumnos = alumnosStore((state) => state.setAlumnos);
-console.log(alumnosFiltrados)
+
   useEffect(() => {
     if (alumnos) {
       setAlumnos(alumnos);
@@ -122,7 +122,7 @@ console.log(alumnosFiltrados)
               {Array.isArray(escuelas) &&  escuelas.map((esc, key) => (
                 <option 
                 key={key}
-                value={esc.nombre}>
+                value={esc.id}>
                   {esc.nombre}
                 </option>
               ))}
@@ -146,7 +146,7 @@ console.log(alumnosFiltrados)
               {Array.isArray(profesores) && profesores.map((profe, key) => (
                 <option
                 key={key}
-                value={`${profe.nombre} ${profe.apellido}`}>
+                value={profe.id}>
                     {profe.nombre} {profe.apellido}
                 </option>
               ))}

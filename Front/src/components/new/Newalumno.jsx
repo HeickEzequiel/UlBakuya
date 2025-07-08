@@ -23,13 +23,42 @@ function Newalumno() {
     estado: "Activo",
     eliminado: false,
   });
-console.log(profesores, escuelas)
-const handleChange = (e) => {
-  setAlumnoData({
-    ...alumnoData,
-    [e.target.name]: e.target.value
-  });
-};
+
+  const grados = [
+    "Blanco",
+    "Blanco Punta Amarilla",
+    "Amarillo",
+    "Amarillo Punta Verde",
+    "Verde",
+    "Verde Punta Azul",
+    "Azul",
+    "Azul Punta Roja",
+    "Rojo",
+    "Rojo Punta Negra",
+    "1er Dan",
+    "2do Dan",
+    "3er Dan",
+    "4to Dan",
+    "5to Dan",
+    "6to Dan",
+    "7mo Dan",
+    "8vo Dan",
+    "9no Dan"
+  ]
+
+  const handleChange = (e) => {
+    setAlumnoData({
+      ...alumnoData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleGradoChange = (e) =>{
+    setAlumnoData({
+      ...alumnoData,
+      [e.target.name]: e.target.value
+    })
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -55,14 +84,13 @@ const handleChange = (e) => {
             
             {[
               { name: "nombre", label: "Nombre", placeholder: "Ingrese nombre" },
-              { name: "apellido", placeholder: "Ingrese apellido" },
-              { name: "imagen", placeholder: "Ingrese link de la imagen" },
+              { name: "apellido", label: "Apellido", placeholder: "Ingrese apellido" },
+              { name: "imagen", label: "imagen", placeholder: "Ingrese link de la imagen" },
               {
                 name: "fecha_de_nacimiento",
                 type: "date",
                 label: "Fecha de nacimiento",
               },
-              { name: "graduacion", label: "Graduación", placeholder: "Ingrese graduación" },
               {
                 name: "fecha_de_examen",
                 type: "date",
@@ -77,6 +105,8 @@ const handleChange = (e) => {
                   </label>
                 )}
 
+                
+
                 <input
                   className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
                   type={field.type || "text"}
@@ -87,6 +117,19 @@ const handleChange = (e) => {
                 />
               </div>
             ))}
+                <label className="block mb-1 font-semibold text-gray-700">Graduacion</label> 
+                <select
+                  id="graduacion"
+                  name="graduacion"
+                  onChange={handleGradoChange}
+                  className="p-2 border rounded-xl">
+                    <option value="" disabled >Seleccione la graduacion</option>
+                    {grados.map((grado,i)=>(
+                      <option key={i} value={grado}>
+                        {grado}
+                    </option>
+                  ))}
+                </select>
 
               <div>
                 <label className="block mb-1 font-semibold text-gray-700">Escuela</label>

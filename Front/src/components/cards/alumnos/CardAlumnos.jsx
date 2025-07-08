@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function CardAlumnos(props) {
   const { id, nombre, apellido, graduacion, escuela, profesor, estado } = props;
-console.log(escuela)
+
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden mb-4 border border-gray-300">
       <div className="flex flex-col lg:flex-row items-center p-6">
