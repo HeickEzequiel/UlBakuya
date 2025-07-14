@@ -4,6 +4,7 @@ import axios from 'axios'
 const userStore = create((set)=>{
     const initialState = () =>{
         const storedState = localStorage.getItem("authState")
+        
         if(storedState){
             return JSON.parse(storedState)
         }
@@ -11,6 +12,7 @@ const userStore = create((set)=>{
             user:{
                 nombre:"",
                 apellido:"",
+                imagen:"",
                 fecha_de_nacimiento:"",
                 tel:"",
                 email:"",
@@ -25,10 +27,10 @@ const userStore = create((set)=>{
         ...initialState(),
 
         login: (userData) => {
-            const { access, nombre, apellido, fecha_de_nacimiento, tel, email, password, id, nivel }=userData
+            const { access, nombre, apellido, imagen, fecha_de_nacimiento, tel, email, password, id, nivel }=userData
             set({user: userData, isLogged: true})
             localStorage.setItem("authState", JSON.stringify({
-                    user:{ access, nombre, apellido, fecha_de_nacimiento, tel, email, password, id, nivel }, 
+                    user:{ access, nombre, apellido, imagen, fecha_de_nacimiento, tel, email, password, id, nivel }, 
                     isLogged: true
                 })
             )
@@ -51,6 +53,7 @@ const userStore = create((set)=>{
                         nombre: newuser.nombre,
                         apellido: newuser.apellido,
                         fecha_de_nacimiento: newuser.fecha_de_nacimiento,
+                        imagen: newuser.imagen,
                         tel: newuser.tel,
                         email: newuser.email,
                         password: newuser.password

@@ -67,7 +67,7 @@ console.log(profesoresFiltrados)
     return (
     <div>
         <Nav/>
-            {isLogged && (user.nivel === "Director" || user.nivel === "Profesor")?(
+            {isLogged && (user.nivel === "Director" || user.nivel === "Instructor mayor")?(
             <div>
                 <UserNav/>
                 <div className="min-h-screen px-6 py-12">

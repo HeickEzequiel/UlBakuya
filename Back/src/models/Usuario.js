@@ -41,7 +41,7 @@ module.exports = (sequelize) => {
       },
       nivel:{
          type: DataTypes.ENUM,
-         values:['Director','Profesor','Alumno','Observador'],
+         values:['Director','Instructor mayor','Instructor menor','Alumno','Observador'],
          defaultValue:'Observador',
          allowNull:true,
       },

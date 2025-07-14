@@ -46,7 +46,7 @@ function Alumnos_PC() {
     "9no Dan"
   ]
   const setAlumnos = alumnosStore((state) => state.setAlumnos);
-console.log(alumnosFiltrados)
+
   useEffect(() => {
     if (alumnos) {
       setAlumnos(alumnos);
@@ -87,7 +87,7 @@ console.log(alumnosFiltrados)
   return (
     <div>
       <Nav />
-      {isLogged && (user.nivel === "Director" || user.nivel === "Profesor") ? (
+      {isLogged && (user.nivel === "Director" || user.nivel === "Instructor mayor" || user.nivel === "Instructor menor") ? (
         <div>
           <UserNav />
           <div className="min-h-screen px-6 py-12">
@@ -108,13 +108,7 @@ console.log(alumnosFiltrados)
 
             <div className="mb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       
-            <input
-              type="text"
-              placeholder="Buscar por nombre o apellido"
-              className="p-2 border rounded-xl"
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-
+            {user.nivel === "Director" && (
             <select
               onChange={(e) => setSelectedEscuela(e.target.value)}
               className="p-2 border rounded-xl">
@@ -122,23 +116,14 @@ console.log(alumnosFiltrados)
               {Array.isArray(escuelas) &&  escuelas.map((esc, key) => (
                 <option 
                 key={key}
-                value={esc.nombre}>
+                value={esc.id}>
                   {esc.nombre}
                 </option>
               ))}
             </select>
+            )}
 
-            <select
-              onChange={(e) => setSelectedGraduacion(e.target.value)}
-              className="p-2 border rounded-xl">
-              <option value="todas">Todas las Graduaciones</option>
-              {grados.map((grado,i)=>(
-                <option key={i} value={grado}>
-                  {grado}
-                </option>
-              ))}
-            </select>
-
+            {user.nivel === "Director" && (
             <select
               onChange={(e) => setSelectedProfesor(e.target.value)}
               className="p-2 border rounded-xl">
@@ -146,8 +131,27 @@ console.log(alumnosFiltrados)
               {Array.isArray(profesores) && profesores.map((profe, key) => (
                 <option
                 key={key}
-                value={`${profe.nombre} ${profe.apellido}`}>
+                value={profe.id}>
                     {profe.nombre} {profe.apellido}
+                </option>
+              ))}
+            </select>
+            )}
+
+            <input
+              type="text"
+              placeholder="Buscar por nombre o apellido"
+              className="p-2 border rounded-xl"
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            
+            <select
+              onChange={(e) => setSelectedGraduacion(e.target.value)}
+              className="p-2 border rounded-xl">
+              <option value="todas">Todas las Graduaciones</option>
+              {grados.map((grado,i)=>(
+                <option key={i} value={grado}>
+                  {grado}
                 </option>
               ))}
             </select>

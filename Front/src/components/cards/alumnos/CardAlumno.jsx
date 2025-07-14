@@ -7,9 +7,9 @@ function CardAlumno(props) {
     verde: 'border-green-500',
     verdepuntaazul:"border-green-500 outline-2 outline-offset-2 outline-blue-500",
     azul: 'border-blue-500',
-    azulpuntaroja:"border-blue-500 outline-2 outline-offset-2 border-blue-500",
+    azulpuntaroja:"border-blue-500 outline-2 outline-offset-2 outline-red-500",
     rojo: 'border-red-500',
-    rojopuntanegra:"border-red-500 outline-2 outline-offset-2 border-red-500",
+    rojopuntanegra:"border-red-500 outline-2 outline-offset-2 outilne-black",
     negro: 'border-black'
   };
 

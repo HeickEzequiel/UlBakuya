@@ -81,29 +81,35 @@ const alumnosStore = create((set, get)=>{
                 selectedProfesor,
                 sortBy
             } = get()
-
+                console.log("alumnos--->",alumnos)
+                console.log("selectedEscuela-->",selectedEscuela )
+                console.log("selectedProfesor-->",selectedProfesor)
             if (!Array.isArray(alumnos)) return [];
             
             let results = [...alumnos]
-
+            console.log("results-->", results)
             if(searchTerm){
                 results = results.filter((alumno)=>
-                alumno.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    alumno.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 alumno.apellido.toLowerCase().includes(searchTerm.toLowerCase())
-                )
+            )
+        }
+        
+            if (selectedEscuela !== "todas") {
+                results = results.filter((alumno) =>
+                alumno.escuelas.some((esc) => esc.id === selectedEscuela))
             }
 
-            if(selectedEscuela !== "todas"){
-                results = results.filter((alumnosArray) => alumnosArray.escuela.toLowerCase() === selectedEscuela.toLowerCase())
-            }
             if(selectedGraduacion !== "todas"){
                 results = results.filter((alumnosArray) => alumnosArray.graduacion.toLowerCase() === selectedGraduacion.toLowerCase())
-                console.log(results)
+                
             }
             if(selectedProfesor !== "todas"){
-                results = results.filter((alumnosArray) => alumnosArray.profesor.toLowerCase() === selectedProfesor.toLowerCase())
+                results = results.filter((alumno) => 
+                    alumno.profesores.some((prof) => prof.id === selectedProfesor))
             }
 
+            
             if(sortBy === "nombre-asc"){
                 results.sort((a,b)=>a.nombre.localeCompare(b.nombre))
             } else if (sortBy === "nombre-desc"){
