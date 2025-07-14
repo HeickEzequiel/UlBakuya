@@ -26,7 +26,7 @@ function Escuelas_PC() {
       setEscuelas(escuelas)
     }
   },[escuelas])
-
+console.log(user)
 
   if(isLoading){
     return (
@@ -62,7 +62,7 @@ function Escuelas_PC() {
   return (
     <div>
       <Nav/>
-        {isLogged && user.nivel==="Director"? 
+        {isLogged && user.nivel==="Director" || user.nivel === "Instructor mayor" ? 
           <div>
             <UserNav/>
             <div className="min-h-screen px-6 py-12">

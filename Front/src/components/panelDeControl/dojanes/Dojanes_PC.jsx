@@ -68,7 +68,7 @@ console.log(dojanesFiltrados)
   return (
     <div>
       <Nav/>
-        {isLogged && (user.nivel==="Director"|| user.nivel==="Profesor")?
+        {isLogged && (user.nivel==="Director"|| user.nivel==="Instructor mayor" || user.nivel === "Instructor menor")?
           <div>
             <UserNav/>
             <div className="min-h-screen px-6 py-12">

@@ -12,7 +12,10 @@ const login = async (req, res) => {
                     return res.json({
                         access:true,
                         actualUser: actualUser.id,
+                        id:actualUser.id,
                         apellido:actualUser.apellido,
+                        nombre:actualUser.nombre,
+                        imagen:actualUser.imagen,
                         nivel: actualUser.nivel 
                     })
                 }

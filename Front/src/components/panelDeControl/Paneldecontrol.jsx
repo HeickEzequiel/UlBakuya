@@ -10,7 +10,7 @@ function Paneldecontrol() {
   return (
     <div className="min-h-screen flex flex-col">
       <Nav />
-      {isLogged && (user.nivel === "Director" || user.nivel === "Profesor") ? (
+      {isLogged && (user.nivel === "Director" || user.nivel === "Instructor mayor" || user.nivel === "Instructor menor") ? (
         <>
           <UserNav />
           <main className="flex-1 px-4 sm:px-8 lg:px-16 py-12 bg-gray-50">
@@ -21,7 +21,7 @@ function Paneldecontrol() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
-                  { path: "/pc_usuarios", label: "Usuarios" },
+
                   { path: "/pc_alumnos", label: "Alumnos" },
                   { path: "/pc_profesores", label: "Profesores" },
                   { path: "/pc_escuelas", label: "Escuelas" },
@@ -35,7 +35,17 @@ function Paneldecontrol() {
                     </div>
                   </Link>
                 ))}
+                
+                {user.nivel === "Director" && (
+                  <Link to="/pc_usuarios" className="w-full">
+                    <div className="bg-blue-300 hover:bg-blue-100 border border-gray-700 text-gray-800 font-semibold py-5 px-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 text-center">
+                      Usuarios
+                    </div>
+                  </Link>
+                )}  
+
               </div>
+
             </div>
           </main>
         </>

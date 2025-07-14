@@ -87,7 +87,7 @@ function Alumnos_PC() {
   return (
     <div>
       <Nav />
-      {isLogged && (user.nivel === "Director" || user.nivel === "Profesor") ? (
+      {isLogged && (user.nivel === "Director" || user.nivel === "Instructor mayor" || user.nivel === "Instructor menor") ? (
         <div>
           <UserNav />
           <div className="min-h-screen px-6 py-12">
@@ -108,13 +108,7 @@ function Alumnos_PC() {
 
             <div className="mb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       
-            <input
-              type="text"
-              placeholder="Buscar por nombre o apellido"
-              className="p-2 border rounded-xl"
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-
+            {user.nivel === "Director" && (
             <select
               onChange={(e) => setSelectedEscuela(e.target.value)}
               className="p-2 border rounded-xl">
@@ -127,18 +121,9 @@ function Alumnos_PC() {
                 </option>
               ))}
             </select>
+            )}
 
-            <select
-              onChange={(e) => setSelectedGraduacion(e.target.value)}
-              className="p-2 border rounded-xl">
-              <option value="todas">Todas las Graduaciones</option>
-              {grados.map((grado,i)=>(
-                <option key={i} value={grado}>
-                  {grado}
-                </option>
-              ))}
-            </select>
-
+            {user.nivel === "Director" && (
             <select
               onChange={(e) => setSelectedProfesor(e.target.value)}
               className="p-2 border rounded-xl">
@@ -148,6 +133,25 @@ function Alumnos_PC() {
                 key={key}
                 value={profe.id}>
                     {profe.nombre} {profe.apellido}
+                </option>
+              ))}
+            </select>
+            )}
+
+            <input
+              type="text"
+              placeholder="Buscar por nombre o apellido"
+              className="p-2 border rounded-xl"
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            
+            <select
+              onChange={(e) => setSelectedGraduacion(e.target.value)}
+              className="p-2 border rounded-xl">
+              <option value="todas">Todas las Graduaciones</option>
+              {grados.map((grado,i)=>(
+                <option key={i} value={grado}>
+                  {grado}
                 </option>
               ))}
             </select>
