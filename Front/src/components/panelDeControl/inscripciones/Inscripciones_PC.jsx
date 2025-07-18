@@ -10,6 +10,7 @@ import { useFetchProfes } from "../../../hooks/useProfesor"
 import { useFetchEventos } from "../../../hooks/useEventos"
 import inscripcionStore from "../../../store/inscripcionStore"
 import { useEffect } from "react"
+import CardInscripcion from "../../cards/inscripciones/CardInscripcion"
 
 function Inscripciones_PC() {
   const { data:inscripciones, isLoading, error} = useFetchInscripciones()
@@ -80,7 +81,7 @@ function Inscripciones_PC() {
         <Nav />
         {error.response.status === 404 ? (
           <div className="text-center py-12">
-            <Link to='/newinscripcion'>
+            <Link to='/inscripciones'>
               <button className="mb-4 bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md transition">Agregar inscripcion</button>
             </Link>
             <p className="text-gray-700">No existen inscripciones cargadas, por favor ingresa la primera.</p>
@@ -200,7 +201,7 @@ function Inscripciones_PC() {
             <div className="min-w-full table-auto border-collapse border border-gray-300 mb-8">
               {Array.isArray(inscripcionesFiltradas) && inscripcionesFiltradas.map((inscripcion, key)=>
                   !inscripcion.eliminado && (
-                    <CardInscripciones
+                    <CardInscripcion
                       key={key}
                       id={inscripcion.id}
                       tipo_de_evento={inscripcion.tipo_de_evento}

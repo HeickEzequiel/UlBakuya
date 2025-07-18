@@ -1,101 +1,66 @@
-import { useNavigate } from "react-router-dom"
-import inscripcionStore from "../../store/inscripcionStore"
-import { useState } from "react"
-import Nav from "../nav/Nav"
-import Footer from "../footer/Footer"
+import Footer from "../footer/Footer";
+import Nav from "../nav/Nav";
+import { useFetchEventos } from "../../hooks/useEventos.js";
+import UserNav from "../usernav/UserNav.jsx";
+import userStore from "../../store/loginStore.js";
+import CardInscripciones from "../cards/inscripciones/CardInscripciones.jsx";
 
 function Inscripciones() {
-  const Navigate = useNavigate()
-  const { register } = inscripcionStore()
-  const [inscripcionData, setInscripcionData] = useState({
-    tipo_de_evento: "",
-    horarios: "",
-    nombre: "",
-    apellido: "",
-    edad: "",
-    altura: "",
-    peso: "",
-    graduacion_actual: "",
-    proxima_graduacion: "",
-    imagen: ""
-  })
+  const { data: eventos, isLoading, error } = useFetchEventos();
+  const { isLogged, user } = userStore();
 
-  const handleChange = (event) => {
-    const { name, value } = event.target
-    setInscripcionData({ ...inscripcionData, [name]: value })
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-gray-50">
+        <p className="text-lg font-semibold text-gray-500 animate-pulse">Cargando próximos eventos...</p>
+      </div>
+    );
   }
 
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    try {
-      register(inscripcionData)
-      alert("Inscripción realizada con éxito")
-      Navigate("/examenes")
-    } catch (error) {
-      console.error('Error al realizar la solicitud')
-    }
+  if (error) {
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-red-50">
+        <p className="text-lg font-semibold text-red-700">Error: {error.message}</p>
+      </div>
+    );
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gray-50">
       <Nav />
-      <div className="flex-grow flex justify-center items-center py-10">
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-2xl space-y-6"
-        >
-          <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">Formulario de Inscripción</h2>
-
-          <select
-            name="tipo_de_evento"
-            value={inscripcionData.tipo_de_evento}
-            onChange={handleChange}
-            className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="">Seleccione un evento</option>
-            <option value="Examen">Examen</option>
-            <option value="Torneo">Torneo</option>
-            <option value="Clase Especial">Clase Especial</option>
-            <option value="Curso Tecnico">Curso Técnico</option>
-          </select>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {[
-              { name: 'horarios', placeholder: 'Ingrese horario' },
-              { name: 'nombre', placeholder: 'Ingrese nombre' },
-              { name: 'apellido', placeholder: 'Ingrese apellido' },
-              { name: 'edad', placeholder: 'Ingrese edad' },
-              { name: 'altura', placeholder: 'Ingrese altura' },
-              { name: 'peso', placeholder: 'Ingrese peso' },
-              { name: 'graduacion_actual', placeholder: 'Graduación actual' },
-              { name: 'proxima_graduacion', placeholder: 'Próxima graduación' },
-              { name: 'imagen', placeholder: 'Link de imagen' }
-            ].map(({ name, placeholder }) => (
-              <input
-                key={name}
-                type="text"
-                name={name}
-                value={inscripcionData[name]}
-                placeholder={placeholder}
-                onChange={handleChange}
-                className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            ))}
+      {isLogged ? <UserNav /> : <div className="p-4" />}
+      
+      <main className="flex-grow p-4 ml-5 mt-10">
+        {eventos.length === 0 ? (
+          <h1 className="text-center text-2xl text-gray-400 font-medium">
+            No hay nuevos eventos para inscribirse
+          </h1>
+        ) : (
+          <div className=" grid grid-cols-1 md:grid-cols-2 gap-22 mx-20">
+            {eventos.map(
+              (evento, key) =>
+                !evento.eliminado && (
+                  <CardInscripciones
+                    key={key}
+                    id={evento.id}
+                    tipo_de_evento={evento.tipo_de_evento}
+                    fecha_del_evento={evento.fecha_del_evento}
+                    horarios={evento.horarios}
+                    club={evento.club}
+                    direccion={evento.direccion}
+                    imagen={evento.imagen}
+                    estado={evento.estado}
+                    eliminado={evento.eliminado}
+                  />
+                )
+            )}
           </div>
-
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
-            >
-              Finalizar Inscripción
-            </button>
-          </div>
-        </form>
-      </div>
+        )}
+      </main>
+      
       <Footer />
     </div>
-  )
+  );
 }
 
-export default Inscripciones
+export default Inscripciones;
