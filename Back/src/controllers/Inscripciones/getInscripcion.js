@@ -5,6 +5,7 @@ const getInscripcion = async (req, res) =>{
         const oneInscripcion ={
             id: oneInscripcionDB.id,
             tipo_de_evento: oneInscripcionDB.tipo_de_evento,
+            idEvento: oneInscripcionDB.idEvento,
             fecha_del_evento: oneInscripcionDB.fecha_del_evento,
             horarios: oneInscripcionDB.horarios,
             nombre: oneInscripcionDB.nombre,

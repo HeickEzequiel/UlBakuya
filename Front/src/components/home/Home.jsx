@@ -7,7 +7,7 @@ import Footer from '../footer/Footer.jsx'
 
 function Home() {
   const { isLogged, user } = userStore()
-
+console.log(user)
   return (
     <div className=''>
         <Nav/>

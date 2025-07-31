@@ -7,11 +7,12 @@ import inscripcionStore from '../../store/inscripcionStore';
 function NewInscripcion() {
   const location = useLocation()
   const evento = location.state || {}
-  console.log(evento.club)
+  console.log(evento.idEvento)
   const Navigate = useNavigate();
   const { register } = inscripcionStore();
   const [inscripcionData, setInscripcionData] = useState({
     tipo_de_evento:evento.tipo_de_evento,
+    idEvento:evento.idEvento,
     fecha_del_evento: evento.fecha_del_evento,
     horarios: evento.horarios,
     nombre: "",
@@ -101,7 +102,7 @@ function NewInscripcion() {
                 />
               </div>
             )}
-            {console.log(inscripcionData)}
+            
 
             <button
               type="submit"

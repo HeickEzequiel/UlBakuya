@@ -10,6 +10,7 @@ const inscripcionStore = create((set, get)=>{
         return{
             inscripcion:{
                 tipo_de_evento:"",
+                idEvento:"",
                 fecha_del_evento:"",
                 horarios:"",
                 nombre:"",
@@ -44,6 +45,7 @@ const inscripcionStore = create((set, get)=>{
                     registerSuccess: true,
                     inscripcion:{
                         tipo_de_evento: newInscripcion.tipo_de_evento,
+                        idEvento: newInscripcion.idEvento,
                         fecha_del_evento: newInscripcion.fecha_del_evento,
                         horarios: newInscripcion.horarios,
                         nombre: newInscripcion.nombre,

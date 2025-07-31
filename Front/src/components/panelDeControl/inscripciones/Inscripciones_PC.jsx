@@ -1,18 +1,20 @@
 import Nav from "../../nav/Nav"
 import Footer from "../../footer/Footer"
 import UserNav from "../../usernav/UserNav"
-import { Link } from "react-router-dom"
-import userStore from "../../../store/loginStore"
+import { Link, useLocation } from "react-router-dom"
 import { useFetchInscripciones } from "../../../hooks/useInscripciones"
-import CardInscripciones from "../../cards/inscripciones/CardInscripciones"
 import { useFetchEscuelas } from "../../../hooks/useEscuela"
 import { useFetchProfes } from "../../../hooks/useProfesor"
 import { useFetchEventos } from "../../../hooks/useEventos"
-import inscripcionStore from "../../../store/inscripcionStore"
 import { useEffect } from "react"
-import CardInscripcion from "../../cards/inscripciones/CardInscripcion"
+import userStore from "../../../store/loginStore"
+import inscripcionStore from "../../../store/inscripcionStore"
+import CardInscripcionesPc from "../../cards/inscripciones/CardInscripcionesPc"
 
 function Inscripciones_PC() {
+  const location = useLocation()
+  const inscripcionEvento = location.state || {}
+  console.log(inscripcionEvento)
   const { data:inscripciones, isLoading, error} = useFetchInscripciones()
   const { data:escuelas } = useFetchEscuelas()
   const { data:profesores } = useFetchProfes()
@@ -104,7 +106,7 @@ function Inscripciones_PC() {
           <UserNav/>
           <div className="min-h-screen px-6 py-12">
             <div className="flex flex-col md:flex-row justify-between mb-6">
-              <Link to='/newInscripcion'>
+              <Link to='/inscripciones'>
                 <button className="mb-4 md:mb-0 bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg shadow-md transition">
                   Agregar Inscripcion
                 </button>
@@ -201,7 +203,7 @@ function Inscripciones_PC() {
             <div className="min-w-full table-auto border-collapse border border-gray-300 mb-8">
               {Array.isArray(inscripcionesFiltradas) && inscripcionesFiltradas.map((inscripcion, key)=>
                   !inscripcion.eliminado && (
-                    <CardInscripcion
+                    <CardInscripcionesPc
                       key={key}
                       id={inscripcion.id}
                       tipo_de_evento={inscripcion.tipo_de_evento}
