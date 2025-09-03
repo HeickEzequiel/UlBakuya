@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import axios from 'axios'
+import api from '../api/ubk'
 
 const userStore = create((set)=>{
     const initialState = () =>{
@@ -27,11 +27,12 @@ const userStore = create((set)=>{
         ...initialState(),
 
         login: (userData) => {
-            const { access, nombre, apellido, imagen, fecha_de_nacimiento, tel, email, password, id, nivel }=userData
-            set({user: userData, isLogged: true})
+            const { token, user }= userData
+            set({user, isLogged: true})
             localStorage.setItem("authState", JSON.stringify({
-                    user:{ access, nombre, apellido, imagen, fecha_de_nacimiento, tel, email, password, id, nivel }, 
-                    isLogged: true
+                    user,
+                    isLogged: true,
+                    token 
                 })
             )
         },
@@ -42,7 +43,7 @@ const userStore = create((set)=>{
                 registerSuccess: false
             })
             try {
-                const response = await axios.post(`http://localhost:3001/newuser`, userData)
+                const response = await api.post(`/newuser`, userData)
                 const newuser = response.data
                 
 

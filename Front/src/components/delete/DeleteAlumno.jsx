@@ -20,7 +20,6 @@ function DeleteAlumno() {
             const response = await api.get(`/logicdeletealumno/${id}`)
             alert("Alumno eliminado")
             navigate("/pc_alumnos")
-            console.log(response)
         } catch (error) {
             console.error('Error al realizar la solicitud:', error);
         }

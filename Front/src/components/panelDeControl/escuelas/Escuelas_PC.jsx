@@ -26,7 +26,7 @@ function Escuelas_PC() {
       setEscuelas(escuelas)
     }
   },[escuelas])
-console.log(user)
+
 
   if(isLoading){
     return (

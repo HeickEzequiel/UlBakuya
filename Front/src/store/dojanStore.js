@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import axios from "axios";
+import api from "../api/ubk";
 
 const dojanStore = create((set, get)=>{
     const initialState = ()=>{
@@ -30,7 +30,7 @@ const dojanStore = create((set, get)=>{
                 registerSuccess: false
             })
             try{
-                const response = await axios.post (`http://localhost:3001/newdojan`, dojanData)
+                const response = await api.post (`/newdojan`, dojanData)
                 const newDojan = response.data
 
                 set({

@@ -21,7 +21,7 @@ const updateAlumno = async (req, res) => {
       return res.status(404).json({ error: "Alumno no encontrado" });
     }
 
-    // ✅ Actualiza los campos del modelo
+    //  Actualiza los campos del modelo
     await alumno.update({
       nombre,
       apellido,
@@ -33,7 +33,7 @@ const updateAlumno = async (req, res) => {
       eliminado
     });
 
-    // ✅ Si vienen profesores, actualiza la relación
+    // Si vienen profesores, actualiza la relación
     if (profesor && Array.isArray(profesor)) {
       const profesoresDB = await Profesor.findAll({
         where: { id: profesor }
@@ -41,7 +41,7 @@ const updateAlumno = async (req, res) => {
       await alumno.setAlumnosProfesores(profesoresDB);
     }
 
-    // ✅ Si vienen escuelas, actualiza la relación
+    // Si vienen escuelas, actualiza la relación
     if (escuela && Array.isArray(escuela)) {
       const escuelasDB = await Escuela.findAll({
         where: { id: escuela }

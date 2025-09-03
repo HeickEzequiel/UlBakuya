@@ -20,7 +20,6 @@ function DeleteEvento() {
             const response = await api.get(`/logicdeleteevento/${id}`)
             alert("Evento eliminado")
             navigate("/pc_eventos")
-            console.log(response)
         } catch (error) {
             console.error('Error al realizar la solicitud:', error);
         }

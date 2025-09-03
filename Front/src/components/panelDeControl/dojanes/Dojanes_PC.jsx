@@ -24,7 +24,7 @@ function Dojanes_PC() {
   } = dojanStore()
   const dojanesFiltrados = getFilteredDojanes()
   const setDojanes = dojanStore((state) => state.setDojanes)
-console.log(dojanesFiltrados)
+
   useEffect(() => {
     if(dojanes){
       setDojanes(dojanes)

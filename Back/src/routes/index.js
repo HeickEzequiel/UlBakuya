@@ -1,8 +1,10 @@
 const router = require ("express").Router();
+const scopeAlumnosByProfesor = require("../middlewares/scopeAlumnosByProfesor.js")
+const requireAuth = require("../middlewares/requireAuth.js")
 
 //Alumno
 const getAllAlumnos = require("../controllers/Alumno/getAllAlumnos.js")
-router.get("/alumnos", getAllAlumnos)
+router.get("/alumnos", requireAuth, scopeAlumnosByProfesor, getAllAlumnos)
 
 const getAlumno = require("../controllers/Alumno/getAlumno.js")
 router.get("/alumno/:id", getAlumno)

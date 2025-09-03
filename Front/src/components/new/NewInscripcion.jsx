@@ -7,14 +7,14 @@ import inscripcionStore from '../../store/inscripcionStore';
 function NewInscripcion() {
   const location = useLocation()
   const evento = location.state || {}
-  console.log(evento.idEvento)
+  const hora = evento.horarios
   const Navigate = useNavigate();
   const { register } = inscripcionStore();
   const [inscripcionData, setInscripcionData] = useState({
     tipo_de_evento:evento.tipo_de_evento,
     idEvento:evento.idEvento,
     fecha_del_evento: evento.fecha_del_evento,
-    horarios: evento.horarios,
+    horarios: "",
     nombre: "",
     apellido: "",
     edad: "",
@@ -24,12 +24,10 @@ function NewInscripcion() {
     profesor: "",
     graduacion_actual: "",
     proxima_graduacion: "",
-    fecha_de_examen: "",
     imagen: "",
     estado: "Activo",
     eliminado: false,
   });
-  
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -41,7 +39,7 @@ function NewInscripcion() {
     try {
       register(inscripcionData);
       alert("Inscripcion creada con éxito");
-      Navigate("/pc_inscripciones");
+      Navigate("/inscripciones");
     } catch (error) {
       console.error("Error al realizar la solicitud", error);
     }
@@ -89,6 +87,7 @@ function NewInscripcion() {
                   
               </div>
             ))}
+
             {evento.tipo_de_evento === "Examen" && (
               <div>
                 <label>Proxima graduacion </label>
@@ -102,6 +101,35 @@ function NewInscripcion() {
                 />
               </div>
             )}
+
+            <div>
+            <label className="block mb-1 font-semibold text-gray-700">
+              Horario:
+            </label>
+            <div className="grid-cols-1 gap-4">
+              {hora.map((h) => (
+                <label key={h} className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    value={h}
+                    checked={inscripcionData.horarios.includes(h)}
+                    onChange={(e) => {
+                    
+                      const value = e.target.value;
+                      setInscripcionData((prev) => ({
+                        ...prev,
+                        horarios: e.target.checked
+                        ? [...prev.horarios, value]
+                        : prev.horarios.filter((id) => id !== value)
+                      }));
+                    }}
+                  />
+                  {h}
+                </label>
+              ))}
+            </div>
+            </div>
+
             
 
             <button

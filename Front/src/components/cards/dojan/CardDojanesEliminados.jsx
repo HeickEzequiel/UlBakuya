@@ -9,7 +9,6 @@ function CardDojanesEliminados() {
           const response = await api.get(`/logicrestoredojan/${id}`)
           alert("Dojan restaurado")
           navigate("/paneldecontrol")
-          console.log(response)
       } catch (error) {
           console.error('Error al realizar la solicitud:', error);
       }
@@ -20,7 +19,6 @@ function CardDojanesEliminados() {
         const response = await api.delete(`/deletedojan/${id}`)
         alert("Dojan eliminado de la base de datos")
         navigate("/paneldecontrol")
-        console.log(response)
     } catch (error) {
         console.error('Error al realizar la solicitud:', error);
     }

@@ -22,7 +22,7 @@ function NewEscuela(props) {
         setEscuelaData({...escuelaData, [name]:value})
        
     }
-    console.log(escuelaData)
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 

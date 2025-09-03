@@ -14,7 +14,6 @@ import CardInscripcionesPc from "../../cards/inscripciones/CardInscripcionesPc"
 function Inscripciones_PC() {
   const location = useLocation()
   const inscripcionEvento = location.state || {}
-  console.log(inscripcionEvento)
   const { data:inscripciones, isLoading, error} = useFetchInscripciones()
   const { data:escuelas } = useFetchEscuelas()
   const { data:profesores } = useFetchProfes()
@@ -24,14 +23,18 @@ function Inscripciones_PC() {
   const {
     setSearchTerm,
     setSelectedEvento,
-    setSelectedFechaEvento,
     setSelectedEscuela,
     setSelectedProfesor,
     setSelectedGraduacion,
     setSortBy
   } = inscripcionStore()
-  const inscripcionesFiltradas = getFilteredInscripciones()
-    const grados = [
+  
+  const todasLasInscripciones = getFilteredInscripciones()
+  const inscripcionesFiltradas = Array.isArray(todasLasInscripciones)
+   ? todasLasInscripciones.filter((i) => i.idEvento === inscripcionEvento.idEvento) 
+   : []
+  
+  const grados = [
     "Blanco",
     "Blanco Punta Amarilla",
     "Amarillo",
@@ -142,31 +145,6 @@ function Inscripciones_PC() {
                 ))}
               </select>
 
-              <select
-                onChange={(e) => setSelectedEvento(e.target.value)}
-                className="p-2 border rounded-xl">
-                <option value="todas">Todos los Eventos</option>
-                {evento.map((eve, key) => (
-                  <option 
-                    key={key}
-                    value={eve}>
-                      {eve}
-                  </option>
-                ))}
-              </select>
-
-              <select
-                onChange={(e) => setSelectedFechaEvento(e.target.value)}
-                className="p-2 border rounded-xl">
-                <option value="todas">Todas las fechas</option>
-                {Array.isArray(eventos) && eventos.map((eve, key) => (
-                  <option 
-                    key={key}
-                    value={eve.fecha_del_evento}>
-                      {eve.fecha_del_evento}
-                  </option>
-                ))}
-              </select>
               
               <select
                 onChange={(e) => setSelectedGraduacion(e.target.value)}

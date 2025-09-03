@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom"
 
 function CardInscripcionesPc(props) {
-    console.log(props)
+
     return (
         <div className="bg-white shadow-md rounded-lg overflow-hidden mb-4 border border-gray-300">
             <div className="flex flex-col lg:flex-row items-center p-6">
                 <div className="flex-1 mb-4 lg:mb-0">
                     <p className="text-lg font-semibold text-gray-800">{props.tipo_de_evento}</p>
-                    <p className="text-sm text-gray-600text-lg font-semibold text-gray-800">Alumno: {props.nombre} {props.apellido} </p>
+                    <p className="mb-2 text-sm text-gray-600text-lg font-semibold text-gray-800">{props.nombre} {props.apellido} </p>
                     <p className="text-sm text-gray-600">Fecha del evento: {props.fecha_del_evento}</p>
                     <p className="text-sm text-gray-600">Horario: {props.horarios}</p>
                     {/* <p className="text-sm text-gray-600">Edad: {props.edad}</p>

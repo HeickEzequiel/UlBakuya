@@ -53,6 +53,7 @@ const postInscripcion = async(req, res) =>{
         }
         return res.status(400).send("Datos Incorrectos")
     } catch (error) {
+        console.log(error)
         return res.status(500).send(error.message)
     }
 }

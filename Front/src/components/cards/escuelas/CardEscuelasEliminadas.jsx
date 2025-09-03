@@ -9,7 +9,6 @@ function CardEscuelasEliminadas(props) {
             const response = await api.get(`/logicrestorescuela/${id}`)
             alert("Escuela restaurada")
             navigate("/paneldecontrol")
-            console.log(response)
         } catch (error) {
             console.error('Error al realizar la solicitud:', error);
         }
@@ -20,7 +19,6 @@ function CardEscuelasEliminadas(props) {
           const response = await api.delete(`/deleteescuela/${id}`)
           alert("Escuela eliminada de la base de datos")
           navigate("/paneldecontrol")
-          console.log(response)
       } catch (error) {
           console.error('Error al realizar la solicitud:', error);
       }

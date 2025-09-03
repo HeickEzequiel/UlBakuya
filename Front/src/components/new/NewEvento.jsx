@@ -9,6 +9,7 @@ function NewEvento() {
     const { register } = eventoStore();
     const [ eventoData, setEventoData ] = useState({
       tipo_de_evento: "",
+      fecha_del_evento:"",
       horarios: "",
       club: "",
       direccion: "",
@@ -21,10 +22,11 @@ function NewEvento() {
       const { name, value } = event.target;
       setEventoData({ ...eventoData, [name]: value });
     };
-  
+
     const handleSubmit = async (event) => {
       event.preventDefault();
       try {
+
         register(eventoData);
         alert("Evento creado con éxito");
         Navigate("/pc_eventos");

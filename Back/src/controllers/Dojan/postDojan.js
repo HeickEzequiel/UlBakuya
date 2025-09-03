@@ -2,7 +2,7 @@ const { Dojan, Escuela, Profesor} = require("../../db.js");
 
 
 const postDojan = async(req, res) =>{
-   console.log(req.body)
+
     try{
         const {
             club,

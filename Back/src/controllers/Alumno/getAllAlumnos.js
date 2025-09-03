@@ -1,8 +1,24 @@
+const { Op } = require("sequelize");
 const { Alumno } = require("../../db.js");
 
 const getAllAlumnos = async (req, res) => {
   try {
+    const data = req
+    const idProfesor = data.user.idProfesor
+    const nivel = data.user.nivel
+    let whereClause = {}
+    
+    if(nivel !== "Director"){
+      whereClause = {
+        profesor:{
+          [Op.contains] : [idProfesor]
+        }
+      }
+    }
     const alumnosDB = await Alumno.findAll({
+      
+      where: whereClause,  
+      
       include: [
         {
           association: "alumnosProfesores",

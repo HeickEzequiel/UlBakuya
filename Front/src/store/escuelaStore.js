@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import axios from "axios";
+import api from "../api/ubk";
 
 const escuelasStore = create((set, get)=>{
     const initialState = () =>{
@@ -27,7 +27,7 @@ const escuelasStore = create((set, get)=>{
                 registerSuccess: false
             })
             try{
-                const response = await axios.post(`http://localhost:3001/newescuela`, escuelaData)
+                const response = await api.post(`/newescuela`, escuelaData)
                 const newEscuela = response.data
 
                 set({

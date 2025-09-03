@@ -22,7 +22,6 @@ function Dojan() {
   if(error){
     return <div>Error: {error.message}</div>
   }
-  console.log("dojan.jsx--->",data)
   return (
     <div>
         <Nav/>

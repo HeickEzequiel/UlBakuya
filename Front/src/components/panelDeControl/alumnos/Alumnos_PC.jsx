@@ -11,10 +11,10 @@ import { useFetchProfes } from "../../../hooks/useProfesor";
 import { useFetchEscuelas } from "../../../hooks/useEscuela";
 
 function Alumnos_PC() {
-  const { data: alumnos, isLoading, error } = useFetchAlumnos();
+  const { isLogged, user } = userStore();
+  const { data: alumnos, isLoading, error } = useFetchAlumnos(user.idProfesor);
   const { data: profesores } = useFetchProfes();
   const { data: escuelas } = useFetchEscuelas();
-  const { isLogged, user } = userStore();
   const getFilteredAlumnos = alumnosStore((state)=>state.getFilteredAlumnos)
   const {
     setSearchTerm,

@@ -20,7 +20,6 @@ function DeleteProfesor() {
             const response = await api.get(`/logicdeleteprofesor/${id}`)
             alert("Profesor eliminado")
             navigate("/pc_profesores")
-            console.log(response)
         } catch (error) {
             console.error('Error al realizar la solicitud:', error);
         }

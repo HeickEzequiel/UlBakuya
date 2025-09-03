@@ -8,6 +8,10 @@ module.exports = (sequelize) => {
          allowNull: true,
          primaryKey: true
       },
+      idProfesor: {
+         type: DataTypes.UUID,
+         allowNull: true
+      },
       nombre: {
          type: DataTypes.STRING,
          allowNull: false
@@ -48,10 +52,6 @@ module.exports = (sequelize) => {
       escuela:{
          type: DataTypes.STRING,
          allowNull:true
-      },
-      profesor:{
-         type: DataTypes.STRING,
-         allowNull:true,
       },
       graduacion:{
          type: DataTypes.STRING,

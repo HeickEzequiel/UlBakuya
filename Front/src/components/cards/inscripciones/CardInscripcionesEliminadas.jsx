@@ -10,7 +10,6 @@ function CardInscripcionesEliminadas(props) {
             const response = await api.get(`/logicrestoreinscripcion/${id}`)
             alert("Inscripcion restaurada")
             navigate("/pc_inscripciones")
-            console.log(response)
         } catch (error) {
             console.error('Error al realizar la solicitud:', error);
         }
@@ -21,7 +20,6 @@ function CardInscripcionesEliminadas(props) {
           const response = await api.delete(`/deleteinscripcion/${id}`)
           alert("Evento eliminado de la base de datos")
           navigate("/pc_inscripciones")
-          console.log(response)
       } catch (error) {
           console.error('Error al realizar la solicitud:', error);
       }

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
 function CardInscripcionesEventos(props) {
-  console.log(props)
+
   return (
   <Link to="/pc_inscripciones" state={ props }>
     <div className="bg-blue-500 rounded-xl shadow-md overflow-hidden w-4/5 border flex flex-col md:flex-row">

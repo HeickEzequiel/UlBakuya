@@ -75,6 +75,9 @@ Escuela.belongsToMany(
 Usuario.belongsToMany(
   Eventos,{through:'Usuario_Eventos',foreignKey: 'UsuarioId', as:"usuariosEventos"});
 
+Usuario.belongsTo(Profesor,{as:"profesor", foreignKey: 'idProfesor', onUpdate: "CASCADE", onDelete: "SET NULL"})
+Profesor.hasOne(Usuario, {as: 'usuario', foreignKey: 'idProfesor', onUpdate: "CASCADE", onDelete: "SET NULL"})
+
 Eventos.belongsToMany(
   Usuario,{through:'Usuario_Eventos',foreignKey: 'EventsId', as:"eventosUsuarios"});
 Eventos.belongsToMany(

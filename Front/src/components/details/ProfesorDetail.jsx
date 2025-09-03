@@ -10,7 +10,7 @@ function ProfesorDetail() {
   const isLogged = userStore((state)=>state.isLogged)
   const {id} = useParams()
   const { data:profe, isLoading, error } = useFetchProfe(id)
-console.log(profe)
+
   if(isLoading){
     return <div>Loading...</div>
   }

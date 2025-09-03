@@ -1,14 +1,18 @@
 import api from "../api/ubk";
 import { useQuery } from "@tanstack/react-query";
 
-async function fetchAlumnos() {
-    const { data } = await api.get('/alumnos')
-    return data
+async function fetchAlumnos(token) {
+    const  response  = await api.get('/alumnos', {headers:{
+        Authorization: `Bearer ${token}`
+    }})
+    return response.data
 }
 export function useFetchAlumnos(){
+    const authState = JSON.parse(localStorage.getItem("authState"))
+    const token = authState?.token
     return useQuery({
         queryKey: ['alumnos'], 
-        queryFn: fetchAlumnos,
+        queryFn: ()=>fetchAlumnos(token),
 })
 }
 

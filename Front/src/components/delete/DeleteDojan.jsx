@@ -21,7 +21,6 @@ function DeleteDojan() {
       const response = await api.get(`/logicdeletedojan/${id}`)
       alert("Dojan eliminado")
       navigate("/pc_dojanes")
-      console.log(response)
     } catch (error) {
       console.error('Error al realizar la solicitud:', error);
       }
