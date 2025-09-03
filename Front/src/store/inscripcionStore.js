@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import axios from "axios"
+import api from "../api/ubk"
 
 const inscripcionStore = create((set, get)=>{
     const initialState = () =>{
@@ -10,6 +10,7 @@ const inscripcionStore = create((set, get)=>{
         return{
             inscripcion:{
                 tipo_de_evento:"",
+                idEvento:"",
                 fecha_del_evento:"",
                 horarios:"",
                 nombre:"",
@@ -36,7 +37,7 @@ const inscripcionStore = create((set, get)=>{
                 registerSuccess: false
             })
             try {
-                const response = await axios.post(`http://localhost:3001/newinscripcion`, inscripcionData)
+                const response = await api.post(`/newinscripcion`, inscripcionData)
                 const newInscripcion = response.data
 
                 set({
@@ -44,6 +45,7 @@ const inscripcionStore = create((set, get)=>{
                     registerSuccess: true,
                     inscripcion:{
                         tipo_de_evento: newInscripcion.tipo_de_evento,
+                        idEvento: newInscripcion.idEvento,
                         fecha_del_evento: newInscripcion.fecha_del_evento,
                         horarios: newInscripcion.horarios,
                         nombre: newInscripcion.nombre,
@@ -107,11 +109,10 @@ const inscripcionStore = create((set, get)=>{
             }
 
             if(selectedEvento !== "todas"){
-                results = results.filter((inscripcionesArray) => inscripcionesArray.tipo_de_evento === selectedEvento)
+                results = results.filter((inscripcionesArray) => inscripcionesArray.idEvento === selectedEvento)
             }
             if(selectedFechaEvento !== "todas"){
                 results = results.filter((inscripcionesArray) => inscripcionesArray.fecha_del_evento === selectedFechaEvento)
-                console.log(results)
             }
             if(selectedEscuela !== "todas"){
                 results = results.filter((inscripcionesArray) => inscripcionesArray.escuela.toLowerCase() === selectedEscuela.toLowerCase())

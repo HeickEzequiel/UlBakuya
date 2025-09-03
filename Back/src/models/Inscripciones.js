@@ -8,6 +8,10 @@ module.exports = (sequelize) =>{
             unique: true,
             primaryKey: true
         },
+        idEvento:{
+            type:DataTypes.STRING,
+            allowNull:false,
+        },
         tipo_de_evento:{
             type: DataTypes.STRING,
             allowNull:false
@@ -17,7 +21,7 @@ module.exports = (sequelize) =>{
             allowNull:false
         },
         horarios: {
-            type: DataTypes.STRING,
+            type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull: false
         },
         nombre: {

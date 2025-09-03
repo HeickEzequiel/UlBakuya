@@ -24,7 +24,7 @@ function Profesores_PC() {
     } = profesorStore()
     const profesoresFiltrados = getFilteredProfesores()
     const setProfesores = profesorStore((state)=>state.setProfesores)
-console.log(profesoresFiltrados)
+
     useEffect(()=>{
         if(profesores){
             setProfesores(profesores)

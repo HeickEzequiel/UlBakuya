@@ -5,7 +5,7 @@ function Nav() {
   const { isLogged, logout } = userStore();
 
   return (
-    <header className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-md">
+    <header className="bg-gradient-to-r from-gray-900 via-gray-600 to-gray-900 shadow-md">
       <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
 
         {/* Logo */}

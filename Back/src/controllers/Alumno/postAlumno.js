@@ -16,7 +16,7 @@ const postAlumno = async(req, res) =>{
             eliminado
         } = req.body;
 
-        console.log("BODY RECIBIDO:", req.body);
+        
 
         if(nombre && apellido  && fecha_de_nacimiento && escuela && graduacion && profesor){
             const [newAlumno, created] = await Alumno.findOrCreate({
@@ -38,7 +38,7 @@ const postAlumno = async(req, res) =>{
             })
 
             
-      console.log("ALUMNO CREADO:", newAlumno.id);
+      
 
             const profesoresDB = await Profesor.findAll({
                 where: {

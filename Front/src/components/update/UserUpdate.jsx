@@ -7,12 +7,14 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import CardImagen from '../cards/CardImagen'
 import api from '../../api/ubk'
 import { useFetchUser } from '../../hooks/useUser'
+import { useFetchProfes } from '../../hooks/useProfesor'
 
 function UserUpdate() {
-    const isLogged = userStore((state)=>state.isLogged)
+    const {isLogged, user} = userStore()
     const { id } = useParams()
     const navigate = useNavigate()
     const { data:usuario, isLoading, error } = useFetchUser(id)
+    const { data:profes} = useFetchProfes()
     const [userData, setUserData] = useState({
         nombre:"",
         apellido:"",
@@ -26,6 +28,7 @@ function UserUpdate() {
         profesor:"",
         graduacion:"",
         fecha_de_examen:"",
+        idProfesor:"",
         eliminado:"",
     })
     if(isLoading){
@@ -47,14 +50,14 @@ function UserUpdate() {
                 
             })
         if(response.status===200){
-            alert(`alumno actualizado`)
+            alert(`Usuario actualizado`)
         }else{ 
             alert ('algo salio mal :(')
         }
 
         }catch(error){
             console.error('error al realizar la solicitud')
-            alert('error al actualizar el alumno')
+            alert('No se ha actualizado el usuario')
         }   
     
     }
@@ -68,9 +71,9 @@ function UserUpdate() {
         event.preventDefault()
         try {
             updateUser(userData)            
-            navigate(`/user/${id}`)       
+            navigate(`/perfil`)       
         } catch (error) {
-            console.error('Error al realizar la solicitud')
+            console.error('No se ha actualizado el usuario')
         }
     }
   return (
@@ -90,8 +93,7 @@ function UserUpdate() {
                   {label:"Apellido", name:"apellido", placeholder: usuario.apellido},
                   {label:"Fecha_de_nacimiento", name:"fecha_de_nacimiento", placeholder: usuario.fecha_de_nacimiento},
                   {label:"Telefono", name:"tel", placeholder: usuario.tel},
-                  {label:"Password", name:"password", placeholder: usuario.password},
-                  {label:"Nivel", name:"nivel", placeholder: usuario.nivel},
+                  {label:"Password", name:"password"},
                   {label:"Escuela", name:"escuela", placeholder: usuario.escuela},
                   {label:"Graduacion", name:"graduacion", placeholder: usuario.graduacion},
                   {label:"Fecha_de_examen", name:"fecha_de_examen", placeholder: usuario.fecha_de_examen},
@@ -112,6 +114,40 @@ function UserUpdate() {
                       />
                   </div>
               ))}
+              
+              {user.nivel === "Director" && (
+                <div>
+                    <div>
+                        <p className="block text-sm font-medium text-gray-700 mb-1">Selecciona un nivel de administrador</p>
+                        <select
+                        name='nivel'
+                        value={userData.nivel}
+                        onChange={handleChange}
+                        className="p-2 border rounded-xl">
+                            <option value="Director" >Director</option>   
+                            <option value="Instructor mayor" >Instructor mayor</option>   
+                            <option value="Instructor menor" >Instructor menor</option>   
+                            <option value="Alumno" >Alumno</option>   
+                            <option value="Observador" >Observador</option>   
+                        </select>
+                    </div>
+                    <div>   
+                        <p className="block text-sm font-medium text-gray-700 mb-1">Asignarle el rol de un profesor</p>
+                        <select
+                        name='idProfesor'
+                        value={userData.idProfesor}
+                        onChange={handleChange}
+                        className='p-2 border rounded-xl'>
+                            {Array.isArray(profes) && profes.map((profe, key)=>(
+                                <option value={profe.id}>
+                                    {profe.nombre} {profe.apellido}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
+                )}       
+
               <div className="flex justify-between items-center">
                   <button 
                   type="submit" 

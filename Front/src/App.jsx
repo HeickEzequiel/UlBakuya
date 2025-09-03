@@ -56,6 +56,7 @@ import EventoDetail from './components/details/EventoDetail'
 import DeleteEvento from './components/delete/DeleteEvento'
 import EventoUpdate from './components/update/EventoUpdate'
 import NewEvento from './components/new/NewEvento'
+import Inscripciones_Eventos from './components/paneldecontrol/inscripciones/Inscripciones_Eventos'
 function App() {
 
   return (
@@ -125,6 +126,7 @@ function App() {
         <Route path='/evento/:id' element={<EventoDetail/>}/>
 
         <Route path='/Inscripciones' element={<Inscripciones/>}/>
+        <Route path='/inscripcioneseventos' element={<Inscripciones_Eventos/>}/>
       </Routes>
 
     </div>

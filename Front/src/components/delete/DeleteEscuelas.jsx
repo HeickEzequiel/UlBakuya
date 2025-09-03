@@ -20,7 +20,6 @@ function DeleteEscuela() {
             const response = await api.get(`/logicdeleteescuela/${id}`)
             alert("Escuela eliminada")
             navigate("/pc_escuelas")
-            console.log(response)
         } catch (error) {
             console.error('Error al realizar la solicitud:', error);
         }

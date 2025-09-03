@@ -25,7 +25,6 @@ function DeleteUser() {
             const response = await api.get(`/logicdeleteuser/${id}`)
             alert("usuario eliminado")
             navigate("/pc_usuarios")
-            console.log(response)
         } catch (error) {
             console.error('Error al realizar la solicitud:', error);
         }

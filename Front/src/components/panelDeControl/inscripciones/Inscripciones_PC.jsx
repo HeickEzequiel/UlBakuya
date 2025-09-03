@@ -1,17 +1,19 @@
 import Nav from "../../nav/Nav"
 import Footer from "../../footer/Footer"
 import UserNav from "../../usernav/UserNav"
-import { Link } from "react-router-dom"
-import userStore from "../../../store/loginStore"
+import { Link, useLocation } from "react-router-dom"
 import { useFetchInscripciones } from "../../../hooks/useInscripciones"
-import CardInscripciones from "../../cards/inscripciones/CardInscripciones"
 import { useFetchEscuelas } from "../../../hooks/useEscuela"
 import { useFetchProfes } from "../../../hooks/useProfesor"
 import { useFetchEventos } from "../../../hooks/useEventos"
-import inscripcionStore from "../../../store/inscripcionStore"
 import { useEffect } from "react"
+import userStore from "../../../store/loginStore"
+import inscripcionStore from "../../../store/inscripcionStore"
+import CardInscripcionesPc from "../../cards/inscripciones/CardInscripcionesPc"
 
 function Inscripciones_PC() {
+  const location = useLocation()
+  const inscripcionEvento = location.state || {}
   const { data:inscripciones, isLoading, error} = useFetchInscripciones()
   const { data:escuelas } = useFetchEscuelas()
   const { data:profesores } = useFetchProfes()
@@ -21,14 +23,18 @@ function Inscripciones_PC() {
   const {
     setSearchTerm,
     setSelectedEvento,
-    setSelectedFechaEvento,
     setSelectedEscuela,
     setSelectedProfesor,
     setSelectedGraduacion,
     setSortBy
   } = inscripcionStore()
-  const inscripcionesFiltradas = getFilteredInscripciones()
-    const grados = [
+  
+  const todasLasInscripciones = getFilteredInscripciones()
+  const inscripcionesFiltradas = Array.isArray(todasLasInscripciones)
+   ? todasLasInscripciones.filter((i) => i.idEvento === inscripcionEvento.idEvento) 
+   : []
+  
+  const grados = [
     "Blanco",
     "Blanco Punta Amarilla",
     "Amarillo",
@@ -80,7 +86,7 @@ function Inscripciones_PC() {
         <Nav />
         {error.response.status === 404 ? (
           <div className="text-center py-12">
-            <Link to='/newinscripcion'>
+            <Link to='/inscripciones'>
               <button className="mb-4 bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md transition">Agregar inscripcion</button>
             </Link>
             <p className="text-gray-700">No existen inscripciones cargadas, por favor ingresa la primera.</p>
@@ -103,7 +109,7 @@ function Inscripciones_PC() {
           <UserNav/>
           <div className="min-h-screen px-6 py-12">
             <div className="flex flex-col md:flex-row justify-between mb-6">
-              <Link to='/newInscripcion'>
+              <Link to='/inscripciones'>
                 <button className="mb-4 md:mb-0 bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg shadow-md transition">
                   Agregar Inscripcion
                 </button>
@@ -139,31 +145,6 @@ function Inscripciones_PC() {
                 ))}
               </select>
 
-              <select
-                onChange={(e) => setSelectedEvento(e.target.value)}
-                className="p-2 border rounded-xl">
-                <option value="todas">Todos los Eventos</option>
-                {evento.map((eve, key) => (
-                  <option 
-                    key={key}
-                    value={eve}>
-                      {eve}
-                  </option>
-                ))}
-              </select>
-
-              <select
-                onChange={(e) => setSelectedFechaEvento(e.target.value)}
-                className="p-2 border rounded-xl">
-                <option value="todas">Todas las fechas</option>
-                {Array.isArray(eventos) && eventos.map((eve, key) => (
-                  <option 
-                    key={key}
-                    value={eve.fecha_del_evento}>
-                      {eve.fecha_del_evento}
-                  </option>
-                ))}
-              </select>
               
               <select
                 onChange={(e) => setSelectedGraduacion(e.target.value)}
@@ -200,7 +181,7 @@ function Inscripciones_PC() {
             <div className="min-w-full table-auto border-collapse border border-gray-300 mb-8">
               {Array.isArray(inscripcionesFiltradas) && inscripcionesFiltradas.map((inscripcion, key)=>
                   !inscripcion.eliminado && (
-                    <CardInscripciones
+                    <CardInscripcionesPc
                       key={key}
                       id={inscripcion.id}
                       tipo_de_evento={inscripcion.tipo_de_evento}

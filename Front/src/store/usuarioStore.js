@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import axios from "axios";
+import api from "../api/ubk";
 
 const usuarioStore = create((set, get)=>{
     const initialState = () =>{
@@ -36,7 +36,7 @@ const usuarioStore = create((set, get)=>{
             })
             try {
 
-                const response = await axios.post(`http://localhost:3001/newuser`, usuarioData)
+                const response = await api.post(`/newuser`, usuarioData)
                 const newUsuario = response.data
         
                 set({

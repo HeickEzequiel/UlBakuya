@@ -1,5 +1,5 @@
 function CardDojan(props) {
-  console.log(props)
+
   return (
       <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 w-full max-w-md mx-auto hover:shadow-xl transition-shadow">
         <img

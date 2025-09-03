@@ -20,7 +20,6 @@ function InscripcionDetail() {
     if(!isLogged){
         return <p>Debes iniciar sesion como administrador</p>
     }
-console.log(inscripcion.imagen, inscripcion.horarios)
     return (
         <div>
             <Nav/>

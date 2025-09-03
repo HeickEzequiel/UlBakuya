@@ -162,7 +162,7 @@ function Newalumno() {
                     onChange={(e) => {
                     
                       const value = e.target.value;
-                        setAlumnoData((prev) => ({
+                      setAlumnoData((prev) => ({
                         ...prev,
                         profesor: e.target.checked
                         ? [...prev.profesor, value]

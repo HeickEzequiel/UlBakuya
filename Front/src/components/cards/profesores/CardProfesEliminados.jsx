@@ -21,7 +21,6 @@ function CardProfesEliminados(props) {
         const response = await api.delete(`/deleteprofesor/${id}`)
         alert("Profesor eliminado de la base de datos")
         navigate("/paneldecontrol")
-        console.log(response)
     } catch (error) {
         console.error('Error al realizar la solicitud:', error);
     }

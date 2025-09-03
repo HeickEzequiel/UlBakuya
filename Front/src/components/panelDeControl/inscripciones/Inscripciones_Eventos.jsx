@@ -1,11 +1,11 @@
-import Footer from "../footer/Footer";
-import Nav from "../nav/Nav";
-import { useFetchEventos } from "../../hooks/useEventos.js";
-import UserNav from "../usernav/UserNav.jsx";
-import userStore from "../../store/loginStore.js";
-import CardInscripciones from "../cards/inscripciones/CardInscripciones.jsx";
+import Footer from "../../footer/Footer.jsx";
+import Nav from "../../nav/Nav.jsx";
+import { useFetchEventos } from "../../../hooks/useEventos.js";
+import UserNav from "../../usernav/UserNav.jsx";
+import userStore from "../../../store/loginStore.js";
+import CardInscripcionesEventos from "../../cards/inscripciones/CardInscripcionesEventos.jsx";
 
-function Inscripciones() {
+function Inscripciones_Eventos() {
   const { data: eventos, isLoading, error } = useFetchEventos();
   const { isLogged, user } = userStore();
 
@@ -27,8 +27,8 @@ function Inscripciones() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <Nav />
-      {isLogged ? <UserNav /> : <div className="p-4" />}
+      <Nav/>
+      {isLogged ? <UserNav/> : <div className="p-4" />}
       
       <main className="flex-grow p-4 ml-5 mt-10">
         {eventos.length === 0 ? (
@@ -40,7 +40,7 @@ function Inscripciones() {
             {eventos.map(
               (evento, key) =>
                 !evento.eliminado && (
-                  <CardInscripciones
+                  <CardInscripcionesEventos
                     key={key}
                     tipo_de_evento={evento.tipo_de_evento}
                     idEvento={evento.id}
@@ -58,9 +58,9 @@ function Inscripciones() {
         )}
       </main>
       
-      <Footer />
+      <Footer/>
     </div>
   );
 }
 
-export default Inscripciones;
+export default Inscripciones_Eventos;

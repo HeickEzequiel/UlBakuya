@@ -20,7 +20,6 @@ function DeleteInscripciones() {
             const response = await api.get(`/logicdeleteinscripcion/${id}`)
             alert("Inscripcion eliminada")
             navigate("/pc_inscripciones")
-            console.log(response)
         } catch (error) {
             console.error('Error al realizar la solicitud:', error);
         }

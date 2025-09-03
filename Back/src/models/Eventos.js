@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
          allowNull:false
       },
       horarios: {
-         type: DataTypes.STRING,
+         type: DataTypes.ARRAY(DataTypes.STRING),
          allowNull: false
       },
       club: {

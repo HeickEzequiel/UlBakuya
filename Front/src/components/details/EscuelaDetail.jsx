@@ -10,7 +10,7 @@ function EscuelaDetail() {
     const isLogged = userStore((state) => state.isLogged)
     const {id} = useParams()
     const { data:escuela, isLoading, error } = useFetchEscuela(id)
-console.log(escuela)
+
     if(isLoading){
         return <div>Loading...</div>
     }

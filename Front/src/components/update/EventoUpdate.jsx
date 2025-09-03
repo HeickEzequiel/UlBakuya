@@ -5,6 +5,7 @@ import Nav from "../nav/Nav"
 import UserNav from "../usernav/UserNav"
 import CardImagen from "../cards/CardImagen"
 import Footer from "../footer/Footer"
+import { useState } from "react"
 
 
 function EventoUpdate() {

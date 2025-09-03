@@ -12,18 +12,7 @@ function Home() {
     <div className=''>
         <Nav/>
         {isLogged ? <UserNav/> : <div className='relative flex items-center p-4 w-full '></div>}
-        {isLogged && (
-          <div className="flex items-center gap-4 mt-6 mx-4 p-4 rounded-xl shadow-md bg-gradient-to-r from-amber-100 via-yellow-50 to-amber-100 border border-yellow-200">
-            <img
-              src={user.imagen}
-              alt="user icon"
-              className="w-10 h-10 md:w-14 md:h-14 rounded-full border border-yellow-300"
-            />
-            <div className="text-lg md:text-2xl font-bold text-yellow-800 italic">
-              ¡Hola, {user.nombre}!
-            </div>
-          </div>
-        )}
+
 
         <Carousel/>
         <div className="max-w-4xl mx-auto mt-16 px-6">

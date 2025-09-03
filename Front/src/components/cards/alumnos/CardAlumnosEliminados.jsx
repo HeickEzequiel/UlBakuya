@@ -9,7 +9,6 @@ function CardAlumnosEliminados(props) {
             const response = await api.get(`/logicrestorealumno/${id}`)
             alert("Alumno restaurado")
             navigate("/paneldecontrol")
-            console.log(response)
         } catch (error) {
             console.error('Error al realizar la solicitud:', error);
         }
@@ -20,7 +19,6 @@ function CardAlumnosEliminados(props) {
           const response = await api.delete(`/deletealumno/${id}`)
           alert("Alumno eliminado de la base de datos")
           navigate("/paneldecontrol")
-          console.log(response)
       } catch (error) {
           console.error('Error al realizar la solicitud:', error);
       }

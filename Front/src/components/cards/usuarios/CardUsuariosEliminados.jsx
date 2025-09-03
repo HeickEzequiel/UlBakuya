@@ -20,7 +20,6 @@ function CardUsuariosEliminados(props) {
         const response = await api.delete(`/deleteuser/${id}`)
         alert("Profesor eliminado de la base de datos")
         navigate("/pc_usuarios")
-        console.log(response)
     } catch (error) {
         console.error('Error al realizar la solicitud:', error);
     }

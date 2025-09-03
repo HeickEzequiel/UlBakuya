@@ -4,7 +4,7 @@ import { x, facebook, instagram, tiktok } from '../../config/cloudinary';
 
 function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white py-10 mt-10 shadow-inner">
+    <footer className="bg-gradient-to-r from-gray-900 via-gray-600 to-gray-900 text-white py-10 mt-10 shadow-inner">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
 
         {/* Redes sociales */}

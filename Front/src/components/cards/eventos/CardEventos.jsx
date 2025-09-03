@@ -1,16 +1,24 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
 
 function CardEventos(props) {
+
+  const { horarios } = props
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden mb-4 border border-gray-300">
       <div className="flex flex-col lg:flex-row items-center p-6">
         <div className="flex-1 mb-4 lg:mb-0">
           <p className="text-lg font-semibold text-gray-800">{props.tipo_de_evento} </p>
-          <p className="text-sm text-gray-600">Fecha: {props.fecha_del_evento}</p>
-          <p className="text-sm text-gray-600">Horario: {props.horarios}</p>
           <p className="text-sm text-gray-600">Club: {props.club}</p>
           <p className="text-sm text-gray-600">direccion: {props.direccion}</p>
+          <p className="text-sm text-gray-600">Fecha: {props.fecha_del_evento}</p>
+          <p className="text-sm text-gray-600">
+            Horarios: {" "}
+            {Array.isArray(horarios) && horarios.length >0
+              ? horarios.map((e)=> `${e}`).join(" / ")
+              : "Sin asignar"
+            }
+          </p>
+            
         </div>
         
         <div className="flex flex-wrap gap-4">

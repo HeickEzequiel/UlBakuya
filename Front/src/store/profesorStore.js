@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import axios from "axios";
+import api from "../api/ubk";
 
 const profesorStore = create((set, get)=>{
     const initialState = () =>{
@@ -34,7 +34,7 @@ const profesorStore = create((set, get)=>{
             })
             try {
 
-                const response = await axios.post(`http://localhost:3001/newprofesor`, profesorData)
+                const response = await api.post(`/newprofesor`, profesorData)
                 const newProfesor = response.data
 
                 set({

@@ -1,15 +1,19 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Nav from '../nav/Nav';
 import Footer from '../footer/Footer';
 import inscripcionStore from '../../store/inscripcionStore';
 
 function NewInscripcion() {
-const Navigate = useNavigate();
+  const location = useLocation()
+  const evento = location.state || {}
+  const hora = evento.horarios
+  const Navigate = useNavigate();
   const { register } = inscripcionStore();
   const [inscripcionData, setInscripcionData] = useState({
-    tipo_de_evento:"",
-    fecha_del_evento: "",
+    tipo_de_evento:evento.tipo_de_evento,
+    idEvento:evento.idEvento,
+    fecha_del_evento: evento.fecha_del_evento,
     horarios: "",
     nombre: "",
     apellido: "",
@@ -20,7 +24,6 @@ const Navigate = useNavigate();
     profesor: "",
     graduacion_actual: "",
     proxima_graduacion: "",
-    fecha_de_examen: "",
     imagen: "",
     estado: "Activo",
     eliminado: false,
@@ -36,7 +39,7 @@ const Navigate = useNavigate();
     try {
       register(inscripcionData);
       alert("Inscripcion creada con éxito");
-      Navigate("/pc_inscripciones");
+      Navigate("/inscripciones");
     } catch (error) {
       console.error("Error al realizar la solicitud", error);
     }
@@ -52,28 +55,9 @@ const Navigate = useNavigate();
           </h2>
           
           <form onSubmit={handleSubmit} className="space-y-4">
-
-            <select
-            name="tipo_de_evento"
-            value={inscripcionData.tipo_de_evento}
-            onChange={handleChange}
-            className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-            <option value="">Seleccione un evento</option>
-            <option value="Examen">Examen</option>
-            <option value="Torneo">Torneo</option>
-            <option value="Clase Especial">Clase Especial</option>
-            <option value="Curso Tecnico">Curso Técnico</option>
-          </select>
-            
+         
             {[
-              
-              {
-                name: "fecha_del_evento",
-                type: "date",
-                label: "Fecha del evento",
-              },
-              { name: "horarios", label:"Horario", placeholder: "Ingrese horario" },
+              { name: "imagen", label:"Foto", placeholder: "Ingrese link de la imagen" },
               { name: "nombre", label:"Nombre", placeholder: "Ingrese nombre" },
               { name: "apellido", label:"Apellido", placeholder: "Ingrese apellido" },
               { name: "edad", label:"Edad", placeholder: "Ingrese edad" },
@@ -82,9 +66,7 @@ const Navigate = useNavigate();
               { name: "escuela", label:"Escuela", placeholder: "Ingrese escuela" },
               { name: "profesor", label:"Profesor", placeholder: "Ingrese profesor" },
               { name: "graduacion_actual", label:"Graduacion Actual", placeholder: "Ingrese graduación actual" },
-              { name: "proxima_graduacion", label:"Proxima Graduacion", placeholder: "Ingrese proxima graduación" },
-              { name: "imagen", label:"Foto", placeholder: "Ingrese link de la imagen" },
-              { name: "estado", label:"Estado", placeholder: "Ingrese estado" },
+
             ].map((field) => (
               <div key={field.name}>
                 {field.label && (
@@ -92,6 +74,7 @@ const Navigate = useNavigate();
                     {field.label}
                   </label>
                 )}
+                
 
                 <input
                   className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -100,9 +83,54 @@ const Navigate = useNavigate();
                   value={inscripcionData[field.name]}
                   placeholder={field.placeholder}
                   onChange={handleChange}
-                />
+                  />
+                  
               </div>
             ))}
+
+            {evento.tipo_de_evento === "Examen" && (
+              <div>
+                <label>Proxima graduacion </label>
+                <input
+                  className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  type='text'
+                  name='proxima_graduacion'
+                  value={inscripcionData["proxima_graduacion"]}
+                  placeholder='Ingrese proxima graduacion'
+                  onChange={handleChange}
+                />
+              </div>
+            )}
+
+            <div>
+            <label className="block mb-1 font-semibold text-gray-700">
+              Horario:
+            </label>
+            <div className="grid-cols-1 gap-4">
+              {hora.map((h) => (
+                <label key={h} className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    value={h}
+                    checked={inscripcionData.horarios.includes(h)}
+                    onChange={(e) => {
+                    
+                      const value = e.target.value;
+                      setInscripcionData((prev) => ({
+                        ...prev,
+                        horarios: e.target.checked
+                        ? [...prev.horarios, value]
+                        : prev.horarios.filter((id) => id !== value)
+                      }));
+                    }}
+                  />
+                  {h}
+                </label>
+              ))}
+            </div>
+            </div>
+
+            
 
             <button
               type="submit"

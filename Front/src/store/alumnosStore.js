@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import axios from "axios";
+import api from "../api/ubk";
 
 const alumnosStore = create((set, get)=>{
     const initialState = () =>{
@@ -32,7 +32,7 @@ const alumnosStore = create((set, get)=>{
             })
             try {
 
-                const response = await axios.post(`http://localhost:3001/newalumno`, alumnoData)
+                const response = await api.post(`/newalumno`, alumnoData)
                 const newAlumno = response.data
 
                 set({
@@ -81,13 +81,11 @@ const alumnosStore = create((set, get)=>{
                 selectedProfesor,
                 sortBy
             } = get()
-                console.log("alumnos--->",alumnos)
-                console.log("selectedEscuela-->",selectedEscuela )
-                console.log("selectedProfesor-->",selectedProfesor)
+
             if (!Array.isArray(alumnos)) return [];
             
             let results = [...alumnos]
-            console.log("results-->", results)
+            
             if(searchTerm){
                 results = results.filter((alumno)=>
                     alumno.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||

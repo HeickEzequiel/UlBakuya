@@ -11,9 +11,9 @@ function Perfil() {
   const navigate = useNavigate()
   const { isLogged } = userStore()
   const userData = JSON.parse(localStorage.userData)
-  const userID = userData.actualUser
+  const userID = userData.user.id
   const { data: usuario, isLoading, error } = useFetchUser(userID)
-
+  
   const handleUpdate = () => {
     navigate(`/updateuser/${userID}`)
   }

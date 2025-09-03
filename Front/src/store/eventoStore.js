@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import axios from "axios";
+import api from "../api/ubk";
 
 const eventoStore = create((set, get)=>{
     const initialState = () =>{
@@ -29,7 +29,7 @@ const eventoStore = create((set, get)=>{
                 registerSuccess: false
             })
             try {
-                const response = await axios.post(`http://localhost:3001/newevento`, eventoData)
+                const response = await api.post(`/newevento`, eventoData)
                 const newEvento = response.data
 
                 set({

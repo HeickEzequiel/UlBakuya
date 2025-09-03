@@ -10,7 +10,6 @@ function CardEventosEliminados(props) {
             const response = await api.get(`/logicrestoreevento/${id}`)
             alert("Evento restaurado")
             navigate("/pc_eventos")
-            console.log(response)
         } catch (error) {
             console.error('Error al realizar la solicitud:', error);
         }
@@ -21,7 +20,6 @@ function CardEventosEliminados(props) {
           const response = await api.delete(`/deleteevento/${id}`)
           alert("Evento eliminado de la base de datos")
           navigate("/pc_eventos")
-          console.log(response)
       } catch (error) {
           console.error('Error al realizar la solicitud:', error);
       }

@@ -26,7 +26,7 @@ function Paneldecontrol() {
                   { path: "/pc_profesores", label: "Profesores" },
                   { path: "/pc_escuelas", label: "Escuelas" },
                   { path: "/pc_dojanes", label: "Dojan" },
-                  { path: "/pc_inscripciones", label: "Inscripciones" },
+                  { path: "/inscripcioneseventos", label: "Inscripciones" },
                   { path: "/pc_eventos", label: "Eventos" },
                 ].map((item, idx) => (
                   <Link key={idx} to={item.path} className="w-full">

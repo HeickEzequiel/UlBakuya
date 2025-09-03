@@ -1,7 +1,7 @@
 const { Usuario } = require("../../db.js");
 
 const updateUser = async (req, res) => {
-  console.log(req.body)
+  
     try {
         const { id } = req.params;
         const {
@@ -16,6 +16,7 @@ const updateUser = async (req, res) => {
             graduacion,
             fecha_de_examen,
             profesor,
+            idProfesor
          
         } = req.body;
 
@@ -31,6 +32,7 @@ const updateUser = async (req, res) => {
             graduacion,
             fecha_de_examen,
             profesor,
+            idProfesor
            
         };
 
@@ -44,7 +46,7 @@ const updateUser = async (req, res) => {
         }
 
         if (updateFields.length === 0) {
-            return res.status(400).json({ error: "No se proporcionaron datos para actualizar" });
+            return res.status(400).json({ error: "No se proporcionaron datos para actualizar" })
         }
 
         const result = await Usuario.update(Object.assign({}, ...updateFields), {

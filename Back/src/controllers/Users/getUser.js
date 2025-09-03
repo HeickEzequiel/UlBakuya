@@ -1,5 +1,6 @@
 const {Usuario} = require("../../db.js");
 const getUser = async (req, res) => {
+
   try{
     const oneUsuarioDB = await Usuario.findByPk(req.params.id)
     const oneUsuario = {
