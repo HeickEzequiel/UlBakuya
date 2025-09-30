@@ -38,7 +38,7 @@ function EventoDetail() {
                     estado={evento.estado}
                     />
                 </div>}
-                <Link to='/pc_eventos'><button className="boton">🡸 Volver</button></Link>
+                <Link to='/pc_eventos'><button className="botonVolver">🡸 Volver</button></Link>
             </div>
             <Footer/>
         </div>

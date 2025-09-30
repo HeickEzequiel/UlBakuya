@@ -40,7 +40,7 @@ function UserDetail() {
                     email={usuario.email}
                     />
                 </div>}
-                <Link to='/pc_usuarios'><button className="boton">🡸 Volver</button></Link>
+                <Link to='/pc_usuarios'><button className="botonVolver">🡸 Volver</button></Link>
             </div>
             <Footer/>
         </div>

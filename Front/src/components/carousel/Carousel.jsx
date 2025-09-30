@@ -10,15 +10,13 @@ import 'swiper/css/pagination';
 
 function Carousel() {
   return (
-    <div className="mt-24 flex justify-center items-center bg-gradient-to-b from-white to-gray-100 py-10">
+    <div className="mt-10 flex justify-center items-center bg-gradient-to-b from-gray-900 via-gray-600 to-gray-900 py-10">
       <div className="relative w-full max-w-6xl rounded-xl overflow-hidden shadow-xl">
 
-        {/* Lado izquierdo - barra con flecha */}
         <div className="hidden sm:flex items-center absolute left-0 top-0 h-full w-14 bg-white/70 backdrop-blur-md z-20 rounded-l-xl">
           <div className="swiper-button-prev swiper-button-prev-custom text-gray-700 hover:text-black w-full h-10 pointer-events-auto select-none cursor-pointer"></div>
         </div>
 
-        {/* Lado derecho - barra con flecha */}
         <div className="hidden sm:flex items-center absolute right-0 top-0 h-full w-14 bg-white/70 backdrop-blur-md z-20 rounded-r-xl">
           <div className="swiper-button-next swiper-button-next-custom text-gray-700 hover:text-black w-full h-10 pointer-events-auto select-none cursor-pointer"></div>
         </div>

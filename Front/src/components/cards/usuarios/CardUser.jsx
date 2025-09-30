@@ -11,7 +11,6 @@ import {
 function CardUser(props) {
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-2xl shadow-lg flex flex-col lg:flex-row gap-8 items-start">
-      {/* Imagen del usuario */}
       <div className="flex-shrink-0">
         <img
           src={props.imagen}
@@ -19,8 +18,6 @@ function CardUser(props) {
           className="w-40 h-40 object-cover rounded-full border-4 border-gray-200"
         />
       </div>
-
-      {/* Información personal */}
       <div className="flex-1 space-y-3">
         <h1 className="text-2xl font-semibold text-gray-800">
           {props.nombre} {props.apellido}

@@ -117,7 +117,6 @@ function AlumnoUpdate() {
             </div>
           ))}
 
-          {/* Select de escuelas */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Escuelas</label>
             <select
@@ -138,7 +137,6 @@ function AlumnoUpdate() {
             </select>
           </div>
 
-          {/* Checkbox de profesores */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Profesores</label>
             <div className="grid grid-cols-2 gap-2">

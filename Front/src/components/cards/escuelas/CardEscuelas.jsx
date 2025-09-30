@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom"
+import userStore from "../../../store/loginStore"
 
 function CardEscuelas(props) {
-
+  const { user } = userStore()
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden mb-4 border border-gray-300">
       <div className="flex flex-col lg:flex-row items-center p-6">
@@ -22,16 +23,21 @@ function CardEscuelas(props) {
               Ver
             </button>
           </Link>
+          
+          {user.nivel === "Director" || user.nivel === "Instructor mayor" && (
           <Link to={`/updateescuela/${props.id}`}>
             <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg shadow-md transition">
               Modificar
             </button>
           </Link>
+          )}
+          {user.nivel === "Director" || user.nivel === "Instructor mayor" && (
           <Link to={`/deleteescuela/${props.id}`}
             ><button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg shadow-md transition">
               Eliminar
             </button>
           </Link>
+          )}
         </div>
       </div>
     </div>

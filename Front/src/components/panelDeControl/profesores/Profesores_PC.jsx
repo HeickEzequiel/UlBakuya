@@ -67,16 +67,18 @@ function Profesores_PC() {
     return (
     <div>
         <Nav/>
-            {isLogged && (user.nivel === "Director" || user.nivel === "Instructor mayor")?(
+            {isLogged && (user.nivel === "Director" || user.nivel === "Instructor mayor" || user.nivel === "Instructor menor")?(
             <div>
                 <UserNav/>
                 <div className="min-h-screen px-6 py-12">
                     <div className="flex flex-col md:flex-row justify-between mb-6">
+                    {user.nivel === "Director" || user.nivel === "Instructormayor" && (
                     <Link to='/newprofesor'>
                         <button className="mb-4 md:mb-0 bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg shadow-md transition">
                             Agregar Profesor
                         </button>
                     </Link>
+                    )}
                     {user.nivel === "Director" && (
                     <Link to='/profesores_eliminados'>
                         <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-lg shadow-md transition">

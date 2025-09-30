@@ -7,7 +7,6 @@ function Footer() {
     <footer className="bg-gradient-to-r from-gray-900 via-gray-600 to-gray-900 text-white py-10 mt-10 shadow-inner">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
 
-        {/* Redes sociales */}
         <div className="text-center md:text-left">
           <h2 className="text-lg font-semibold text-lime-400 mb-2">Seguinos en nuestras redes</h2>
           <div className="flex justify-center md:justify-start gap-4">
@@ -26,7 +25,6 @@ function Footer() {
           </div>
         </div>
 
-        {/* Contacto */}
         <div className="text-center md:text-right">
           <h2 className="text-lg font-semibold text-lime-400 mb-1">Escribinos a</h2>
           <p className="text-md font-normal">ulbakuya@gmail.com</p>
