@@ -38,7 +38,7 @@ function DojanDetail() {
                   estado={dojan.estado}
                   />
               </div>}
-              <Link to='/pc_dojanes'><button className="boton">🡸 Volver</button></Link>
+              <Link to='/pc_dojanes'><button className="botonVolver">🡸 Volver</button></Link>
           </div>
           <Footer/>
           

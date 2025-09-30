@@ -1,7 +1,7 @@
 function userValidation (input){
     const errors = {}
     const regexAlphabetic = new RegExp(/^[a-zA-Z]+$/);
-    const regexAlphaSpace = new RegExp(/^[a-zA-Z\s]+$/);
+    const regexAlphaSpace = /^[\p{L}\s]+$/u
     const regexPassword = new RegExp("[0-9]")
     const regexEmail = /\S+@\S+\.\S+/;
     const regexNum = new RegExp(/^[0-9]*$/)

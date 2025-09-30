@@ -45,7 +45,7 @@ function InscripcionDetail() {
                                      
                     />
                 </div>}
-                <Link to='/pc_inscripciones'><button className="boton">🡸 Volver</button></Link>
+                <Link to='/pc_inscripciones'><button className="botonVolver">🡸 Volver</button></Link>
             </div>
             <Footer/>
         </div>

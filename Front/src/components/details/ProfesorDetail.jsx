@@ -38,7 +38,7 @@ function ProfesorDetail() {
             estado={profe.estado}
           />
         </div>}
-        <Link to='/pc_profesores'><button className="boton">🡸 Volver</button></Link>
+        <Link to='/pc_profesores'><button className="botonVolver">🡸 Volver</button></Link>
       </div>
       <Footer/>
     </div>

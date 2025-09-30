@@ -28,14 +28,3 @@ export function useFetchAlumno(id){
         enabled:!!id
     })
 }
-
-// export function useFetchAlumnoName(name){
-//     return useQuery({
-//         queryKey: ['alumno',name],
-//         queryFn:
-//         async function fetchAlumnoName() {
-//             const { data } = await api.get(`/alumno?apellido=${name}`)
-//             return data
-//         }
-//     })
-// }

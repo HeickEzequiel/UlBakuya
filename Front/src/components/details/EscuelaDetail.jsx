@@ -35,7 +35,7 @@ function EscuelaDetail() {
                     director={escuela.director}
                     />
                 </div>}
-                <Link to='/pc_escuelas'><button className="boton">🡸 Volver</button></Link>
+                <Link to='/pc_escuelas'><button className="botonVolver">🡸 Volver</button></Link>
             </div>
             <Footer/>
         </div>

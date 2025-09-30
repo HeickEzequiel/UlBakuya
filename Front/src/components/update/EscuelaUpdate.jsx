@@ -28,7 +28,7 @@ function EscuelaUpdate() {
     if(!isLogged){
         return <p>Debes iniciar sesion como administrador</p>
     }
-//updateescuela
+
     const updateEscuela = async (escuelaData) =>{
         try{
             const payload = {
