@@ -16,7 +16,10 @@ const login = async (req, res) => {
                 if (!match){
                     return res.status(401).send("contraseña incorrecta")
                 }
-
+                if( actualUser.eliminado === true){
+                    return res.status(403).send("usuario bloqueado o eliminado ")
+                }
+                
                 const token = jwt.sign(
                     {
                         id: actualUser.id,

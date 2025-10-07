@@ -27,12 +27,12 @@ function Body() {
         <h2 className="text-3xl font-bold text-center text-lime-700 mb-12 underline underline-offset-8">
           Escuelas asociadas
         </h2>
-        <div className="flex justify-center gap-16">
+        <div className="flex justify-center md:gap-16 gap-4">
           {[ubk, pilsung, gyeomson, ubuntu].map((img, idx) => (
             <AdvancedImage
               key={idx}
               cldImg={img}
-              className="w-48 h-48 object-contain transition-transform duration-300 hover:scale-110"
+              className="w-20 h-20 md:w-48 md:h-48 object-contain transition-transform duration-300 hover:scale-110"
             />
           ))}
         </div>
@@ -64,8 +64,8 @@ function Body() {
         </p>
       </div>
       
-      <div className=" bg-gradient-to-r from-gray-900 via-gray-600 to-gray-900 flex justify-center my-32  mx-70 rounded-2xl">
-        <button className="px-8 py-4 text-md font-semibold text-black bg-lime-400 rounded-2xl shadow-lg transition duration-300 hover:bg-lime-500 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-lime-400 focus:ring-offset-2">
+      <div className="bg-gradient-to-r from-gray-900 via-gray-600 to-gray-900 flex justify-center my-8 px-4 sm:my-16 sm:px-8 md:my-32 md:px-20 rounded-2xl">
+        <button className="px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-md md:text-lg font-semibold text-black bg-lime-400 rounded-2xl shadow-lg transition transform duration-300 hover:bg-lime-500 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-lime-400 focus:ring-offset-2">
           ¡Quiero inscribirme!
         </button>
       </div>

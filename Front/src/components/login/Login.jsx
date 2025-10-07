@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "sonner";
 import userStore from "../../store/loginStore";
 import api from "../../api/ubk";
 import validation from "../../../utils/validation";
@@ -33,19 +32,36 @@ function Login() {
     );
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const { email, password } = userData;
-    try {
-      const response = await api.post("/login", { email, password });
-      login(response.data);
-      localStorage.setItem("userData", JSON.stringify(response.data));
-      navigate("/");
-      toast.success("Inicio de sesión exitoso");
-    } catch (error) {
-      toast.error("Correo o contraseña incorrecta");
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  const { email, password } = userData;
+
+  try {
+    const response = await api.post("/login", { email, password });
+    login(response.data);
+    localStorage.setItem("userData", JSON.stringify(response.data));
+    navigate("/");
+  } catch (error) {
+    if (error.response) {
+      switch (error.response.status) {
+        case 401:
+          alert("Contraseña incorrecta");
+          break;
+        case 403:
+          alert("Usuario eliminado o bloqueado");
+          break;
+        case 404:
+          alert("Usuario Inexistente")
+          break;  
+        default:
+          alert("Ha ocurrido un error inesperado, contactate con un administrador");
+      }
+    } else {
+      console.error("Error al realizar la solicitud", error);
+      alert("Error de conexión con el servidor");
     }
-  };
+  }
+};
 
   const handleNewUser = () => {
     navigate("/newuser");

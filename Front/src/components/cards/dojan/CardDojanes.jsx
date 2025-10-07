@@ -7,7 +7,7 @@ function CardDojanes(props) {
 
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden mb-4 border border-gray-300">
-      <div className='flex flex-col lg:flex-row items-center p-6'>
+      <div className='flex flex-col lg:flex-row md:items-center p-6'>
         <div className="flex-1 mb-4 lg:mb-0">
           <p className="text-xl font-semibold text-gray-800 mt-2">{props.club}</p>
           <p className="text-lg text-gray-800 mb-2">Dirección: {props.direccion}</p>
@@ -28,22 +28,22 @@ function CardDojanes(props) {
 
         </div>
 
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-1 md:gap-4">
           <Link to={`/dojan/${props.id}`}>
-            <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md transition">
+            <button className="bg-blue-500 hover:bg-blue-600 text-white  px-2 py-1 md:px-4 md:py-2 rounded-lg shadow-md transition">
               Ver
             </button>
           </Link>
-          {user.nivel === "Director" || user.nivel === "Instructor mayor" && (
+          {(user.nivel === "Director" || user.nivel === "Instructor mayor") && (
           <Link to={`/updatedojan/${props.id}`}>
-            <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg shadow-md transition">
+            <button className="bg-yellow-500 hover:bg-yellow-600 text-white  px-2 py-1 md:px-4 md:py-2 rounded-lg shadow-md transition">
               Modificar
             </button>
           </Link>
           )}
-          {user.nivel === "Director" || user.nivel === "Instructor mayor" && (
+          {(user.nivel === "Director" || user.nivel === "Instructor mayor") && (
           <Link to={`/deletedojan/${props.id}`}>
-            <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg shadow-md transition">
+            <button className="bg-red-500 hover:bg-red-600 text-white  px-2 py-1 md:px-4 md:py-2 rounded-lg shadow-md transition">
               Eliminar
             </button>
           </Link>

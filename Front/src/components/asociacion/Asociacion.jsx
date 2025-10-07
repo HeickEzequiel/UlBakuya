@@ -19,7 +19,7 @@ function Asociacion() {
       )}
       
       <div className="max-w-4xl mx-auto p-6">
-        <AdvancedImage cldImg={ubk} className=" relative left-5 ml-64 rounded-lg shadow-lg mb-6" />
+        <AdvancedImage cldImg={ubk} className=" relative md:left-5 md:ml-64 rounded-lg shadow-lg mb-6" />
         <p className="text-xl font-semibold text-center text-gray-800">Escuela de Taekwondo Ul Bakuya</p>
 
         <div className="flex flex-col items-center mt-8">
