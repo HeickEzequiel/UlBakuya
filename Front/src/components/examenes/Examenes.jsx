@@ -48,7 +48,7 @@ function Examenes() {
       <p className="text-lg font-medium text-gray-900 mt-6">
         ¿Estás por rendir un examen? ¿Para qué cinturón? 😃
       </p>
-      <Link to='/inscripciones'><button className="relative px-6 py-3 left-96 ml-72 mt-10 my-10 text-lg font-semibold text-white bg-green-500 rounded-lg shadow-md transition duration-300 hover:bg-green-600 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2" type='button'>Inscribite</button></Link>
+      <Link to='/inscripciones'><button className="relative px-6 py-3 md:left-96 md:ml-72 mt-10 my-10 text-lg font-semibold text-white bg-green-500 rounded-lg shadow-md transition duration-300 hover:bg-green-600 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2" type='button'>Inscribite</button></Link>
       </div>
       <Footer/>
     </div>

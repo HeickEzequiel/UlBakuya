@@ -29,7 +29,7 @@ function CardInscripcionesPc(props) {
                         </button>
                     </Link>
                     
-                    {user.nivel === "Director" || user.nivel === "Instructor mayor" && (
+                    {(user.nivel === "Director" || user.nivel === "Instructor mayor") && (
                     <Link to={`/updateinscripcion/${props.id}`}>
                         <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg shadow-md transition">
                             Modificar
@@ -37,7 +37,7 @@ function CardInscripcionesPc(props) {
                     </Link>
                     )}
 
-                    {user.nivel === "Director" || user.nivel === "Instructor mayor" && (
+                    {(user.nivel === "Director" || user.nivel === "Instructor mayor") && (
                     <Link to={`/deleteinscripcion/${props.id}`}>
                         <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg shadow-md transition">
                             Eliminar

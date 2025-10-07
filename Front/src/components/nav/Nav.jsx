@@ -45,7 +45,7 @@ function Nav() {
               <Link to='/seminarios' className="nav-link mt-2 md:hidden">Cursos Tecnicos</Link>
               <Link to='/clasesespeciales'className="nav-link mt-2 md:hidden">Clases Especiales</Link>
               
-              <button className=' btn-primary'>
+              <button className=' md:hidden btn-primary'>
                 <Link to='/paneldecontrol'>Panel de control</Link>
               </button>
               

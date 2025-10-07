@@ -24,20 +24,20 @@ function CardEventos(props) {
         
         <div className="flex flex-wrap gap-4">
           <Link to={`/evento/${props.id}`}>
-            <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md transition">
+            <button className="bg-blue-500 hover:bg-blue-600 text-white  px-2 py-1 md:px-4 md:py-2 rounded-lg shadow-md transition">
               Ver
             </button>
           </Link>
-          {user.nivel === "Director" || user.nivel === "Instructor mayor" && (
+          {(user.nivel === "Director" || user.nivel === "Instructor mayor") && (
           <Link to={`/updateevento/${props.id}`}>
-            <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg shadow-md transition">
+            <button className="bg-yellow-500 hover:bg-yellow-600 text-white  px-2 py-1 md:px-4 md:py-2 rounded-lg shadow-md transition">
               Modificar
             </button>
           </Link>
           )}
-          {user.nivel === "Director" || user.nivel === "Instructor mayor" && (
+          {(user.nivel === "Director" || user.nivel === "Instructor mayor") && (
           <Link to={`/deleteevento/${props.id}`}>
-            <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg shadow-md transition">
+            <button className="bg-red-500 hover:bg-red-600 text-white  px-2 py-1 md:px-4 md:py-2 rounded-lg shadow-md transition">
               Eliminar
             </button>
           </Link>
