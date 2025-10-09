@@ -7,12 +7,14 @@ import CardInscripciones from "../cards/inscripciones/CardInscripciones.jsx";
 
 function Inscripciones() {
   const { data: eventos, isLoading, error } = useFetchEventos();
-  const { isLogged, user } = userStore();
+  const { isLogged } = userStore();
 
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen bg-gray-50">
-        <p className="text-lg font-semibold text-gray-500 animate-pulse">Cargando próximos eventos...</p>
+        <p className="text-lg font-semibold text-gray-500 animate-pulse">
+          Cargando próximos eventos...
+        </p>
       </div>
     );
   }
@@ -20,7 +22,9 @@ function Inscripciones() {
   if (error) {
     return (
       <div className="flex justify-center items-center min-h-screen bg-red-50">
-        <p className="text-lg font-semibold text-red-700">Error: {error.message}</p>
+        <p className="text-lg font-semibold text-red-700">
+          Error: {error.message}
+        </p>
       </div>
     );
   }
@@ -29,14 +33,15 @@ function Inscripciones() {
     <div className="min-h-screen flex flex-col bg-gray-50">
       <Nav />
       {isLogged ? <UserNav /> : <div className="p-4" />}
-      
-      <main className="flex-grow p-4 ml-5 mt-10">
+
+      <main className="flex-grow px-4 sm:px-6 lg:px-8 py-8">
         {eventos.length === 0 ? (
-          <h1 className="text-center text-2xl text-gray-400 font-medium">
+          <h1 className="text-center text-xl sm:text-2xl text-gray-400 font-medium">
             No hay nuevos eventos para inscribirse
           </h1>
         ) : (
-          <div className=" grid grid-cols-1 md:grid-cols-2 gap-22 mx-20">
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-7xl mx-auto">
             {eventos.map(
               (evento, key) =>
                 !evento.eliminado && (
@@ -57,7 +62,7 @@ function Inscripciones() {
           </div>
         )}
       </main>
-      
+
       <Footer />
     </div>
   );

@@ -7,36 +7,42 @@ import CardInscripcionesEventos from "../../cards/inscripciones/CardInscripcione
 
 function Inscripciones_Eventos() {
   const { data: eventos, isLoading, error } = useFetchEventos();
-  const { isLogged, user } = userStore();
+  const { isLogged } = userStore();
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-gray-50">
-        <p className="text-lg font-semibold text-gray-500 animate-pulse">Cargando próximos eventos...</p>
+      <div className="flex justify-center items-center min-h-screen bg-gray-50 px-4">
+        <p className="text-lg font-semibold text-gray-500 animate-pulse text-center">
+          Cargando próximos eventos...
+        </p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-red-50">
-        <p className="text-lg font-semibold text-red-700">Error: {error.message}</p>
+      <div className="flex justify-center items-center min-h-screen bg-red-50 px-4">
+        <p className="text-lg font-semibold text-red-700 text-center">
+          Error: {error.message}
+        </p>
       </div>
     );
   }
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <Nav/>
-      {isLogged ? <UserNav/> : <div className="p-4" />}
-      
-      <main className="flex-grow p-4 ml-5 mt-10">
+      <Nav />
+      {isLogged ? <UserNav /> : <div className="p-4" />}
+
+      <main className="flex-grow px-4 sm:px-6 lg:px-12 xl:px-20 py-10">
         {eventos.length === 0 ? (
-          <h1 className="text-center text-2xl text-gray-400 font-medium">
+          <h1 className="text-center text-xl sm:text-2xl text-gray-400 font-medium">
             No hay nuevos eventos para inscribirse
           </h1>
         ) : (
-          <div className=" grid grid-cols-1 md:grid-cols-2 gap-22 mx-20">
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 lg:gap-10"
+          >
             {eventos.map(
               (evento, key) =>
                 !evento.eliminado && (
@@ -57,8 +63,8 @@ function Inscripciones_Eventos() {
           </div>
         )}
       </main>
-      
-      <Footer/>
+
+      <Footer />
     </div>
   );
 }

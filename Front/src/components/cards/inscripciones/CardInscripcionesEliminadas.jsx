@@ -38,8 +38,6 @@ function CardInscripcionesEliminadas(props) {
 
   return (
     <div className="px-4 sm:px-6 py-2">
-
-      {/* VISTA ESCRITORIO */}
       <div className="hidden md:block">
         <table className="w-full border-collapse border border-gray-300 shadow-md rounded-md overflow-hidden text-sm">
           <tbody>
@@ -88,7 +86,7 @@ function CardInscripcionesEliminadas(props) {
         </table>
       </div>
 
-      {/* VISTA MÓVIL */}
+      
       <div className="block md:hidden border border-gray-300 rounded-lg shadow-md p-3 bg-white text-sm space-y-1">
         <div>
           <span className="font-semibold">Evento:</span> {tipo_de_evento}

@@ -17,7 +17,7 @@ const imagen2 = cld.image("ulbakuya/474151623_956224553104658_812779008112247621
 const imagen3 = cld.image("ulbakuya/20250619_rkmxhh")
 const imagen4 = cld.image("ulbakuya/505179995_4015451208693113_4222451096396355847_n_jjbug6")
 const imagen5 = cld.image("ulbakuya/20250619pilsung_j8dyzb")
-const imagen6 = cld.image("ulbakuya/20250619ubuntu_v96rzg")
+const imagen6 = cld.image("ulbakuya/20250619ubuntu_v96rzg.jpg")
 const imagen7 = cld.image("ulbakuya/IMG_20240714_165813_u69kp3")
 const fondo = cld.image("ulbakuya/fondo")
 
