@@ -57,11 +57,12 @@ import DeleteEvento from './components/delete/DeleteEvento'
 import EventoUpdate from './components/update/EventoUpdate'
 import NewEvento from './components/new/NewEvento'
 import Inscripciones_Eventos from './components/paneldecontrol/inscripciones/Inscripciones_Eventos'
+import ScrollToTop from './components/ScrollToTop'
 function App() {
 
   return (
     <div className=''>
-        
+      <ScrollToTop/> 
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>

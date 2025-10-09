@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom"
 import { useFetchUser } from "../../hooks/useUser"
+import userStore from "../../store/loginStore"
 
 function UserNav() {
+  const { isLogged } = userStore()
   const authState = JSON.parse(localStorage.getItem("authState"))
   const userID = authState?.user?.id
-
   const { data, isLoading, error } = useFetchUser(userID)
 
   
@@ -20,6 +21,7 @@ function UserNav() {
 
   return (
     <div>
+      {isLogged &&
       <div className=' hidden md:flex md:items-center md:justify-center md:bg-gradient-to-r from-gray-900 via-gray-600 to-gray-900  md:p-4 md:w-full '>
         <div className=" md:items-center">
           <button className=' md:inline-block md:left-32 md:text-white md:hover:text-lime-400 md:mr-4 md:font-medium md:transition md:ease-in-out md:delay-150 md:hover:-translate-y-1 md:hover:scale-110 md:duration-300'><Link to='/manual'>Manual del practicante</Link></button>
@@ -34,6 +36,7 @@ function UserNav() {
           ) : null}
         </div>
       </div>
+      }     
     </div>
   )
 }

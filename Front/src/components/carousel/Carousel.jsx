@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 
 function Carousel() {
   return (
-    <div className="mt-10 flex justify-center items-center bg-gradient-to-b from-gray-900 via-gray-600 to-gray-900 py-10">
+    <div className="mt-6 sm:mt-8 md:mt-10 flex justify-center items-center bg-gradient-to-b from-gray-900 via-gray-600 to-gray-900 py-6 sm:py-8 md:py-10">
       <div className="relative w-full max-w-6xl rounded-xl overflow-hidden shadow-xl">
 
         <div className="hidden sm:flex items-center absolute left-0 top-0 h-full w-14 bg-white/70 backdrop-blur-md z-20 rounded-l-xl">
@@ -37,7 +37,7 @@ function Carousel() {
         >
           {[img2, img3, img4, img5, img6, img7].map((img, i) => (
             <SwiperSlide key={i}>
-              <div className="w-full h-[500px] relative">
+              <div className="w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] relative">
               <AdvancedImage
                 cldImg={img}
                 className="absolute inset-0 w-full h-full object-cover object-center rounded-xl transition-transform duration-500 hover:scale-105"
