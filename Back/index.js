@@ -1,6 +1,6 @@
 const server = require("./src/server.js");
 const { conn } = require('./src/db.js');
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 conn.sync({ force:false }).then(() => { ///// true: resetea la tabla en cada cambio, false no restea la tabla
 server.listen(PORT, () => {
