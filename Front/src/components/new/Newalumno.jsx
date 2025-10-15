@@ -17,7 +17,7 @@ function Newalumno() {
     imagen: "",
     fecha_de_nacimiento: "",
     escuela: "",
-    graduacion: "",
+    graduacion: "Blanco",
     fecha_de_examen: "",
     profesor: [],
     estado: "Activo",
@@ -123,7 +123,7 @@ function Newalumno() {
                   name="graduacion"
                   onChange={handleGradoChange}
                   className="p-2 border rounded-xl">
-                    <option value="" disabled >Seleccione la graduacion</option>
+                    <option value="Blanco" disabled>Seleccione la graduacion</option>
                     {grados.map((grado,i)=>(
                       <option key={i} value={grado}>
                         {grado}

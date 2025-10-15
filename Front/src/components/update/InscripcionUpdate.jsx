@@ -7,6 +7,7 @@ import UserNav from "../usernav/UserNav"
 import CardImagen from "../cards/CardImagen"
 import Footer from "../footer/Footer"
 import api from "../../api/ubk"
+import { useEffect } from "react"
 
 function InscripcionUpdate() {
   const isLogged = userStore((state)=>state.isLogged)
@@ -23,13 +24,36 @@ function InscripcionUpdate() {
       altura:"",
       peso:"",
       escuela:"",
-      profesor:"",
+      profesor: [],
       graduacion_actual:"",
       proxima_graduacion:"",
       imagen:"",
       estado:"",
       eliminado:""
       })
+
+      useEffect(() => {
+        if(inscripcion){
+            setInscripcionData({
+                tipo_de_evento: inscripcion.tipo_de_evento || "",
+                fecha_del_evento: inscripcion.fecha_del_evento ||"",
+                horarios: inscripcion.horarios || "",
+                nombre: inscripcion.nombre || "",
+                apellido: inscripcion.apellido || "",
+                edad: inscripcion.edad || "",
+                altura: inscripcion.altura || "",
+                peso: inscripcion.peso || "",
+                escuela: inscripcion.escuela || "",
+                profesor: Array.isArray(inscripcion.profesor) ? inscripcion.profesor : [],
+                graduacion_actual: inscripcion.graduacion_actual || "",
+                proxima_graduacion: inscripcion.proxima_graduacion || "",
+                imagen: inscripcion.imagen || "",
+                estado: inscripcion.estado || "",
+                eliminado: inscripcion.eliminado || ""
+            })
+        }
+      }, [inscripcion])
+
     if(isLoading){
         return <div>Loading...</div>
     }
@@ -50,6 +74,7 @@ function InscripcionUpdate() {
             })
         if(response.status===200){
             alert(`Inscripcion actualizado`)
+            navigate(`/inscripcion/${id}`)
         }else{ 
             alert ('algo salio mal :(')
         }
@@ -65,15 +90,29 @@ function InscripcionUpdate() {
         const {name, value} = event.target
         setInscripcionData({...inscripcionData, [name]:value})
     }
-  
+
+    const handleArrayChange = (event, fieldName) => {
+        const { value } = event.target
+        if(value.trim() === "") {
+            setInscripcionData({ ...inscripcionData, [fieldName]: []})
+        } else {
+            const arrayValue = value.split(',').map(item => item.trim()).filter(item => item !=="")
+            setInscripcionData({ ...inscripcionData, [fieldName]: arrayValue })
+        }
+    }
     const handleSubmit = async (event) =>{
         event.preventDefault()
         try {
-            updateInscripcion(inscripcionData)            
-            navigate(`/inscripcion/${id}`)       
+            const success = await updateInscripcion(inscripcionData)            
+            if (success){
+                navigate(`/inscripcion/${id}`)
+            }       
         } catch (error) {
             console.error('Error al realizar la solicitud')
         }
+    }
+    const arrayToString = (array) => {
+        return Array.isArray(array) ? array.join(', ') : ''
     }
   return (
     <div>
@@ -97,7 +136,6 @@ function InscripcionUpdate() {
                     {label:"Altura", name:"altura", placeholder: inscripcion.altura},
                     {label:"Peso", name:"peso", placeholder: inscripcion.peso},
                     {label:"Escuela", name:"escuela", placeholder: inscripcion.escuela},
-                    {label:"Profesor", name:"profesor", placeholder: inscripcion.profesor},
                     {label:"Graduacion Actual", name:"graduacion_actual", placeholder: inscripcion.graduacion_actual},
                     {label:"Proxima Graduacion", name:"proxima_graduacion", placeholder: inscripcion.proxima_graduacion},
                     {label:"Estado", name:"estado", placeholder: inscripcion.estado}
@@ -117,6 +155,22 @@ function InscripcionUpdate() {
                         />
                     </div>
                 ))}
+                <div>
+                <label htmlFor="profesor" className="block text-sm font-medium text-gray-700 mb-1">
+                    Profesores (separados por comas)
+                </label>
+                <input
+                    type="text"
+                    id="profesor"
+                    name="profesor"
+                    value={arrayToString(inscripcionData.profesor)}
+                    onChange={(e) => handleArrayChange(e, 'profesor')}
+                    placeholder={arrayToString(inscripcion.profesor)}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <p className="text-sm text-gray-500 mt-1">Ejemplo: Juan Pérez, María García, Carlos López</p>
+                </div>
+
                 <div className="flex justify-between items-center">
                     <button 
                     type="submit" 
