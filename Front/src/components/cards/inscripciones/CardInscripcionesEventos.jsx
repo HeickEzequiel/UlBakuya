@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function CardInscripcionesEventos(props) {
   return (
     <Link to="/pc_inscripciones" state={props}>
-      <div className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg hover:scale-[1.02] transition duration-300 flex flex-col md:flex-row w-full h-full">
+      <div className="bg-white border-2 rounded-2xl shadow-md overflow-hidden hover:shadow-lg hover:scale-[1.02] transition duration-300 flex flex-col md:flex-row w-full h-full">
         <div className="w-full md:w-1/2 h-56 md:h-auto relative bg-gray-100">
           <img
             src={props.imagen}

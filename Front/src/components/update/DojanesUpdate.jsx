@@ -13,7 +13,7 @@ function DojanesUpdate() {
   const { id } = useParams()
   const navigate = useNavigate()
   const { data: dojan, isLoading, error } = useFetchDojan(id)
-  
+  console.log(dojan)
   const [dojanData, setDojanData] = useState({
     club: "",
     direccion: "",

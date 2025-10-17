@@ -6,6 +6,7 @@ import UserNav from "../usernav/UserNav"
 import CardImagen from "../cards/CardImagen"
 import Footer from "../footer/Footer"
 import { useState } from "react"
+import api from "../../api/ubk"
 
 
 function EventoUpdate() {
@@ -46,8 +47,8 @@ function EventoUpdate() {
         }
   
         }catch(error){
-            console.error('error al realizar la solicitud')
-            alert('error al actualizar el profesor')
+            console.error('error al realizar la solicitud',error)
+            alert('error al actualizar el evento')
         }   
     
     }

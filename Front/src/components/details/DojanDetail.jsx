@@ -32,6 +32,7 @@ function DojanDetail() {
                   club={dojan.club}
                   escuela={dojan.escuela}
                   direccion={dojan.direccion}
+                  horarios={dojan.horarios}
                   imagen={dojan.imagen}
                   tel={dojan.tel}
                   profesor={dojan.profesor}

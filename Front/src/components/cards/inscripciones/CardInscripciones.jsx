@@ -20,12 +20,20 @@ function CardInscripciones(props) {
           </h2>
           <p className="text-sm sm:text-base">
             <span className="text-gray-600 font-semibold">Fecha: </span>
-            {props.fecha_del_evento}
+            {new Date(props.fecha_del_evento).toLocaleDateString("es-ES", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
           </p>
-          <p className="text-sm sm:text-base">
-            <span className="text-gray-600 font-semibold">Horario: </span>
-            {props.horarios}
-          </p>
+          <div className="mt-4">
+            <h3 className="text-sm font-medium text-gray-700">Horarios:</h3>
+            <ul className="text-sm list-disc list-inside text-gray-800">
+              {props.horarios.map((hora, index) => (
+                <li key={index}>{hora}</li>
+              ))}
+            </ul>
+          </div>
           <p className="text-sm sm:text-base">
             <span className="text-gray-600 font-semibold">Lugar: </span>
             {props.club}

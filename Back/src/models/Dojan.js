@@ -30,7 +30,7 @@ module.exports = (sequelize) => {
       },
       profesor: {
          type: DataTypes.ARRAY(DataTypes.STRING),
-         allowNull: false,
+         allowNull: false
       },
       horarios: {
          type: DataTypes.ARRAY(DataTypes.STRING),
@@ -45,7 +45,7 @@ module.exports = (sequelize) => {
       eliminado:{
         type: DataTypes.BOOLEAN,
         defaultValue:false,
-        allowNull:true
+        allowNull:true,
       }
   
     }, { timestamps: true});

@@ -8,6 +8,7 @@ function CardDojan(props) {
           className="w-full h-48 object-cover rounded-xl border border-black mb-4"
         />
         <h1 className="text-2xl font-semibold text-gray-800 mb-2">Club: {props.club}</h1>
+        <h2 className="text-md text-gray-600 mb-2">Escuela: {props.escuela}</h2>
         <h2 className="text-md text-gray-600 mb-2">Direcciòn: {props.direccion}</h2>
         <h2 className="text-md text-gray-600 mb-2">Horarios: {props.horarios}</h2>
         <div className="mt-4">
