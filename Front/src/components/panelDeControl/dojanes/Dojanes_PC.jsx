@@ -73,7 +73,7 @@ function Dojanes_PC() {
             <UserNav/>
             <div className="min-h-screen px-6 py-12">
               <div className="flex flex-col md:flex-row justify-between mb-6">
-                {user.nivel === "Director" || user.nivel === "Instructor mayor" && (
+                {(user.nivel === "Director" || user.nivel === "Instructor mayor") && (
                 <Link to='/newdojan'>
                   <button className="mb-4 md:mb-0 bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg shadow-md transition">
                     Agregar Dojan

@@ -11,7 +11,8 @@ const getProfesorByName = async (req, res) =>{
                 apellido:{
                     [Op.iLike]: `%${apellido}%`
                 }
-            }, limit: 15
+            }, 
+            limit: 15
         })
 
         for(let i=0; ProfesorDB.length>i; i++){

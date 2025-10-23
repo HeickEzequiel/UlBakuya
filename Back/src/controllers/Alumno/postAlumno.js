@@ -1,6 +1,5 @@
 const { Alumno, Profesor, Escuela} = require("../../db.js");
 
-
 const postAlumno = async(req, res) =>{
     try{
         const {
@@ -16,9 +15,8 @@ const postAlumno = async(req, res) =>{
             eliminado
         } = req.body;
 
-        
-
         if(nombre && apellido  && fecha_de_nacimiento && escuela && graduacion && profesor){
+            console.log(nombre, apellido, fecha_de_nacimiento, escuela, graduacion, profesor)
             const [newAlumno, created] = await Alumno.findOrCreate({
                 where:{
                     nombre,
@@ -34,11 +32,7 @@ const postAlumno = async(req, res) =>{
                     estado,
                     eliminado
                 }
-
             })
-
-            
-      
 
             const profesoresDB = await Profesor.findAll({
                 where: {
@@ -47,8 +41,7 @@ const postAlumno = async(req, res) =>{
             });
             await newAlumno.setAlumnosProfesores(profesoresDB)
 
-  console.log("PROFESORES ENCONTRADOS:", profesoresDB.map(p => p.id));
-
+            console.log("PROFESORES ENCONTRADOS:", profesoresDB.map(p => p.id));
 
             const escuelasDB = await Escuela.findAll({
                 where: {
@@ -64,9 +57,9 @@ const postAlumno = async(req, res) =>{
                 profesor: profesoresDB,
                 escuela: escuelasDB
             })
-
         }
         return res.status(400).send("Datos incorrectos")
+
     }catch (error){
         console.error("ERROR EN POST ALUMNO:", error);
         return res.status(500).send(error.message)

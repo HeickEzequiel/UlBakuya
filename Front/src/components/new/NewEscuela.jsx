@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom"
 import escuelasStore from "../../store/escuelaStore"
 import Nav from "../nav/Nav"
 import Footer from "../footer/Footer"
+import { uploadImage } from "../../services/cloudinaryService"
+import { registerEscuela } from "../../services/escuelasService"
 
 function NewEscuela(props) {
     const Navigate = useNavigate()
@@ -16,6 +18,7 @@ function NewEscuela(props) {
         eliminado: false
     })
 
+    const [file, setFile] = useState(null)
     
     const handleChange = (event) =>{
         const {name, value} = event.target
@@ -27,8 +30,6 @@ function NewEscuela(props) {
         event.preventDefault();
 
         try {
-            
-            // convierte los strings ingresados con , en un array para que la BD lo pueda guardar
             const payload = {
                 ...escuelaData,
                 dojan: escuelaData.dojan
@@ -37,7 +38,9 @@ function NewEscuela(props) {
                   .filter((d) => d.length > 0), 
             };
 
-            register(payload)
+            const urlImagen = await uploadImage(file)
+            const nuevaEscuela = await registerEscuela({ ...payload, image:urlImagen})
+
             alert("Escuela creada con exito")
             Navigate("/pc_escuelas")
         } catch (error) {
@@ -54,11 +57,40 @@ function NewEscuela(props) {
                 </h1>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
+
+                    <div className="flex flex-col mb-4">
+                        <label
+                            htmlFor="profileImage"
+                            className="mb-2 text-sm font-semibold text-gray-800">
+                            Imagen del escudo de la escuela
+                        </label>
+
+                        <div className="relative flex items-center justify-between w-full border border-gray-300 rounded-xl bg-white shadow-sm overflow-hidden transition-all duration-200 hover:shadow-md focus-within:ring-2 focus-within:ring-blue-500">
+                            <input
+                            id="profileImage"
+                            type="file"
+                            accept="image/*"
+                            onChange={handleFileChange}
+                            required
+                            className="w-full cursor-pointer opacity-0 absolute inset-0 z-10"
+                            />
+
+                            <span className="px-4 py-2 text-gray-500 text-sm truncate">
+                            Seleccioná una imagen...
+                            </span>
+
+                            <button
+                            type="button"
+                            className="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-none hover:bg-blue-700 transition-colors duration-200">
+                                Elegir archivo
+                            </button>
+                        </div>
+                    </div>
+
                     {[
                         {name:"nombre", label: "Nombre", placeholder:"Ingrese nombre"},
                         {name:"director", label: "Director", placeholder:"Ingrese Director"},
                         {name:"dojan", label: "Dojang", placeholder:"Ingrese dojang"},
-                        {name:"imagen", label: "Escudo", placeholder:"Ingrese link de la imagen"},
                         {name:"estado", label: "Estado", placeholder:"Ingrese estado"}
                     ].map((field) =>(
                         <div key={field.name}>

@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import userStore from "../../../store/loginStore";
 
 function CardInscripcionesPc(props) {
-  const user = userStore();
-
+  const data = userStore();
+  const user = data.user
   return (
     <div
       className="bg-white shadow-md rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition duration-300 w-full">

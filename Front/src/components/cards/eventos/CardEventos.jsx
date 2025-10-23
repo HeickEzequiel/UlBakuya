@@ -10,15 +10,16 @@ function CardEventos(props) {
         <div className="flex-1 mb-4 lg:mb-0">
           <p className="text-lg font-semibold text-gray-800">{props.tipo_de_evento} </p>
           <p className="text-sm text-gray-600">Club: {props.club}</p>
-          <p className="text-sm text-gray-600">direccion: {props.direccion}</p>
+          <p className="text-sm text-gray-600">Direccion: {props.direccion}</p>
           <p className="text-sm text-gray-600">Fecha: {props.fecha_del_evento}</p>
-          <p className="text-sm text-gray-600">
-            Horarios: {" "}
-            {Array.isArray(horarios) && horarios.length >0
-              ? horarios.map((e)=> `${e}`).join(" / ")
-              : "Sin asignar"
-            }
-          </p>
+          <div className="mt-4">
+            <h3 className="text-sm font-medium text-gray-700">Horarios:</h3>
+            <ul className="text-sm list-disc list-inside text-gray-600">
+              {props.horarios.map((hora, index) => (
+                <li key={index}>{hora}</li>
+              ))}
+            </ul>
+          </div>
             
         </div>
         

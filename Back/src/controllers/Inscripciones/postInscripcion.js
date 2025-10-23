@@ -4,8 +4,8 @@ const postInscripcion = async(req, res) =>{
     try {
         const{
             tipo_de_evento,
-            fecha_del_evento,
             idEvento,
+            fecha_del_evento,
             horarios,
             nombre,
             apellido,
@@ -17,6 +17,8 @@ const postInscripcion = async(req, res) =>{
             graduacion_actual,
             proxima_graduacion,
             imagen,
+            estado,
+            eliminado
         } = req.body
         
         if(tipo_de_evento && horarios && nombre && apellido && edad && altura && peso && escuela && graduacion_actual && imagen){
@@ -36,6 +38,8 @@ const postInscripcion = async(req, res) =>{
                     graduacion_actual,
                     proxima_graduacion,
                     imagen,
+                    estado,
+                    eliminado
                 }
             })
 
