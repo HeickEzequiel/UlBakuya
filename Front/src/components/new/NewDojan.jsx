@@ -3,6 +3,8 @@ import dojanStore from "../../store/dojanStore";
 import { useState } from "react";
 import Nav from "../nav/Nav";
 import Footer from "../footer/Footer";
+import { uploadImage } from "../../services/cloudinaryService";
+import { registerDojan } from "../../services/dojanesService";
 
 function NewDojan() {
   const Navigate = useNavigate();
@@ -19,28 +21,36 @@ function NewDojan() {
     eliminado: false,
   });
 
+  const [file, serFile] = useState(null)  
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setDojanData({ ...dojanData, [name]: value });
   };
 
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0]
+    selectedFile(selectedFile)
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      
       const payload = {
-      ...dojanData,
-      profesor: dojanData.profesor
-      .split(",")
-      .map((d) => d.trim())
-      .filter((d) => d.length > 0),
-      horarios: dojanData.horarios
-      .split(",")
-      .map((h) => h.trim())
-      .filter((h) => h.length > 0) 
+        ...dojanData,
+        profesor: dojanData.profesor
+        .split(",")
+        .map((d) => d.trim())
+        .filter((d) => d.length > 0),
+        horarios: dojanData.horarios
+        .split(",")
+        .map((h) => h.trim())
+        .filter((h) => h.length > 0) 
       };
-
-      register(payload);
+      
+      const urlImagen = await uploadImage(file)
+      const nuevoDojan = await registerDojan({ ...payload, image:urlImagen})
+      
       alert("Dojan creado con éxito");
       Navigate("/pc_dojanes");
     } catch (error) {
@@ -59,11 +69,39 @@ function NewDojan() {
           
           <form onSubmit={handleSubmit} className="space-y-4">
             
+            <div className="flex flex-col mb-4">
+              <label
+                htmlFor="profileImage"
+                className="mb-2 text-sm font-semibold text-gray-800">
+                Foto de perfil
+              </label>
+
+              <div className="relative flex items-center justify-between w-full border border-gray-300 rounded-xl bg-white shadow-sm overflow-hidden transition-all duration-200 hover:shadow-md focus-within:ring-2 focus-within:ring-blue-500">
+                <input
+                  id="profileImage"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  required
+                  className="w-full cursor-pointer opacity-0 absolute inset-0 z-10"
+                />
+
+                <span className="px-4 py-2 text-gray-500 text-sm truncate">
+                  Seleccioná una imagen...
+                </span>
+
+                <button
+                  type="button"
+                  className="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-none hover:bg-blue-700 transition-colors duration-200">
+                    Elegir archivo
+                </button>
+              </div>
+            </div>
+
             {[
               { name: "club", label: "Club", placeholder: "Ingrese club" },
               { name: "escuela", label: "Escuela", placeholder: "Ingrese escuela" },
               { name: "direccion", label: "Dirección", placeholder: "Ingrese direccion" },
-              { name: "imagen", label: "Imagen", placeholder: "Ingrese link de la imagen" },
               { name: "tel", label: "Telefono", placeholder: "Ingrese numero de telefono" },
               { name: "profesor", label: "Profesor", placeholder: "Ingrese profesor" },
               { name: "horarios", label: "Horarios", placeholder: "Ingrese horarios" },

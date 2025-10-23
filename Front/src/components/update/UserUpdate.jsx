@@ -8,6 +8,7 @@ import CardImagen from '../cards/CardImagen'
 import api from '../../api/ubk'
 import { useFetchUser } from '../../hooks/useUser'
 import { useFetchProfes } from '../../hooks/useProfesor'
+import { uploadImage } from '../../services/cloudinaryService'
 
 function UserUpdate() {
     const {isLogged, user} = userStore()
@@ -31,6 +32,8 @@ function UserUpdate() {
         idProfesor:"",
         eliminado:"",
     })
+    const [file, setFile] = useState(null)
+
     if(isLoading){
         return <div>Loading...</div>
     }
@@ -67,11 +70,19 @@ function UserUpdate() {
         setUserData({...userData, [name]:value})
     }
 
+    const handleFileChange = (e) =>{
+        const selectedFile = e.target.files[0]
+        setFile(selectedFile)
+    }
+
     const handleSubmit = async (event) =>{
         event.preventDefault()
         try {
-            updateUser(userData)            
-            navigate(`/perfil`)       
+            const urlimage = await uploadImage(file)
+            const success = await updateUser({ ...userData, imagen: urlimage})
+            if(success){
+                navigate(`/perfil`)
+            }       
         } catch (error) {
             console.error('No se ha actualizado el usuario')
         }
@@ -83,11 +94,40 @@ function UserUpdate() {
         <div>
             <CardImagen imagen = {usuario.imagen}/>
             <form 
-          onSubmit={handleSubmit}
-          className="max-w-2xl mx-auto p-6 bg-white shadow-xl rounded-2xl space-y-6 mt-8"
-          >
-              <h1 className="text-2xl font-bold text-gray-800 text-center">Editar Usuario</h1>
-              {[
+                onSubmit={handleSubmit}
+                className="max-w-2xl mx-auto p-6 bg-white shadow-xl rounded-2xl space-y-6 mt-8">
+                <h1 className="text-2xl font-bold text-gray-800 text-center">Editar Usuario</h1>
+
+                <div className="flex flex-col mb-4">
+                    <label
+                        htmlFor="profileImage"
+                        className="mb-2 text-sm font-semibold text-gray-800">
+                        Foto de perfil
+                    </label>
+
+                    <div className="relative flex items-center justify-between w-full border border-gray-300 rounded-xl bg-white shadow-sm overflow-hidden transition-all duration-200 hover:shadow-md focus-within:ring-2 focus-within:ring-blue-500">
+                        <input
+                        id="profileImage"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        required
+                        className="w-full cursor-pointer opacity-0 absolute inset-0 z-10"
+                        />
+
+                        <span className="px-4 py-2 text-gray-500 text-sm truncate">
+                        Seleccioná una imagen...
+                        </span>
+
+                        <button
+                        type="button"
+                        className="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-none hover:bg-blue-700 transition-colors duration-200">
+                            Elegir archivo
+                        </button>
+                    </div>
+                </div>
+            
+                {[
                   {label:"Link de imagen", name:"imagen", placeholder:"Ingrese link de la imagen"},
                   {label:"Nombre", name:"nombre", placeholder: usuario.nombre},
                   {label:"Apellido", name:"apellido", placeholder: usuario.apellido},
@@ -135,11 +175,12 @@ function UserUpdate() {
                         <p className="block text-sm font-medium text-gray-700 mb-1">Asignarle el rol de un profesor</p>
                         <select
                         name='idProfesor'
-                        value={userData.idProfesor}
+                        value={userData.idProfesor || ""}
                         onChange={handleChange}
                         className='p-2 border rounded-xl'>
+                        <option value="" disabled>-- Sin profesor asociado --</option>     
                             {Array.isArray(profes) && profes.map((profe, key)=>(
-                                <option value={profe.id}>
+                                <option key = {key} value={profe.id}>
                                     {profe.nombre} {profe.apellido}
                                 </option>
                             ))}

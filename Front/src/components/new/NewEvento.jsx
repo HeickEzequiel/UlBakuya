@@ -3,6 +3,8 @@ import eventoStore from "../../store/eventoStore";
 import { useState } from "react";
 import Nav from "../nav/Nav";
 import Footer from "../footer/Footer";
+import { uploadImage } from "../../services/cloudinaryService";
+import { registerEvento } from "../../services/eventosService";
 
 function NewEvento() {
     const Navigate = useNavigate();
@@ -17,17 +19,25 @@ function NewEvento() {
       estado: "Activo",
       eliminado: false,
     });
+
+    const [ File, setFile ] = useState(null)
   
     const handleChange = (event) => {
       const { name, value } = event.target;
       setEventoData({ ...eventoData, [name]: value });
     };
 
+    const handleFileChange = (e) =>{
+      const selectedFile = e.target.files[0]
+      setFile(selectedFile)
+    }
+
     const handleSubmit = async (event) => {
       event.preventDefault();
       try {
+        const urlImagen = await uploadImage(file)
+        const nuevoEvento = await registerEvento({ ...eventoData, image: urlImagen})
 
-        register(eventoData);
         alert("Evento creado con éxito");
         Navigate("/pc_eventos");
       } catch (error) {
@@ -46,6 +56,35 @@ function NewEvento() {
             
             <form onSubmit={handleSubmit} className="space-y-4">
               
+              <div className="flex flex-col mb-4">
+              <label
+                htmlFor="profileImage"
+                className="mb-2 text-sm font-semibold text-gray-800">
+                Imagen o flyer del evento
+              </label>
+
+              <div className="relative flex items-center justify-between w-full border border-gray-300 rounded-xl bg-white shadow-sm overflow-hidden transition-all duration-200 hover:shadow-md focus-within:ring-2 focus-within:ring-blue-500">
+                <input
+                  id="profileImage"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  required
+                  className="w-full cursor-pointer opacity-0 absolute inset-0 z-10"
+                />
+
+                <span className="px-4 py-2 text-gray-500 text-sm truncate">
+                  Seleccioná una imagen...
+                </span>
+
+                <button
+                  type="button"
+                  className="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-none hover:bg-blue-700 transition-colors duration-200">
+                    Elegir archivo
+                </button>
+              </div>
+            </div>
+
               {[
                 { name: "tipo_de_evento", label: "Evento", placeholder: "Ingrese evento" },
                 {
@@ -56,7 +95,6 @@ function NewEvento() {
                 { name: "horarios", label: "Horario", placeholder: "Ingrese horario" },
                 { name: "club", label: "Club", placeholder: "Ingrese club" },
                 { name: "direccion", label: "Dirección", placeholder: "Ingrese direccion" },
-                { name: "imagen", label: "Imagen", placeholder: "Ingrese link de la imagen" },
                 { name: "estado", label: "Estado", placeholder: "Ingrese estado" },
               ].map((field) => (
                 <div key={field.name}>

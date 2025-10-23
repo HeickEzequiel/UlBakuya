@@ -7,6 +7,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useFetchEscuela } from '../../hooks/useEscuela'
 import CardImagen from '../cards/CardImagen'
 import api from '../../api/ubk'
+import { uploadImage } from '../../services/cloudinaryService'
 
 function EscuelaUpdate() {
     const isLogged = userStore((state)=>state.isLogged)
@@ -19,6 +20,8 @@ function EscuelaUpdate() {
       imagen:"",
       dojan:"",
       })
+    const [ file, setFile ] = useState(null)
+
     if(isLoading){
         return <div>Loading...</div>
     }
@@ -62,11 +65,19 @@ function EscuelaUpdate() {
         setEscuelaData({...escuelaData, [name]:value})
     }
 
+    const handleFileChange = (e) => {
+        const selectedFile = e.target.files[0]
+        setFile(selectedFile)
+    }
+
     const handleSubmit = async (event) =>{
         event.preventDefault()
         try {
-            updateEscuela(escuelaData)            
-            navigate(`/escuelas/${id}`)       
+            const urlImage = await uploadImage(file)
+            const success = await updateEscuela({...escuelaData, imagen: urlImage})            
+            if(success){
+            navigate(`/escuelas/${id}`)
+            }       
         } catch (error) {
             console.error('Error al realizar la solicitud')
         }
@@ -79,11 +90,39 @@ function EscuelaUpdate() {
             <CardImagen imagen = {escuela.imagen}/>
             <form 
             onSubmit={handleSubmit}
-            className="max-w-2xl mx-auto p-6 bg-white shadow-xl rounded-2xl space-y-6 mt-8"
-            >
+            className="max-w-2xl mx-auto p-6 bg-white shadow-xl rounded-2xl space-y-6 mt-8">
                 <h1 className="text-2xl font-bold text-gray-800 text-center">Editar Escuela</h1>
+                
+                    <div className="flex flex-col mb-4">
+                        <label
+                            htmlFor="profileImage"
+                            className="mb-2 text-sm font-semibold text-gray-800">
+                            Imagen del escudo de la escuela
+                        </label>
+
+                        <div className="relative flex items-center justify-between w-full border border-gray-300 rounded-xl bg-white shadow-sm overflow-hidden transition-all duration-200 hover:shadow-md focus-within:ring-2 focus-within:ring-blue-500">
+                            <input
+                            id="profileImage"
+                            type="file"
+                            accept="image/*"
+                            onChange={handleFileChange}
+                            required
+                            className="w-full cursor-pointer opacity-0 absolute inset-0 z-10"
+                            />
+
+                            <span className="px-4 py-2 text-gray-500 text-sm truncate">
+                            Seleccioná una imagen...
+                            </span>
+
+                            <button
+                            type="button"
+                            className="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-none hover:bg-blue-700 transition-colors duration-200">
+                                Elegir archivo
+                            </button>
+                        </div>
+                </div>
+                
                 {[
-                    {label:"Link de imagen", name:"imagen", placeholder:"Ingrese link de la imagen"},
                     {label:"Nombre", name:"nombre", placeholder: escuela.nombre},
                     {label:"Director", name:"director", placeholder: escuela.director},
                     {label:"Dojan", name:"dojan", placeholder: escuela.dojan},

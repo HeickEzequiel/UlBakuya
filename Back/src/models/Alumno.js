@@ -11,7 +11,6 @@ module.exports = (sequelize) => {
     },
     nombre: {
       type: DataTypes.STRING,
-      defaultValue: "https://res.cloudinary.com/damoqjwmk/image/upload/v1723139453/no%20image.png",
       allowNull: false,
     },
     apellido:{
@@ -20,6 +19,7 @@ module.exports = (sequelize) => {
     },
     imagen: {
       type: DataTypes.STRING,
+      defaultValue: "https://res.cloudinary.com/damoqjwmk/image/upload/v1723139453/no%20image.png",
       allowNull: true
     },
     fecha_de_nacimiento: {

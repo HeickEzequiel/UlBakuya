@@ -4,6 +4,8 @@ import userValidation from "../../../utils/userValidation";
 import Nav from "../nav/Nav";
 import userStore from "../../store/loginStore";
 import Footer from "../footer/Footer";
+import { uploadImage } from "../../services/cloudinaryService";
+import { registerUser } from "../../services/usuariosService";
 
 function Newuser(props) {
   const navigate = useNavigate();
@@ -25,6 +27,7 @@ function Newuser(props) {
     password: "Ingrese su contraseña",
   });
 
+  const [file, setFile] = useState(null)
   const { register } = userStore();
 
   const handleChange = (event) => {
@@ -33,10 +36,18 @@ function Newuser(props) {
     setErrors(userValidation({ ...userData, [name]: value }));
   };
 
+  const handleFileChange = (e) =>{
+    const selectedFile = e.target.files[0]
+    setFile(selectedFile)
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      register(userData);
+      const urlImagen = await uploadImage(file)
+      const nuevoUsuario = await registerUser({ ...userData, image:urlImagen})
+      
+      alert ("Usuario creado con éxito")
       navigate("/login");
     } catch (error) {
       console.log("Error al realizar la solicitud:", error);
@@ -50,6 +61,36 @@ function Newuser(props) {
         <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
           <h2 className="text-2xl font-semibold text-center mb-6 text-gray-800">Crear nuevo usuario</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
+            
+            <div className="flex flex-col mb-4">
+              <label
+                htmlFor="profileImage"
+                className="mb-2 text-sm font-semibold text-gray-800">
+                Foto de perfil
+              </label>
+
+              <div className="relative flex items-center justify-between w-full border border-gray-300 rounded-xl bg-white shadow-sm overflow-hidden transition-all duration-200 hover:shadow-md focus-within:ring-2 focus-within:ring-blue-500">
+                <input
+                  id="profileImage"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  required
+                  className="w-full cursor-pointer opacity-0 absolute inset-0 z-10"
+                />
+
+                <span className="px-4 py-2 text-gray-500 text-sm truncate">
+                  Seleccioná una imagen...
+                </span>
+
+                <button
+                  type="button"
+                  className="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-none hover:bg-blue-700 transition-colors duration-200">
+                    Elegir archivo
+                </button>
+              </div>
+            </div>
+            
             {[
               { name: "nombre", type: "text", placeholder: "Nombre" },
               { name: "apellido", type: "text", placeholder: "Apellido" },

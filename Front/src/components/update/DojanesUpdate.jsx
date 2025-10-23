@@ -7,6 +7,7 @@ import UserNav from "../usernav/UserNav"
 import CardImagen from "../cards/CardImagen"
 import Footer from "../footer/Footer"
 import api from "../../api/ubk"
+import { uploadImage } from "../../services/cloudinaryService"
 
 function DojanesUpdate() {
   const isLogged = userStore((state) => state.isLogged)
@@ -22,6 +23,8 @@ function DojanesUpdate() {
     profesor: [],
     horarios: [],
   })
+
+  const [ file, setFile ] = useState(null)
 
   useEffect(() => {
     if (dojan) {
@@ -69,6 +72,7 @@ function DojanesUpdate() {
     const { name, value } = event.target
     setDojanData({ ...dojanData, [name]: value })
   }
+  
   const handleArrayChange = (event, fieldName) => {
     const { value } = event.target
     if (value.trim() === "") {
@@ -78,10 +82,17 @@ function DojanesUpdate() {
       setDojanData({ ...dojanData, [fieldName]: arrayValue })
     }
   }
+
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0]
+    setFile(selectedFile)
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      const success = await updateDojan(dojanData)
+      const urlImage = await uploadImage(file)
+      const success = await updateDojan({ ...dojanData, imagen:urlImage})
       if (success) {
         navigate(`/dojan/${id}`)
       }
@@ -101,13 +112,41 @@ function DojanesUpdate() {
         <CardImagen imagen={dojan.imagen} />
         <form 
           onSubmit={handleSubmit}
-          className="max-w-2xl mx-auto p-6 bg-white shadow-xl rounded-2xl space-y-6 mt-8"
-        >
+          className="max-w-2xl mx-auto p-6 bg-white shadow-xl rounded-2xl space-y-6 mt-8">
           <h1 className="text-2xl font-bold text-gray-800 text-center">Editar Dojang</h1>
+          
+          <div className="flex flex-col mb-4">
+              <label
+                htmlFor="profileImage"
+                className="mb-2 text-sm font-semibold text-gray-800">
+                Foto del dojang
+              </label>
+
+              <div className="relative flex items-center justify-between w-full border border-gray-300 rounded-xl bg-white shadow-sm overflow-hidden transition-all duration-200 hover:shadow-md focus-within:ring-2 focus-within:ring-blue-500">
+                <input
+                  id="profileImage"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  required
+                  className="w-full cursor-pointer opacity-0 absolute inset-0 z-10"
+                />
+
+                <span className="px-4 py-2 text-gray-500 text-sm truncate">
+                  Seleccioná una imagen...
+                </span>
+
+                <button
+                  type="button"
+                  className="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-none hover:bg-blue-700 transition-colors duration-200">
+                    Elegir archivo
+                </button>
+              </div>
+            </div>
+          
           {[
             { label: "Club", name: "club", placeholder: dojan.club },
             { label: "Direccion", name: "direccion", placeholder: dojan.direccion },
-            { label: "Link de la imagen", name: "imagen", placeholder: "Ingrese link de la imagen" },
             { label: "Telefono", name: "tel", placeholder: dojan.tel },
           ].map(({ label, name, placeholder }) => (
             <div key={name}>

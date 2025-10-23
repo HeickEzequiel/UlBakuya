@@ -3,6 +3,8 @@ import profesorStore from "../../store/profesorStore"
 import { useState } from "react"
 import Nav from "../nav/Nav"
 import Footer from "../footer/Footer"
+import { uploadImage } from "../../services/cloudinaryService"
+import { registerProfesor } from "../../services/ProfesorService"
 
 function NewProfesor(props) {
     const navigate = useNavigate()
@@ -21,14 +23,24 @@ function NewProfesor(props) {
 
     })
 
+    const [file, setFile] = useState(null)
+
     const handleChange = (event) =>{
         const {name, value} = event.target
         setProfesorData({...profesorData, [name]:value})
     }
+
+    const handleFileChange = (e) =>{
+        const selectedFile = e.target.files[0]
+        setFile(selectedFile)
+  }
+
     const handleSubmit = async (event) =>{
         event.preventDefault()
         try {
-            register(profesorData)
+            const urlImagen = await uploadImage(file)
+            const nuevoProfesor = await registerProfesor({ ...profesorData, image:urlImagen})
+            
             alert("Profesor creado con exito")
             navigate("/pc_profesores")
         } catch (error) {
@@ -45,10 +57,39 @@ function NewProfesor(props) {
                 </h1>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
+                    
+                    <div className="flex flex-col mb-4">
+                        <label
+                            htmlFor="profileImage"
+                            className="mb-2 text-sm font-semibold text-gray-800">
+                            Foto del profesor
+                        </label>
+
+                        <div className="relative flex items-center justify-between w-full border border-gray-300 rounded-xl bg-white shadow-sm overflow-hidden transition-all duration-200 hover:shadow-md focus-within:ring-2 focus-within:ring-blue-500">
+                            <input
+                            id="profileImage"
+                            type="file"
+                            accept="image/*"
+                            onChange={handleFileChange}
+                            required
+                            className="w-full cursor-pointer opacity-0 absolute inset-0 z-10"
+                            />
+
+                            <span className="px-4 py-2 text-gray-500 text-sm truncate">
+                            Seleccioná una imagen...
+                            </span>
+
+                            <button
+                            type="button"
+                            className="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-none hover:bg-blue-700 transition-colors duration-200">
+                                Elegir archivo
+                            </button>
+                        </div>
+                    </div>
+                    
                     {[
                         {name: "nombre", label: "Nombre", placeholder: "Ingrese nombre"},
                         {name: "apellido", label: "Apellido", placeholder: "Ingrese apellido"},
-                        {name: "imagen", label: "Foto", placeholder: "Ingrese link de la imagen"},
                         {name: "fecha_de_nacimiento", type:"date", label:"Fecha de nacimiento"},
                         {name: "escuela", label: "Escuela", placeholder:"Ingrese escuela"},
                         {name: "graduacion", label: "Graduacion", placeholder:"Ingrese graduacion"},
