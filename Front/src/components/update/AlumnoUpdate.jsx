@@ -9,6 +9,7 @@ import { useFetchProfes } from '../../hooks/useProfesor';
 import { useFetchEscuelas } from '../../hooks/useEscuela';
 import CardImagen from '../cards/CardImagen';
 import api from '../../api/ubk';
+import { uploadImage } from '../../services/cloudinaryService';
 
 function AlumnoUpdate() {
   const isLogged = userStore((state) => state.isLogged);
@@ -29,6 +30,8 @@ function AlumnoUpdate() {
     profesor: [],
     estado: 'Activo'
   });
+
+  const [ file, setFile ] = useState(null)
 
   useEffect(() => {
     if (alumno) {
@@ -74,9 +77,22 @@ function AlumnoUpdate() {
     setAlumnoData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0]
+    setFile(selectedFile)   
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    updateAlumno(alumnoData);
+    try {
+      const urlImage = await uploadImage(file)
+      const success = await updateAlumno ({ ...alumnoData, imagen: urlImage})
+      if(success){
+        navigate(`/alumno/${id}`)
+      }
+    } catch (error) {
+      console.error("Error al realizar la solicitud", error);
+    };
   };
 
   return (
@@ -88,12 +104,39 @@ function AlumnoUpdate() {
 
         <form
           onSubmit={handleSubmit}
-          className="max-w-2xl mx-auto p-6 bg-white shadow-xl rounded-2xl space-y-6 mt-8"
-        >
+          className="max-w-2xl mx-auto p-6 bg-white shadow-xl rounded-2xl space-y-6 mt-8">
           <h2 className="text-2xl font-bold text-gray-800 text-center">Editar Alumno</h2>
 
+          <div className="flex flex-col mb-4">
+              <label
+                htmlFor="profileImage"
+                className="mb-2 text-sm font-semibold text-gray-800">
+                Foto de perfil
+              </label>
+
+              <div className="relative flex items-center justify-between w-full border border-gray-300 rounded-xl bg-white shadow-sm overflow-hidden transition-all duration-200 hover:shadow-md focus-within:ring-2 focus-within:ring-blue-500">
+                <input
+                  id="profileImage"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  required
+                  className="w-full cursor-pointer opacity-0 absolute inset-0 z-10"
+                />
+
+                <span className="px-4 py-2 text-gray-500 text-sm truncate">
+                  Seleccioná una imagen...
+                </span>
+
+                <button
+                  type="button"
+                  className="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-none hover:bg-blue-700 transition-colors duration-200">
+                    Elegir archivo
+                </button>
+              </div>
+            </div>
+
           {[
-            { label: 'Link de imagen', name: 'imagen', placeholder: 'URL de imagen' },
             { label: 'Nombre', name: 'nombre', placeholder: alumno.nombre },
             { label: 'Apellido', name: 'apellido', placeholder: alumno.apellido },
             { label: 'Fecha de nacimiento', name: 'fecha_de_nacimiento', placeholder: alumno.fecha_de_nacimiento },

@@ -49,7 +49,7 @@ module.exports = (sequelize) =>{
             allowNull:false
         },
         profesor:{
-            type: DataTypes.STRING,
+            type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull:false
         },
         graduacion_actual:{

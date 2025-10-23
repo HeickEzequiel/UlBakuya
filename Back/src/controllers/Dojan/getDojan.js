@@ -10,9 +10,11 @@ const getDojan = async (req, res) => {
       imagen: oneDojanDB.imagen,
       tel: oneDojanDB.tel,
       profesor: oneDojanDB.profesor,
+      horarios: oneDojanDB.horarios,
       estado: oneDojanDB.estado,
       eliminado: oneDojanDB.eliminado
     }
+    console.log(oneDojan)
   return res.status(200).json(oneDojan)
   } catch (error){
     return res.status(400).send(error.message)
