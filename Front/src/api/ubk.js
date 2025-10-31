@@ -2,8 +2,8 @@ import axios from "axios";
 import userStore from "../store/loginStore";
 
 const api = axios.create({
-  baseURL: "http://localhost:3001",
-  
+  //baseURL: "http://localhost:3001",
+  baseURL: "https://ulbakuya.onrender.com"
 });
 
 api.interceptors.response.use(
