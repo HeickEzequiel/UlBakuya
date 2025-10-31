@@ -1,15 +1,13 @@
 //import { CLOUD_NAME, CLOUD_API_KEY, CLOUD_API_SECRET_KEY } from "../../utils/keys"; //solo en local
-require ("dotenv").config()
 import {Cloudinary} from "@cloudinary/url-gen";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 
-const { CLOUD_NAME, CLOUD_API_KEY, CLOUD_API_SECRET_KEY } = process.env;
 
   const cld = new Cloudinary({
     cloud: {
-        cloudName: CLOUD_NAME,
-        api_key: CLOUD_API_KEY, 
-        api_secret: CLOUD_API_SECRET_KEY
+        cloudName: process.env.REACT_APP_CLOUD_NAME,
+        api_key: process.env.REACT_APP_CLOUD_API_KEY, 
+        api_secret: process.env.REACT_APP_
     },
 });
 
