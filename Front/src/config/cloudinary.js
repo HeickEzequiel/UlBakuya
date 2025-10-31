@@ -7,7 +7,7 @@ import { fill } from "@cloudinary/url-gen/actions/resize";
     cloud: {
         cloudName: process.env.REACT_APP_CLOUD_NAME,
         api_key: process.env.REACT_APP_CLOUD_API_KEY, 
-        api_secret: process.env.REACT_APP_
+        api_secret: process.env.REACT_APP_SECRET_KEY
     },
 });
 
