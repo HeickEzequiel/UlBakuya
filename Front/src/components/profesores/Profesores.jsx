@@ -36,7 +36,7 @@ function Profesores() {
           <h1 className="text-center text-2xl text-gray-400 font-medium">No existen profesores registrados</h1>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-            {data.map((profes, key) => (
+            {data.map((profes, key) => !profes.eliminado && (
               <CardProfesores
                 key={key}
                 nombre={profes.nombre}

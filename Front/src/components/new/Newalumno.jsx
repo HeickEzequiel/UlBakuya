@@ -16,7 +16,7 @@ function Newalumno() {
   const [alumnoData, setAlumnoData] = useState({
     nombre: "",
     apellido: "",
-    imagen: "",
+    imagen: "https://res.cloudinary.com/damoqjwmk/image/upload/v1723139453/no%20image.png",
     fecha_de_nacimiento: "",
     escuela: "",
     graduacion: "Blanco",
@@ -71,7 +71,9 @@ function Newalumno() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const urlImagen = await uploadImage(file)
+      let urlImagen = alumnoData.imagen
+      if(file){
+      urlImagen = await uploadImage(file)}
       const nuevoAlumno = await registerAlumno({ ...alumnoData, imagen:urlImagen});
       
       alert("Alumno creado con éxito");
@@ -104,7 +106,6 @@ function Newalumno() {
                   type="file"
                   accept="image/*"
                   onChange={handleFileChange}
-                  required
                   className="w-full cursor-pointer opacity-0 absolute inset-0 z-10"
                 />
 

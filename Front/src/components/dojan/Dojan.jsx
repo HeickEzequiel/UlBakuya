@@ -25,8 +25,15 @@ function Dojan() {
   return (
     <div>
         <Nav/>
-        {isLogged ? <UserNav/> : <div className='relative flex items-center p-4 w-full '></div>}
-          <div>
+        {isLogged ? <UserNav/> : <div className='relative flex items-center p-4 w-full'></div>}
+          
+            <div className="text-center mt-8 mb-6">
+              <h1 className="text-3xl font-bold text-gray-800">
+                Centros de entrenamiento
+              </h1>
+            </div>
+
+          <div className='lg:grid lg:grid-cols-2 lg:gap-6 lg:p-4'>
             {!data.length
             ? <h1>no existen lugares de entrenamiento</h1>
             : data.map((dojan, key)=>(
@@ -34,6 +41,7 @@ function Dojan() {
                 key={key}
                 club={dojan.club}
                 direccion={dojan.direccion}
+                escuela={dojan.escuela}
                 imagen={dojan.imagen}
                 tel={dojan.tel}
                 profesor={dojan.profesor}

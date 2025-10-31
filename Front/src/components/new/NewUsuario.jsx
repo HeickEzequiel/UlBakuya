@@ -41,8 +41,10 @@ function NewUsuario() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const urlImagen = await uploadImage(file)
-      const nuevoUsuario = await registerUser({ ...userData, imagen:urlImagen})
+      let urlImage = usuarioStore.imagen
+      if(file){
+        urlImage = await uploadImage(file)}
+      const nuevoUsuario = await registerUser({ ...userData, imagen:urlImage})
 
       alert("Usuario creado con éxito");
       Navigate("/pc_usuarios");
@@ -75,7 +77,6 @@ function NewUsuario() {
                   type="file"
                   accept="image/*"
                   onChange={handleFileChange}
-                  required
                   className="w-full cursor-pointer opacity-0 absolute inset-0 z-10"
                 />
 

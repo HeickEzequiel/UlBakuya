@@ -38,8 +38,11 @@ function NewProfesor(props) {
     const handleSubmit = async (event) =>{
         event.preventDefault()
         try {
-            const urlImagen = await uploadImage(file)
-            const nuevoProfesor = await registerProfesor({ ...profesorData, image:urlImagen})
+            let urlImage = profesorData.imagen
+            if(file){
+                urlImage = await uploadImage(file)                
+            }
+            const nuevoProfesor = await registerProfesor({ ...profesorData, imagen: urlImage})
             
             alert("Profesor creado con exito")
             navigate("/pc_profesores")
@@ -71,7 +74,6 @@ function NewProfesor(props) {
                             type="file"
                             accept="image/*"
                             onChange={handleFileChange}
-                            required
                             className="w-full cursor-pointer opacity-0 absolute inset-0 z-10"
                             />
 
