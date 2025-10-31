@@ -1,8 +1,9 @@
-import { CLOUD_NAME, CLOUD_API_KEY, CLOUD_API_SECRET_KEY } from "../../utils/keys";
+//import { CLOUD_NAME, CLOUD_API_KEY, CLOUD_API_SECRET_KEY } from "../../utils/keys"; //solo en local
+require ("dotenv").config()
 import {Cloudinary} from "@cloudinary/url-gen";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 
-
+const { CLOUD_NAME, CLOUD_API_KEY, CLOUD_API_SECRET_KEY } = process.env;
 
   const cld = new Cloudinary({
     cloud: {
