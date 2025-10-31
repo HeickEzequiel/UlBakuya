@@ -30,32 +30,16 @@ function NewInscripcion() {
     profesor: [],
     graduacion_actual: "",
     proxima_graduacion: "",
-    imagen: "",
+    imagen: "https://res.cloudinary.com/damoqjwmk/image/upload/v1723139453/no%20image.png",
     estado: "Activo",
     eliminado: false,
   });
-
+console.log(profesores)
   const [ file, setFile ] = useState(null)
 
-  const grados = [
-    "Blanco",
-    "Blanco Punta Amarilla",
-    "Amarillo",
-    "Amarillo Punta Verde",
-    "Verde",
-    "Verde Punta Azul",
-    "Azul",
-    "Azul Punta Roja",
-    "Rojo",
-    "Rojo Punta Negra",
-    "1er Dan",
-    "2do Dan",
-    "3er Dan",
-    "4to Dan",
-    "5to Dan",
-    "6to Dan",
-    "7mo Dan",
-    "8vo Dan",
+  const grados = ["Blanco","Blanco Punta Amarilla","Amarillo","Amarillo Punta Verde",
+    "Verde","Verde Punta Azul","Azul","Azul Punta Roja","Rojo","Rojo Punta Negra",
+    "1er Dan","2do Dan","3er Dan","4to Dan","5to Dan","6to Dan","7mo Dan","8vo Dan",
     "9no Dan"
   ]
 
@@ -79,8 +63,10 @@ function NewInscripcion() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const urlImagen = await uploadImage(file)
-      const nuevoUsuario = await registerInscripcion ({ ...inscripcionData, image:urlImagen})
+      let urlImage = inscripcionData.imagen
+      if(file){
+        urlImage = await uploadImage(file)}
+      const nuevoUsuario = await registerInscripcion ({ ...inscripcionData, imagen:urlImage})
       
       alert("Inscripcion creada con éxito");
       Navigate("/inscripciones");
@@ -112,7 +98,6 @@ function NewInscripcion() {
                   type="file"
                   accept="image/*"
                   onChange={handleFileChange}
-                  required
                   className="w-full cursor-pointer opacity-0 absolute inset-0 z-10"
                 />
 

@@ -20,7 +20,7 @@ function NewEvento() {
       eliminado: false,
     });
 
-    const [ File, setFile ] = useState(null)
+    const [ file, setFile ] = useState(null)
   
     const handleChange = (event) => {
       const { name, value } = event.target;
@@ -35,8 +35,10 @@ function NewEvento() {
     const handleSubmit = async (event) => {
       event.preventDefault();
       try {
-        const urlImagen = await uploadImage(file)
-        const nuevoEvento = await registerEvento({ ...eventoData, image: urlImagen})
+        let urlImagen = eventoData.imagen
+        if(file){
+        urlImagen = await uploadImage(file)}
+        const nuevoEvento = await registerEvento({ ...eventoData, imagen: urlImagen})
 
         alert("Evento creado con éxito");
         Navigate("/pc_eventos");
@@ -69,7 +71,6 @@ function NewEvento() {
                   type="file"
                   accept="image/*"
                   onChange={handleFileChange}
-                  required
                   className="w-full cursor-pointer opacity-0 absolute inset-0 z-10"
                 />
 

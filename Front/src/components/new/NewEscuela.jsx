@@ -30,6 +30,7 @@ function NewEscuela(props) {
         event.preventDefault();
 
         try {
+            let urlImagen = escuelaData.imagen
             const payload = {
                 ...escuelaData,
                 dojan: escuelaData.dojan
@@ -37,8 +38,8 @@ function NewEscuela(props) {
                   .map((d) => d.trim())
                   .filter((d) => d.length > 0), 
             };
-
-            const urlImagen = await uploadImage(file)
+            if(file){
+            urlImagen = await uploadImage(file)}
             const nuevaEscuela = await registerEscuela({ ...payload, image:urlImagen})
 
             alert("Escuela creada con exito")
@@ -71,7 +72,6 @@ function NewEscuela(props) {
                             type="file"
                             accept="image/*"
                             onChange={handleFileChange}
-                            required
                             className="w-full cursor-pointer opacity-0 absolute inset-0 z-10"
                             />
 

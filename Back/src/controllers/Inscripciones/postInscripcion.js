@@ -1,6 +1,7 @@
 const { Inscripciones, Eventos } = require("../../db.js")
 
 const postInscripcion = async(req, res) =>{
+
     try {
         const{
             tipo_de_evento,
@@ -20,8 +21,7 @@ const postInscripcion = async(req, res) =>{
             estado,
             eliminado
         } = req.body
-        
-        if(tipo_de_evento && horarios && nombre && apellido && edad && altura && peso && escuela && graduacion_actual && imagen){
+        if(tipo_de_evento && horarios && nombre && apellido && edad && altura && peso && escuela && graduacion_actual){
             const [newInscripcion] = await Inscripciones.findOrCreate({
                 where:{
                     tipo_de_evento,

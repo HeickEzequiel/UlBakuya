@@ -6,7 +6,7 @@ import { useFetchInscripciones } from "../../../hooks/useInscripciones"
 import { useFetchEscuelas } from "../../../hooks/useEscuela"
 import { useFetchProfes } from "../../../hooks/useProfesor"
 import { useFetchEventos } from "../../../hooks/useEventos"
-import { useEffect } from "react"
+import { useEffect, useMemo } from "react"
 import userStore from "../../../store/loginStore"
 import inscripcionStore from "../../../store/inscripcionStore"
 import CardInscripcionesPc from "../../cards/inscripciones/CardInscripcionesPc"
@@ -30,37 +30,20 @@ function Inscripciones_PC() {
   } = inscripcionStore()
   
   const todasLasInscripciones = getFilteredInscripciones()
+
   const inscripcionesFiltradas = Array.isArray(todasLasInscripciones)
-   ? todasLasInscripciones.filter((i) => i.idEvento === inscripcionEvento.idEvento) 
-   : []
+  ? inscripcionEvento.idEvento
+    ?todasLasInscripciones.filter((i) => i.idEvento === inscripcionEvento.idEvento) 
+    :todasLasInscripciones
+  : [] 
+
   
-  const grados = [
-    "Blanco",
-    "Blanco Punta Amarilla",
-    "Amarillo",
-    "Amarillo Punta Verde",
-    "Verde",
-    "Verde Punta Azul",
-    "Azul",
-    "Azul Punta Roja",
-    "Rojo",
-    "Rojo Punta Negra",
-    "1er Dan",
-    "2do Dan",
-    "3er Dan",
-    "4to Dan",
-    "5to Dan",
-    "6to Dan",
-    "7mo Dan",
-    "8vo Dan",
+  const grados = ["Blanco","Blanco Punta Amarilla","Amarillo","Amarillo Punta Verde",
+    "Verde","Verde Punta Azul","Azul","Azul Punta Roja","Rojo","Rojo Punta Negra",
+    "1er Dan","2do Dan","3er Dan","4to Dan","5to Dan","6to Dan","7mo Dan","8vo Dan",
     "9no Dan"
   ]
-  const evento = [
-    "Torneo",
-    "Examen",
-    "Curso técnico",
-    "Clase especial"
-  ]
+  const evento = ["Torneo","Examen","Curso técnico","Clase especial"]
 
   const setInscripciones = inscripcionStore((state)=>state.setInscripciones)
 
@@ -68,7 +51,30 @@ function Inscripciones_PC() {
     if(inscripciones){
       setInscripciones(inscripciones)
     }
-  }, [inscripciones])
+  }, [inscripciones, setInscripciones])
+
+  const profesoresMap = useMemo(() => {
+    if(!Array.isArray(profesores)) return{}
+
+    return profesores.reduce((map, profesor)=>{
+      map[profesor.id] = profesor
+      return map
+    },{})
+  },[profesores])
+
+  const getNombre = (profesorId) =>{
+    const profesor = profesoresMap[profesorId]
+    return profesor ? `${profesor.nombre} ${profesor.apellido}`: 'Profesor no encontrado'
+  }
+
+  const inscripcionesMejoradas = useMemo(()=>{
+    if(!Array.isArray(inscripcionesFiltradas)) return[]
+
+    return inscripcionesFiltradas.map(inscripcion => ({
+      ...inscripcion,
+      profesor: getNombre(inscripcion.profesor)
+    }))
+  },[inscripcionesFiltradas, profesoresMap])
 
   if(isLoading){
     return (
@@ -101,6 +107,7 @@ function Inscripciones_PC() {
     );
   }
 
+ 
   return (
     <div>
       <Nav/>
@@ -181,7 +188,7 @@ function Inscripciones_PC() {
             </div>
 
             <div className="min-w-full table-auto border-collapse border border-gray-300 mb-8">
-              {Array.isArray(inscripcionesFiltradas) && inscripcionesFiltradas.map((inscripcion, key)=>
+              {inscripcionesMejoradas.map((inscripcion, key)=>
                   !inscripcion.eliminado && (
                     <CardInscripcionesPc
                       key={key}

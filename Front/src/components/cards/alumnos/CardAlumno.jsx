@@ -14,6 +14,9 @@ function CardAlumno(props) {
   };
 
   const bordeColor = graduacionColor[props.graduacion.toLowerCase().replace(/\s+/g, "")] || 'border-black';
+console.log(props.escuelas)
+
+
 
   return (
     <div className={`bg-white shadow-lg rounded-xl p-4 max-w-md mx-auto my-10 border-4 ${bordeColor}`}>
@@ -27,10 +30,29 @@ function CardAlumno(props) {
       </h2>
       <div className="mt-2 text-sm text-gray-800 space-y-2 divide-y divide-gray-200">
         <p className="pt-2"><span className="font-semibold">Fecha de nacimiento:</span> {props.fecha_de_nacimiento}</p>
-        <p className="pt-2"><span className="font-semibold">Escuela:</span> {props.escuela}</p>
         <p className="pt-2"><span className="font-semibold">Graduación:</span> {props.graduacion}</p>
         <p className="pt-2"><span className="font-semibold">Fecha de examen:</span> {props.fecha_de_examen}</p>
-        <p className="pt-2"><span className="font-semibold">Profesor:</span> {props.profesor}</p>
+        
+      <div className="pt-2">
+        <span className="font-semibold">Escuela:</span>{" "}
+        {props.escuelas.map((esc, i) => (
+          <span key={esc.id}>
+            {esc.nombre}
+            {i < props.escuelas.length - 1 && " / "}
+          </span>
+        ))}
+      </div>
+
+      <div className="pt-2">
+        <span className="font-semibold">Profesor:</span>{" "}
+        {props.profesores.map((prof, i) => (
+          <span key={prof.id}>
+            {prof.nombre} {prof.apellido}
+            {i < props.profesores.length - 1 && " / "}
+          </span>
+        ))}
+      </div>
+        
         <p className="pt-2"><span className="font-semibold">Estado:</span> {props.estado}</p>
       </div>
     </div>

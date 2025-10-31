@@ -20,7 +20,7 @@ function AlumnoDetail() {
     if(!isLogged){
         return <p>Debes iniciar sesion como administrador</p>
     }
-
+console.log(alumno)
     return (
         <div>
             <Nav/>
@@ -32,10 +32,10 @@ function AlumnoDetail() {
                     imagen={alumno.imagen}
                     nombre={alumno.nombre} apellido={alumno.apellido}
                     fecha_de_nacimiento={alumno.fecha_de_nacimiento}
-                    escuela={alumno.escuela}
+                    escuelas={alumno.escuelas}
                     graduacion={alumno.graduacion}
                     fecha_de_examen={alumno.fecha_de_examen}
-                    profesor={alumno.profesor}
+                    profesores={alumno.profesores}
                     estado={alumno.estado}
                     />
                 </div>}

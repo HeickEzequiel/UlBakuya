@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Nav from '../nav/Nav'
 import Footer from '../footer/Footer'
 import UserNav from '../usernav/UserNav'
@@ -34,6 +34,27 @@ function UserUpdate() {
     })
     const [file, setFile] = useState(null)
 
+    useEffect(() => {
+        if (usuario) {
+            setUserData({
+                nombre: usuario.nombre || "",
+                apellido: usuario.apellido || "",
+                imagen: usuario.imagen || "",
+                fecha_de_nacimiento: usuario.fecha_de_nacimiento || "",
+                tel: usuario.tel || "",
+                email: usuario.email || "",
+                password: "",
+                nivel: usuario.nivel || "",
+                escuela: usuario.escuela || "",
+                profesor: usuario.profesor || "",
+                graduacion: usuario.graduacion || "",
+                fecha_de_examen: usuario.fecha_de_examen || "",
+                idProfesor: usuario.idProfesor || "",
+                eliminado: usuario.eliminado || false,
+            })
+        }
+    }, [usuario])
+
     if(isLoading){
         return <div>Loading...</div>
     }
@@ -54,6 +75,7 @@ function UserUpdate() {
             })
         if(response.status===200){
             alert(`Usuario actualizado`)
+            navigate(`/perfil`)
         }else{ 
             alert ('algo salio mal :(')
         }
@@ -78,7 +100,9 @@ function UserUpdate() {
     const handleSubmit = async (event) =>{
         event.preventDefault()
         try {
-            const urlimage = await uploadImage(file)
+            let urlimage = usuario.imagen
+            if(file){
+            urlimage = await uploadImage(file)}
             const success = await updateUser({ ...userData, imagen: urlimage})
             if(success){
                 navigate(`/perfil`)
@@ -111,12 +135,11 @@ function UserUpdate() {
                         type="file"
                         accept="image/*"
                         onChange={handleFileChange}
-                        required
                         className="w-full cursor-pointer opacity-0 absolute inset-0 z-10"
                         />
 
                         <span className="px-4 py-2 text-gray-500 text-sm truncate">
-                        Seleccioná una imagen...
+                        {file ? file.name : "Seleccioná una imagen..."}
                         </span>
 
                         <button
@@ -128,7 +151,6 @@ function UserUpdate() {
                 </div>
             
                 {[
-                  {label:"Link de imagen", name:"imagen", placeholder:"Ingrese link de la imagen"},
                   {label:"Nombre", name:"nombre", placeholder: usuario.nombre},
                   {label:"Apellido", name:"apellido", placeholder: usuario.apellido},
                   {label:"Fecha_de_nacimiento", name:"fecha_de_nacimiento", placeholder: usuario.fecha_de_nacimiento},

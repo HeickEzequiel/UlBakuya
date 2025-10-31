@@ -5,7 +5,7 @@ import Nav from "../nav/Nav"
 import UserNav from "../usernav/UserNav"
 import CardImagen from "../cards/CardImagen"
 import Footer from "../footer/Footer"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import api from "../../api/ubk"
 import { uploadImage } from "../../services/cloudinaryService"
 
@@ -18,12 +18,26 @@ function EventoUpdate() {
     const [eventoData, setEventoData] = useState({
       tipo_de_evento:"",
       fecha_del_evento:"",
-      horarios:"",
+      horarios:[],
       club:"",
       direccion:"",
       imagen:""
       })
     const [ file, setFile ] = useState(null)
+
+    useEffect(()=> {
+        if(evento){
+            setEventoData({
+                tipo_de_evento: evento.tipo_de_evento || '', 
+                fecha_del_evento: evento.fecha_del_evento || '',
+                horarios: evento.horarios || [],
+                club: evento.club || '',
+                direccion: evento.direccion || '',
+                imagen: evento.imagen || ''
+            })
+        }
+    }, [evento])
+
     if(isLoading){
         return <div>Loading...</div>
     }
@@ -68,7 +82,9 @@ function EventoUpdate() {
     const handleSubmit = async (event) =>{
         event.preventDefault()
         try {
-            const urlImage = await uploadImage(file)
+            let urlImage = evento.imagen
+            if(file){
+            urlImage = await uploadImage(file)}
             const success = await updateEvento({ ...eventoData, imagen: urlImage})            
             if(success){
                 navigate(`/evento/${id}`)
@@ -101,11 +117,10 @@ function EventoUpdate() {
                         type="file"
                         accept="image/*"
                         onChange={handleFileChange}
-                        required
                         className="w-full cursor-pointer opacity-0 absolute inset-0 z-10"/>
 
                         <span className="px-4 py-2 text-gray-500 text-sm truncate">
-                        Seleccioná una imagen...
+                        {file ? file.name : "Seleccioná una imagen..."}
                         </span>
 
                         <button
@@ -138,7 +153,11 @@ function EventoUpdate() {
                             className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
-                ))}
+                    )
+                )}
+
+                
+            
                 <div className="flex justify-between items-center">
                     <button 
                     type="submit" 

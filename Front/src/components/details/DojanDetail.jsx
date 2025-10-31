@@ -20,7 +20,7 @@ function DojanDetail() {
   if(!isLogged){
       return <p>Debes iniciar sesion como administrador</p>
   }
-
+console.log(dojan)
   return (
       <div>
           <Nav/>

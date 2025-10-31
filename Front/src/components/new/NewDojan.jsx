@@ -36,6 +36,7 @@ function NewDojan() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      let urlImagen = dojanData.imagen
       const payload = {
         ...dojanData,
         profesor: dojanData.profesor
@@ -47,8 +48,8 @@ function NewDojan() {
         .map((h) => h.trim())
         .filter((h) => h.length > 0) 
       };
-      
-      const urlImagen = await uploadImage(file)
+      if(file){
+        urlImagen = await uploadImage(file)}
       const nuevoDojan = await registerDojan({ ...payload, image:urlImagen})
       
       alert("Dojan creado con éxito");
@@ -82,7 +83,6 @@ function NewDojan() {
                   type="file"
                   accept="image/*"
                   onChange={handleFileChange}
-                  required
                   className="w-full cursor-pointer opacity-0 absolute inset-0 z-10"
                 />
 

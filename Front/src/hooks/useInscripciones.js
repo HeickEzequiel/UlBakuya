@@ -17,6 +17,7 @@ export function useFetchInscripcion(id){
         queryFn:
             async function fetchInscripcion() {
                 const { data } = await api.get(`/inscripcion/${id}`)
+                console.log(data)
                 return data                
             },
             enabled:!!id
