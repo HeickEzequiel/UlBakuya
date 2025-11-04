@@ -10,7 +10,7 @@ import { fill } from "@cloudinary/url-gen/actions/resize";
         api_secret: import.meta.env.VITE_CLOUD_SECRET_KEY
     },
 });
-
+console.log("cloudName:", import.meta.env.VITE_CLOUD_NAME);
 
 const imagen2 = cld.image("ulbakuya/474151623_956224553104658_8127790081122476212_n_gzyd7u").resize(fill().width(1920).height(700)).toURL()
 const imagen3 = cld.image("ulbakuya/20250619_rkmxhh").resize(fill().width(1920).height(700)).toURL()
