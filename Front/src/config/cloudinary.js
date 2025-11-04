@@ -7,7 +7,7 @@ import { fill } from "@cloudinary/url-gen/actions/resize";
     cloud: {
         cloudName: import.meta.env.VITE_CLOUD_NAME,
         api_key: import.meta.env.VITE_CLOUD_API_KEY, 
-        api_secret: import.meta.env.VITE_SECRET_KEY
+        api_secret: import.meta.env.VITE_CLOUD_SECRET_KEY
     },
 });
 
