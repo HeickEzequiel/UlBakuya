@@ -44,8 +44,10 @@ function Newuser(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const urlImagen = await uploadImage(file)
-      const nuevoUsuario = await registerUser({ ...userData, image:urlImagen})
+      let urlImagen = userData.urlImagen
+      if(file){
+        urlImagen = await uploadImage(file)}
+        const nuevoUsuario = await registerUser({ ...userData, image:urlImagen})
       
       alert ("Usuario creado con éxito")
       navigate("/login");
@@ -75,7 +77,6 @@ function Newuser(props) {
                   type="file"
                   accept="image/*"
                   onChange={handleFileChange}
-                  required
                   className="w-full cursor-pointer opacity-0 absolute inset-0 z-10"
                 />
 

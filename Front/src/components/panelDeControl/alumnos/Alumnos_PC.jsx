@@ -128,7 +128,7 @@ function Alumnos_PC() {
               onChange={(e) => setSelectedProfesor(e.target.value)}
               className="p-2 border rounded-xl">
               <option value="todas">Todos los Profesores</option>
-              {Array.isArray(profesores) && profesores.map((profe, key) => (
+              {Array.isArray(profesores) && profesores.map ((profe, key) => !profe.eliminado && (
                 <option
                 key={key}
                 value={profe.id}>
