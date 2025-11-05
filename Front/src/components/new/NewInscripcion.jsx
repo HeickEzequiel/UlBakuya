@@ -177,7 +177,7 @@ console.log(profesores)
               Profesores (podés elegir más de uno)
             </label>
             <div className="grid grid-cols-2 gap-2">
-              {profesores.map((prof) => (
+              {profesores.map((prof) => !prof.eliminado && (
                 <label key={prof.id} className="flex items-center gap-2">
                   <input
                     type="checkbox"

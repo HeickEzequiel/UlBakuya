@@ -104,7 +104,7 @@ const alumnosStore = create((set, get)=>{
             }
             if(selectedProfesor !== "todas"){
                 results = results.filter((alumno) => 
-                    alumno.profesores.some((prof) => prof.id === selectedProfesor))
+                    alumno.profesores.some((prof) => prof.id === selectedProfesor && prof.eliminado !== true))
             }
 
             
