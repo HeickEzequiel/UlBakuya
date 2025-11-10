@@ -10,13 +10,13 @@ function Nav() {
     <header className="bg-gradient-to-r from-gray-900 via-gray-600 to-gray-900 shadow-md mb-2">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         
-        <Link to="/" className="text-lime-400 text-3xl font-extrabold tracking-wide hover:opacity-90 transition">
-          FIT
+        <Link to="/" className="text-white text-3xl font-extrabold tracking-wide hover:opacity-90 transition">
+          Ul Bakuya
         </Link>
 
-        <h1 className="  md:block text-white text-sm md:text-xl font-semibold tracking-tight">
+        {/* <h1 className="  md:block text-white text-sm md:text-xl font-semibold tracking-tight">
           Formación Integral de Taekwondo
-        </h1>
+        </h1> */}
 
         
 

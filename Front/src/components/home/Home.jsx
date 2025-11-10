@@ -12,8 +12,8 @@ function Home() {
     <div className='bg-white'>
         <Nav/>
         {isLogged ? <UserNav/> : <div className='relative flex items-center p-4 w-full '></div>}
-        <div className='text-4xl ml-8 mt-8 font-bold font-sans text-gray-900'>Bienvenidos a FIT </div>
-        <div className='text-2xl ml-12 font-bold text-lime-600 font-sans'>Formación Integral de Taekwondo</div>
+        <div className='text-4xl ml-8 mt-8 font-bold font-sans text-gray-900'>Bienvenidos a Ul Bakuya </div>
+        {/* <div className='text-2xl ml-12 font-bold text-lime-600 font-sans'>Formación Integral de Taekwondo</div> */}
 
         <Carousel/>
         <div className="max-w-4xl mx-auto my-8 px-6">

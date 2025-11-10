@@ -63,12 +63,6 @@ function Body() {
           El Taekwondo es más que un deporte, es un estilo de vida que promueve el crecimiento personal y el respeto hacia los demás. ¡Descubrí todo lo que esta disciplina puede ofrecerte!
         </p>
       </div>
-      
-      <div className="bg-gradient-to-r from-gray-900 via-gray-600 to-gray-900 flex justify-center my-8 px-4 sm:my-16 sm:px-8 md:my-32 md:px-20 rounded-2xl">
-        <button className="px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-md md:text-lg font-semibold text-black bg-lime-400 rounded-2xl shadow-lg transition transform duration-300 hover:bg-lime-500 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-lime-400 focus:ring-offset-2">
-          ¡Quiero inscribirme!
-        </button>
-      </div>
     </div>
   );
 }
